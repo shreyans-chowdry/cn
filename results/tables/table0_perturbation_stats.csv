@@ -1,0 +1,5 @@
+Level,Word perturb prob.,Words changed,Char edit rate,Char edit rate after canonicalisation,Top ops
+L1 (light),0.15,0.124,0.033,0.019,"case, phonetic, vowel_drop, swap"
+L2 (moderate),0.3,0.346,0.083,0.028,"leet, separator, case, repeat"
+L3 (heavy),0.45,0.433,0.110,0.045,"zero_width, insert, delete, homoglyph"
+L4 (cross-script),0.6,0.548,0.201,0.080,"script_mix, zero_width, swap, delete"

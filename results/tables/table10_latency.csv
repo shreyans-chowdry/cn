@@ -1,0 +1,13 @@
+Model,Repr.,p50 ms,p95 ms,Batch throughput (msg/s),Size
+Word NB,word,0.50,0.81,19874,10.5k features
+Word RF,word,78.51,110.29,2301,10.5k features
+Word LR,word,0.71,1.15,28469,10.5k features
+Word SVM,word,3.07,4.76,24695,10.5k features
+Word BiGRU,word,2.82,4.19,2071,0.5M params
+DistilmBERT,subword,37.07,51.10,39,135.3M params
+XLM-R,subword,73.19,98.62,23,278.0M params
+MuRIL,subword,73.26,97.25,21,237.6M params
+Char LR,char,1.01,1.51,5215,45.1k features
+Char SVM,char,4.30,5.87,2712,45.1k features
+Char CNN,char,1.31,2.78,933,0.4M params
+CANINE-S,char,99.88,134.12,17,132.1M params

@@ -1,0 +1,146 @@
+{
+  "n_total": 11986,
+  "by_split": {
+    "train": 6813,
+    "test": 3971,
+    "val": 1202
+  },
+  "by_label": {
+    "legit": 5393,
+    "scam": 4199,
+    "promo": 2394
+  },
+  "by_lang_label": {
+    "bn|legit": 1079,
+    "bn|promo": 476,
+    "bn|scam": 839,
+    "en|legit": 1079,
+    "en|promo": 479,
+    "en|scam": 840,
+    "hi|legit": 1078,
+    "hi|promo": 480,
+    "hi|scam": 840,
+    "ta|legit": 1079,
+    "ta|promo": 479,
+    "ta|scam": 840,
+    "te|legit": 1078,
+    "te|promo": 480,
+    "te|scam": 840
+  },
+  "by_subtype": [
+    [
+      "legit",
+      "bill_paid",
+      775
+    ],
+    [
+      "legit",
+      "collect_genuine",
+      775
+    ],
+    [
+      "legit",
+      "credit_alert",
+      770
+    ],
+    [
+      "legit",
+      "debit_alert",
+      770
+    ],
+    [
+      "legit",
+      "otp",
+      770
+    ],
+    [
+      "legit",
+      "personal",
+      770
+    ],
+    [
+      "legit",
+      "security_advisory",
+      763
+    ],
+    [
+      "promo",
+      "cashback_offer",
+      480
+    ],
+    [
+      "promo",
+      "loan_promo",
+      478
+    ],
+    [
+      "promo",
+      "recharge_plan",
+      480
+    ],
+    [
+      "promo",
+      "rewards_points",
+      476
+    ],
+    [
+      "promo",
+      "sale_offer",
+      480
+    ],
+    [
+      "scam",
+      "bill_disconnect",
+      420
+    ],
+    [
+      "scam",
+      "fake_support",
+      419
+    ],
+    [
+      "scam",
+      "job_task",
+      420
+    ],
+    [
+      "scam",
+      "kyc_block",
+      420
+    ],
+    [
+      "scam",
+      "loan_instant",
+      420
+    ],
+    [
+      "scam",
+      "lottery_prize",
+      420
+    ],
+    [
+      "scam",
+      "parcel_customs",
+      420
+    ],
+    [
+      "scam",
+      "refund_collect",
+      420
+    ],
+    [
+      "scam",
+      "reward_phish",
+      420
+    ],
+    [
+      "scam",
+      "wrong_transfer",
+      420
+    ]
+  ],
+  "mixed_script_share": 0.09219088937093275,
+  "n_templates": 335,
+  "mean_chars": 112.96187218421491,
+  "mean_words": 17.294843984648757
+}

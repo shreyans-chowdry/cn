@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScamShield</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Devanagari&family=Noto+Sans+Tamil&family=Noto+Sans+Bengali&family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>ScamShield</h1>
+    <p>Do UPI scam detectors still work when the message is written in Hinglish, Tanglish, Benglish or Tenglish — and deliberately misspelled?</p>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="lab">Test a message</button>
+    <button role="tab" aria-selected="false" data-tab="results">Experiment results</button>
+  </nav>
+</header>
+
+<main>
+<section id="lab" class="tab-panel">
+  <div class="lab-grid">
+    <div class="composer">
+      <div class="composer-head">
+        <h2>Message</h2>
+        <div class="samples">
+          <span>Load a test message:</span>
+          <select id="sample-lang" aria-label="Sample language">
+            <option value="">any language</option>
+            <option value="hi">Hindi-English</option>
+            <option value="ta">Tamil-English</option>
+            <option value="bn">Bengali-English</option>
+            <option value="te">Telugu-English</option>
+            <option value="en">English</option>
+          </select>
+          <button class="ghost" data-sample="scam">Scam</button>
+          <button class="ghost" data-sample="legit">Genuine</button>
+          <button class="ghost" data-sample="promo">Promo</button>
+        </div>
+      </div>
+      <textarea id="msg" rows="4" spellcheck="false">Dear customer aapka SBI account aaj raat 12 baje block ho jayega. KYC update karne ke liye turant is link pe click karein sbi-kyc.xyz/aB3d</textarea>
+
+      <div class="attack">
+        <div class="attack-head">
+          <h3>Obfuscate it</h3>
+          <span id="level-name" class="level-name">L0 · clean</span>
+        </div>
+        <input id="level" type="range" min="0" max="4" step="1" value="0" aria-label="Obfuscation level">
+        <div class="ticks"><span>clean</span><span>light</span><span>moderate</span><span>heavy</span><span>cross-script</span></div>
+        <p class="hint">Each step adds tricks scammers use: misspellings, then leetspeak and K.Y.C-style separators, then look-alike Cyrillic letters and invisible characters, then key words rewritten in Indian scripts.</p>
+      </div>
+
+      <div class="phone" aria-live="polite">
+        <div class="bubble" id="bubble"></div>
+        <div class="legend-marks">
+          <span><i class="mk homo"></i>look-alike letter</span>
+          <span><i class="mk zw"></i>invisible character</span>
+          <span><i class="mk leet"></i>digit/symbol swap</span>
+          <span><i class="mk script"></i>other script</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <label class="check"><input type="checkbox" id="norm"> Canonicalise text before classifying</label>
+        <button id="reshuffle" class="ghost">New random obfuscation</button>
+        <button id="analyze" class="primary">Classify message</button>
+      </div>
+    </div>
+
+    <div class="verdicts">
+      <div class="verdict-head">
+        <h2>Model verdicts</h2>
+        <span id="lang-tag" class="lang-tag"></span>
+      </div>
+      <div id="ensemble" class="ensemble empty">Classify a message to see how each model reads it.</div>
+      <div id="model-rows"></div>
+      <p class="foot">Bars show probability of <b class="c-legit">genuine</b>, <b class="c-promo">promo</b> and <b class="c-scam">scam</b>. “AT” = adversarially trained.</p>
+    </div>
+  </div>
+
+  <div class="stress">
+    <div class="stress-head">
+      <h2>Where does each model break?</h2>
+      <button id="run-stress" class="ghost">Run L0 → L4 on this message</button>
+    </div>
+    <p class="hint">Scam probability assigned by every model as the same message is obfuscated harder. A line falling below 0.5 means the scam slips through.</p>
+    <div class="chart-wrap"><canvas id="stress-chart" aria-label="Scam probability by obfuscation level"></canvas></div>
+  </div>
+</section>
+
+<section id="results" class="tab-panel" hidden>
+  <div id="results-body"><p class="hint">Loading results…</p></div>
+</section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

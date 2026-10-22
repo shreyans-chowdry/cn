@@ -1,0 +1,8 @@
+Model,Repr.,In-language F1,Cross-language F1,Transfer gap,In-language F1 @L2,Cross-language F1 @L2
+Word LR,word,0.730,0.768,-0.038,0.692,0.710
+Word SVM,word,0.745,0.762,-0.017,0.704,0.704
+Word BiGRU,word,0.608,0.475,0.133,0.538,0.415
+DistilmBERT,subword,0.588,0.531,0.057,0.578,0.528
+Char LR,char,0.789,0.809,-0.019,0.772,0.783
+Char SVM,char,0.782,0.805,-0.023,0.762,0.777
+Char CNN,char,0.603,0.586,0.017,0.577,0.563

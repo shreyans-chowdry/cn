@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+data/obf/
+results/runs/
+artifacts/*__clean/
+artifacts/*__adv/
+.pytest_cache/
+.DS_Store
