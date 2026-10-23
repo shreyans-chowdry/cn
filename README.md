@@ -1,4 +1,4 @@
-# ScamShield — Robustness of Multilingual UPI SMS Scam Detection under Code-Mixing and Obfuscation
+# ScamShield: Robustness of Multilingual UPI SMS Scam Detection under Code-Mixing and Obfuscation
 
 Computer Networks project. Shreyans Chowdry (24BDS0114), VIT Vellore.
 
