@@ -42,7 +42,11 @@ MODELS = {}
 
 
 def _load_models():
-    from scamshield.models import classical, neural
+    from scamshield.models import classical
+    try:
+        from scamshield.models import neural
+    except Exception:  # torch not installed: serve the classical models only
+        neural = None
     for path in sorted(ART.glob("*")):
         stem = path.name.split(".")[0]
         if "__" not in stem:
@@ -54,6 +58,8 @@ def _load_models():
             if path.suffix == ".joblib":
                 m = classical.make(name).load(str(path))
             elif path.suffix == ".pt":
+                if neural is None:
+                    continue
                 m = neural.make(name).load(str(path))
             elif path.is_dir() and (path / "config.json").exists():
                 from scamshield.models import transformer
@@ -72,6 +78,45 @@ def _load_models():
 
 
 _load_models()
+
+
+# --- Public-data spam model (trained by scripts/train_public.py), used by the /check page -----------------
+PUBLIC = None
+
+
+def prep(s):  # the saved model refers to __main__.prep, so register it there before loading
+    return normalize(s).lower()
+
+
+def _load_public():
+    global PUBLIC
+    path = ART / "public_char_lr.joblib"
+    if not path.exists():
+        print("[ScamShield] public_char_lr.joblib not found: run  python scripts/train_public.py")
+        return
+    import __main__
+    import joblib
+    __main__.prep = prep
+    PUBLIC = joblib.load(path)
+    print("[ScamShield] loaded public spam model")
+
+
+_load_public()
+COMBINED = None
+_comb = ART / "combined.joblib"
+if _comb.exists():
+    sys.path.insert(0, str(ROOT / "scripts"))   # the saved models refer to train_public.prep
+    import joblib as _jc
+    COMBINED = _jc.load(_comb)
+    print("[ScamShield] loaded combined model (public + original, gated by message type)")
+if PUBLIC is None and COMBINED is not None:
+    PUBLIC = COMBINED["public"]
+PUBLIC_BAL = None
+_bal = ART / "public_char_lr_balanced.joblib"
+if _bal.exists():
+    import joblib as _jl
+    PUBLIC_BAL = _jl.load(_bal)
+    print("[ScamShield] loaded balanced public spam model")
 
 LANG_MARKERS = {
     "hi": {"aapka", "aapke", "aapko", "hai", "karein", "nahi", "liye", "karne", "bhej", "abhi", "turant", "jayega", "paise", "mein", "kar"},
@@ -197,6 +242,39 @@ def results():
 
 app.mount("/figures", StaticFiles(directory=str(RES / "figures"), check_dir=False), name="figures")
 app.mount("/static", StaticFiles(directory=str(ROOT / "app" / "static")), name="static")
+
+
+class CheckIn(BaseModel):
+    text: str
+
+
+@app.post("/api/check")
+def api_check(inp: CheckIn):
+    if PUBLIC is None:
+        raise HTTPException(503, "Public model not found. Run: python scripts/train_public.py")
+    p = float(PUBLIC.predict_proba([inp.text])[0, 1])
+    out = {"score": round(p, 3), "verdict": "spam" if p >= 0.5 else "not spam", "lang": detect_lang(inp.text)}
+    if PUBLIC_BAL is not None:
+        pb = float(PUBLIC_BAL.predict_proba([inp.text])[0, 1])
+        out["balanced"] = {"score": round(pb, 3), "verdict": "spam" if pb >= 0.5 else "not spam"}
+    orig = MODELS.get("char_lr__clean")
+    if orig is not None:
+        pr = orig["model"].predict_proba([inp.text])[0]
+        top = max(range(len(LABELS)), key=lambda i: pr[i])
+        out["original"] = {"label": LABELS[top], "probs": {l: round(float(x), 2) for l, x in zip(LABELS, pr)}}
+    if COMBINED is not None and orig is not None:
+        ps = float(COMBINED["public"].predict_proba([inp.text])[0, 1])
+        d = float(COMBINED["domain"].predict_proba([inp.text])[0, 1])
+        os_ = 1.0 - float(pr[LABELS.index("legit")])
+        c = d * os_ + (1 - d) * ps
+        out["combined"] = {"score": round(c, 3), "verdict": "spam" if c >= 0.5 else "not spam",
+                           "upi_style": round(d, 2), "public_score": round(ps, 3), "original_spam_score": round(os_, 3)}
+    return out
+
+
+@app.get("/check")
+def check_page():
+    return FileResponse(ROOT / "app" / "static" / "check.html")
 
 
 @app.get("/")

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spam check</title>
+<style>
+ body{font-family:system-ui,Segoe UI,Arial,sans-serif;max-width:760px;margin:32px auto;padding:0 16px;color:#1d1d1f}
+ textarea{width:100%;height:120px;font-size:16px;padding:10px;box-sizing:border-box}
+ button{font-size:16px;padding:10px 18px;margin-top:8px;cursor:pointer}
+ .note{background:#fff7e0;border:1px solid #e6cf8a;padding:10px 12px;border-radius:6px;font-size:14px;margin:12px 0}
+ .row{border:1px solid #ddd;border-radius:8px;padding:10px 12px;margin-top:10px}
+ .spam{border-left:6px solid #c0392b}.ham{border-left:6px solid #27ae60}
+ .bar{height:8px;background:#eee;border-radius:4px;margin-top:6px}.bar i{display:block;height:8px;border-radius:4px;background:#c0392b}
+ .meta{font-size:13px;color:#555;margin-top:4px}
+</style></head><body>
+<h2>Is this message spam?</h2>
+<div class="note">This model was trained on English public spam datasets plus code-mixed UPI messages. It is
+unreliable on Hindi-English bank and UPI messages and may flag genuine ones. Treat the result as a hint.</div>
+<textarea id="t" placeholder="Paste an SMS here"></textarea><br>
+<button id="go">Check</button>
+<div id="out"></div>
+<script>
+const $=id=>document.getElementById(id);
+async function check(){
+  const text=$("t").value.trim(); if(!text) return;
+  $("go").disabled=true;
+  try{
+    const r=await fetch("/api/check",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text})});
+    const raw=await r.text(); let j;
+    try{ j=JSON.parse(raw); }catch(_){ throw new Error("Server replied with status "+r.status+" and a non-JSON page from "+r.url+": "+raw.slice(0,120).replace(/\s+/g," ")); }
+    if(!r.ok) throw new Error(j.detail||("status "+r.status));
+    const main=j.combined||j;
+    const d=document.createElement("div"); d.className="row "+(main.verdict==="spam"?"spam":"ham");
+    const b=document.createElement("b"); b.textContent=(main.verdict==="spam"?"SPAM":"Not spam")+(j.combined?"  (combined model)":"");
+    const m=document.createElement("div"); m.className="meta"; m.textContent="score "+main.score+" · detected language: "+j.lang+(j.combined?" · looks like a bank/UPI message: "+j.combined.upi_style:"");
+    const q=document.createElement("div"); q.textContent=text.length>200?text.slice(0,200)+"…":text;
+    const bar=document.createElement("div"); bar.className="bar"; const i=document.createElement("i"); i.style.width=(main.score*100)+"%"; bar.appendChild(i);
+    d.append(b,m,bar);
+    if(j.combined){ const x=document.createElement("div"); x.className="meta"; x.textContent="public model alone: "+j.verdict+" (score "+j.score+")"; d.append(x); }
+    if(j.balanced){ const x=document.createElement("div"); x.className="meta"; x.textContent="balanced-training model: "+j.balanced.verdict+" (score "+j.balanced.score+")"; d.append(x); }
+    if(j.original){ const x=document.createElement("div"); x.className="meta"; x.textContent="original ScamShield model (Char LR): "+j.original.label+"  "+JSON.stringify(j.original.probs); d.append(x); }
+    d.append(q); $("out").prepend(d);
+  }catch(e){ const d=document.createElement("div"); d.className="row"; d.textContent="Error: "+e.message; $("out").prepend(d); }
+  $("go").disabled=false;
+}
+$("go").onclick=check;
+$("t").addEventListener("keydown",e=>{ if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)) check(); });
+</script></body></html>

@@ -1,0 +1,17 @@
+kind,source,p,text
+false_positive,exais,0.9905215823331069,Y'ello! You have exhausted your 2H Data plan. Activate another bundle or text RESET to 131 to browse @ 5kobo/KB.
+false_positive,exais,0.990396841070968,Bonus service available for 07032813890! Bonus:Funny Facts/Fitness Tips SMS & a FREE surprise gift! 1 price for all:N100/week. To get it text JOY to 38431 NOW!
+false_positive,exais,0.973959026292075,"Yello! To use MTN Backup, visit http://www.mtnonline.com/mtnwap on your mobile to configure your handset. Thank you!!!"
+false_positive,exais,0.9652047102504389,Do not ignore/hide Ebola. The best way to stop its spread and to survive it is to get medical help quickly. For more information visit www.redcrossnigeria.org
+false_positive,exais,0.9563503532806621,Compliments of the season!! Enjoy free Internet from Airtel on Free Zone powered by Google Click http://g.co/freezone NOW to enjoy (No data charges apply)
+false_positive,exais,0.9292772197140605,"Hello, Your request to buy 500MB weekly data plan was successful.Automatic renewal applies and unused data will rollover"
+false_positive,exais,0.9245626183558806,"Your Birthday is the perfect opportunity to take a pause in life, look at the things around you, sense the feeling of being alive in the depths of your heart and promise yourself to do great things. Happy Birthday!"
+false_positive,exais,0.9117639028000747,Prevent the spread of Ebola. Try not to touch sick people & report suspected cases immediately to a health facility to help them and protect yourself
+false_negative,uci,0.02090207544195377,Sorry I missed your call let's talk when you have the time. I'm on 07090201529
+false_negative,exais,0.02605735035317683,You can't give somebody faith. They either got it or they don't - Karen Marie Moning
+false_negative,exais,0.03478986194806302,Taking a walk can prove very beneficial during stressful times at work or after having had a heated debate
+false_negative,exais,0.037177254393790764,SMILE :) You would be having an incredibly excellent result this time. We haven't forgotten about you. Our prayers are with you.PresidentEsther. N
+false_negative,exais,0.0457491720828592,"GOOD DAY TO U,DIS IS TO REMIND U OF OUR FINAL YEAR DINNER PAYMENT & TO INFORM U DAT OUR T-SHIRT MEASUREMENT WILL BE TAKING ON MONDAY 18/08/14... NO ONE IS EXEMPTED...PLS PAY UP... THANKS"
+false_negative,exais,0.06074751157914466,Teamvier. Id: 531 812 529. Password: 8vx52q
+false_negative,uci,0.06181390790462005,Hi I'm sue. I am 20 years old and work as a lapdancer. I love sex. Text me live - I'm i my bedroom now. text SUE to 89555. By TextOperator G2 1DA 150ppmsg 18+
+false_negative,uci,0.06776352560805782,Would you like to see my XXX pics they are so hot they were nearly banned in the uk!

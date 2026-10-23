@@ -1,0 +1,24 @@
+{'raw_total': 10516, 'after_dedup': 8819}
+         count      mean
+source                  
+exais     3715  0.374159
+uci       5104  0.122649
+upi_cmx  11986  0.550058
+A uci
+A exais
+A upi_cmx
+B uci
+B exais
+B upi_cmx
+C word_nb
+C word_lr
+C word_svm
+C char_lr
+C char_svm
+C char_lr+norm
+C union_lr+norm
+D word_lr
+D char_lr
+D char_lr+norm
+D union_lr+norm
+done ['union_lr+norm', 'char_lr', 'word_lr'] 0.7999999999999999
