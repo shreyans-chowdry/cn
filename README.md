@@ -1,15 +1,17 @@
-# ScamShield — Robust Detection of UPI Payment Scams in Bilingual (Tamil–English) SMS, as a Networked System
+# ScamShield — Robust Detection of UPI Payment Scams in Multilingual Code-Mixed SMS, as a Networked System
 
 Computer Networks project (BCSE308L / BCSE308P), VIT Vellore.
-Shreyans Chowdry (24BDS0114) · Ayushmaan Nayak (public-dataset integration)
+Shreyans Chowdry (24BDS0114) · Swapnil Jain (24BAI0248) · Ayushmaan Nayak (24BCE2612)
 
-Payment scams arrive as SMS written in English or in Tamil mixed with English
-(`உங்கள் SBI account இன்று block செய்யப்படும். உடனே KYC update செய்ய link-ஐ click செய்யவும்`), and scammers disguise
-the words that filters look for: `P1N`, `K.Y.C`, a Cyrillic `е` in `rеfund`, Tamil digits that look like letters,
-invisible characters, or whole words switched into the other script. ScamShield has three parts:
+Payment scams arrive as SMS written in English or in another language mixed with English, each in its own script
+(`आपका SBI account आज block कर दिया जाएगा। तुरंत KYC update करें`, `உங்கள் SBI account இன்று block செய்யப்படும்`), and
+scammers disguise the words that filters look for: `P1N`, `K.Y.C`, a Cyrillic `е` in `rеfund`, look-alike characters
+from another script, invisible characters, or whole words switched into the other script. ScamShield is
+language-agnostic: every language-specific piece sits behind one registry (`src/scamshield/scripts.py`), and the
+current release supports English, Hindi–English and Tamil–English. It has three parts:
 
-1. **A detector and a benchmark.** UPI-BiSMS is a bilingual SMS corpus (English and Tamil–English in Tamil script)
-   with a graded disguise scheme (L0–L4, including transliteration). Twelve classifiers are evaluated on it,
+1. **A detector and a benchmark.** UPI-MixSMS is a multilingual code-mixed SMS corpus (English, Hindi–English in
+   Devanagari, Tamil–English in Tamil script) with a graded disguise scheme (L0–L4, including transliteration). Twelve classifiers are evaluated on it,
    along with three defences. Real public SMS corpora are used to check how well the results carry over.
 2. **A networked service.** The detector is served over our own CRC-protected protocol (SSP) on TCP and UDP. The UDP
    path has Go-Back-N / Selective Repeat reliability and AIMD congestion control. A DNS client and server written
@@ -52,7 +54,7 @@ The web app has four tabs:
 ```bash
 source .venv/bin/activate; export PYTHONPATH=src
 python -m scamshield.net.service --tcp 9099 --udp 9098 --dns 5353          # the server on its own
-python -m scamshield.net.client tcp  "உங்கள் KYC update செய்ய link-ஐ click செய்யவும் bit.ly/x"
+python -m scamshield.net.client tcp  "आपका KYC update करने के लिए link पर click करें bit.ly/x"
 python -m scamshield.net.client udp  "Your refund is pending, enter UPI PIN"
 python -m scamshield.net.client batch messages.txt --arq sr --window 8       # reliable batch over UDP
 python -m scamshield.net.client ping --count 10                              # RTT over TCP
@@ -73,7 +75,7 @@ Every run is cached in `results/runs/` (shipped zipped as `results/runs.zip`), s
 
 | Path | Contents |
 |---|---|
-| `data/upi_bisms.csv` | the bilingual dataset (`text, label, subtype, lang, template_id, split`) |
+| `data/upi_mixsms.csv` | the multilingual dataset (`text, label, subtype, lang, template_id, split`) |
 | `data/public/` | public SMS corpora: Mishra & Soni, UCI, ExAIS, translated multilingual UCI |
 | `results/RESULTS.md` | every table in one file |
 | `results/tables/`, `results/figures/` | tables (CSV) and figures (PNG + PDF) for the paper |
@@ -85,10 +87,11 @@ Every run is cached in `results/runs/` (shipped zipped as `results/runs.zip`), s
 
 ```
 src/scamshield/
-  data/templates.py      parallel English / Tamil–English message templates (23 intents)
-  data/generator.py      builds UPI-BiSMS with a template-disjoint split
+  scripts.py             registry of supported scripts (add a language here)
+  hindi.py, tamil.py     per-script tables: loanwords, transliteration, confusable letters, look-alikes
+  data/templates*.py     parallel English / Hindi–English / Tamil–English templates (23 intents)
+  data/generator.py      builds UPI-MixSMS with a template-disjoint split
   data/public.py         public SMS corpora loaders (one schema, de-duplicated, grouped splits)
-  tamil.py               Tamil script tools: loanwords, transliteration, confusable letters
   langid.py              automatic word-by-word language identification, code-mixing index
   obfuscation.py         L0–L4 disguise operators + script-aware canonicalisation
   models/                word / char TF-IDF models, BiGRU, char CNN, transformers
@@ -139,6 +142,6 @@ Full write-up: `paper/FINDINGS.md`. Every table: `results/RESULTS.md`.
 
 ## Note on the data
 
-UPI-BiSMS is synthetic. Its templates were written from publicly reported UPI scam patterns and real bank/UPI
+UPI-MixSMS is synthetic. Its templates were written from publicly reported UPI scam patterns and real bank/UPI
 message formats. That makes controlled experiments possible, but it does not replace real SMS. The test split is
 template-disjoint, and the public-corpus experiments measure how far results carry over to real messages.

@@ -1,9 +1,9 @@
 Model,Repr.,p50 ms,p95 ms,Batch throughput (msg/s),Size
-Word NB,word,0.42,0.70,41999,7.2k features
-Word RF,word,58.36,87.00,3219,7.2k features
-Word LR,word,0.62,0.95,36352,7.2k features
-Word SVM,word,2.84,6.63,11682,7.2k features
-Word BiGRU,word,2.23,415.82,2112,0.4M params
-Char LR,char,0.83,1.10,4300,38.6k features
-Char SVM,char,3.17,4.67,5382,38.6k features
-Char CNN,char,0.97,9.26,460,0.4M params
+Word NB,word,0.64,0.77,29237,8.9k features
+Word RF,word,98.12,122.16,1878,8.9k features
+Word LR,word,1.35,1.64,16320,8.9k features
+Word SVM,word,4.39,7.39,10650,8.9k features
+Word BiGRU,word,2.71,3.84,1898,0.5M params
+Char LR,char,1.46,2.20,3117,45.9k features
+Char SVM,char,4.99,7.59,3074,45.9k features
+Char CNN,char,2.33,4.89,699,0.4M params

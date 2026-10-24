@@ -5,6 +5,7 @@
   "word_lr",
   "word_svm",
   "word_bigru",
+  "distil_mbert",
   "char_lr",
   "char_svm",
   "char_cnn"
