@@ -4,7 +4,7 @@ Train the production detector served by the web app, the TCP/UDP services and th
     python scripts/train_production.py
 
 Training data
-  * UPI-BiSMS train + val (English and Tamil-English), plus one obfuscated copy of 50% of them
+  * UPI-MixSMS train + val (English and every code-mixed language), plus one obfuscated copy of 50% of them
     (levels L1-L4 drawn uniformly, so the model has also seen transliterated text)
   * Mishra & Soni public SMS corpus, train portion: ham / spam / smishing -> legit / promo / scam
   * UCI and ExAIS genuine (ham) messages, train portion -> legit
@@ -32,6 +32,7 @@ from sklearn.pipeline import Pipeline
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
+from scamshield.data.templates import LANGS  # noqa: E402
 from scamshield.data import public as PUB          # noqa: E402
 from scamshield.metrics import LABELS, all_metrics  # noqa: E402
 from scamshield.obfuscation import normalize, obfuscate  # noqa: E402
@@ -48,7 +49,7 @@ def build_pipeline():
 
 def training_data(seed=0):
     rng = random.Random(seed)
-    bisms = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
+    bisms = pd.read_csv(ROOT / "data" / "upi_mixsms.csv")
     tr = bisms[bisms.split != "test"]
     aug = [(obfuscate(t, rng.choice([1, 2, 3, 4]), seed=50_000 + i), l)
            for i, (t, l) in enumerate(zip(tr.text, tr.label)) if rng.random() < 0.5]
@@ -57,7 +58,7 @@ def training_data(seed=0):
     ptr3 = ptr[ptr.label3.isin(LABELS)]                       # drop binary-only 'spam'
     texts = list(tr.text) + [a for a, _ in aug] + list(ptr3.text)
     labels = list(tr.label) + [b for _, b in aug] + list(ptr3.label3)
-    sources = ["upi_bisms"] * len(tr) + ["upi_bisms_aug"] * len(aug) + list(ptr3.source)
+    sources = ["upi_mixsms"] * len(tr) + ["upi_mixsms_aug"] * len(aug) + list(ptr3.source)
     return texts, labels, sources, bisms[bisms.split == "test"], pte
 
 
@@ -72,11 +73,11 @@ def evaluate(pipe, bisms_test, pub_test):
             texts = pd.read_csv(ROOT / "data" / "obf" / f"L{lv}_targeted_s0.csv").text.fillna("").tolist()
         p = pipe.predict_proba(texts)[:, order]
         m = all_metrics(p, y)
-        out[f"upi_bisms_L{lv}"] = {k: v for k, v in m.items() if k != "confusion"}
-        for lang in ("en", "ta"):
+        out[f"upi_mixsms_L{lv}"] = {k: v for k, v in m.items() if k != "confusion"}
+        for lang in LANGS:
             k = (bisms_test.lang == lang).values
             mm = all_metrics(p[k], y[k])
-            out[f"upi_bisms_L{lv}_{lang}"] = {k2: v for k2, v in mm.items() if k2 != "confusion"}
+            out[f"upi_mixsms_L{lv}_{lang}"] = {k2: v for k2, v in mm.items() if k2 != "confusion"}
     for src, g in pub_test.groupby("source"):
         p = pipe.predict_proba(g.text.tolist())[:, order]
         pred_unwanted = (p[:, LAB["legit"]] < 0.5).astype(int)

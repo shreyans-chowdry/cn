@@ -1,6 +1,6 @@
 """
-Tamil script utilities shared by the data generator, the obfuscator, the language
-identifier and the canonicaliser.
+Tamil script utilities. Same interface as hindi.py (see scripts.py): every script-aware
+component handles a script through these names.
 
   * TAMIL_LETTER / is_tamil(): Unicode block U+0B80-U+0BFF
   * EN2TA: phonetic Tamil-script spellings of English banking loanwords
@@ -114,3 +114,26 @@ ROMAN_TAMIL = {
     "vendaam", "venaam", "nandri", "vanakkam", "anna", "akka", "thambi", "da", "di", "machan", "dei",
     "seri", "sari", "paaru", "paarunga", "eppadi", "enga", "inga", "anga", "athu", "ithu", "intha", "antha",
 }
+
+
+SALIENT = {
+    "உடனே", "உடனடியாக", "இப்போதே", "பணம்", "பணத்தைப்", "பரிசு", "வென்றுள்ளீர்கள்", "அனுப்பவும்",
+    "அனுப்புங்கள்", "காலாவதியாகிறது", "காலாவதியாகிவிட்டது", "கடைசி", "துண்டிக்கப்படும்", "பறிமுதல்",
+    "வாழ்த்துக்கள்", "உள்ளிடவும்", "பெற", "தவறுதலாக", "திருப்பி", "சம்பாதிக்கலாம்", "சந்தேகத்திற்குரிய",
+}
+
+# ---------------------------------------------------------------- common script interface
+CODE = "ta"
+NAME = "Tamil"
+SCRIPT = "Tamil"
+LO, HI = TA_LO, TA_HI
+RANGE_RE = "\u0B80-\u0BFF"
+is_char = is_tamil_char
+share = tamil_share
+EN2X, X2EN = EN2TA, TA2EN
+VIRAMA = PULLI
+LOOKALIKES = DIGIT_HOMOGLYPHS
+LOOKALIKE_TO_LETTER = DIGIT_TO_LETTER
+CONS = set(_CONS)
+ROMAN = ROMAN_TAMIL
+ROMAN_RE = r"(zh|ngal|nga$|kku|ttu|ppu|chu|ndr|idum$|aagi|aaga|unga|thu$|kal$|aam$|aar$|iyil$|ukku$|ai$|um$)"

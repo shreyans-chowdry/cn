@@ -13,7 +13,7 @@ JSON API
   POST /api/compare        {text}                        every research model's probabilities
   POST /api/obfuscate      {text, level, seed?}          obfuscated text + operators applied + canonicalised text
   POST /api/stress         {text, seed?}                 scam probability of each model at L0..L4
-  GET  /api/samples        ?lang=en|ta&label=scam|legit|promo
+  GET  /api/samples        ?lang=en|hi|ta&label=scam|legit|promo
   POST /api/net/frame      {text, flip_bit?}             SSP frame fields + hex; optional bit flip shows the CRC catch it
   POST /api/net/dns        {name, type}                  query the DNS server, with the raw wire bytes
   POST /api/net/cidr       {value}                       subnet calculator / IP classification
@@ -174,7 +174,7 @@ def stress(inp: StressIn):
 
 @app.get("/api/samples")
 def samples(lang: str | None = None, label: str | None = None, n: int = 1):
-    df = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
+    df = pd.read_csv(ROOT / "data" / "upi_mixsms.csv")
     df = df[df.split == "test"]
     if lang:
         df = df[df.lang == lang]

@@ -36,7 +36,7 @@ MESSAGES = None
 def _messages(n=400):
     global MESSAGES
     if MESSAGES is None:
-        df = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
+        df = pd.read_csv(ROOT / "data" / "upi_mixsms.csv")
         MESSAGES = df[df.split == "test"].text.tolist()
     return MESSAGES[:n]
 

@@ -61,9 +61,15 @@ class Detector(json: String) {
         sublinear = m.getBoolean("sublinear_tf")
         linkWeight = m.getDouble("link_weight")
         scamThreshold = m.getDouble("scam_threshold")
+        val sa = m.getJSONArray("scripts")
+        Normalizer.scripts = (0 until sa.length()).map { i ->
+            val o = sa.getJSONObject(i)
+            Script(o.getString("code"), o.getString("name"), o.getInt("lo"), o.getInt("hi"),
+                o.getJSONArray("roman").toStringList().toHashSet(), Regex(o.getString("roman_regex")))
+        }
         val n = m.getJSONObject("normalize")
         normalizer = Normalizer(n.getJSONObject("homoglyphs").toStringMap(), n.getJSONObject("deleet").toStringMap(),
-            n.getJSONObject("ta_digits").toStringMap(), n.getJSONObject("ta2en").toStringMap())
+            n.getJSONObject("lookalikes").toStringMap(), n.getJSONObject("native2en").toStringMap())
         langId = LangId(m.getJSONObject("langid"))
         linkIntel = LinkIntel(m.getJSONObject("links"))
         val cs = m.getJSONArray("cues")

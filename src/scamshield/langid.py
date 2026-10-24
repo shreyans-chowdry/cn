@@ -1,27 +1,29 @@
 """
-Automatic language identification for bilingual English / Tamil-English SMS.
+Automatic language identification for multilingual code-mixed SMS.
 
 No language has to be selected by the user: every token is tagged by script and lexicon,
-and the message label is derived from the token mix.
+and the message label is derived from the token mix. Every native script registered in
+scripts.py is handled the same way, so a new language needs no change here.
 
-Token tags
-  ta      Tamil script (or a mixed token whose stem is Tamil)
-  en      Latin-script English
-  ta-rom  Latin-script romanised Tamil ("Tanglish", e.g. ungal, pannunga)
-  mix     one token mixing both scripts: an English stem with a Tamil case suffix (Swiggy-ல்);
-          counted as evidence for both languages (intra-word code-mixing)
-  univ    language-independent: numbers, amounts, URLs, UPI IDs, phone numbers, punctuation
-  other   another script (Devanagari, Cyrillic look-alikes are folded first, ...)
+Token tags (<x> is a registered script code, e.g. hi, ta)
+  <x>       native script (or a mixed token whose stem is native)
+  en        Latin-script English
+  <x>-rom   Latin-script romanised native words (e.g. Hinglish aapka, Tanglish ungal)
+  mix       one token mixing scripts: an English stem with a native case suffix (Swiggy-ல்);
+            counted as evidence for both languages (intra-word code-mixing)
+  univ      language-independent: numbers, amounts, URLs, UPI IDs, phone numbers, punctuation
+  other     an unregistered script
 
-Message labels: English, Tamil, Tamil–English (code-mixed), Tamil (romanised), Other.
+Message labels: en, <x> (monolingual native), <x>-en (code-mixed), <x>-rom (romanised), other.
 The Code-Mixing Index (Das & Gambäck, 2014) is reported as well:
   CMI = 100 * (1 - max_lang_tokens / (n - u))   where u = language-independent tokens.
 """
 import re
 import unicodedata
 
-from . import tamil as T
+from . import scripts as S
 from .obfuscation import REVERSE_HOMOGLYPHS, split_affixes, _skip
+
 
 def _english_vocab():
     from .data.templates import TEMPLATES
@@ -36,16 +38,31 @@ def _english_vocab():
 
 
 EN_VOCAB = _english_vocab()
-_ROMAN_TA_RE = re.compile(r"(zh|ngal|nga$|kku|ttu|ppu|chu|ndr|idum$|aagi|aaga|unga|thu$|kal$|aam$|aar$|iyil$|ukku$|ai$|um$)")
+_ROMAN_RES = {code: re.compile(m.ROMAN_RE) for code, m in S.SCRIPTS.items()}
 
 
-def _looks_roman_tamil(w):
+def roman_script(w):
+    """Registered script whose romanised form `w` looks like, else None."""
     w = w.lower()
-    return w in T.ROMAN_TAMIL or (w not in EN_VOCAB and len(w) > 3 and bool(_ROMAN_TA_RE.search(w)))
+    for code, m in S.SCRIPTS.items():
+        if w in m.ROMAN:
+            return code
+    if w in EN_VOCAB or len(w) <= 3:
+        return None
+    for code, rx in _ROMAN_RES.items():
+        if rx.search(w):
+            return code
+    return None
 
 
-LABEL_NAMES = {"en": "English", "ta": "Tamil", "mixed": "Tamil–English", "ta-rom": "Tamil (romanised)",
-               "other": "Other"}
+def label_name(lang):
+    if lang == "en":
+        return "English"
+    if lang == "other":
+        return "Other"
+    code, _, kind = lang.partition("-")
+    name = S.SCRIPTS[code].NAME
+    return {"": name, "en": f"{name}–English", "rom": f"{name} (romanised)"}[kind]
 
 
 def tag_token(tok):
@@ -54,21 +71,22 @@ def tag_token(tok):
     pre, core, post = split_affixes(tok)
     if not core or not any(ch.isalpha() for ch in core):
         return "univ"
-    core = "".join(REVERSE_HOMOGLYPHS.get(c, c) for c in core)
-    ta = sum(T.is_tamil_char(c) for c in core)
+    core = "".join(S.LOOKALIKE_TO_LETTER.get(c, REVERSE_HOMOGLYPHS.get(c, c)) for c in core)
+    nat = S.dominant(core)
+    n_nat = sum(S.is_native(c) for c in core)
     lat = sum(c.isascii() and c.isalpha() for c in core)
     letters = sum(c.isalpha() for c in core)
-    if ta and lat:
+    if n_nat and lat:
         stem, _, suffix = core.partition("-")
-        if suffix and any(T.is_tamil_char(c) for c in suffix) and not any(T.is_tamil_char(c) for c in stem):
+        if suffix and any(S.is_native(c) for c in suffix) and not any(S.is_native(c) for c in stem):
             return "mix"
-    if ta and ta >= lat:
-        return "ta"
+    if n_nat and n_nat >= lat:
+        return nat
     if lat and lat >= letters * 0.6:
-        stem = core.lower().partition("-")[0]
-        return "ta-rom" if _looks_roman_tamil(stem) else "en"
-    if ta:
-        return "ta"
+        r = roman_script(core.lower().partition("-")[0])
+        return f"{r}-rom" if r else "en"
+    if n_nat:
+        return nat
     return "other"
 
 
@@ -76,29 +94,37 @@ def identify(text):
     """Return {'lang', 'name', 'tokens': [(token, tag)], 'shares', 'cmi'}."""
     toks = [t for t in re.split(r"\s+", unicodedata.normalize("NFKC", text)) if t]
     tags = [tag_token(t) for t in toks]
-    counts = {k: tags.count(k) for k in ("en", "ta", "ta-rom", "other")}
+    keys = ["en", "other"] + [c for c in S.SCRIPTS] + [f"{c}-rom" for c in S.SCRIPTS]
+    counts = {k: tags.count(k) for k in keys}
+    mix_target = S.dominant(text)
     counts["en"] += tags.count("mix")
-    counts["ta"] += tags.count("mix")
+    if mix_target:
+        counts[mix_target] += tags.count("mix")
     n_lang = sum(counts.values())
-    shares = {k: (v / n_lang if n_lang else 0.0) for k, v in counts.items()}
-    tamil_total = counts["ta"] + counts["ta-rom"]
+    shares = {k: (v / n_lang if n_lang else 0.0) for k, v in counts.items() if v}
+    native_total = {c: counts[c] + counts[f"{c}-rom"] for c in S.SCRIPTS}
+    best = max(native_total, key=native_total.get) if native_total else None
     if n_lang == 0:
         lang = "en"
     elif counts["other"] > n_lang / 2:
         lang = "other"
-    elif tamil_total == 0:
+    elif not best or native_total[best] == 0:
         lang = "en"
+    elif counts[best] == 0 and counts[f"{best}-rom"] / n_lang < 0.25:
+        lang = "en"                     # a stray romanised-looking word (a brand name) in English text
     elif counts["en"] == 0 or counts["en"] / n_lang < 0.08:
-        lang = "ta" if counts["ta"] >= counts["ta-rom"] else "ta-rom"
-    elif counts["ta-rom"] > counts["ta"]:
-        lang = "ta-rom"
+        lang = best if counts[best] >= counts[f"{best}-rom"] else f"{best}-rom"
+    elif counts[f"{best}-rom"] > counts[best]:
+        lang = f"{best}-rom"
     else:
-        lang = "mixed"
-    cmi = 0.0 if n_lang == 0 else 100.0 * (1 - max(counts["en"], tamil_total, counts["other"]) / n_lang)
-    return {"lang": lang, "name": LABEL_NAMES[lang], "tokens": list(zip(toks, tags)),
+        lang = f"{best}-en"
+    biggest = max([counts["en"], counts["other"]] + list(native_total.values()))
+    cmi = 0.0 if n_lang == 0 else 100.0 * (1 - biggest / n_lang)
+    return {"lang": lang, "name": label_name(lang), "tokens": list(zip(toks, tags)),
             "shares": shares, "cmi": round(cmi, 1)}
 
 
 def corpus_lang(text):
-    """Collapse to the dataset's two settings: 'en' or 'ta' (anything containing Tamil)."""
-    return "en" if identify(text)["lang"] in ("en", "other") else "ta"
+    """Collapse to the dataset's settings: 'en' or the code of the dominant native language."""
+    lang = identify(text)["lang"]
+    return "en" if lang in ("en", "other") else lang.partition("-")[0]

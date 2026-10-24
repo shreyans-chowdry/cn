@@ -1,5 +1,5 @@
 """
-Message templates for UPI-BiSMS, the bilingual UPI SMS corpus.
+Message templates for UPI-MixSMS, the multilingual code-mixed UPI SMS corpus.
 
 TEMPLATES[label][subtype][lang] -> list of template strings.
 
@@ -8,13 +8,15 @@ Labels
   legit : genuine transaction alerts, OTPs, mandates, advisories and personal payment chats
   promo : genuine commercial promotions (cashback, sales, loan offers, recharge)
 
-Languages
+Languages (the design is language-agnostic: adding a language means adding one parallel
+template list per subtype and one script module; nothing else is language-specific)
   en : English
-  ta : Tamil-English bilingual text -- Tamil written in Tamil script, with the English
-       banking vocabulary (KYC, account, link, OTP, PIN, refund, app names ...) left in
-       Latin script, which is how Tamil speakers actually type payment messages.
-       Romanised Tamil ("Tanglish") is NOT a language setting here; it only appears as
-       the transliteration attack at obfuscation level L4.
+  hi : Hindi-English code-mixed text -- Hindi in Devanagari script (templates_hi.py)
+  ta : Tamil-English code-mixed text -- Tamil in Tamil script
+  In both code-mixed settings the English banking vocabulary (KYC, account, link, OTP,
+  PIN, refund, app names ...) stays in Latin script, which is how people actually type
+  payment messages. Romanised forms (Hinglish, Tanglish) are NOT language settings; they
+  only appear as the transliteration attack at obfuscation level L4.
 
 Templates are parallel across languages (same intent, same slots) and include hard
 negatives: genuine advisories that mention KYC/PIN/OTP, genuine reward-point reminders,
@@ -328,6 +330,15 @@ TEMPLATES = {
     },
 }
 
-LANGS = ["en", "ta"]
-LANG_NAMES = {"en": "English", "ta": "Tamil–English"}
+from .templates_hi import HI as _HI
+
+for _label, _subs in _HI.items():
+    for _sub, _lst in _subs.items():
+        assert len(_lst) == len(TEMPLATES[_label][_sub]["en"]), (_label, _sub)
+        TEMPLATES[_label][_sub]["hi"] = _lst
+
+LANGS = ["en", "hi", "ta"]
+LANG_NAMES = {"en": "English", "hi": "Hindi–English", "ta": "Tamil–English"}
+# script of the non-English part of each code-mixed setting
+LANG_SCRIPT = {"hi": "deva", "ta": "taml"}
 LABELS = ["legit", "promo", "scam"]

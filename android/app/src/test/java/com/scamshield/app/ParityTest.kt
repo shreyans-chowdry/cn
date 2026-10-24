@@ -46,11 +46,17 @@ class ParityTest {
     }
 
     @Test
-    fun detectsTamilEnglishScam() {
-        val a = detector.analyse("உங்கள் SBI account இன்று இரவு block செய்யப்படும். உடனே KYC update செய்ய link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9")
-        assertEquals("mixed", a.language.code)
-        assertTrue(a.links.first().risk > 0.5)
-        assertEquals(com.scamshield.app.detector.Verdict.SCAM, a.verdict)
+    fun detectsCodeMixedScamsInEveryScript() {
+        val cases = mapOf(
+            "hi-en" to "आपका SBI account आज रात block कर दिया जाएगा। तुरंत KYC update करने के लिए इस link पर click करें http://sbi-kyc-update.xyz/a9",
+            "ta-en" to "உங்கள் SBI account இன்று இரவு block செய்யப்படும். உடனே KYC update செய்ய link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9",
+        )
+        for ((code, text) in cases) {
+            val a = detector.analyse(text)
+            assertEquals(code, a.language.code)
+            assertTrue(a.links.first().risk > 0.5)
+            assertEquals(com.scamshield.app.detector.Verdict.SCAM, a.verdict)
+        }
     }
 
     @Test

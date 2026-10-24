@@ -13,17 +13,20 @@ from scamshield.metrics import all_metrics, ece, scam_fnr
 from scamshield.net import cidr, errorcodes as E, protocol as P
 from scamshield.net.urlintel import analyse as link_analyse
 from scamshield.obfuscation import edit_rate, normalize, obfuscate
+from scamshield import scripts as S
+from scamshield.hindi import to_latin as hi_latin
 from scamshield.tamil import to_latin
 
 
 # ---------------------------------------------------------------- data
 def test_templates_are_parallel_across_languages():
-    assert LANGS == ["en", "ta"]
+    assert LANGS[0] == "en" and set(LANGS[1:]) == set(S.SCRIPTS)
     for label, subs in TEMPLATES.items():
         for st, by_lang in subs.items():
-            assert len(by_lang["en"]) == len(by_lang["ta"]), (label, st)
-            for t in by_lang["ta"]:
-                assert any("஀" <= c <= "௿" for c in t), f"Tamil template without Tamil script: {t}"
+            for lang in LANGS[1:]:
+                assert len(by_lang["en"]) == len(by_lang[lang]), (label, st, lang)
+                for t in by_lang[lang]:
+                    assert S.dominant(t) == lang, f"{lang} template without its script: {t}"
 
 
 def test_generator_is_deterministic_and_template_disjoint():
@@ -36,6 +39,8 @@ def test_language_is_detected_automatically():
     assert identify("Your SBI account will be blocked today")["name"] == "English"
     assert identify("உங்கள் SBI account இன்று block செய்யப்படும்")["name"] == "Tamil–English"
     assert identify("Ungal account inniku block aagidum, udane pannunga")["lang"] == "ta-rom"
+    assert identify("आपका SBI account आज block कर दिया जाएगा")["name"] == "Hindi–English"
+    assert identify("aapka account aaj band ho jayega, turant karo")["lang"] == "hi-rom"
 
 
 # ---------------------------------------------------------------- obfuscation + defence
@@ -53,11 +58,15 @@ def test_normalize_undoes_disguises():
     assert normalize("K.Y.C") == "kyc"
     assert normalize("௨ங்கள்") == "உங்கள்"                     # Tamil digit two used as the letter உ
     assert normalize("அக்கவுண்ட்-ஐ") == "account-ஐ"            # English loanword written in Tamil script
+    assert normalize("अकाउंट") == "account"                     # ... and in Devanagari
+    assert normalize("તुरंત") == "तुरंत"                         # Gujarati look-alike letters folded back
 
 
 def test_transliteration():
     assert to_latin("உங்கள்") == "ungal"
     assert to_latin("பணம்") == "panam"
+    assert hi_latin("तुरंत") == "turant"
+    assert hi_latin("आपका") == "aapka"
 
 
 def test_metrics():

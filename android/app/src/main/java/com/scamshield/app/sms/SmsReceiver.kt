@@ -14,6 +14,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.scamshield.app.MainActivity
+import com.scamshield.app.detector.Normalizer
 import com.scamshield.app.R
 import com.scamshield.app.data.HistoryItem
 import com.scamshield.app.data.Repository
@@ -58,6 +59,12 @@ object Notifier {
         }
     }
 
+    /** "Scam warning" in the message's own language, when it is written in a supported native script. */
+    private val WARNINGS = mapOf("hi" to "धोखाधड़ी की चेतावनी", "ta" to "மோசடி எச்சரிக்கை")
+
+    private fun localWarning(text: String): String =
+        Normalizer.dominant(text)?.let { WARNINGS[it] }?.let { " · $it" } ?: ""
+
     fun maybeNotify(ctx: Context, item: HistoryItem, notifyPromos: Boolean) {
         if (item.verdict == Verdict.LEGIT || (item.verdict == Verdict.PROMO && !notifyPromos)) return
         if (Build.VERSION.SDK_INT >= 33 &&
@@ -66,7 +73,7 @@ object Notifier {
             .putExtra("history_id", item.id).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val scam = item.verdict == Verdict.SCAM
-        val title = if (scam) "Likely scam from ${item.sender} · மோசடி எச்சரிக்கை" else "Promotion from ${item.sender}"
+        val title = if (scam) "Likely scam from ${item.sender}" + localWarning(item.text) else "Promotion from ${item.sender}"
         val why = item.reasons.firstOrNull() ?: "Message pattern matches known UPI scams"
         val body = if (scam) "$why\nDo not share your PIN or OTP, and do not open the link." else item.text
         val n = NotificationCompat.Builder(ctx, if (scam) CHANNEL_SCAM else CHANNEL_PROMO)

@@ -72,11 +72,11 @@ fun ProbabilityBar(p: DoubleArray) {
 fun LanguageTokens(lang: LangId.Result) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(4.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         for (t in lang.tokens.take(60)) {
-            val c = when (t.tag) {
-                LangId.Tag.TA, LangId.Tag.TA_ROM -> Signal.tamil
-                LangId.Tag.EN -> Signal.english
-                LangId.Tag.MIX -> Color(0xFF00897B)
-                else -> MaterialTheme.colorScheme.onSurfaceVariant
+            val c = when (t.family) {
+                "en" -> Signal.english
+                "mix" -> Color(0xFF00897B)
+                "univ", "other" -> MaterialTheme.colorScheme.onSurfaceVariant
+                else -> Signal.native
             }
             Text(t.text, style = MaterialTheme.typography.labelMedium, color = c,
                 modifier = Modifier.clip(RoundedCornerShape(6.dp)).background(c.copy(alpha = 0.10f)).padding(horizontal = 6.dp, vertical = 2.dp))
@@ -84,7 +84,8 @@ fun LanguageTokens(lang: LangId.Result) {
     }
     Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(14.dp)) {
         Legend(Signal.english, "English")
-        Legend(Signal.tamil, "Tamil")
+        Legend(Signal.native, if (lang.code.contains('-') || lang.code !in listOf("en", "other"))
+            lang.name.substringBefore('–').substringBefore(" (") else "Other language")
         Legend(Color(0xFF00897B), "mixed in one word")
     }
 }

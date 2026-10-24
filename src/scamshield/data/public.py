@@ -10,7 +10,7 @@ Public SMS spam / smishing corpora (integrated by Ayushmaan Nayak), mapped onto 
                Its "spam" mixes premium-rate scams and adverts, so it is labelled `spam` (binary only)
   exais        ExAIS SMS (Onashoga et al.), 20 users' handset logs, English / Pidgin, ham / spam (binary only)
   hf_multi     UCI machine-translated into 21 languages (dbarbedillo/SMS_Spam_Multilingual_Collection);
-               used only as an out-of-domain stress test (no Tamil, noisy translations)
+               used only as an out-of-domain stress test (no code-mixed Indic text, noisy translations)
 
 `group` keeps every copy / translation of the same message on one side of a split. Exact duplicates
 are removed inside and across corpora (normalised text key), and texts with conflicting labels dropped.
