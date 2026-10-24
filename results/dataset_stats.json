@@ -1,165 +1,175 @@
 {
-  "n_total": 9970,
+  "n_total": 11979,
   "by_split": {
-    "train": 5721,
-    "test": 3240,
-    "val": 1009
+    "train": 6834,
+    "test": 3939,
+    "val": 1206
   },
   "by_label": {
-    "legit": 4377,
-    "scam": 3596,
-    "promo": 1997
+    "legit": 5264,
+    "scam": 4319,
+    "promo": 2396
   },
   "by_lang_label": {
-    "en|legit": 2185,
-    "en|promo": 998,
-    "en|scam": 1797,
-    "ta|legit": 2192,
-    "ta|promo": 999,
-    "ta|scam": 1799
+    "en|legit": 1753,
+    "en|promo": 798,
+    "en|scam": 1439,
+    "hi|legit": 1757,
+    "hi|promo": 799,
+    "hi|scam": 1440,
+    "ta|legit": 1754,
+    "ta|promo": 799,
+    "ta|scam": 1440
   },
   "by_subtype": [
     [
       "legit",
       "autopay_mandate",
-      550
+      660
     ],
     [
       "legit",
       "bill_paid",
-      550
+      660
     ],
     [
       "legit",
       "collect_genuine",
-      550
+      660
     ],
     [
       "legit",
       "credit_alert",
-      550
+      660
     ],
     [
       "legit",
       "debit_alert",
-      550
+      660
     ],
     [
       "legit",
       "otp",
-      550
+      660
     ],
     [
       "legit",
       "personal",
-      550
+      660
     ],
     [
       "legit",
       "security_advisory",
-      527
+      644
     ],
     [
       "promo",
       "cashback_offer",
-      400
+      480
     ],
     [
       "promo",
       "loan_promo",
-      399
+      480
     ],
     [
       "promo",
       "recharge_plan",
-      400
+      480
     ],
     [
       "promo",
       "rewards_points",
-      398
+      476
     ],
     [
       "promo",
       "sale_offer",
-      400
+      480
     ],
     [
       "scam",
       "bill_disconnect",
-      328
+      393
     ],
     [
       "scam",
       "fake_support",
-      324
+      392
     ],
     [
       "scam",
       "job_task",
-      328
+      393
     ],
     [
       "scam",
       "kyc_block",
-      328
+      393
     ],
     [
       "scam",
       "loan_instant",
-      328
+      393
     ],
     [
       "scam",
       "lottery_prize",
-      328
+      393
     ],
     [
       "scam",
       "parcel_customs",
-      328
+      393
     ],
     [
       "scam",
       "qr_receive",
-      326
+      393
     ],
     [
       "scam",
       "refund_collect",
-      326
+      393
     ],
     [
       "scam",
       "reward_phish",
-      326
+      393
     ],
     [
       "scam",
       "wrong_transfer",
-      326
+      390
     ]
   ],
   "code_mixing": {
     "en": {
       "mean_cmi": 0.0,
-      "tamil_token_share": 0.0,
+      "native_token_share": 0.0,
       "english_token_share": 1.0,
       "detected_as": {
-        "English": 4980
+        "English": 3990
+      }
+    },
+    "hi": {
+      "mean_cmi": 39.018393393393396,
+      "native_token_share": 0.5579917655445118,
+      "english_token_share": 0.4420082344554882,
+      "detected_as": {
+        "Hindi\u2013English": 3996
       }
     },
     "ta": {
-      "mean_cmi": 40.4736873747495,
-      "tamil_token_share": 0.48961144013384167,
-      "english_token_share": 0.5103885598661584,
+      "mean_cmi": 40.61074380165289,
+      "native_token_share": 0.4902150200548352,
+      "english_token_share": 0.5097849799451648,
       "detected_as": {
-        "Tamil\u2013English": 4989,
-        "Tamil": 1
+        "Tamil\u2013English": 3993
       }
     }
   },
-  "n_templates": 146,
-  "mean_chars": 117.06529588766298,
-  "mean_words": 16.68936810431294
+  "n_templates": 219,
+  "mean_chars": 114.80641121963436,
+  "mean_words": 17.564654812588696
 }
