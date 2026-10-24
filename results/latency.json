@@ -1,0 +1,50 @@
+{
+ "word_nb": {
+  "median_ms": 0.6399700005204068,
+  "p95_ms": 0.7666772992706683,
+  "throughput_msgs_per_s": 29237.231335088545,
+  "n_params": 8863
+ },
+ "word_rf": {
+  "median_ms": 98.12035899994953,
+  "p95_ms": 122.15957614916988,
+  "throughput_msgs_per_s": 1878.2395523607934,
+  "n_params": 8863
+ },
+ "word_lr": {
+  "median_ms": 1.3534439995055436,
+  "p95_ms": 1.6424255001766133,
+  "throughput_msgs_per_s": 16320.250313555189,
+  "n_params": 8863
+ },
+ "word_svm": {
+  "median_ms": 4.39014049970865,
+  "p95_ms": 7.3931254497438195,
+  "throughput_msgs_per_s": 10649.713458740493,
+  "n_params": 8863
+ },
+ "char_lr": {
+  "median_ms": 1.4562719998139073,
+  "p95_ms": 2.198783550556982,
+  "throughput_msgs_per_s": 3117.2043589497557,
+  "n_params": 45881
+ },
+ "char_svm": {
+  "median_ms": 4.986165500667994,
+  "p95_ms": 7.594216298821266,
+  "throughput_msgs_per_s": 3073.883290064827,
+  "n_params": 45881
+ },
+ "word_bigru": {
+  "median_ms": 2.708711499508354,
+  "p95_ms": 3.844451350323652,
+  "throughput_msgs_per_s": 1898.4321522758357,
+  "n_params": 459779
+ },
+ "char_cnn": {
+  "median_ms": 2.3298064998016343,
+  "p95_ms": 4.8926793491773415,
+  "throughput_msgs_per_s": 699.3929849389734,
+  "n_params": 428803
+ }
+}
