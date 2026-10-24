@@ -1,0 +1,10 @@
+query,rcode,answer,cname_chain,min_ttl,udp_truncated_then_tcp,ms
+onlinesbi.sbi A,NOERROR,198.51.100.10,,3600,False,20.56
+onlinesbi.sbi AAAA,NOERROR,2001:db8::10,,3600,False,20.436
+www.hdfcbank.com A,NOERROR,198.51.100.20,hdfcbank.com,3600,False,20.425
+kyc.verify-hdfc.top A,NOERROR,192.0.2.55,parking.example.net,60,False,20.46
+sbi-kyc-update.xyz A,NOERROR,10.0.0.66,,60,False,20.41
+refundhdfc.click A,NOERROR,203.0.113.99,,30,False,20.456
+does-not-exist.example A,NXDOMAIN,,,0,False,20.372
+bigrecord.test TXT,NOERROR,v=spf1 include:_spf.example.org include:,,300,True,21.141
+198.51.100.10 PTR,NOERROR,onlinesbi.sbi,,3600,False,20.494

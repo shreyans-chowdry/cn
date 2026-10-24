@@ -136,39 +136,6 @@ NATURAL_VARIANTS = {
     "en": {"your": ["ur", "your"], "please": ["pls", "plz", "please"], "you": ["u", "you"],
            "immediately": ["immediately", "immediatly"], "now": ["now", "nw"], "money": ["money", "amt"],
            "message": ["msg"], "account": ["account", "a/c", "acc"], "number": ["no.", "number"]},
-    "hi": {"hai": ["hai", "h", "he"], "nahi": ["nahi", "nhi", "nai"], "karein": ["karein", "karen", "kare", "kre"],
-           "aapka": ["aapka", "apka"], "aapke": ["aapke", "apke"], "aapko": ["aapko", "apko"],
-           "turant": ["turant", "turnt"], "paise": ["paise", "paisa", "pese"], "abhi": ["abhi", "abi"],
-           "kar": ["kar", "kr"], "ke": ["ke", "k"], "liye": ["liye", "liya", "lie"], "bhej": ["bhej", "bej"],
-           "please": ["pls", "plz", "please"], "hu": ["hu", "hoon", "hun"], "raha": ["raha", "rha"]},
-    "ta": {"ungal": ["ungal", "unga", "ungaloda"], "pannunga": ["pannunga", "pannungo", "panunga"],
-           "udane": ["udane", "udanae", "udanee"], "irukku": ["irukku", "iruku"], "illa": ["illa", "ila"],
-           "inniku": ["inniku", "ennaiku", "inaiku"], "anuppunga": ["anuppunga", "anupunga"],
-           "panam": ["panam", "panamu"], "please": ["pls", "plz", "please"], "romba": ["romba", "rmba"]},
-    "bn": {"apnar": ["apnar", "aapnar"], "korun": ["korun", "koren", "korun"], "ekhuni": ["ekhuni", "ekhoni", "akhuni"],
-           "taka": ["taka", "tk"], "hoyeche": ["hoyeche", "hoyechhe", "hoise"], "jonno": ["jonno", "jnno", "jonne"],
-           "please": ["pls", "plz", "please"], "theke": ["theke", "thke"], "ache": ["ache", "achhe"]},
-    "te": {"mee": ["mee", "mi"], "cheyandi": ["cheyandi", "cheyyandi", "cheyndi"], "ippude": ["ippude", "ipude"],
-           "undi": ["undi", "undhi"], "ayyindi": ["ayyindi", "aindi", "ayindi"], "dabbulu": ["dabbulu", "dabbul"],
-           "please": ["pls", "plz", "please"], "nunchi": ["nunchi", "nunci", "nundi"], "meeku": ["meeku", "miku"]},
-}
-
-# --- Native-script substitution for "mixed-script" natural messages ---
-NATIVE_WORDS = {
-    "hi": {"aapka": "आपका", "aapke": "आपके", "hai": "है", "karein": "करें", "turant": "तुरंत", "abhi": "अभी",
-           "paise": "पैसे", "bhejein": "भेजें", "aaj": "आज", "raat": "रात", "ke": "के", "liye": "लिए",
-           "nahi": "नहीं", "dhanyavaad": "धन्यवाद", "kisi": "किसी", "saath": "साथ", "me": "में", "ho": "हो",
-           "gaye": "गए", "jayega": "जाएगा", "sirf": "सिर्फ", "din": "दिन", "se": "से", "ko": "को"},
-    "ta": {"ungal": "உங்கள்", "udane": "உடனே", "pannunga": "பண்ணுங்க", "inniku": "இன்னிக்கு",
-           "panam": "பணம்", "nandri": "நன்றி", "irukku": "இருக்கு", "illa": "இல்ல", "mattum": "மட்டும்",
-           "anuppunga": "அனுப்புங்க", "aagiduchu": "ஆகிடுச்சு", "kitta": "கிட்ட", "naal": "நாள்",
-           "ippove": "இப்போவே", "ungalukku": "உங்களுக்கு"},
-    "bn": {"apnar": "আপনার", "korun": "করুন", "ekhuni": "এখুনি", "taka": "টাকা", "aaj": "আজ",
-           "hoyeche": "হয়েছে", "dhonnobad": "ধন্যবাদ", "theke": "থেকে", "jonno": "জন্য", "shudhu": "শুধু",
-           "pathan": "পাঠান", "ache": "আছে", "din": "দিন", "apni": "আপনি", "ei": "এই"},
-    "te": {"mee": "మీ", "cheyandi": "చేయండి", "ippude": "ఇప్పుడే", "dabbulu": "డబ్బులు", "ayyindi": "అయ్యింది",
-           "roju": "రోజు", "nunchi": "నుంచి", "kosam": "కోసం", "dhanyavadalu": "ధన్యవాదాలు",
-           "matrame": "మాత్రమే", "undi": "ఉంది", "ki": "కి", "meeku": "మీకు", "lo": "లో"},
 }
 
 # Generic noise prefixes/suffixes shared across classes (prevents trivially separable sender cues)

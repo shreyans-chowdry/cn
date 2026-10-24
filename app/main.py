@@ -1,20 +1,31 @@
 """
-ScamShield demo server.
+ScamShield web app and network services, started together:
 
-    uvicorn app.main:app --port 8000        (run from the project root)
+    ./run_demo.sh          (or: PYTHONPATH=src uvicorn app.main:app --host 0.0.0.0 --port 8000)
 
-Serves a single-page UI plus a JSON API:
-  POST /api/predict    {text, models?, normalize?}       -> per-model class probabilities
-  POST /api/obfuscate  {text, level, lang?, seed?}       -> obfuscated text + operations applied
-  POST /api/stress     {text, lang?, seed?}              -> scam probability of every model at L0..L4
-  GET  /api/samples?lang=&label=                         -> random test messages
-  GET  /api/results                                      -> experiment tables (CSV -> JSON)
+  http://localhost:8000   web UI
+  TCP 9099                ScamShield protocol (SSP) -- the Android app's server mode connects here
+  UDP 9098                SSP over UDP (plain request/response, Go-Back-N and Selective Repeat batches)
+  UDP/TCP 5353            demo DNS server used for link checks
+
+JSON API
+  POST /api/analyze        {text, dns?}                  production detector: verdict, reasons, language, links
+  POST /api/compare        {text}                        every research model's probabilities
+  POST /api/obfuscate      {text, level, seed?}          obfuscated text + operators applied + canonicalised text
+  POST /api/stress         {text, seed?}                 scam probability of each model at L0..L4
+  GET  /api/samples        ?lang=en|ta&label=scam|legit|promo
+  POST /api/net/frame      {text, flip_bit?}             SSP frame fields + hex; optional bit flip shows the CRC catch it
+  POST /api/net/dns        {name, type}                  query the DNS server, with the raw wire bytes
+  POST /api/net/cidr       {value}                       subnet calculator / IP classification
+  GET  /api/net/status     service ports, counters, this machine's IP addresses
+  GET  /api/results        experiment tables and figure names
 """
+import asyncio
 import json
+import os
 import random
-import re
+import socket
 import sys
-import time
 from pathlib import Path
 
 import pandas as pd
@@ -26,202 +37,261 @@ from pydantic import BaseModel
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from scamshield.detector import Detector  # noqa: E402
 from scamshield.metrics import LABELS  # noqa: E402
-from scamshield.obfuscation import obfuscate, normalize, LEVELS  # noqa: E402
-from scamshield.data.templates import LANG_NAMES  # noqa: E402
+from scamshield.net import cidr, dns as D, protocol as P, service as S  # noqa: E402
+from scamshield.obfuscation import LEVELS, normalize, obfuscate  # noqa: E402
 
-ART = ROOT / "artifacts"
-RES = ROOT / "results"
+ART, RES = ROOT / "artifacts", ROOT / "results"
+TCP_PORT = int(os.environ.get("SCAMSHIELD_TCP", 9099))
+UDP_PORT = int(os.environ.get("SCAMSHIELD_UDP", 9098))
+DNS_PORT = int(os.environ.get("SCAMSHIELD_DNS", 5353))
 PRETTY = {"word_lr": "Word LR", "char_lr": "Char LR", "char_svm": "Char SVM", "word_bigru": "Word BiGRU",
-          "char_cnn": "Char CNN", "distil_mbert": "DistilmBERT"}
+          "char_cnn": "Char CNN", "distil_mbert": "DistilmBERT", "muril": "MuRIL"}
 GRAN = {"word_lr": "word", "char_lr": "char", "char_svm": "char", "word_bigru": "word", "char_cnn": "char",
-        "distil_mbert": "subword"}
+        "distil_mbert": "subword", "muril": "subword"}
 
-app = FastAPI(title="ScamShield — multilingual UPI SMS scam detection")
-MODELS = {}
+app = FastAPI(title="ScamShield")
+STATE = {"detector": None, "resolver": None, "dns": None, "stats": S.Stats(), "research": {}, "errors": []}
 
 
-def _load_models():
+def _load_research_models():
+    """Research models from the experiments (artifacts/<name>__<regime>.*), for the comparison views."""
     from scamshield.models import classical
     try:
         from scamshield.models import neural
-    except Exception:  # torch not installed: serve the classical models only
+    except Exception:
         neural = None
-    for path in sorted(ART.glob("*")):
+    for path in sorted(ART.glob("*__*")):
         stem = path.name.split(".")[0]
-        if "__" not in stem:
-            continue
         name, regime = stem.split("__", 1)
-        if name not in PRETTY:
+        if name not in PRETTY or regime not in ("clean", "adv"):
             continue
         try:
             if path.suffix == ".joblib":
                 m = classical.make(name).load(str(path))
-            elif path.suffix == ".pt":
-                if neural is None:
-                    continue
+            elif path.suffix == ".pt" and neural:
                 m = neural.make(name).load(str(path))
-            elif path.is_dir() and (path / "config.json").exists():
+            elif path.is_dir() and (path / "config.json").exists() and os.environ.get("SCAMSHIELD_TRANSFORMERS", "0") == "1":
                 from scamshield.models import transformer
-                m = transformer.make(name)
                 from transformers import AutoTokenizer
+                m = transformer.make(name)
                 m.tok = AutoTokenizer.from_pretrained(str(path))
                 m.load(str(path))
             else:
                 continue
-            MODELS[f"{name}__{regime}"] = {"model": m, "name": name, "regime": regime,
-                                           "label": f"{PRETTY[name]}{' (AT)' if regime == 'adv' else ''}",
-                                           "granularity": GRAN[name]}
-        except Exception as e:  # keep the server up even if one artifact is broken
-            print(f"[warn] could not load {path.name}: {e}")
-    print(f"[ScamShield] loaded {len(MODELS)} models: {', '.join(MODELS)}")
+            STATE["research"][stem] = {"model": m, "label": PRETTY[name] + (" (AT)" if regime == "adv" else ""),
+                                       "granularity": GRAN[name], "regime": regime}
+        except Exception as e:
+            STATE["errors"].append(f"{path.name}: {e}")
 
 
-_load_models()
+@app.on_event("startup")
+async def startup():
+    try:
+        STATE["dns"] = D.DnsServer(D.demo_zone())
+        await STATE["dns"].start("0.0.0.0", DNS_PORT)
+        STATE["resolver"] = D.Resolver(("127.0.0.1", DNS_PORT), timeout=0.4, retries=1)
+    except OSError as e:
+        STATE["errors"].append(f"DNS server not started on {DNS_PORT}: {e}")
+    if not (ART / "production.joblib").exists():
+        raise RuntimeError("artifacts/production.joblib missing: run  python scripts/train_production.py")
+    STATE["detector"] = Detector(resolver=STATE["resolver"])
+    handler = S.Handler(STATE["detector"])
+    try:
+        STATE["tcp"], _ = await S.start_tcp(handler, "0.0.0.0", TCP_PORT, STATE["stats"])
+        STATE["udp"], STATE["udp_proto"], _ = await S.start_udp(handler, "0.0.0.0", UDP_PORT, STATE["stats"])
+    except OSError as e:
+        STATE["errors"].append(f"SSP services not started: {e}")
+    await asyncio.get_running_loop().run_in_executor(None, _load_research_models)
+    print(f"[ScamShield] SSP TCP :{TCP_PORT}, UDP :{UDP_PORT}, DNS :{DNS_PORT}; "
+          f"{len(STATE['research'])} research models loaded")
 
 
-# --- Public-data spam model (trained by scripts/train_public.py), used by the /check page -----------------
-PUBLIC = None
-
-
-def prep(s):  # the saved model refers to __main__.prep, so register it there before loading
-    return normalize(s).lower()
-
-
-def _load_public():
-    global PUBLIC
-    path = ART / "public_char_lr.joblib"
-    if not path.exists():
-        print("[ScamShield] public_char_lr.joblib not found: run  python scripts/train_public.py")
-        return
-    import __main__
-    import joblib
-    __main__.prep = prep
-    PUBLIC = joblib.load(path)
-    print("[ScamShield] loaded public spam model")
-
-
-_load_public()
-COMBINED = None
-_comb = ART / "combined.joblib"
-if _comb.exists():
-    sys.path.insert(0, str(ROOT / "scripts"))   # the saved models refer to train_public.prep
-    import joblib as _jc
-    COMBINED = _jc.load(_comb)
-    print("[ScamShield] loaded combined model (public + original, gated by message type)")
-if PUBLIC is None and COMBINED is not None:
-    PUBLIC = COMBINED["public"]
-PUBLIC_BAL = None
-_bal = ART / "public_char_lr_balanced.joblib"
-if _bal.exists():
-    import joblib as _jl
-    PUBLIC_BAL = _jl.load(_bal)
-    print("[ScamShield] loaded balanced public spam model")
-
-LANG_MARKERS = {
-    "hi": {"aapka", "aapke", "aapko", "hai", "karein", "nahi", "liye", "karne", "bhej", "abhi", "turant", "jayega", "paise", "mein", "kar"},
-    "ta": {"ungal", "pannunga", "irukku", "illa", "inniku", "neenga", "naan", "udane", "panam", "anuppunga", "aagiduchu", "ungalukku"},
-    "bn": {"apnar", "korun", "hoyeche", "theke", "jonno", "ache", "taka", "ekhuni", "apni", "kore", "pathan", "shudhu"},
-    "te": {"mee", "cheyandi", "undi", "ayyindi", "nunchi", "kosam", "meeku", "ippude", "dabbulu", "lo", "chesi", "matrame"},
-}
-SCRIPT_RANGES = {"hi": (0x0900, 0x097F), "bn": (0x0980, 0x09FF), "ta": (0x0B80, 0x0BFF), "te": (0x0C00, 0x0C7F)}
-
-
-def detect_lang(text):
-    for lg, (lo, hi) in SCRIPT_RANGES.items():
-        if any(lo <= ord(ch) <= hi for ch in text):
-            return lg
-    toks = set(re.findall(r"\w+", text.lower()))
-    scores = {lg: len(toks & mk) for lg, mk in LANG_MARKERS.items()}
-    best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else "en"
-
-
-class PredictIn(BaseModel):
+# ------------------------------------------------------------------ detector
+class TextIn(BaseModel):
     text: str
-    models: list[str] | None = None
-    normalize: bool = False
+    dns: bool = True
+
+
+@app.post("/api/analyze")
+def analyze(inp: TextIn):
+    if not inp.text.strip():
+        raise HTTPException(400, "Type or paste a message first.")
+    return STATE["detector"].analyse(inp.text, use_dns=inp.dns)
+
+
+def _research_probs(text):
+    out = []
+    for key, e in STATE["research"].items():
+        p = e["model"].predict_proba([text])[0]
+        out.append({"key": key, "label": e["label"], "granularity": e["granularity"], "regime": e["regime"],
+                    "probs": {l: float(v) for l, v in zip(LABELS, p)}})
+    return out
+
+
+@app.post("/api/compare")
+def compare(inp: TextIn):
+    prod = STATE["detector"].analyse(inp.text, use_dns=False, explain=False)
+    return {"production": prod["probs"], "models": _research_probs(inp.text)}
 
 
 class ObfIn(BaseModel):
     text: str
     level: int = 2
-    lang: str | None = None
     seed: int | None = None
-
-
-class StressIn(BaseModel):
-    text: str
-    lang: str | None = None
-    seed: int = 7
-
-
-def _predict(text, keys, norm=False):
-    x = normalize(text) if norm else text
-    out = []
-    for k in keys:
-        e = MODELS[k]
-        t0 = time.perf_counter()
-        p = e["model"].predict_proba([x])[0]
-        ms = (time.perf_counter() - t0) * 1000
-        out.append({"key": k, "label": e["label"], "granularity": e["granularity"], "regime": e["regime"],
-                    "probs": {l: float(v) for l, v in zip(LABELS, p)}, "prediction": LABELS[int(p.argmax())],
-                    "latency_ms": round(ms, 2)})
-    return out
-
-
-@app.get("/api/models")
-def list_models():
-    return [{"key": k, "label": e["label"], "granularity": e["granularity"], "regime": e["regime"]}
-            for k, e in MODELS.items()]
-
-
-@app.post("/api/predict")
-def predict(inp: PredictIn):
-    if not inp.text.strip():
-        raise HTTPException(400, "empty text")
-    keys = [k for k in (inp.models or MODELS) if k in MODELS]
-    res = _predict(inp.text, keys, inp.normalize)
-    scam_votes = sum(r["prediction"] == "scam" for r in res)
-    avg = {l: sum(r["probs"][l] for r in res) / max(len(res), 1) for l in LABELS}
-    lang = detect_lang(inp.text)
-    return {"lang": lang, "lang_name": LANG_NAMES.get(lang, lang), "results": res,
-            "ensemble": {"probs": avg, "prediction": max(avg, key=avg.get),
-                         "scam_votes": scam_votes, "n_models": len(res)},
-            "normalized_text": normalize(inp.text) if inp.normalize else None}
 
 
 @app.post("/api/obfuscate")
 def obf(inp: ObfIn):
-    lang = inp.lang or detect_lang(inp.text)
     seed = inp.seed if inp.seed is not None else random.randint(0, 10 ** 6)
-    text, ops = obfuscate(inp.text, inp.level, lang, seed=seed, return_ops=True)
-    return {"text": text, "ops": ops, "level": inp.level, "level_name": LEVELS[inp.level]["name"],
-            "lang": lang, "seed": seed}
+    text, ops = obfuscate(inp.text, inp.level, seed=seed, return_ops=True)
+    return {"text": text, "ops": ops, "level": inp.level, "level_name": LEVELS[inp.level]["name"], "seed": seed,
+            "normalized": normalize(text)}
+
+
+class StressIn(BaseModel):
+    text: str
+    seed: int = 7
 
 
 @app.post("/api/stress")
 def stress(inp: StressIn):
-    lang = inp.lang or detect_lang(inp.text)
+    det = STATE["detector"]
     levels = []
     for lv in range(5):
-        t = obfuscate(inp.text, lv, lang, seed=inp.seed)
-        preds = _predict(t, list(MODELS))
-        levels.append({"level": lv, "name": LEVELS[lv]["name"], "text": t,
-                       "scam_prob": {p["key"]: p["probs"]["scam"] for p in preds}})
-    return {"lang": lang, "models": list_models(), "levels": levels}
+        t = obfuscate(inp.text, lv, seed=inp.seed)
+        row = {"level": lv, "name": LEVELS[lv]["name"], "text": t,
+               "scam_prob": {"production": det.analyse(t, use_dns=False, explain=False)["probs"]["scam"]}}
+        for m in _research_probs(t):
+            row["scam_prob"][m["key"]] = m["probs"]["scam"]
+        levels.append(row)
+    models = [{"key": "production", "label": "ScamShield (production)", "granularity": "production", "regime": "clean"}]
+    models += [{"key": k, "label": e["label"], "granularity": e["granularity"], "regime": e["regime"]}
+               for k, e in STATE["research"].items()]
+    return {"models": models, "levels": levels}
 
 
 @app.get("/api/samples")
-def samples(lang: str | None = None, label: str | None = None, n: int = 6):
-    df = pd.read_csv(ROOT / "data" / "upi_cmx.csv")
+def samples(lang: str | None = None, label: str | None = None, n: int = 1):
+    df = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
     df = df[df.split == "test"]
     if lang:
         df = df[df.lang == lang]
     if label:
         df = df[df.label == label]
-    s = df.sample(min(n, len(df)))
-    return s[["text", "label", "lang", "subtype"]].to_dict("records")
+    return df.sample(min(n, len(df)))[["text", "label", "lang", "subtype"]].to_dict("records")
+
+
+# ------------------------------------------------------------------ networking views
+class FrameIn(BaseModel):
+    text: str
+    flip_bit: int | None = None
+
+
+@app.post("/api/net/frame")
+def net_frame(inp: FrameIn):
+    frame = P.encode(P.FrameType.CLASSIFY_REQ, {"id": 1, "text": inp.text}, seq=1)
+    magic, ver, ftype, flags, win, seq, ack, n = P.HEADER.unpack_from(frame)
+    crc = int.from_bytes(frame[-4:], "big")
+    out = {"length": len(frame), "hex": frame.hex(" "),
+           "fields": [{"name": "MAGIC", "bytes": "0-1", "value": f"0x{magic:04x} ('SS')"},
+                      {"name": "VER", "bytes": "2", "value": str(ver)},
+                      {"name": "TYPE", "bytes": "3", "value": f"{ftype} ({P.FrameType(ftype).name})"},
+                      {"name": "FLAGS", "bytes": "4", "value": f"0x{flags:02x} (" + ("|".join(f.name for f in P.Flag if f and flags & f) or "none") + ")"},
+                      {"name": "WIN", "bytes": "5", "value": str(win)},
+                      {"name": "SEQ", "bytes": "6-9", "value": str(seq)},
+                      {"name": "ACK", "bytes": "10-13", "value": str(ack)},
+                      {"name": "LEN", "bytes": "14-15", "value": f"{n} bytes of UTF-8 JSON"},
+                      {"name": "PAYLOAD", "bytes": f"16-{15 + n}", "value": frame[16:16 + n].decode('utf-8')},
+                      {"name": "CRC-32", "bytes": f"{16 + n}-{19 + n}", "value": f"0x{crc:08x}"}]}
+    if inp.flip_bit is not None:
+        bit = inp.flip_bit % ((len(frame) - 4) * 8)
+        bad = bytearray(frame)
+        bad[bit // 8] ^= 1 << (7 - bit % 8)
+        from scamshield.net.errorcodes import crc32, inet_checksum, parity_bit
+        try:
+            P.decode(bytes(bad))
+            verdict = "accepted (undetected!)"
+        except P.FrameError as e:
+            verdict = f"rejected: {e}"
+        out["flip"] = {"bit": bit, "byte": bit // 8, "receiver": verdict,
+                       "crc32_received": f"0x{crc:08x}", "crc32_recomputed": f"0x{crc32(bytes(bad[:-4])):08x}",
+                       "parity_detects": parity_bit(bytes(bad[:-4])) != parity_bit(frame[:-4]),
+                       "checksum_detects": inet_checksum(bytes(bad[:-4])) != inet_checksum(frame[:-4])}
+    return out
+
+
+class DnsIn(BaseModel):
+    name: str
+    type: str = "A"
+
+
+@app.post("/api/net/dns")
+def net_dns(inp: DnsIn):
+    r = STATE["resolver"]
+    if r is None:
+        raise HTTPException(503, "DNS server is not running")
+    name = inp.name.strip().lower().replace("https://", "").replace("http://", "").split("/")[0]
+    if inp.type == "PTR" or cidr.is_ip(name):
+        q_name, q_type = D.reverse_name(name), "PTR"
+    else:
+        q_name, q_type = name, inp.type
+    tid, query = D.build_query(q_name, q_type, tid=0x5353)
+    try:
+        res = r.resolve(q_name, q_type) if q_type != "PTR" else r.resolve(q_name, "PTR")
+    except D.DnsError as e:
+        raise HTTPException(504, str(e))
+    for a in res.get("addresses", []):
+        res.setdefault("classification", []).append(cidr.classify_ip(a))
+    res["query_hex"] = query.hex(" ")
+    res["server"] = f"127.0.0.1:{DNS_PORT} (demo zone)"
+    return res
+
+
+class CidrIn(BaseModel):
+    value: str
+
+
+@app.post("/api/net/cidr")
+def net_cidr(inp: CidrIn):
+    v = inp.value.strip()
+    try:
+        if "/" in v:
+            net = cidr.Network(v)
+            d = net.describe()
+            if net.version == 4 and net.prefix <= 30:
+                d["split_in_4"] = [str(s) for s in net.subnets(min(net.prefix + 2, 32))]
+            return {"kind": "network", **d, "special": cidr.classify_ip(cidr.int_to_ip(net.version, net.network))}
+        return {"kind": "address", **cidr.classify_ip(v)}
+    except (ValueError, IndexError) as e:
+        raise HTTPException(400, f"Not an IP address or CIDR block: {e}")
+
+
+def _local_ips():
+    ips = set()
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("10.255.255.255", 1))      # no packet is sent; just picks the outgoing interface
+        ips.add(s.getsockname()[0])
+        s.close()
+    except OSError:
+        pass
+    try:
+        for info in socket.getaddrinfo(socket.gethostname(), None, socket.AF_INET):
+            ips.add(info[4][0])
+    except OSError:
+        pass
+    return sorted(i for i in ips if not i.startswith("127."))
+
+
+@app.get("/api/net/status")
+def net_status():
+    st = STATE["stats"].as_dict()
+    return {"tcp_port": TCP_PORT, "udp_port": UDP_PORT, "dns_port": DNS_PORT, "local_ips": _local_ips(),
+            "counters": st, "dns": STATE["dns"].stats if STATE["dns"] else None,
+            "resolver_cache": len(STATE["resolver"].cache) if STATE["resolver"] else 0, "errors": STATE["errors"],
+            "model": STATE["detector"].meta.get("trained") if STATE["detector"] else None}
 
 
 @app.get("/api/results")
@@ -230,11 +300,11 @@ def results():
     tdir = RES / "tables"
     if tdir.exists():
         for p in sorted(tdir.glob("*.csv")):
-            out["tables"][p.stem] = pd.read_csv(p).fillna("").astype(str).to_dict("split")
+            out["tables"][p.stem] = pd.read_csv(p).round(3).fillna("").astype(str).to_dict("split")
     fdir = RES / "figures"
     if fdir.exists():
         out["figures"] = sorted(p.name for p in fdir.glob("*.png"))
-    for f in ("dataset_stats.json", "perturbation_stats.json"):
+    for f in ("dataset_stats.json", "production_eval.json"):
         if (RES / f).exists():
             out[f.split(".")[0]] = json.load(open(RES / f))
     return out
@@ -242,39 +312,6 @@ def results():
 
 app.mount("/figures", StaticFiles(directory=str(RES / "figures"), check_dir=False), name="figures")
 app.mount("/static", StaticFiles(directory=str(ROOT / "app" / "static")), name="static")
-
-
-class CheckIn(BaseModel):
-    text: str
-
-
-@app.post("/api/check")
-def api_check(inp: CheckIn):
-    if PUBLIC is None:
-        raise HTTPException(503, "Public model not found. Run: python scripts/train_public.py")
-    p = float(PUBLIC.predict_proba([inp.text])[0, 1])
-    out = {"score": round(p, 3), "verdict": "spam" if p >= 0.5 else "not spam", "lang": detect_lang(inp.text)}
-    if PUBLIC_BAL is not None:
-        pb = float(PUBLIC_BAL.predict_proba([inp.text])[0, 1])
-        out["balanced"] = {"score": round(pb, 3), "verdict": "spam" if pb >= 0.5 else "not spam"}
-    orig = MODELS.get("char_lr__clean")
-    if orig is not None:
-        pr = orig["model"].predict_proba([inp.text])[0]
-        top = max(range(len(LABELS)), key=lambda i: pr[i])
-        out["original"] = {"label": LABELS[top], "probs": {l: round(float(x), 2) for l, x in zip(LABELS, pr)}}
-    if COMBINED is not None and orig is not None:
-        ps = float(COMBINED["public"].predict_proba([inp.text])[0, 1])
-        d = float(COMBINED["domain"].predict_proba([inp.text])[0, 1])
-        os_ = 1.0 - float(pr[LABELS.index("legit")])
-        c = d * os_ + (1 - d) * ps
-        out["combined"] = {"score": round(c, 3), "verdict": "spam" if c >= 0.5 else "not spam",
-                           "upi_style": round(d, 2), "public_score": round(ps, 3), "original_spam_score": round(os_, 3)}
-    return out
-
-
-@app.get("/check")
-def check_page():
-    return FileResponse(ROOT / "app" / "static" / "check.html")
 
 
 @app.get("/")

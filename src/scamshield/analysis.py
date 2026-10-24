@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 
 from .data.templates import LANGS, LANG_NAMES
+
+NL = len(LANGS)
 from .metrics import LABELS, all_metrics, paired_bootstrap_delta, mcnemar, bootstrap_ci, macro_f1_fn, scam_fnr
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -29,7 +31,7 @@ MARK = {"word_nb": "v", "word_rf": "P", "word_lr": "o", "word_svm": "s", "word_b
         "char_lr": "o", "char_svm": "s", "char_cnn": "D", "canine": "^",
         "distil_mbert": "o", "xlmr": "s", "muril": "D"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
-PAIRS = [("char_lr", "word_lr"), ("char_svm", "word_svm"), ("char_cnn", "word_bigru"),
+PAIRS = [("char_lr", "word_lr"), ("char_svm", "word_svm"), ("char_cnn", "word_bigru"), ("canine", "muril"),
          ("canine", "distil_mbert"), ("canine", "xlmr"), ("char_lr", "xlmr")]
 
 
@@ -107,7 +109,7 @@ def analyze():
                          "axes.titlesize": 10, "axes.titlecolor": INK})
     FIG.mkdir(parents=True, exist_ok=True)
     TAB.mkdir(parents=True, exist_ok=True)
-    df = pd.read_csv(ROOT / "data" / "upi_cmx.csv")
+    df = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
     te = df[df.split == "test"].reset_index(drop=True)
     y = te.label.map(LAB).values
     lang = te.lang.values
@@ -246,7 +248,7 @@ def analyze():
             adv_gain.append((m, [ga.get(lv, np.nan) - gc.get(lv, np.nan) for lv in range(5)]))
     ta = pd.DataFrame(rows)
     ta.to_csv(TAB / "table6_adversarial_training.csv", index=False)
-    md += ["## Adversarial training (train on 50% L1–L3 obfuscated copies; L4 script-mixing never seen) — targeted threat\n",
+    md += ["## Adversarial training (train on 50% L1–L3 obfuscated copies; L4 cross-script transliteration never seen) — targeted threat\n",
            _md(ta), ""]
     if adv_gain:
         fig, ax = plt.subplots(figsize=(8.5, 3.6))
@@ -286,7 +288,7 @@ def analyze():
     if rows:
         tn = pd.DataFrame(rows)
         tn.to_csv(TAB / "table7_normalisation_defence.csv", index=False)
-        md += ["## Canonicalisation defence (NFKC + homoglyph folding + zero-width stripping + de-leet) vs adversarial training — macro-F1, targeted\n",
+        md += ["## Script-aware canonicalisation defence (NFKC, homoglyph and Tamil-digit folding, zero-width stripping, de-leet, Tamil-script loanwords to English) vs adversarial training — macro-F1, targeted\n",
                _md(tn), ""]
 
     # ---------------- Per-language robustness (clean training, targeted, seed-0 run)
@@ -315,8 +317,8 @@ def analyze():
         rows = []
         fig, axes = plt.subplots(1, len(xmodels), figsize=(2.6 * len(xmodels) + 0.6, 2.9), squeeze=False)
         for ax, m in zip(axes[0], xmodels):
-            M = np.full((5, 5), np.nan)
-            M2 = np.full((5, 5), np.nan)
+            M = np.full((NL, NL), np.nan)
+            M2 = np.full((NL, NL), np.nan)
             for r in xr:
                 if r["model"] != m:
                     continue
@@ -325,21 +327,21 @@ def analyze():
                     M[i, j] = r["metrics"][f"{tg}_L0"]["macro_f1"]
                     M2[i, j] = r["metrics"][f"{tg}_L2"]["macro_f1"]
             diag = np.nanmean(np.diag(M))
-            off = np.nanmean(M[~np.eye(5, dtype=bool)])
-            off2 = np.nanmean(M2[~np.eye(5, dtype=bool)])
+            off = np.nanmean(M[~np.eye(NL, dtype=bool)])
+            off2 = np.nanmean(M2[~np.eye(NL, dtype=bool)])
             rows.append({"Model": PRETTY[m], "Repr.": GRAN[m], "In-language F1": f"{diag:.3f}",
                          "Cross-language F1": f"{off:.3f}", "Transfer gap": f"{diag - off:.3f}",
                          "In-language F1 @L2": f"{np.nanmean(np.diag(M2)):.3f}",
                          "Cross-language F1 @L2": f"{off2:.3f}"})
             pd.DataFrame(M, index=LANGS, columns=LANGS).to_csv(TAB / f"xling_matrix_{m}.csv")
             im = ax.imshow(M, vmin=0.3, vmax=1.0, cmap="Blues")
-            for i in range(5):
-                for j in range(5):
+            for i in range(NL):
+                for j in range(NL):
                     if not np.isnan(M[i, j]):
                         ax.text(j, i, f"{M[i, j]:.2f}", ha="center", va="center", fontsize=7,
                                 color="white" if M[i, j] > 0.72 else INK)
-            ax.set_xticks(range(5)); ax.set_xticklabels(LANGS, fontsize=8)
-            ax.set_yticks(range(5)); ax.set_yticklabels(LANGS, fontsize=8)
+            ax.set_xticks(range(NL)); ax.set_xticklabels(LANGS, fontsize=8)
+            ax.set_yticks(range(NL)); ax.set_yticklabels(LANGS, fontsize=8)
             ax.set_title(PRETTY[m], loc="left")
             ax.set_xlabel("test language", fontsize=8)
             for s in ax.spines.values():
@@ -351,7 +353,7 @@ def analyze():
         plt.close(fig)
         tx = pd.DataFrame(rows)
         tx.to_csv(TAB / "table9_crosslingual.csv", index=False)
-        md += ["## Cross-lingual transfer (train on one language pair, test on each; clean and L2 targeted)\n",
+        md += ["## Bilingual transfer (train on English or Tamil–English only, test on both; clean and L2 targeted)\n",
                _md(tx), ""]
 
     # ---------------- Cue ablation

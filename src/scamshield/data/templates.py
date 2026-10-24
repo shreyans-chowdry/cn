@@ -1,29 +1,29 @@
 """
-Message templates for the multilingual, code-mixed UPI SMS corpus.
+Message templates for UPI-BiSMS, the bilingual UPI SMS corpus.
 
-Structure: TEMPLATES[label][subtype][lang] -> list of template strings.
+TEMPLATES[label][subtype][lang] -> list of template strings.
 
 Labels
   scam  : fraudulent / social-engineering messages (the positive class for FNR)
-  legit : genuine transaction alerts, OTPs, advisories and personal payment chats
+  legit : genuine transaction alerts, OTPs, mandates, advisories and personal payment chats
   promo : genuine commercial promotions (cashback, sales, loan offers, recharge)
 
-Language pairs (romanised / transliterated, as typed on Indian phones)
-  en : Indian English
-  hi : Hindi-English  (Hinglish)
-  ta : Tamil-English  (Tanglish)
-  bn : Bengali-English (Benglish)
-  te : Telugu-English (Tenglish)
+Languages
+  en : English
+  ta : Tamil-English bilingual text -- Tamil written in Tamil script, with the English
+       banking vocabulary (KYC, account, link, OTP, PIN, refund, app names ...) left in
+       Latin script, which is how Tamil speakers actually type payment messages.
+       Romanised Tamil ("Tanglish") is NOT a language setting here; it only appears as
+       the transliteration attack at obfuscation level L4.
 
-Templates are deliberately *parallel* across languages (same intent, same slots)
-so cross-lingual transfer can be studied under controlled conditions, and they
-include hard negatives: genuine advisories that mention KYC/PIN/OTP, genuine
-reward-point reminders, genuine loan promos and genuine "I sent you money"
-chats, which mirror the vocabulary of scams.
+Templates are parallel across languages (same intent, same slots) and include hard
+negatives: genuine advisories that mention KYC/PIN/OTP, genuine reward-point reminders,
+genuine loan promos, genuine AutoPay mandates and genuine "I sent you money" chats,
+which use the same vocabulary as scams.
 
-Slots: {amt} {amt2} {bank} {app} {upi} {acct} {link} {phone} {otp} {date}
-       {ref} {name} {merchant} {company} {company2} {job_amt} {prize}
-       {courier} {days} {pct} {rate} {bank_helpline}
+Slots: {amt} {amt2} {bank} {app} {upi} {acct} {link} {phone} {otp} {date} {ref} {name}
+       {merchant} {company} {company2} {job_amt} {prize} {courier} {days} {pct} {rate}
+       {bank_helpline}
 """
 
 TEMPLATES = {
@@ -35,25 +35,10 @@ TEMPLATES = {
                 "{bank} ALERT: Your PAN is not linked, your account will be suspended. Update now: {link}",
                 "Your KYC has expired. To avoid {app} wallet closure call {phone} immediately",
             ],
-            "hi": [
-                "Dear customer aapka {bank} account aaj raat 12 baje block ho jayega. KYC update karne ke liye turant is link pe click karein {link}",
-                "{bank} ALERT: Aapka PAN card link nahi hai, account suspend kar diya jayega. Abhi update karein: {link}",
-                "Priy grahak, aapki KYC expire ho gayi hai. {app} wallet band hone se bachane ke liye call karein {phone}",
-            ],
             "ta": [
-                "Dear customer, ungal {bank} account inniku night block aagidum. KYC update panna udane intha link-a click pannunga {link}",
-                "{bank} ALERT: ungal PAN card link aagala, account suspend pannuvom. Ippove update pannunga {link}",
-                "Ungaloda KYC expire aagiduchu. {app} wallet close aagama irukka {phone} ku call pannunga",
-            ],
-            "bn": [
-                "Dear customer, apnar {bank} account aaj raat 12 tay block hoye jabe. KYC update korte ekhuni ei link e click korun {link}",
-                "{bank} ALERT: apnar PAN card link nei, account suspend kora hobe. Ekhuni update korun {link}",
-                "Apnar KYC expire hoye geche. {app} wallet bondho howa theke bachate {phone} e call korun",
-            ],
-            "te": [
-                "Dear customer, mee {bank} account ee roju raatri 12 ki block avutundi. KYC update cheyyadaniki ippude ee link click cheyandi {link}",
-                "{bank} ALERT: mee PAN card link avvaledu, account suspend chestamu. Ippude update cheyandi {link}",
-                "Mee KYC expire ayyindi. {app} wallet close avvakunda {phone} ki call cheyandi",
+                "அன்புள்ள வாடிக்கையாளரே, உங்கள் {bank} account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் {link}",
+                "{bank} ALERT: உங்கள் PAN card link செய்யப்படவில்லை, account suspend செய்யப்படும். இப்போதே update செய்யுங்கள் {link}",
+                "உங்கள் KYC காலாவதியாகிவிட்டது. {app} wallet மூடப்படாமல் இருக்க உடனே {phone} எண்ணுக்கு call செய்யவும்",
             ],
         },
         "refund_collect": {
@@ -62,25 +47,10 @@ TEMPLATES = {
                 "Your refund of {amt} is pending. Approve the collect request and enter PIN to claim. Ref {ref}",
                 "{merchant} refund of {amt} is on its way to your account, just enter PIN on the request from {upi}",
             ],
-            "hi": [
-                "Congratulations! Aapko {amt} ka cashback mila hai. Paise receive karne ke liye {app} pe aaye request ko accept karke UPI PIN daalein",
-                "Aapka refund {amt} pending hai. Amount claim karne ke liye collect request approve karein aur PIN enter karein. Ref {ref}",
-                "{merchant} refund: {amt} aapke account me aane wala hai, bas {upi} se aayi request pe PIN daal do",
-            ],
             "ta": [
-                "Congratulations! Ungalukku {amt} cashback kidaichirukku. Panam receive panna {app}-la vandha request-a accept panni UPI PIN podunga",
-                "Ungal refund {amt} pending-la irukku. Claim panna collect request approve panni PIN enter pannunga. Ref {ref}",
-                "{merchant} refund {amt} ungal account-ku varudhu, {upi} kitta irundhu vandha request-la PIN pottaa podhum",
-            ],
-            "bn": [
-                "Congratulations! Apni {amt} cashback peyechen. Taka receive korte {app} e asha request accept kore UPI PIN din",
-                "Apnar refund {amt} pending ache. Claim korte collect request approve kore PIN enter korun. Ref {ref}",
-                "{merchant} refund {amt} apnar account e ashche, shudhu {upi} theke asha request e PIN din",
-            ],
-            "te": [
-                "Congratulations! Meeku {amt} cashback vachindi. Dabbulu receive cheyyadaniki {app} lo vachina request accept chesi UPI PIN enter cheyandi",
-                "Mee refund {amt} pending lo undi. Claim cheyyadaniki collect request approve chesi PIN enter cheyandi. Ref {ref}",
-                "{merchant} refund {amt} mee account ki vastundi, {upi} nunchi vachina request lo PIN veste chaalu",
+                "வாழ்த்துக்கள்! உங்களுக்கு {amt} cashback கிடைத்துள்ளது. பணத்தைப் பெற {app}-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும்",
+                "உங்கள் {amt} refund நிலுவையில் உள்ளது. பெற collect request-ஐ approve செய்து PIN enter செய்யவும். Ref {ref}",
+                "{merchant} refund {amt} உங்கள் account-க்கு வருகிறது, {upi} அனுப்பிய request-ல் PIN போட்டால் போதும்",
             ],
         },
         "lottery_prize": {
@@ -89,25 +59,10 @@ TEMPLATES = {
                 "You have won {prize} in the {app} mega contest! Fill your details at {link} to claim, offer valid only {days} days",
                 "Airtel lucky winner: your number has won {prize}. WhatsApp {phone} now",
             ],
-            "hi": [
-                "Badhai ho! KBC lucky draw me aapka number select hua hai, inaam {prize}. Registration fee {amt} {upi} pe bhejein",
-                "Aapne {app} mega contest me {prize} jeeta hai! Claim karne ke liye {link} pe details bharein, offer sirf {days} din ka hai",
-                "Jio lucky winner: aapke number ne {prize} jeeta hai. WhatsApp karein {phone} turant",
-            ],
             "ta": [
-                "Vaazhthukkal! Lucky draw-la ungal number select aagirukku, parisu {prize}. Registration fee {amt} {upi} ku anuppunga",
-                "Neenga {app} mega contest-la {prize} jeyichirukeenga! Claim panna {link}-la details fill pannunga, offer {days} naal mattum",
-                "Airtel lucky winner: ungal number {prize} win pannirukku. Udane WhatsApp pannunga {phone}",
-            ],
-            "bn": [
-                "Obhinandan! Lucky draw te apnar number select hoyeche, puroskar {prize}. Registration fee {amt} {upi} te pathan",
-                "Apni {app} mega contest e {prize} jitechen! Claim korte {link} e details din, offer shudhu {days} din",
-                "Vi lucky winner: apnar number {prize} jiteche. Ekhuni WhatsApp korun {phone}",
-            ],
-            "te": [
-                "Abhinandanalu! Lucky draw lo mee number select ayyindi, bahumati {prize}. Registration fee {amt} {upi} ki pampandi",
-                "Meeru {app} mega contest lo {prize} gelicharu! Claim cheyyadaniki {link} lo details fill cheyandi, offer {days} rojulu matrame",
-                "Jio lucky winner: mee number {prize} gelichindi. Ippude WhatsApp cheyandi {phone}",
+                "வாழ்த்துக்கள்! lucky draw-வில் உங்கள் எண் தேர்வாகியுள்ளது, பரிசு {prize}. Registration fee {amt}-ஐ {upi}-க்கு அனுப்பவும்",
+                "{app} mega contest-ல் நீங்கள் {prize} வென்றுள்ளீர்கள்! பெற {link}-ல் விவரங்களை நிரப்புங்கள், offer {days} நாட்கள் மட்டுமே",
+                "Airtel lucky winner: உங்கள் எண் {prize} வென்றுள்ளது. உடனே WhatsApp செய்யுங்கள் {phone}",
             ],
         },
         "wrong_transfer": {
@@ -116,25 +71,10 @@ TEMPLATES = {
                 "Sir I sent {amt} to the wrong number, see screenshot. Kindly return it to {upi}",
                 "Hello my {amt} went to you by mistake, return it or I will file a police complaint {phone}",
             ],
-            "hi": [
-                "Bhai galti se aapke account me {amt} transfer ho gaye, please wapas {upi} pe bhej do, bahut zaroori hai",
-                "Sir maine galat number pe {amt} bhej diya, screenshot dekh lo. Kripya {upi} pe return kar dijiye",
-                "Hello mere {amt} galti se aapko chale gaye hai, plz return kardo warna police complaint karunga {phone}",
-            ],
             "ta": [
-                "Anna thappa ungal account-ku {amt} anuppiten, please thirumba {upi} ku anuppunga, romba urgent",
-                "Sir naan wrong number-ku {amt} anuppiten, screenshot paarunga. Dayavu senju {upi} ku return pannunga",
-                "Hello en {amt} thappa ungalukku poiduchu, return pannunga illana police complaint kudupen {phone}",
-            ],
-            "bn": [
-                "Dada bhul kore apnar account e {amt} pathiye diyechi, please {upi} te ferot pathan, khub urgent",
-                "Sir ami bhul number e {amt} pathiyechi, screenshot dekhun. Doya kore {upi} te return korun",
-                "Hello amar {amt} bhul kore apnar kache chole geche, return korun noile police complaint korbo {phone}",
-            ],
-            "te": [
-                "Anna porapatuna mee account ki {amt} pampanu, please {upi} ki tirigi pampandi, chala urgent",
-                "Sir nenu wrong number ki {amt} pampanu, screenshot chudandi. Dayachesi {upi} ki return cheyandi",
-                "Hello naa {amt} porapatuna meeku vellipoyindi, return cheyandi lekapothe police complaint istanu {phone}",
+                "அண்ணா, தவறுதலாக உங்கள் account-க்கு {amt} transfer ஆகிவிட்டது, தயவுசெய்து {upi}-க்கு திருப்பி அனுப்புங்கள், ரொம்ப urgent",
+                "Sir, நான் தவறான எண்ணுக்கு {amt} அனுப்பிவிட்டேன், screenshot பாருங்கள். தயவுசெய்து {upi}-க்கு return செய்யுங்கள்",
+                "Hello, என் {amt} தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் {phone}",
             ],
         },
         "job_task": {
@@ -143,25 +83,10 @@ TEMPLATES = {
                 "Amazon work from home: daily income {job_amt}, joining fee only {amt}. Register now {link}",
                 "Hello I am from HR, your resume has been shortlisted. Complete simple tasks and earn {job_amt}, join Telegram {link}",
             ],
-            "hi": [
-                "Part time job! Ghar baithe roz {job_amt} kamayein, sirf YouTube videos like karna hai. Contact WhatsApp {phone}",
-                "Amazon work from home: daily {job_amt} income, joining fee sirf {amt}. Abhi register karein {link}",
-                "Hello main HR se baat kar rahi hu, aapka resume select hua hai. Task complete karke {job_amt} paayein, Telegram join karein {link}",
-            ],
             "ta": [
-                "Part time job! Veetla irundhe dhinamum {job_amt} sambaathikalaam, YouTube video like pannaa podhum. WhatsApp {phone}",
-                "Amazon work from home: daily {job_amt} income, joining fee {amt} mattum. Ippove register pannunga {link}",
-                "Hello naan HR-la irundhu pesuren, ungal resume select aagirukku. Task mudichu {job_amt} vaangunga, Telegram join pannunga {link}",
-            ],
-            "bn": [
-                "Part time job! Barite boshe roj {job_amt} income korun, shudhu YouTube video like korte hobe. WhatsApp {phone}",
-                "Amazon work from home: daily {job_amt} income, joining fee matro {amt}. Ekhuni register korun {link}",
-                "Hello ami HR theke bolchi, apnar resume select hoyeche. Task shesh kore {job_amt} pan, Telegram join korun {link}",
-            ],
-            "te": [
-                "Part time job! Intlo nunche roju {job_amt} sampadinchandi, YouTube videos like cheste chaalu. WhatsApp {phone}",
-                "Amazon work from home: daily {job_amt} income, joining fee {amt} matrame. Ippude register cheyandi {link}",
-                "Hello nenu HR nunchi matladutunnanu, mee resume select ayyindi. Task purthi chesi {job_amt} pondandi, Telegram join avvandi {link}",
+                "Part time job! வீட்டிலிருந்தே தினமும் {job_amt} சம்பாதிக்கலாம், YouTube video-க்களை like செய்தால் போதும். WhatsApp {phone}",
+                "Amazon work from home: தினசரி வருமானம் {job_amt}, joining fee {amt} மட்டுமே. இப்போதே register செய்யுங்கள் {link}",
+                "வணக்கம், நான் HR-லிருந்து பேசுகிறேன், உங்கள் resume shortlist ஆகியுள்ளது. சின்ன task-களை முடித்து {job_amt} பெறுங்கள், Telegram-ல் join செய்யுங்கள் {link}",
             ],
         },
         "bill_disconnect": {
@@ -170,25 +95,10 @@ TEMPLATES = {
                 "{company}: Your bill is pending and connection will be disconnected. Pay {amt} now {link}",
                 "Dear consumer your power will be cut tonight. Contact electricity officer {phone}",
             ],
-            "hi": [
-                "Priy upbhokta aapka {company} bijli connection aaj raat 9:30 baje kat jayega kyunki pichla bill update nahi hua. Turant call karein {phone}",
-                "{company}: Aapka bill pending hai, connection disconnect hoga. Abhi {amt} pay karein {link}",
-                "Dear consumer aaj raat aapki light kat jayegi. Electricity officer se sampark karein {phone}",
-            ],
             "ta": [
-                "Anbulla nugarvor, ungal {company} current connection inniku raathiri 9:30 ku cut aagum, last bill update aagala. Udane call pannunga {phone}",
-                "{company}: ungal bill pending, connection disconnect aagum. Ippove {amt} pay pannunga {link}",
-                "Dear consumer inniku night ungal veetla current cut aagum. Electricity officer-a contact pannunga {phone}",
-            ],
-            "bn": [
-                "Priyo grahok, apnar {company} electric connection aaj raat 9:30 e kete deoa hobe karon ager bill update hoyni. Ekhuni call korun {phone}",
-                "{company}: apnar bill pending, connection disconnect hobe. Ekhuni {amt} pay korun {link}",
-                "Dear consumer aaj raate apnar current kete jabe. Electricity officer er sathe jogajog korun {phone}",
-            ],
-            "te": [
-                "Priyamaina viniyogadarudu, mee {company} current connection ee raatri 9:30 ki cut avutundi, last bill update avvaledu. Ippude call cheyandi {phone}",
-                "{company}: mee bill pending undi, connection disconnect avutundi. Ippude {amt} pay cheyandi {link}",
-                "Dear consumer ee raatri mee intlo current cut avutundi. Electricity officer ni sampradinchandi {phone}",
+                "அன்புள்ள நுகர்வோரே, முந்தைய bill update ஆகாததால் உங்கள் {company} மின் இணைப்பு இன்று இரவு 9:30-க்கு துண்டிக்கப்படும். உடனே {phone} எண்ணை அழைக்கவும்",
+                "{company}: உங்கள் bill நிலுவையில் உள்ளது, connection துண்டிக்கப்படும். இப்போதே {amt} செலுத்துங்கள் {link}",
+                "Dear consumer, இன்று இரவு உங்கள் வீட்டில் current cut செய்யப்படும். Electricity officer-ஐ தொடர்பு கொள்ளுங்கள் {phone}",
             ],
         },
         "parcel_customs": {
@@ -197,25 +107,10 @@ TEMPLATES = {
                 "Your package could not be delivered due to incorrect address. Update address within 24 hours {link}",
                 "A parcel in your name containing illegal items has been seized at the airport. Call {phone} immediately or an FIR will be filed",
             ],
-            "hi": [
-                "{courier}: Aapka parcel customs me ruka hai. Release ke liye {amt} fee bharein {link}",
-                "Aapka package address galat hone ke karan deliver nahi hua. 24 ghante me address update karein {link}",
-                "Aapke naam ka parcel airport pe pakda gaya hai jisme illegal saman hai. Turant {phone} pe call karein warna FIR hogi",
-            ],
             "ta": [
-                "{courier}: ungal parcel customs-la nikkudhu. Release panna {amt} fee kattunga {link}",
-                "Thappana address-naala ungal package deliver aagala. 24 mani nerathula address update pannunga {link}",
-                "Ungal per-la vandha parcel airport-la pidichirukkaanga, adhula illegal porul irukku. Udane {phone} ku call pannunga illana FIR podapadum",
-            ],
-            "bn": [
-                "{courier}: apnar parcel customs e atke ache. Release er jonno {amt} fee din {link}",
-                "Bhul address er jonno apnar package deliver hoyni. 24 ghontar moddhe address update korun {link}",
-                "Apnar naame asha parcel airport e dhora poreche, tate illegal jinish ache. Ekhuni {phone} e call korun noile FIR hobe",
-            ],
-            "te": [
-                "{courier}: mee parcel customs lo aagipoyindi. Release kosam {amt} fee kattandi {link}",
-                "Tappu address valla mee package deliver avvaledu. 24 gantallo address update cheyandi {link}",
-                "Mee peru meeda vachina parcel airport lo pattukunnaru, andulo illegal vastuvulu unnayi. Ippude {phone} ki call cheyandi lekapothe FIR avutundi",
+                "{courier}: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release fee {amt} செலுத்துங்கள் {link}",
+                "தவறான முகவரி காரணமாக உங்கள் package deliver செய்ய முடியவில்லை. 24 மணி நேரத்தில் address update செய்யுங்கள் {link}",
+                "உங்கள் பெயரில் வந்த parcel-ல் சட்டவிரோத பொருட்கள் இருப்பதால் airport-ல் பறிமுதல் செய்யப்பட்டது. உடனே {phone} எண்ணை அழைக்கவும், இல்லையெனில் FIR பதிவு செய்யப்படும்",
             ],
         },
         "fake_support": {
@@ -224,25 +119,10 @@ TEMPLATES = {
                 "Suspicious transaction of {amt} on your {bank} credit card. To cancel share the OTP, call {phone}",
                 "We are calling from {bank} head office, your debit card is blocked, reply with card number and CVV to unblock",
             ],
-            "hi": [
-                "{app} customer care: aapka transaction fail hua hai, paise wapas lene ke liye AnyDesk app download karke {phone} pe call karein",
-                "Aapke {bank} credit card pe {amt} ka suspicious transaction hua hai. Cancel karne ke liye OTP batayein, call {phone}",
-                "Hum {bank} head office se bol rahe hai, aapka debit card block ho gaya hai, unblock ke liye card number aur CVV reply karein",
-            ],
             "ta": [
-                "{app} customer care: ungal transaction fail aagiduchu, panam thirumba vaanga AnyDesk app download panni {phone} ku call pannunga",
-                "Ungal {bank} credit card-la {amt} suspicious transaction nadandhirukku. Cancel panna OTP sollunga, call {phone}",
-                "Naanga {bank} head office-la irundhu pesurom, ungal debit card block aagiduchu, unblock panna card number, CVV reply pannunga",
-            ],
-            "bn": [
-                "{app} customer care: apnar transaction fail hoyeche, taka ferot pete AnyDesk app download kore {phone} e call korun",
-                "Apnar {bank} credit card e {amt} er suspicious transaction hoyeche. Cancel korte OTP bolun, call {phone}",
-                "Amra {bank} head office theke bolchi, apnar debit card block hoye geche, unblock korte card number ar CVV reply korun",
-            ],
-            "te": [
-                "{app} customer care: mee transaction fail ayyindi, dabbulu tirigi pondadaniki AnyDesk app download chesi {phone} ki call cheyandi",
-                "Mee {bank} credit card lo {amt} suspicious transaction jarigindi. Cancel cheyyadaniki OTP cheppandi, call {phone}",
-                "Memu {bank} head office nunchi matladutunnamu, mee debit card block ayyindi, unblock kosam card number, CVV reply cheyandi",
+                "{app} customer care: உங்கள் transaction தோல்வியடைந்தது, refund பெற AnyDesk app-ஐ download செய்து {phone} எண்ணுக்கு call செய்யவும்",
+                "உங்கள் {bank} credit card-ல் {amt} சந்தேகத்திற்குரிய transaction நடந்துள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call {phone}",
+                "நாங்கள் {bank} head office-லிருந்து பேசுகிறோம், உங்கள் debit card block ஆகிவிட்டது, unblock செய்ய card number மற்றும் CVV-ஐ reply செய்யவும்",
             ],
         },
         "loan_instant": {
@@ -251,25 +131,10 @@ TEMPLATES = {
                 "Pre approved loan of {amt} is ready for you. Download app now {link}, no documents needed",
                 "Your loan is sanctioned. Pay file charge {amt2} and money will be credited instantly {phone}",
             ],
-            "hi": [
-                "Bina CIBIL ke instant loan {amt}! Sirf Aadhaar aur PAN se 5 minute me approval. Processing fee {amt2} bhejein {upi}",
-                "Pre approved loan {amt} aapke liye ready hai. Abhi app download karein {link}, koi document nahi chahiye",
-                "Aapka loan sanction ho gaya hai. File charge {amt2} pay karein aur paisa turant account me aayega {phone}",
-            ],
             "ta": [
-                "CIBIL illama instant loan {amt}! Aadhaar PAN mattum podhum, 5 nimishathula approval. Processing fee {amt2} {upi} ku anuppunga",
-                "Pre approved loan {amt} ungalukku ready. Ippove app download pannunga {link}, endha document-um vendaam",
-                "Ungal loan sanction aagiduchu. File charge {amt2} pay pannunga, panam udane account-ku varum {phone}",
-            ],
-            "bn": [
-                "CIBIL chara instant loan {amt}! Shudhu Aadhaar ar PAN diye 5 minute e approval. Processing fee {amt2} {upi} te pathan",
-                "Pre approved loan {amt} apnar jonno ready. Ekhuni app download korun {link}, kono document lagbe na",
-                "Apnar loan sanction hoye geche. File charge {amt2} pay korun, taka sathe sathe account e ashbe {phone}",
-            ],
-            "te": [
-                "CIBIL lekunda instant loan {amt}! Aadhaar, PAN tho 5 nimishallo approval. Processing fee {amt2} {upi} ki pampandi",
-                "Pre approved loan {amt} meekosam ready. Ippude app download cheyandi {link}, e document avasaram ledu",
-                "Mee loan sanction ayyindi. File charge {amt2} pay cheyandi, dabbulu ventane account ki vastayi {phone}",
+                "CIBIL இல்லாமல் instant loan {amt}! Aadhaar, PAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing fee {amt2}-ஐ {upi}-க்கு அனுப்பவும்",
+                "உங்களுக்காக {amt} pre approved loan தயாராக உள்ளது. இப்போதே app-ஐ download செய்யுங்கள் {link}, எந்த document-உம் தேவையில்லை",
+                "உங்கள் loan sanction ஆகிவிட்டது. File charge {amt2} செலுத்தினால் பணம் உடனே account-ல் வரவு வைக்கப்படும் {phone}",
             ],
         },
         "reward_phish": {
@@ -278,25 +143,22 @@ TEMPLATES = {
                 "{bank} credit card points are about to expire! Convert {amt} to cash, click {link}",
                 "Your {app} reward of {amt} is unclaimed, today is the last day. Claim at {link}",
             ],
-            "hi": [
-                "Aapke {bank} reward points jinki value {amt} hai aaj expire ho rahe hai, abhi redeem karein {link}",
-                "{bank} credit card points expire hone wale hai! {amt} cash me badalne ke liye {link} pe click karein",
-                "Aapka {app} reward {amt} abhi tak claim nahi hua, aaj aakhri din hai. Claim karein {link}",
+            "ta": [
+                "உங்கள் {bank} reward points மதிப்பு {amt}, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் {link}",
+                "{bank} credit card points காலாவதியாகப் போகிறது! {amt}-ஐ cash-ஆக மாற்ற {link} click செய்யுங்கள்",
+                "உங்கள் {app} reward {amt} இன்னும் claim செய்யப்படவில்லை, இன்றே கடைசி நாள். Claim செய்ய {link}",
+            ],
+        },
+        "qr_receive": {
+            "en": [
+                "You have received {amt} from {name}. Scan the QR code at {link} and enter your UPI PIN to receive the money",
+                "Buyer for your listing has paid {amt}. Scan the QR code sent on WhatsApp and enter UPI PIN to get the amount",
+                "I am an army officer, I will pay advance {amt} for the room. Scan my QR and enter PIN, money will come to you {phone}",
             ],
             "ta": [
-                "Ungal {bank} reward points {amt} mathippu inniku expire aagudhu, ippove redeem pannunga {link}",
-                "{bank} credit card points expire aaga poguthu! {amt} cash-a maatha {link} click pannunga",
-                "Ungal {app} reward {amt} claim pannala, inniku last day. Claim panna {link}",
-            ],
-            "bn": [
-                "Apnar {bank} reward points jar mullo {amt} aaj expire hocche, ekhuni redeem korun {link}",
-                "{bank} credit card points expire hote choleche! {amt} cash e convert korte {link} e click korun",
-                "Apnar {app} reward {amt} ekhono claim korenni, aaj shesh din. Claim korun {link}",
-            ],
-            "te": [
-                "Mee {bank} reward points viluva {amt} ee roju expire avutunnayi, ippude redeem cheyandi {link}",
-                "{bank} credit card points expire avvabotunnayi! {amt} cash ga marchukovadaniki {link} click cheyandi",
-                "Mee {app} reward {amt} inka claim cheyyaledu, ee roju last day. Claim cheyandi {link}",
+                "{name} உங்களுக்கு {amt} அனுப்பியுள்ளார். பணத்தைப் பெற {link}-ல் உள்ள QR code-ஐ scan செய்து UPI PIN உள்ளிடவும்",
+                "உங்கள் பொருளை வாங்குபவர் {amt} செலுத்திவிட்டார். WhatsApp-ல் அனுப்பிய QR code-ஐ scan செய்து UPI PIN போட்டால் பணம் வரும்",
+                "நான் ஒரு army officer, அறைக்கு advance {amt} தருகிறேன். என் QR-ஐ scan செய்து PIN போடுங்கள், பணம் உங்களுக்கு வரும் {phone}",
             ],
         },
     },
@@ -308,25 +170,10 @@ TEMPLATES = {
                 "{bank}: A/c {acct} debited by {amt} for {merchant}. Avl Bal {amt2}. Ref {ref}",
                 "You paid {amt} to {name} via {app}. UPI Ref {ref}. Thank you",
             ],
-            "hi": [
-                "Aapke A/c {acct} se {date} ko {amt} debit hue, {upi} ko UPI ke through. Ref {ref}. Agar aapne nahi kiya to {bank_helpline} pe call karein -{bank}",
-                "{bank}: A/c {acct} me se {amt} {merchant} ko bheje gaye. Upalabdh balance {amt2}. Ref {ref}",
-                "Aapne {app} se {name} ko {amt} bheje. UPI Ref {ref}. Dhanyavaad",
-            ],
             "ta": [
-                "Ungal A/c {acct}-la irundhu {date} anru {amt} debit aagirukku, {upi} ku UPI moolam. Ref {ref}. Neenga illaina {bank_helpline} ku call pannunga -{bank}",
-                "{bank}: A/c {acct}-la irundhu {amt} {merchant} ku anuppapattadhu. Balance {amt2}. Ref {ref}",
-                "Neenga {app} moolama {name} ku {amt} anuppineenga. UPI Ref {ref}. Nandri",
-            ],
-            "bn": [
-                "Apnar A/c {acct} theke {date} e {amt} debit hoyeche, {upi} ke UPI diye. Ref {ref}. Apni na korle {bank_helpline} e call korun -{bank}",
-                "{bank}: A/c {acct} theke {amt} {merchant} ke pathano hoyeche. Balance {amt2}. Ref {ref}",
-                "Apni {app} diye {name} ke {amt} pathiyechen. UPI Ref {ref}. Dhonnobad",
-            ],
-            "te": [
-                "Mee A/c {acct} nunchi {date} na {amt} debit ayyindi, {upi} ki UPI dwara. Ref {ref}. Meeru kakapothe {bank_helpline} ki call cheyandi -{bank}",
-                "{bank}: A/c {acct} nunchi {amt} {merchant} ki pampabadindi. Balance {amt2}. Ref {ref}",
-                "Meeru {app} dwara {name} ki {amt} pamparu. UPI Ref {ref}. Dhanyavadalu",
+                "உங்கள் A/c {acct}-லிருந்து {date} அன்று {amt} VPA {upi}-க்கு debit செய்யப்பட்டது. UPI Ref {ref}. நீங்கள் செய்யவில்லையா? {bank_helpline} அழைக்கவும் -{bank}",
+                "{bank}: A/c {acct}-லிருந்து {merchant}-க்கு {amt} debit செய்யப்பட்டது. இருப்பு {amt2}. Ref {ref}",
+                "நீங்கள் {app} மூலம் {name}-க்கு {amt} செலுத்தினீர்கள். UPI Ref {ref}. நன்றி",
             ],
         },
         "credit_alert": {
@@ -335,25 +182,10 @@ TEMPLATES = {
                 "{amt} has been added to your {app} wallet. Transaction ID {ref}",
                 "Salary credit: {amt} credited to your {bank} A/c {acct}. Use {bank} app to check balance",
             ],
-            "hi": [
-                "Aapke A/c {acct} me {amt} credit hue {date} ko, {name} ({upi}) se. UPI Ref {ref} -{bank}",
-                "{amt} aapke {app} wallet me jama ho gaye hai. Transaction ID {ref}",
-                "Salary credit: {amt} aapke {bank} A/c {acct} me jama kiya gaya. Balance check ke liye {bank} app use karein",
-            ],
             "ta": [
-                "Ungal A/c {acct}-la {date} anru {amt} credit aagirukku, {name} ({upi}) kitta irundhu. UPI Ref {ref} -{bank}",
-                "{amt} ungal {app} wallet-la add aagiduchu. Transaction ID {ref}",
-                "Salary credit: {amt} ungal {bank} A/c {acct}-la pottachu. Balance paarkka {bank} app use pannunga",
-            ],
-            "bn": [
-                "Apnar A/c {acct} e {date} e {amt} credit hoyeche, {name} ({upi}) theke. UPI Ref {ref} -{bank}",
-                "{amt} apnar {app} wallet e joma hoyeche. Transaction ID {ref}",
-                "Salary credit: {amt} apnar {bank} A/c {acct} e joma kora hoyeche. Balance dekhte {bank} app use korun",
-            ],
-            "te": [
-                "Mee A/c {acct} lo {date} na {amt} credit ayyindi, {name} ({upi}) nunchi. UPI Ref {ref} -{bank}",
-                "{amt} mee {app} wallet lo jama ayyindi. Transaction ID {ref}",
-                "Salary credit: {amt} mee {bank} A/c {acct} lo jama cheyabadindi. Balance chudataniki {bank} app vadandi",
+                "உங்கள் A/c {acct}-ல் {date} அன்று {name} ({upi})-லிருந்து {amt} வரவு வைக்கப்பட்டது. UPI Ref {ref} -{bank}",
+                "உங்கள் {app} wallet-ல் {amt} சேர்க்கப்பட்டது. Transaction ID {ref}",
+                "Salary credit: உங்கள் {bank} A/c {acct}-ல் {amt} வரவு வைக்கப்பட்டது. இருப்பைப் பார்க்க {bank} app-ஐ பயன்படுத்தவும்",
             ],
         },
         "otp": {
@@ -362,25 +194,10 @@ TEMPLATES = {
                 "{app} login OTP: {otp}. Valid for 10 mins. Do not share, {app} never calls asking for OTP",
                 "Your UPI PIN reset OTP is {otp}. If not requested by you contact {bank_helpline} immediately",
             ],
-            "hi": [
-                "{otp} aapka {bank} OTP hai {amt} ke transaction ke liye. Yeh OTP kisi ke saath share na karein. Bank kabhi OTP nahi maangta",
-                "{app} login OTP: {otp}. Valid 10 min. Kisi ko bhi na batayein, {app} kabhi call karke OTP nahi poochta",
-                "Aapka UPI PIN reset OTP {otp} hai. Agar aapne request nahi ki to turant {bank_helpline} pe sampark karein",
-            ],
             "ta": [
-                "{otp} ungal {bank} OTP, {amt} transaction-ku. Indha OTP-a yaar kittayum share pannadheenga. Bank eppovum OTP kekkadhu",
-                "{app} login OTP: {otp}. 10 nimisham valid. Yaarukkum sollaadheenga, {app} call panni OTP kekkadhu",
-                "Ungal UPI PIN reset OTP {otp}. Neenga request pannalaina udane {bank_helpline}-a contact pannunga",
-            ],
-            "bn": [
-                "{otp} apnar {bank} OTP {amt} er transaction er jonno. Ei OTP karo sathe share korben na. Bank kokhono OTP chay na",
-                "{app} login OTP: {otp}. 10 minute valid. Kauke bolben na, {app} kokhono call kore OTP chay na",
-                "Apnar UPI PIN reset OTP {otp}. Apni request na korle ekhuni {bank_helpline} e jogajog korun",
-            ],
-            "te": [
-                "{otp} mee {bank} OTP {amt} transaction kosam. Ee OTP evaritho share cheyakandi. Bank eppudu OTP adagadu",
-                "{app} login OTP: {otp}. 10 nimishalu valid. Evariki cheppakandi, {app} call chesi OTP adagadu",
-                "Mee UPI PIN reset OTP {otp}. Meeru request cheyyakapothe ventane {bank_helpline} ni sampradinchandi",
+                "{amt} transaction-க்கான உங்கள் {bank} OTP {otp}. இந்த OTP-ஐ யாருடனும் பகிர வேண்டாம். வங்கி ஒருபோதும் OTP கேட்காது",
+                "{app} login OTP: {otp}. 10 நிமிடங்கள் செல்லுபடியாகும். யாரிடமும் சொல்ல வேண்டாம், {app} call செய்து OTP கேட்காது",
+                "உங்கள் UPI PIN reset OTP {otp}. நீங்கள் request செய்யவில்லை என்றால் உடனே {bank_helpline} தொடர்பு கொள்ளவும்",
             ],
         },
         "collect_genuine": {
@@ -389,25 +206,22 @@ TEMPLATES = {
                 "{name} has requested {amt} on {app}. Remember, you never need to enter PIN to RECEIVE money",
                 "Payment request: {company} bill {amt}, due date {date}. Pay via {app} app",
             ],
-            "hi": [
-                "{merchant} ne aapko {app} pe {amt} ki payment request bheji hai. Agar aapne order kiya hai to app me approve karein, warna decline karein",
-                "{name} ne {amt} ki request bheji hai {app} pe. Yaad rakhein, paise RECEIVE karne ke liye PIN kabhi nahi daalna padta",
-                "Payment request: {company} bill {amt}, due date {date}. {app} app me jaake pay karein",
+            "ta": [
+                "{merchant} உங்களுக்கு {app}-ல் {amt} payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+                "{name} {app}-ல் {amt} request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற PIN போட வேண்டியதில்லை",
+                "Payment request: {company} bill {amt}, கடைசி தேதி {date}. {app} app மூலம் செலுத்தவும்",
+            ],
+        },
+        "autopay_mandate": {
+            "en": [
+                "{merchant} has created a UPI AutoPay mandate of {amt} on {app}. It will debit monthly from {date}. Manage in {app} app",
+                "Your {app} AutoPay for {company2} recharge of {amt} will be executed on {date}. To cancel, open {app} and go to AutoPay",
+                "Reminder: UPI AutoPay of {amt} to {merchant} is scheduled for {date} -{bank}",
             ],
             "ta": [
-                "{merchant} ungalukku {app}-la {amt} payment request anuppirukku. Neenga order pannirundhaa app-la approve pannunga, illana decline pannunga",
-                "{name} {amt} request anuppirukaanga {app}-la. Nyaabagam vechikonga, panam RECEIVE panna PIN theva illa",
-                "Payment request: {company} bill {amt}, kadaisi thedhi {date}. {app} app-la pay pannunga",
-            ],
-            "bn": [
-                "{merchant} apnake {app} e {amt} er payment request pathiyeche. Apni order kore thakle app e approve korun, noile decline korun",
-                "{name} {amt} er request pathiyeche {app} e. Mone rakhben, taka RECEIVE korte kokhono PIN lage na",
-                "Payment request: {company} bill {amt}, shesh tarikh {date}. {app} app e giye pay korun",
-            ],
-            "te": [
-                "{merchant} meeku {app} lo {amt} payment request pampindi. Meeru order chesi unte app lo approve cheyandi, lekapothe decline cheyandi",
-                "{name} {amt} request pamparu {app} lo. Gurtunchukondi, dabbulu RECEIVE cheyyadaniki PIN avasaram ledu",
-                "Payment request: {company} bill {amt}, chivari tedi {date}. {app} app lo pay cheyandi",
+                "{merchant} {app}-ல் {amt}-க்கான UPI AutoPay mandate உருவாக்கியுள்ளது. {date} முதல் மாதந்தோறும் debit ஆகும். {app} app-ல் நிர்வகிக்கலாம்",
+                "{company2} recharge {amt}-க்கான உங்கள் {app} AutoPay {date} அன்று நடைபெறும். ரத்து செய்ய {app}-ல் AutoPay பகுதிக்குச் செல்லவும்",
+                "நினைவூட்டல்: {merchant}-க்கு {amt} UPI AutoPay {date} அன்று திட்டமிடப்பட்டுள்ளது -{bank}",
             ],
         },
         "personal": {
@@ -417,29 +231,11 @@ TEMPLATES = {
                 "Hi {name}, I have transferred {amt}, sending screenshot. Ref {ref}",
                 "Will send this month's rent {amt} a bit late, by {date} for sure",
             ],
-            "hi": [
-                "Bhai kal ke dinner ka {amt} {upi} pe bhej dena jab time mile",
-                "Mummy ne {amt} GPay pe bhej diye hai, check kar lena",
-                "Arre {name}, maine {amt} transfer kar diya, screenshot bhej raha hu. Ref {ref}",
-                "Rent ke {amt} is mahine thoda late bhejunga yaar, {date} tak pakka",
-            ],
             "ta": [
-                "Machan nethu dinner {amt} {upi} ku anuppidu time irukkumbodhu",
-                "Amma {amt} GPay-la anuppirukaanga, check pannu",
-                "Dei {name}, naan {amt} transfer panniten, screenshot anupuren. Ref {ref}",
-                "Rent {amt} indha maasam konjam late-a anupuren da, {date} kulla kandippa",
-            ],
-            "bn": [
-                "Bhai kaler dinner er {amt} {upi} te pathiye dis somoy pele",
-                "Ma {amt} GPay te pathiyeche, check kore nis",
-                "Are {name}, ami {amt} transfer kore diyechi, screenshot pathacchi. Ref {ref}",
-                "Ei mash e rent er {amt} ektu deri te pathabo, {date} er moddhe pakka",
-            ],
-            "te": [
-                "Ra ninna dinner {amt} {upi} ki pampu time unnappudu",
-                "Amma {amt} GPay lo pampindi, check cheyyi",
-                "Orey {name}, nenu {amt} transfer chesanu, screenshot pamputunna. Ref {ref}",
-                "Ee nela rent {amt} konchem late ga pamputanu ra, {date} lopu kachitanga",
+                "டேய், நேற்று dinner-க்கான {amt}-ஐ நேரம் கிடைக்கும்போது {upi}-க்கு அனுப்பிவிடு",
+                "அம்மா GPay-ல் {amt} அனுப்பியிருக்காங்க, ஒருமுறை check பண்ணு",
+                "Hi {name}, நான் {amt} transfer பண்ணிட்டேன், screenshot அனுப்புறேன். Ref {ref}",
+                "இந்த மாச rent {amt} கொஞ்சம் late-ஆ அனுப்புவேன், {date}-க்குள் கண்டிப்பா",
             ],
         },
         "security_advisory": {
@@ -448,25 +244,10 @@ TEMPLATES = {
                 "Beware! UPI PIN is not required to receive money. Do not click unknown links -{bank}",
                 "RBI says: report fraud calls at 1930. Update your KYC only at {bank} branch",
             ],
-            "hi": [
-                "{bank} kabhi bhi call/SMS se aapka PIN, OTP ya CVV nahi maangta. KYC update ke liye sirf branch jaayein ya official app use karein",
-                "Saavdhan! Paise receive karne ke liye UPI PIN ki zaroorat nahi hoti. Kisi anjaan link pe click na karein -{bank}",
-                "RBI kehta hai: fraud call aaye to 1930 pe report karein. Apna KYC sirf {bank} branch me update karein",
-            ],
             "ta": [
-                "{bank} eppovum call/SMS moolama ungal PIN, OTP, CVV kekkadhu. KYC update-ku branch-ku mattum ponga illa official app use pannunga",
-                "Jaakiradhai! Panam receive panna UPI PIN theva illa. Theriyaadha link-a click pannadheenga -{bank}",
-                "RBI: fraud call vandha 1930-la report pannunga. Ungal KYC-a {bank} branch-la mattum update pannunga",
-            ],
-            "bn": [
-                "{bank} kokhono call/SMS e apnar PIN, OTP ba CVV chay na. KYC update er jonno shudhu branch e jan ba official app use korun",
-                "Sabdhan! Taka receive korte UPI PIN lage na. Ochena link e click korben na -{bank}",
-                "RBI: fraud call ele 1930 e report korun. Apnar KYC shudhu {bank} branch e update korun",
-            ],
-            "te": [
-                "{bank} eppudu call/SMS dwara mee PIN, OTP leda CVV adagadu. KYC update kosam branch ki matrame vellandi leda official app vadandi",
-                "Jagratta! Dabbulu receive cheyyadaniki UPI PIN avasaram ledu. Teliyani link click cheyakandi -{bank}",
-                "RBI: fraud call vaste 1930 lo report cheyandi. Mee KYC ni {bank} branch lo matrame update cheyandi",
+                "{bank} ஒருபோதும் call/SMS மூலம் உங்கள் PIN, OTP அல்லது CVV கேட்காது. KYC update-க்கு branch-க்குச் செல்லுங்கள் அல்லது official app-ஐ மட்டும் பயன்படுத்துங்கள்",
+                "எச்சரிக்கை! பணம் பெற UPI PIN தேவையில்லை. தெரியாத link-களை click செய்ய வேண்டாம் -{bank}",
+                "RBI: மோசடி அழைப்புகளை 1930-ல் புகார் செய்யுங்கள். உங்கள் KYC-ஐ {bank} branch-ல் மட்டுமே update செய்யுங்கள்",
             ],
         },
         "bill_paid": {
@@ -475,25 +256,10 @@ TEMPLATES = {
                 "Payment of {amt} for your {merchant} order is successful. Order will be delivered by {date}",
                 "Your {app} recharge of {amt} is successful. Validity {days} days. Ref {ref}",
             ],
-            "hi": [
-                "Aapka {company} bill {amt} successfully pay ho gaya. Transaction ID {ref}. Dhanyavaad",
-                "{merchant} order ke liye {amt} ki payment safal rahi. Order {date} tak deliver hoga",
-                "Aapka {app} recharge {amt} successful. Validity {days} din. Ref {ref}",
-            ],
             "ta": [
-                "Ungal {company} bill {amt} vetrigaramaga pay aagiduchu. Transaction ID {ref}. Nandri",
-                "{merchant} order-ku {amt} payment success. Order {date} kulla deliver aagum",
-                "Ungal {app} recharge {amt} success. Validity {days} naal. Ref {ref}",
-            ],
-            "bn": [
-                "Apnar {company} bill {amt} successfully pay hoyeche. Transaction ID {ref}. Dhonnobad",
-                "{merchant} order er jonno {amt} payment safol hoyeche. Order {date} er moddhe deliver hobe",
-                "Apnar {app} recharge {amt} successful. Validity {days} din. Ref {ref}",
-            ],
-            "te": [
-                "Mee {company} bill {amt} vijayavantanga pay ayyindi. Transaction ID {ref}. Dhanyavadalu",
-                "{merchant} order kosam {amt} payment success. Order {date} lopu deliver avutundi",
-                "Mee {app} recharge {amt} successful. Validity {days} rojulu. Ref {ref}",
+                "உங்கள் {company} bill {amt} வெற்றிகரமாக செலுத்தப்பட்டது. Transaction ID {ref}. நன்றி",
+                "உங்கள் {merchant} order-க்கான {amt} payment வெற்றிகரமாக முடிந்தது. Order {date}-க்குள் deliver செய்யப்படும்",
+                "உங்கள் {app} recharge {amt} வெற்றிகரமாக முடிந்தது. Validity {days} நாட்கள். Ref {ref}",
             ],
         },
     },
@@ -505,25 +271,10 @@ TEMPLATES = {
                 "Today only! Pay bills on {app} and win cashback up to {amt}. Open now {link}",
                 "Super offer: flat {amt} cashback on UPI payments at {merchant}. *T&C",
             ],
-            "hi": [
-                "{app} pe {merchant} se payment karein aur payein {pct}% cashback, max {amt}. Offer {date} tak. T&C apply",
-                "Sirf aaj! {app} se bill pay karo aur jeeto {amt} tak cashback. Abhi kholo {link}",
-                "Dhamaka offer: {merchant} pe UPI se pay karne par flat {amt} cashback. *T&C",
-            ],
             "ta": [
-                "{app}-la {merchant} payment pannunga, {pct}% cashback perunga, max {amt}. Offer {date} varai. T&C apply",
-                "Inniku mattum! {app}-la bill pay panni {amt} varai cashback jeyinga. Ippove open pannunga {link}",
-                "Super offer: {merchant}-la UPI-la pay panna flat {amt} cashback. *T&C",
-            ],
-            "bn": [
-                "{app} e {merchant} payment korun ar pan {pct}% cashback, max {amt}. Offer {date} porjonto. T&C apply",
-                "Shudhu aaj! {app} diye bill pay kore jitun {amt} porjonto cashback. Ekhuni khulun {link}",
-                "Darun offer: {merchant} e UPI diye pay korle flat {amt} cashback. *T&C",
-            ],
-            "te": [
-                "{app} lo {merchant} payment cheyandi, {pct}% cashback pondandi, max {amt}. Offer {date} varaku. T&C apply",
-                "Ee roju matrame! {app} lo bill pay chesi {amt} varaku cashback gelavandi. Ippude open cheyandi {link}",
-                "Super offer: {merchant} lo UPI tho pay cheste flat {amt} cashback. *T&C",
+                "{merchant}-ல் {app} மூலம் பணம் செலுத்தி {pct}% cashback பெறுங்கள், அதிகபட்சம் {amt}. Offer {date} வரை. T&C apply",
+                "இன்று மட்டும்! {app}-ல் bill செலுத்தி {amt} வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் {link}",
+                "Super offer: {merchant}-ல் UPI payment-க்கு flat {amt} cashback. *T&C",
             ],
         },
         "sale_offer": {
@@ -532,25 +283,10 @@ TEMPLATES = {
                 "Big sale alert! {pct}% off on electronics at {merchant} for {days} days only. T&C",
                 "Flat {pct}% off on new collection, visit {merchant} store or order at {link}",
             ],
-            "hi": [
-                "{merchant} Diwali sale shuru! Har product pe {pct}% tak off. Shop now {link}",
-                "Big sale alert! {merchant} pe electronics pe {pct}% off sirf {days} din ke liye. T&C",
-                "Naye collection pe flat {pct}% chhoot, {merchant} store pe aayein ya order karein {link}",
-            ],
             "ta": [
-                "{merchant} Deepavali sale aarambam! Ella product-kum {pct}% varai off. Shop now {link}",
-                "Big sale alert! {merchant}-la electronics-ku {pct}% off {days} naal mattum. T&C",
-                "Pudhu collection-ku flat {pct}% thallupadi, {merchant} store-ku vaanga illa order pannunga {link}",
-            ],
-            "bn": [
-                "{merchant} Pujo sale shuru! Sob product e {pct}% porjonto chhar. Shop now {link}",
-                "Big sale alert! {merchant} e electronics e {pct}% off shudhu {days} din. T&C",
-                "Notun collection e flat {pct}% chhar, {merchant} store e ashun ba order korun {link}",
-            ],
-            "te": [
-                "{merchant} Dasara sale modalaindi! Anni products pai {pct}% varaku off. Shop now {link}",
-                "Big sale alert! {merchant} lo electronics pai {pct}% off {days} rojulu matrame. T&C",
-                "Kotha collection pai flat {pct}% discount, {merchant} store ki randi leda order cheyandi {link}",
+                "{merchant} தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் {pct}% வரை தள்ளுபடி. Shop now {link}",
+                "Big sale alert! {merchant}-ல் electronics-க்கு {pct}% off, {days} நாட்கள் மட்டும். T&C",
+                "புதிய collection-க்கு flat {pct}% தள்ளுபடி, {merchant} store-க்கு வாருங்கள் அல்லது {link}-ல் order செய்யுங்கள்",
             ],
         },
         "loan_promo": {
@@ -559,25 +295,10 @@ TEMPLATES = {
                 "{bank} Gold loan now at just {rate}% interest. Visit nearest branch",
                 "Fulfil your dream home with {bank} home loan. Low EMI, quick approval. {link}",
             ],
-            "hi": [
-                "{bank}: Aapke liye pre-approved personal loan {amt} tak, attractive interest rate. Apply karein {bank} app pe. T&C apply",
-                "{bank} Gold loan ab sirf {rate}% byaj par. Najdeeki branch me sampark karein",
-                "Ghar ka sapna poora karein {bank} home loan ke saath. Kam EMI, jaldi approval. {link}",
-            ],
             "ta": [
-                "{bank}: ungalukku {amt} varai pre-approved personal loan, kuraindha vatti. {bank} app-la apply pannunga. T&C apply",
-                "{bank} Gold loan ippo {rate}% vatti-la. Pakkathula irukkura branch-a contact pannunga",
-                "Sondha veedu kanavu {bank} home loan-oda niraiverum. Kuraindha EMI, seekiram approval. {link}",
-            ],
-            "bn": [
-                "{bank}: apnar jonno {amt} porjonto pre-approved personal loan, kom sud. {bank} app e apply korun. T&C apply",
-                "{bank} Gold loan ekhon matro {rate}% sude. Kacher branch e jogajog korun",
-                "Nijer barir swapno puron korun {bank} home loan diye. Kom EMI, druto approval. {link}",
-            ],
-            "te": [
-                "{bank}: meeku {amt} varaku pre-approved personal loan, takkuva vaddi. {bank} app lo apply cheyandi. T&C apply",
-                "{bank} Gold loan ippudu {rate}% vaddi ki. Daggaralo unna branch ni sampradinchandi",
-                "Sontha illu kala {bank} home loan tho neraverchukondi. Takkuva EMI, twaraga approval. {link}",
+                "{bank}: உங்களுக்கு {amt} வரை pre-approved personal loan, குறைந்த வட்டியில். {bank} app-ல் apply செய்யுங்கள். T&C apply",
+                "{bank} Gold loan இப்போது {rate}% வட்டியில் மட்டுமே. அருகிலுள்ள branch-க்கு வாருங்கள்",
+                "{bank} home loan உடன் உங்கள் சொந்த வீட்டுக் கனவை நனவாக்குங்கள். குறைந்த EMI, விரைவான approval. {link}",
             ],
         },
         "recharge_plan": {
@@ -586,25 +307,10 @@ TEMPLATES = {
                 "Your {company2} plan expires in {days} days. Recharge now and enjoy unlimited data {link}",
                 "Special offer: extra 10GB data free on {amt} recharge. Hurry!",
             ],
-            "hi": [
-                "{company2} ka naya plan: {amt} me 2GB/din, unlimited calls, {days} din validity. Recharge karein {app} pe",
-                "Aapka {company2} plan {days} din me khatam ho raha hai. Recharge karke unlimited data ka maza lein {link}",
-                "Special offer: {amt} ke recharge pe extra 10GB data free. Jaldi karein!",
-            ],
             "ta": [
-                "{company2} pudhu plan: {amt}-ku 2GB/naal, unlimited calls, {days} naal validity. {app}-la recharge pannunga",
-                "Ungal {company2} plan {days} naal-la mudiyudhu. Recharge panni unlimited data enjoy pannunga {link}",
-                "Special offer: {amt} recharge-ku extra 10GB data free. Seekiram!",
-            ],
-            "bn": [
-                "{company2} er notun plan: {amt} e 2GB/din, unlimited calls, {days} din validity. {app} e recharge korun",
-                "Apnar {company2} plan {days} din e shesh hocche. Recharge kore unlimited data upobhog korun {link}",
-                "Special offer: {amt} recharge e extra 10GB data free. Taratari korun!",
-            ],
-            "te": [
-                "{company2} kotha plan: {amt} ki 2GB/roju, unlimited calls, {days} rojula validity. {app} lo recharge cheyandi",
-                "Mee {company2} plan {days} rojullo aipotundi. Recharge chesi unlimited data enjoy cheyandi {link}",
-                "Special offer: {amt} recharge ki extra 10GB data free. Twaraga cheyandi!",
+                "{company2} புதிய plan: {amt}-க்கு தினமும் 2GB, unlimited calls, {days} நாட்கள் validity. {app}-ல் recharge செய்யுங்கள்",
+                "உங்கள் {company2} plan {days} நாட்களில் முடிவடைகிறது. இப்போதே recharge செய்து unlimited data அனுபவியுங்கள் {link}",
+                "Special offer: {amt} recharge-க்கு கூடுதல் 10GB data இலவசம். சீக்கிரம்!",
             ],
         },
         "rewards_points": {
@@ -613,36 +319,15 @@ TEMPLATES = {
                 "You won a {app} scratch card! Check rewards section in your {app} app",
                 "You have coins worth {amt} in your {merchant} wallet, use them on your next purchase. Valid {days} days",
             ],
-            "hi": [
-                "Aapke {bank} credit card ke reward points {date} ko expire ho rahe hai. Inhe {bank} app me redeem karein",
-                "{app} scratch card jeeta! Apne {app} app me rewards section check karein",
-                "Aapke {merchant} wallet me {amt} ke coins hai, agli shopping me use karein. Valid {days} din",
-            ],
             "ta": [
-                "Ungal {bank} credit card reward points {date} anru expire aagum. {bank} app-la redeem pannunga",
-                "{app} scratch card jeyichirukeenga! Ungal {app} app-la rewards section paarunga",
-                "Ungal {merchant} wallet-la {amt} coins irukku, adutha shopping-la use pannunga. {days} naal valid",
-            ],
-            "bn": [
-                "Apnar {bank} credit card er reward points {date} e expire hobe. {bank} app e redeem korun",
-                "{app} scratch card jitechen! Apnar {app} app e rewards section dekhun",
-                "Apnar {merchant} wallet e {amt} er coins ache, porer shopping e use korun. {days} din valid",
-            ],
-            "te": [
-                "Mee {bank} credit card reward points {date} na expire avutayi. {bank} app lo redeem cheyandi",
-                "{app} scratch card gelicharu! Mee {app} app lo rewards section chudandi",
-                "Mee {merchant} wallet lo {amt} coins unnayi, next shopping lo vadandi. {days} rojulu valid",
+                "உங்கள் {bank} credit card reward points {date} அன்று காலாவதியாகும். {bank} app-ல் redeem செய்யுங்கள்",
+                "நீங்கள் {app} scratch card வென்றுள்ளீர்கள்! உங்கள் {app} app-ல் rewards பகுதியைப் பாருங்கள்",
+                "உங்கள் {merchant} wallet-ல் {amt} மதிப்புள்ள coins உள்ளன, அடுத்த shopping-ல் பயன்படுத்துங்கள். {days} நாட்கள் செல்லுபடியாகும்",
             ],
         },
     },
 }
 
-LANGS = ["en", "hi", "ta", "bn", "te"]
-LANG_NAMES = {
-    "en": "English",
-    "hi": "Hindi-English",
-    "ta": "Tamil-English",
-    "bn": "Bengali-English",
-    "te": "Telugu-English",
-}
+LANGS = ["en", "ta"]
+LANG_NAMES = {"en": "English", "ta": "Tamil–English"}
 LABELS = ["legit", "promo", "scam"]

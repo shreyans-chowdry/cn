@@ -1,1 +1,0 @@
-{"model": "union_lr+norm", "thr": 0.7999999999999999, "ensemble_top": ["union_lr+norm", "char_lr", "word_lr"]}

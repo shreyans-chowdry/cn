@@ -1,146 +1,165 @@
 {
-  "n_total": 11986,
+  "n_total": 9970,
   "by_split": {
-    "train": 6813,
-    "test": 3971,
-    "val": 1202
+    "train": 5721,
+    "test": 3240,
+    "val": 1009
   },
   "by_label": {
-    "legit": 5393,
-    "scam": 4199,
-    "promo": 2394
+    "legit": 4377,
+    "scam": 3596,
+    "promo": 1997
   },
   "by_lang_label": {
-    "bn|legit": 1079,
-    "bn|promo": 476,
-    "bn|scam": 839,
-    "en|legit": 1079,
-    "en|promo": 479,
-    "en|scam": 840,
-    "hi|legit": 1078,
-    "hi|promo": 480,
-    "hi|scam": 840,
-    "ta|legit": 1079,
-    "ta|promo": 479,
-    "ta|scam": 840,
-    "te|legit": 1078,
-    "te|promo": 480,
-    "te|scam": 840
+    "en|legit": 2185,
+    "en|promo": 998,
+    "en|scam": 1797,
+    "ta|legit": 2192,
+    "ta|promo": 999,
+    "ta|scam": 1799
   },
   "by_subtype": [
     [
       "legit",
+      "autopay_mandate",
+      550
+    ],
+    [
+      "legit",
       "bill_paid",
-      775
+      550
     ],
     [
       "legit",
       "collect_genuine",
-      775
+      550
     ],
     [
       "legit",
       "credit_alert",
-      770
+      550
     ],
     [
       "legit",
       "debit_alert",
-      770
+      550
     ],
     [
       "legit",
       "otp",
-      770
+      550
     ],
     [
       "legit",
       "personal",
-      770
+      550
     ],
     [
       "legit",
       "security_advisory",
-      763
+      527
     ],
     [
       "promo",
       "cashback_offer",
-      480
+      400
     ],
     [
       "promo",
       "loan_promo",
-      478
+      399
     ],
     [
       "promo",
       "recharge_plan",
-      480
+      400
     ],
     [
       "promo",
       "rewards_points",
-      476
+      398
     ],
     [
       "promo",
       "sale_offer",
-      480
+      400
     ],
     [
       "scam",
       "bill_disconnect",
-      420
+      328
     ],
     [
       "scam",
       "fake_support",
-      419
+      324
     ],
     [
       "scam",
       "job_task",
-      420
+      328
     ],
     [
       "scam",
       "kyc_block",
-      420
+      328
     ],
     [
       "scam",
       "loan_instant",
-      420
+      328
     ],
     [
       "scam",
       "lottery_prize",
-      420
+      328
     ],
     [
       "scam",
       "parcel_customs",
-      420
+      328
+    ],
+    [
+      "scam",
+      "qr_receive",
+      326
     ],
     [
       "scam",
       "refund_collect",
-      420
+      326
     ],
     [
       "scam",
       "reward_phish",
-      420
+      326
     ],
     [
       "scam",
       "wrong_transfer",
-      420
+      326
     ]
   ],
-  "mixed_script_share": 0.09219088937093275,
-  "n_templates": 335,
-  "mean_chars": 112.96187218421491,
-  "mean_words": 17.294843984648757
+  "code_mixing": {
+    "en": {
+      "mean_cmi": 0.0,
+      "tamil_token_share": 0.0,
+      "english_token_share": 1.0,
+      "detected_as": {
+        "English": 4980
+      }
+    },
+    "ta": {
+      "mean_cmi": 40.4736873747495,
+      "tamil_token_share": 0.48961144013384167,
+      "english_token_share": 0.5103885598661584,
+      "detected_as": {
+        "Tamil\u2013English": 4989,
+        "Tamil": 1
+      }
+    }
+  },
+  "n_templates": 146,
+  "mean_chars": 117.06529588766298,
+  "mean_words": 16.68936810431294
 }

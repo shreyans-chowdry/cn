@@ -7,3 +7,9 @@ artifacts/*__clean/
 artifacts/*__adv/
 .pytest_cache/
 .DS_Store
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/*.iml

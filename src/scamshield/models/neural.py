@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from sklearn.metrics import f1_score
 
 torch.set_num_threads(max(1, torch.get_num_threads()))
-_WORD_RE = re.compile(r"\w+|[^\w\s]", re.UNICODE)
+_WORD_RE = re.compile(r"[\w\u0B80-\u0BFF]+|[^\w\s\u0B80-\u0BFF]", re.UNICODE)
 
 
 def word_tokens(t):

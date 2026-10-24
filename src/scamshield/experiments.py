@@ -21,6 +21,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from sklearn.metrics import f1_score
 
 from .data.generator import generate
 from .data.templates import LANGS
@@ -44,13 +45,13 @@ PRETTY = {"word_nb": "Word NB", "word_rf": "Word RF", "word_lr": "Word LR", "wor
           "char_lr": "Char LR", "char_svm": "Char SVM", "word_bigru": "Word BiGRU", "char_cnn": "Char CNN",
           "distil_mbert": "DistilmBERT", "xlmr": "XLM-R", "muril": "MuRIL", "canine": "CANINE-S"}
 THREATS = ["targeted", "uniform"]
-TRANSFORMER_TRAIN_FRAC = float(os.environ.get("TRANSFORMER_TRAIN_FRAC", "0.5"))
+TRANSFORMER_TRAIN_FRAC = float(os.environ.get("TRANSFORMER_TRAIN_FRAC", "1.0"))
 SAVE_FOR_APP ={"word_lr", "char_lr", "char_svm", "word_bigru", "char_cnn", "distil_mbert"}
 
 
 # ------------------------------------------------------------------ helpers
 def load_df():
-    p = DATA / "upi_cmx.csv"
+    p = DATA / "upi_bisms.csv"
     if not p.exists():
         df = generate()
         df.to_csv(p, index=False)
@@ -81,6 +82,18 @@ def perturb(df, level, threat, seed):
             out.append(t)
         else:
             out.append(obfuscate(t, level, lang, seed=hash((seed, level, i)) & 0xFFFFFFFF))
+    return out
+
+
+def _code_mixing_stats(df):
+    from .langid import identify
+    out = {}
+    for lang, g in df.groupby("lang"):
+        ids = [identify(t) for t in g.text]
+        out[lang] = {"mean_cmi": float(np.mean([i["cmi"] for i in ids])),
+                     "tamil_token_share": float(np.mean([i["shares"]["ta"] + i["shares"]["ta-rom"] for i in ids])),
+                     "english_token_share": float(np.mean([i["shares"]["en"] for i in ids])),
+                     "detected_as": pd.Series([i["name"] for i in ids]).value_counts().to_dict()}
     return out
 
 
@@ -125,7 +138,7 @@ def prepare(obf_seeds=(0, 1, 2)):
           "by_label": df.label.value_counts().to_dict(),
           "by_lang_label": {f"{a}|{b}": int(v) for (a, b), v in df.groupby(["lang", "label"]).size().items()},
           "by_subtype": df.groupby(["label", "subtype"]).size().reset_index().values.tolist(),
-          "mixed_script_share": float((df.script == "mixed").mean()),
+          "code_mixing": _code_mixing_stats(df),
           "n_templates": int(df.template_id.nunique() * len(LANGS)),
           "mean_chars": float(df.text.str.len().mean()), "mean_words": float(df.text.str.split().str.len().mean())}
     json.dump(ds, open(RES / "dataset_stats.json", "w"), indent=2)
@@ -159,6 +172,8 @@ def run(exp, model_name, regime, train_df, val_df, suite, y_test, seed=0, save_m
         train_df = (train_df.groupby(["template_id", "lang"], group_keys=False)
                     .apply(lambda g: g.sample(frac=TRANSFORMER_TRAIN_FRAC, random_state=seed)))
         val_df = val_df.sample(min(len(val_df), 600), random_state=seed)
+    if model_name in TRANSFORMERS:
+        # compute budget on CPU: transformers are evaluated on obfuscation seed 0 only
         suite = {k: v for k, v in suite.items() if k == "L0" or k.endswith("_s0") or not k.startswith("L")}
     print(f"[run] {exp}/{tag}  train={len(train_df)}", flush=True)
     norm = regime == "norm"
@@ -254,6 +269,97 @@ def stage_cues(models, obf_seeds):
         run("cues", name, "masked", tr, va, suite, y, seed=0)
 
 
+def stage_external():
+    """External validity with real public corpora (Ayushmaan's datasets) and the link-intelligence ablation.
+
+    Three training recipes, all with the production model family (char 2-5-gram LR on canonicalised text):
+      bisms_only   UPI-BiSMS train+val
+      public_only  Mishra & Soni (3-class) + UCI/ExAIS genuine messages, train portions
+      joint        both
+    Tested on the UPI-BiSMS test set (3-class, per language) and on held-out public messages
+    (binary: genuine vs unwanted), plus the machine-translated multilingual UCI as a stress test."""
+    import sys as _s
+    _s.path.insert(0, str(ROOT / "scripts"))
+    from train_production import build_pipeline
+    from .data import public as PUB
+    from .net import urlintel
+    out_dir = RES / "external"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    df = load_df()
+    btr, bte = df[df.split != "test"], df[df.split == "test"]
+    pub = PUB.load_public()
+    ptr, pte = PUB.grouped_split(pub, 0.2, seed=0)
+    ptr3 = ptr[ptr.label3.isin(LABELS)]
+    hf = PUB.load_hf_multi()
+    hf = hf[hf.group.isin(set(pte.group))]          # only translations of held-out messages (no leakage)
+    hf = pd.concat([g.sample(min(len(g), 600), random_state=0) for _, g in hf.groupby("lang")], ignore_index=True)
+    hf["binary"] = hf.label3.ne("legit").astype(int)
+    recipes = {"bisms_only": (list(btr.text), list(btr.label)),
+               "public_only": (list(ptr3.text), list(ptr3.label3)),
+               "joint": (list(btr.text) + list(ptr3.text), list(btr.label) + list(ptr3.label3))}
+    rows, fusion_rows = [], []
+    for name, (X, y) in recipes.items():
+        print(f"[external] {name}: {len(X)} training messages", flush=True)
+        pipe = build_pipeline().fit(X, y)
+        order = [list(pipe.classes_).index(c) for c in LABELS]
+        for lang in LANGS:
+            g = bte[bte.lang == lang]
+            m = all_metrics(pipe.predict_proba(g.text.tolist())[:, order], g.label.map(LAB).values)
+            rows.append({"train": name, "test": f"UPI-BiSMS ({lang})", "n": len(g), "macro_f1": m["macro_f1"],
+                         "scam_fnr": m["fnr_scam"], "scam_fpr": m["fpr_scam"], "ece": m["ece"]})
+        tests = [(f"{s} (held out)", g) for s, g in pte.groupby("source")] + \
+                [(f"hf_multi:{lg}", g) for lg, g in hf.groupby("lang")]
+        for tname, g in tests:
+            p = pipe.predict_proba(g.text.tolist())[:, order]
+            pred = (p[:, LAB["legit"]] < 0.5).astype(int)
+            yb = g.binary.values
+            row = {"train": name, "test": tname, "n": len(g),
+                   "binary_macro_f1": f1_score(yb, pred, average="macro"),
+                   "unwanted_recall": float(pred[yb == 1].mean()) if (yb == 1).any() else np.nan,
+                   "genuine_fpr": float(pred[yb == 0].mean()) if (yb == 0).any() else np.nan}
+            if g.label3.isin(LABELS).all():
+                m = all_metrics(p, g.label3.map(LAB).values)
+                row.update({"macro_f1": m["macro_f1"], "scam_fnr": m["fnr_scam"], "scam_fpr": m["fpr_scam"], "ece": m["ece"]})
+            rows.append(row)
+        if name == "joint":
+            # link-intelligence ablation (lexical URL features only: synthetic and 2010s domains do not resolve today)
+            for tname, g, ycol in [("UPI-BiSMS test", bte, "label"), ("mishra_soni (held out)", pte[pte.source == "mishra_soni"], "label3")]:
+                p = pipe.predict_proba(g.text.tolist())[:, order]
+                risk = np.array([urlintel.analyse(t)["risk"] for t in g.text])
+                y3 = g[ycol].map(LAB).values
+                for variant, pp in (("text only", p), ("text + link intelligence", _fuse(p, risk))):
+                    m = all_metrics(pp, y3)
+                    fusion_rows.append({"test": tname, "variant": variant, "n": len(g), "with_link": int((risk > 0).sum()),
+                                        "macro_f1": m["macro_f1"], "scam_fnr": m["fnr_scam"], "scam_fpr": m["fpr_scam"]})
+    pd.DataFrame(rows).to_csv(TAB_DIR() / "table13_external.csv", index=False)
+    pd.DataFrame(fusion_rows).to_csv(TAB_DIR() / "table14_link_fusion.csv", index=False)
+    print(pd.DataFrame(rows).round(3).to_string(index=False))
+    print(pd.DataFrame(fusion_rows).round(3).to_string(index=False))
+
+
+def _fuse(p, risk, w=0.6):
+    """Same fusion rule as scamshield.detector, vectorised. p columns follow LABELS."""
+    p = p.copy()
+    si = LAB["scam"]
+    ps = 1 - (1 - p[:, si]) * (1 - w * risk)
+    rest = np.clip(1 - p[:, si], 1e-9, None)
+    for c in (LAB["legit"], LAB["promo"]):
+        p[:, c] = p[:, c] * (1 - ps) / rest
+    p[:, si] = ps
+    return p
+
+
+def TAB_DIR():
+    d = RES / "tables"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def stage_network():
+    from .net.experiments import run_all
+    run_all(RES)
+
+
 def stage_latency(models, n=200):
     df = load_df()
     te = df[df.split == "test"].sample(n, random_state=0).text.tolist()
@@ -299,7 +405,7 @@ def stage_latency(models, n=200):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["prepare", "main", "xling", "cues", "latency", "analyze", "all"])
+    ap.add_argument("stage", choices=["prepare", "main", "xling", "cues", "external", "network", "latency", "analyze", "all"])
     ap.add_argument("--models", default=",".join(CLASSICAL + NEURAL + TRANSFORMERS))
     ap.add_argument("--regimes", default="clean,adv,norm")
     ap.add_argument("--obf-seeds", default="0,1,2")
@@ -315,6 +421,10 @@ def main():
         stage_xling(models)
     if a.stage in ("cues", "all"):
         stage_cues(models, obf_seeds)
+    if a.stage in ("external", "all"):
+        stage_external()
+    if a.stage in ("network", "all"):
+        stage_network()
     if a.stage in ("latency", "all"):
         stage_latency(models)
     if a.stage in ("analyze", "all"):

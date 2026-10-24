@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ScamShield</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Sans+Devanagari&family=Noto+Sans+Tamil&family=Noto+Sans+Bengali&family=Noto+Sans+Telugu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
@@ -13,88 +13,133 @@
 <header class="top">
   <div class="brand">
     <h1>ScamShield</h1>
-    <p>Do UPI scam detectors still work when the message is written in Hinglish, Tanglish, Benglish or Tenglish — and deliberately misspelled?</p>
+    <p>Catches UPI payment scams in English and Tamil–English SMS, even when the words are disguised.</p>
   </div>
-  <nav class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-tab="lab">Test a message</button>
-    <button role="tab" aria-selected="false" data-tab="results">Experiment results</button>
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" aria-selected="true" data-tab="check">Check a message</button>
+    <button role="tab" aria-selected="false" data-tab="lab">Disguise lab</button>
+    <button role="tab" aria-selected="false" data-tab="network">Network</button>
+    <button role="tab" aria-selected="false" data-tab="results">Results</button>
   </nav>
 </header>
 
 <main>
-<section id="lab" class="tab-panel">
-  <div class="lab-grid">
-    <div class="composer">
-      <div class="composer-head">
-        <h2>Message</h2>
-        <div class="samples">
-          <span>Load a test message:</span>
-          <select id="sample-lang" aria-label="Sample language">
-            <option value="">any language</option>
-            <option value="hi">Hindi-English</option>
-            <option value="ta">Tamil-English</option>
-            <option value="bn">Bengali-English</option>
-            <option value="te">Telugu-English</option>
-            <option value="en">English</option>
-          </select>
-          <button class="ghost" data-sample="scam">Scam</button>
-          <button class="ghost" data-sample="legit">Genuine</button>
-          <button class="ghost" data-sample="promo">Promo</button>
-        </div>
+<!-- ============================================================ CHECK -->
+<section id="check" class="panel">
+  <div class="split">
+    <div class="pane">
+      <h2>Message</h2>
+      <p class="hint">Paste any SMS. English, Tamil, or both mixed together: the language is detected for you.</p>
+      <textarea id="msg" rows="5" spellcheck="false" aria-label="Message text">உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9</textarea>
+      <div class="samples" aria-label="Sample messages">
+        <span>Try:</span>
+        <button class="chip" data-sample="ta-scam">Tamil–English scam</button>
+        <button class="chip" data-sample="pin">UPI PIN trick</button>
+        <button class="chip" data-sample="disguised">Disguised spelling</button>
+        <button class="chip" data-sample="romanised">Romanised Tamil</button>
+        <button class="chip" data-sample="genuine">Genuine bank alert</button>
+        <button class="chip" data-sample="promo">Promotion</button>
+        <button class="chip ghost" data-random="1">Random test message</button>
       </div>
-      <textarea id="msg" rows="4" spellcheck="false">Dear customer aapka SBI account aaj raat 12 baje block ho jayega. KYC update karne ke liye turant is link pe click karein sbi-kyc.xyz/aB3d</textarea>
-
-      <div class="attack">
-        <div class="attack-head">
-          <h3>Obfuscate it</h3>
-          <span id="level-name" class="level-name">L0 · clean</span>
-        </div>
-        <input id="level" type="range" min="0" max="4" step="1" value="0" aria-label="Obfuscation level">
-        <div class="ticks"><span>clean</span><span>light</span><span>moderate</span><span>heavy</span><span>cross-script</span></div>
-        <p class="hint">Each step adds tricks scammers use: misspellings, then leetspeak and K.Y.C-style separators, then look-alike Cyrillic letters and invisible characters, then key words rewritten in Indian scripts.</p>
-      </div>
-
-      <div class="phone" aria-live="polite">
-        <div class="bubble" id="bubble"></div>
-        <div class="legend-marks">
-          <span><i class="mk homo"></i>look-alike letter</span>
-          <span><i class="mk zw"></i>invisible character</span>
-          <span><i class="mk leet"></i>digit/symbol swap</span>
-          <span><i class="mk script"></i>other script</span>
-        </div>
-      </div>
-
-      <div class="actions">
-        <label class="check"><input type="checkbox" id="norm"> Canonicalise text before classifying</label>
-        <button id="reshuffle" class="ghost">New random obfuscation</button>
-        <button id="analyze" class="primary">Classify message</button>
+      <div class="row-actions">
+        <label class="check"><input type="checkbox" id="dns" checked> Look up links in DNS</label>
+        <button id="analyze" class="primary">Check message</button>
       </div>
     </div>
 
-    <div class="verdicts">
-      <div class="verdict-head">
-        <h2>Model verdicts</h2>
-        <span id="lang-tag" class="lang-tag"></span>
+    <div class="pane verdict-pane" aria-live="polite">
+      <div id="verdict" class="verdict empty">
+        <p>The verdict appears here: whether the message is a scam, a promotion or genuine, and why.</p>
       </div>
-      <div id="ensemble" class="ensemble empty">Classify a message to see how each model reads it.</div>
-      <div id="model-rows"></div>
-      <p class="foot">Bars show probability of <b class="c-legit">genuine</b>, <b class="c-promo">promo</b> and <b class="c-scam">scam</b>. “AT” = adversarially trained.</p>
+      <div id="details"></div>
     </div>
-  </div>
-
-  <div class="stress">
-    <div class="stress-head">
-      <h2>Where does each model break?</h2>
-      <button id="run-stress" class="ghost">Run L0 → L4 on this message</button>
-    </div>
-    <p class="hint">Scam probability assigned by every model as the same message is obfuscated harder. A line falling below 0.5 means the scam slips through.</p>
-    <div class="chart-wrap"><canvas id="stress-chart" aria-label="Scam probability by obfuscation level"></canvas></div>
   </div>
 </section>
 
-<section id="results" class="tab-panel" hidden>
-  <div id="results-body"><p class="hint">Loading results…</p></div>
+<!-- ============================================================ LAB -->
+<section id="lab" class="panel" hidden>
+  <div class="split">
+    <div class="pane">
+      <h2>Disguise a scam</h2>
+      <p class="hint">Scammers misspell the words filters look for. Drag the slider to apply the same tricks, from light typos up to rewriting words in the other script.</p>
+      <textarea id="lab-msg" rows="4" spellcheck="false" aria-label="Message to disguise">Congratulations! You have received ₹4,999 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN</textarea>
+      <div class="level-head"><span>Disguise level</span><b id="level-name">L0 · clean</b></div>
+      <input id="level" type="range" min="0" max="4" step="1" value="0" aria-label="Disguise level">
+      <div class="ticks"><span>clean</span><span>light</span><span>moderate</span><span>heavy</span><span>cross-script</span></div>
+      <ol class="levels">
+        <li><b>Light</b> typos: dropped vowels, repeated letters, ல/ள/ழ mix-ups, missing ்</li>
+        <li><b>Moderate</b> digits for letters (P1N, @ccount) and dotted words (K.Y.C)</li>
+        <li><b>Heavy</b> look-alike Cyrillic letters, Tamil digits that look like letters (௧ for க), invisible characters</li>
+        <li><b>Cross-script</b> English words written in Tamil (அக்கவுண்ட்), Tamil words written in English letters (udane)</li>
+      </ol>
+    </div>
+    <div class="pane">
+      <h2>What the phone receives</h2>
+      <div class="sms"><div id="bubble" class="bubble"></div></div>
+      <div class="legend">
+        <span><i class="k homo"></i>look-alike letter</span><span><i class="k zw"></i>invisible character</span>
+        <span><i class="k leet"></i>digit or symbol</span><span><i class="k script"></i>switched script</span>
+      </div>
+      <h3>After ScamShield cleans it up</h3>
+      <p id="normalized" class="normalized"></p>
+      <div class="row-actions"><button id="reshuffle" class="ghost">Another random disguise</button><button id="lab-check" class="primary">Check this version</button></div>
+      <p id="lab-verdict" class="hint"></p>
+    </div>
+  </div>
+  <div class="pane wide">
+    <div class="head-row"><h2>Where each model gives up</h2><button id="stress" class="ghost">Run levels 0 to 4</button></div>
+    <p class="hint">Scam probability as the same message is disguised harder. Below the dashed line the scam gets through.</p>
+    <div class="chart"><canvas id="stress-chart" aria-label="Scam probability by disguise level"></canvas></div>
+  </div>
 </section>
+
+<!-- ============================================================ NETWORK -->
+<section id="network" class="panel" hidden>
+  <div class="pane wide">
+    <h2>How a message travels</h2>
+    <div class="flow" aria-label="System overview">
+      <div class="node"><b>Phone</b><span>SMS arrives, checked on the phone</span></div>
+      <div class="edge"><span>SSP over TCP :<em id="p-tcp">9099</em></span></div>
+      <div class="node"><b>ScamShield server</b><span>same model + DNS link checks</span></div>
+      <div class="edge"><span>DNS over UDP :<em id="p-dns">5353</em></span></div>
+      <div class="node"><b>DNS server</b><span>where does the link really point?</span></div>
+    </div>
+    <p class="hint" id="status-line">Checking services…</p>
+  </div>
+
+  <div class="split">
+    <div class="pane">
+      <h2>Build a protocol frame</h2>
+      <p class="hint">Every request travels as one SSP frame: a 16-byte header, the message as JSON, and a CRC-32 trailer.</p>
+      <input id="frame-text" class="field" value="உங்கள் KYC update செய்யவும்" aria-label="Message for the frame">
+      <div class="row-actions"><button id="frame-flip" class="ghost">Flip a random bit</button><button id="frame-build" class="primary">Build frame</button></div>
+      <div id="frame-out"></div>
+    </div>
+    <div class="pane">
+      <h2>Resolve a link</h2>
+      <p class="hint">Our own DNS client sends a raw UDP query to the demo DNS server. Try a bank domain, a scam domain or an IP address.</p>
+      <div class="inline"><input id="dns-name" class="field" value="sbi-kyc-update.xyz" aria-label="Domain or IP">
+        <select id="dns-type" aria-label="Record type"><option>A</option><option>AAAA</option><option>TXT</option><option>PTR</option></select>
+        <button id="dns-go" class="primary">Look up</button></div>
+      <div class="samples"><span>Try:</span>
+        <button class="chip" data-dns="onlinesbi.sbi">onlinesbi.sbi</button><button class="chip" data-dns="www.hdfcbank.com">www.hdfcbank.com</button>
+        <button class="chip" data-dns="kyc.verify-hdfc.top">kyc.verify-hdfc.top</button><button class="chip" data-dns="refundhdfc.click">refundhdfc.click</button>
+        <button class="chip" data-dns="bigrecord.test" data-type="TXT">big TXT record</button><button class="chip" data-dns="198.51.100.10">198.51.100.10</button></div>
+      <div id="dns-out"></div>
+      <h2 class="mt">Subnet calculator</h2>
+      <div class="inline"><input id="cidr" class="field" value="192.168.10.0/26" aria-label="IP or CIDR block"><button id="cidr-go" class="primary">Calculate</button></div>
+      <div id="cidr-out"></div>
+    </div>
+  </div>
+  <div class="pane wide">
+    <h2>Connect the phone</h2>
+    <p class="hint">Install the Android app, open Network, turn on server mode and enter one of this laptop's addresses below with port <b id="p-tcp2">9099</b>. Phone and laptop must be on the same Wi-Fi.</p>
+    <p id="ips" class="ips"></p>
+  </div>
+</section>
+
+<!-- ============================================================ RESULTS -->
+<section id="results" class="panel" hidden><div id="results-body"><p class="hint">Loading…</p></div></section>
 </main>
 <script src="/static/app.js"></script>
 </body>
