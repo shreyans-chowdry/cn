@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ScamShield</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=Noto+Sans+Tamil:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=Noto+Sans+Tamil:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
@@ -13,7 +13,7 @@
 <header class="top">
   <div class="brand">
     <h1>ScamShield</h1>
-    <p>Catches UPI payment scams in English and Tamil–English SMS, even when the words are disguised.</p>
+    <p>Catches UPI payment scams in English and code-mixed multilingual SMS, even when the words are disguised.</p>
   </div>
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button role="tab" aria-selected="true" data-tab="check">Check a message</button>
@@ -29,14 +29,15 @@
   <div class="split">
     <div class="pane">
       <h2>Message</h2>
-      <p class="hint">Paste any SMS. English, Tamil, or both mixed together: the language is detected for you.</p>
-      <textarea id="msg" rows="5" spellcheck="false" aria-label="Message text">உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9</textarea>
+      <p class="hint">Paste any SMS, in English or mixed with another language: the language is detected for you.</p>
+      <textarea id="msg" rows="5" spellcheck="false" aria-label="Message text">प्रिय ग्राहक, आपका SBI account आज रात 12 बजे block कर दिया जाएगा। तुरंत KYC update करने के लिए इस link पर click करें http://sbi-kyc-update.xyz/a9</textarea>
       <div class="samples" aria-label="Sample messages">
         <span>Try:</span>
-        <button class="chip" data-sample="ta-scam">Tamil–English scam</button>
+        <button class="chip" data-sample="mix-scam">Code-mixed scam</button>
+        <button class="chip" data-sample="mix-scam2">Another script</button>
         <button class="chip" data-sample="pin">UPI PIN trick</button>
         <button class="chip" data-sample="disguised">Disguised spelling</button>
-        <button class="chip" data-sample="romanised">Romanised Tamil</button>
+        <button class="chip" data-sample="romanised">Romanised</button>
         <button class="chip" data-sample="genuine">Genuine bank alert</button>
         <button class="chip" data-sample="promo">Promotion</button>
         <button class="chip ghost" data-random="1">Random test message</button>
@@ -62,15 +63,15 @@
     <div class="pane">
       <h2>Disguise a scam</h2>
       <p class="hint">Scammers misspell the words filters look for. Drag the slider to apply the same tricks, from light typos up to rewriting words in the other script.</p>
-      <textarea id="lab-msg" rows="4" spellcheck="false" aria-label="Message to disguise">Congratulations! You have received ₹4,999 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN</textarea>
+      <textarea id="lab-msg" rows="4" spellcheck="false" aria-label="Message to disguise">आपका ₹2,499 का refund pending है। पाने के लिए collect request approve करें और UPI PIN डालें</textarea>
       <div class="level-head"><span>Disguise level</span><b id="level-name">L0 · clean</b></div>
       <input id="level" type="range" min="0" max="4" step="1" value="0" aria-label="Disguise level">
       <div class="ticks"><span>clean</span><span>light</span><span>moderate</span><span>heavy</span><span>cross-script</span></div>
       <ol class="levels">
-        <li><b>Light</b> typos: dropped vowels, repeated letters, ல/ள/ழ mix-ups, missing ்</li>
+        <li><b>Light</b> typos: dropped vowels, repeated letters, confusable letters (श/ष/स, ல/ள/ழ), wrong vowel length</li>
         <li><b>Moderate</b> digits for letters (P1N, @ccount) and dotted words (K.Y.C)</li>
-        <li><b>Heavy</b> look-alike Cyrillic letters, Tamil digits that look like letters (௧ for க), invisible characters</li>
-        <li><b>Cross-script</b> English words written in Tamil (அக்கவுண்ட்), Tamil words written in English letters (udane)</li>
+        <li><b>Heavy</b> look-alike letters from other alphabets (Cyrillic а for a, Gujarati ત for त, the Tamil digit ௧ for க), invisible characters</li>
+        <li><b>Cross-script</b> English words written in the other script (अकाउंट, அக்கவுண்ட்), native words written in English letters (turant, udane)</li>
       </ol>
     </div>
     <div class="pane">
@@ -111,7 +112,7 @@
     <div class="pane">
       <h2>Build a protocol frame</h2>
       <p class="hint">Every request travels as one SSP frame: a 16-byte header, the message as JSON, and a CRC-32 trailer.</p>
-      <input id="frame-text" class="field" value="உங்கள் KYC update செய்யவும்" aria-label="Message for the frame">
+      <input id="frame-text" class="field" value="आपका KYC update करें" aria-label="Message for the frame">
       <div class="row-actions"><button id="frame-flip" class="ghost">Flip a random bit</button><button id="frame-build" class="primary">Build frame</button></div>
       <div id="frame-out"></div>
     </div>

@@ -1,74 +1,68 @@
 {
  "word_nb": {
-  "median_ms": 0.41988299994955014,
-  "p95_ms": 0.6999090500585224,
-  "throughput_msgs_per_s": 41998.78077514789,
-  "n_params": 7171
+  "median_ms": 0.6399700005204068,
+  "p95_ms": 0.7666772992706683,
+  "throughput_msgs_per_s": 29237.231335088545,
+  "n_params": 8863
  },
  "word_rf": {
-  "median_ms": 58.359295499940345,
-  "p95_ms": 87.00273309998462,
-  "throughput_msgs_per_s": 3219.298328498064,
-  "n_params": 7171
+  "median_ms": 98.12035899994953,
+  "p95_ms": 122.15957614916988,
+  "throughput_msgs_per_s": 1878.2395523607934,
+  "n_params": 8863
  },
  "word_lr": {
-  "median_ms": 0.6162224999570753,
-  "p95_ms": 0.9521743503682953,
-  "throughput_msgs_per_s": 36352.023545668475,
-  "n_params": 7171
+  "median_ms": 1.3534439995055436,
+  "p95_ms": 1.6424255001766133,
+  "throughput_msgs_per_s": 16320.250313555189,
+  "n_params": 8863
  },
  "word_svm": {
-  "median_ms": 2.840557999888915,
-  "p95_ms": 6.627067849899502,
-  "throughput_msgs_per_s": 11682.182259410274,
-  "n_params": 7171
+  "median_ms": 4.39014049970865,
+  "p95_ms": 7.3931254497438195,
+  "throughput_msgs_per_s": 10649.713458740493,
+  "n_params": 8863
  },
  "char_lr": {
-  "median_ms": 0.8343634999619098,
-  "p95_ms": 1.1013293496262122,
-  "throughput_msgs_per_s": 4300.253041937061,
-  "n_params": 38559
+  "median_ms": 1.4562719998139073,
+  "p95_ms": 2.198783550556982,
+  "throughput_msgs_per_s": 3117.2043589497557,
+  "n_params": 45881
  },
  "char_svm": {
-  "median_ms": 3.168246999848634,
-  "p95_ms": 4.673109050145285,
-  "throughput_msgs_per_s": 5382.354381714775,
-  "n_params": 38559
+  "median_ms": 4.986165500667994,
+  "p95_ms": 7.594216298821266,
+  "throughput_msgs_per_s": 3073.883290064827,
+  "n_params": 45881
  },
  "word_bigru": {
-  "median_ms": 2.231806499821687,
-  "p95_ms": 415.8203828502102,
-  "throughput_msgs_per_s": 2111.5937604429455,
-  "n_params": 401155
+  "median_ms": 2.708711499508354,
+  "p95_ms": 3.844451350323652,
+  "throughput_msgs_per_s": 1898.4321522758357,
+  "n_params": 459779
  },
  "char_cnn": {
-  "median_ms": 0.9680319999461062,
-  "p95_ms": 9.258391750313399,
-  "throughput_msgs_per_s": 460.1263881605883,
-  "n_params": 425347
+  "median_ms": 2.3298064998016343,
+  "p95_ms": 4.8926793491773415,
+  "throughput_msgs_per_s": 699.3929849389734,
+  "n_params": 428803
  },
  "distil_mbert": {
-  "median_ms": 58.56916550010283,
-  "p95_ms": 79.00145945018265,
-  "throughput_msgs_per_s": 26.09736075541751,
+  "median_ms": 65.33252950021051,
+  "p95_ms": 386.04425145026636,
+  "throughput_msgs_per_s": 28.35093862359726,
   "n_params": 135326979
  },
  "muril": {
-  "median_ms": 114.96704499950283,
-  "p95_ms": 145.04314465011703,
-  "throughput_msgs_per_s": 14.059337562685982,
+  "median_ms": 107.7065804997801,
+  "p95_ms": 134.52208679987046,
+  "throughput_msgs_per_s": 16.41663683466164,
   "n_params": 237558531
  },
  "xlmr": {
-  "median_ms": 149.50085349983055,
-  "p95_ms": 798.977408800055,
-  "throughput_msgs_per_s": 17.196102568216293,
+  "median_ms": 97.09308950004925,
+  "p95_ms": 132.82801744990135,
+  "throughput_msgs_per_s": 19.15368559328055,
   "n_params": 278045955
- },
- "canine": {
-  "median_ms": 154.76985149962275,
-  "p95_ms": 200.0839926503886,
-  "throughput_msgs_per_s": 13.429687952050251,
-  "n_params": 132085251
  }
 }

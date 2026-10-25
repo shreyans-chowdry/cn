@@ -8,13 +8,19 @@ const ADVICE = {
   legit: "No scam pattern found. Even so, never share your PIN or OTP with anyone.",
 };
 const SAMPLES = {
-  "ta-scam": "உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9",
+  "mix-scam": "प्रिय ग्राहक, आपका SBI account आज रात 12 बजे block कर दिया जाएगा। तुरंत KYC update करने के लिए इस link पर click करें http://sbi-kyc-update.xyz/a9",
+  "mix-scam2": "உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9",
   pin: "Congratulations! You have received ₹4,999 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN",
   disguised: "Y0ur HDFC acc0unt will be bl0cked t0day. Upd@te K.Y.C n0w: kyc.verify-hdfc.top/k",
-  romanised: "Ungal refund ₹2,000 pending. Udane collect request approve panni PIN podunga",
-  genuine: "உங்கள் A/c XX4821-லிருந்து 12-10-26 அன்று ₹1,250 VPA swiggy@ybl-க்கு debit செய்யப்பட்டது. UPI Ref 412398765432. நீங்கள் செய்யவில்லையா? 1800-123-4567 அழைக்கவும் -SBI",
+  romanised: "Aapka refund ₹2,000 pending hai. Turant collect request approve karo aur PIN daalo",
+  genuine: "आपके A/c XX4821 से 12-10-26 को ₹1,250 VPA swiggy@ybl को debit किए गए। UPI Ref 412398765432। आपने नहीं किया? 1800-123-4567 पर call करें -SBI",
   promo: "Swiggy Diwali sale is live! Up to 60% off on all orders. Shop now https://swiggy.onelink.me/x7",
 };
+
+function nativeName(lang) {
+  const n = (lang.name || "").split("–")[0].split(" (")[0];
+  return lang.code === "en" || lang.code === "other" ? "Other language" : n;
+}
 
 async function api(path, body) {
   const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
@@ -60,8 +66,8 @@ function renderAnalysis(r) {
     return `<span style="${bg}" title="${h.score > 0 ? "pushes towards scam" : "pushes towards genuine"} (${h.score.toFixed(2)})">${esc(h.token)}</span>`;
   }).join(" ")}</div><p class="hint">Red words push the model towards “scam”, green words towards “genuine”.</p></div>`;
 
-  html += `<div class="block"><h3>Language, word by word · code-mixing index ${Math.round(r.language.cmi)}</h3><div class="tokens">${r.language.tokens.map(([t, tag]) => `<span class="tok ${tag}">${esc(t)}</span>`).join("")}</div>
-    <div class="langline"><span><i style="background:var(--english)"></i>English</span><span><i style="background:var(--tamil)"></i>Tamil</span><span><i style="background:var(--mixtok)"></i>both in one word (link-ஐ)</span><span><i style="background:var(--ink-3)"></i>numbers, links, IDs</span></div></div>`;
+  html += `<div class="block"><h3>Language, word by word · code-mixing index ${Math.round(r.language.cmi)}</h3><div class="tokens">${r.language.tokens.map(([t, tag]) => `<span class="tok ${["en", "mix", "univ", "other"].includes(tag) ? tag : "native"}">${esc(t)}</span>`).join("")}</div>
+    <div class="langline"><span><i style="background:var(--english)"></i>English</span><span><i style="background:var(--native)"></i>${esc(nativeName(r.language))}</span><span><i style="background:var(--mixtok)"></i>both in one word (link-ஐ)</span><span><i style="background:var(--ink-3)"></i>numbers, links, IDs</span></div></div>`;
 
   if (r.links.length) {
     html += `<div class="block"><h3>Links in the message</h3>${r.links.map((l) => {
@@ -88,30 +94,30 @@ $("#analyze").addEventListener("click", analyze);
 $("#msg").addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) analyze(); });
 document.querySelectorAll("[data-sample]").forEach((b) => b.addEventListener("click", () => { $("#msg").value = SAMPLES[b.dataset.sample]; analyze(); }));
 document.querySelector("[data-random]").addEventListener("click", async () => {
-  const s = await api(`/api/samples?label=${["scam", "legit", "promo"][Math.floor(Math.random() * 3)]}&lang=${Math.random() < 0.5 ? "ta" : "en"}`);
+  const s = await api(`/api/samples?label=${["scam", "legit", "promo"][Math.floor(Math.random() * 3)]}&lang=${["en", "hi", "ta"][Math.floor(Math.random() * 3)]}`);
   $("#msg").value = s[0].text; analyze();
 });
 
 // ---------------------------------------------------------------- lab
 let level = 0, seed = 7, labText = "", chart = null;
 const isHomo = (c) => /[Ͱ-ϿЀ-ӿ]/.test(c);
-const isTamil = (c) => /[஀-௿]/.test(c);
+const isNative = (c) => /[\u0900-\u0DFF]/.test(c);   // any supported native (Indic) script
 const ZW = /[​‌‍⁠﻿]/;
 
 function renderBubble(text, original) {
-  const origTamil = new Set(original.split(/\s+/).filter((t) => [...t].some(isTamil)));
+  const origNative = new Set(original.split(/\s+/).filter((t) => [...t].some(isNative)));
   const origLatin = new Set(original.split(/\s+/));
   $("#bubble").innerHTML = text.split(/(\s+)/).map((tok) => {
     if (/^\s+$/.test(tok)) return tok;
-    const hasTa = [...tok].some(isTamil);
-    const switched = level > 0 && ((hasTa && !origTamil.has(tok) && /[஀-௿]{3,}/.test(tok) && !original.includes(tok)) ||
-      (!hasTa && /^[a-z]{3,}$/i.test(tok.replace(/[.,!?]/g, "")) && !origLatin.has(tok) && original.split(/\s+/).some((o) => [...o].some(isTamil)) && level === 4));
+    const hasTa = [...tok].some(isNative);
+    const switched = level > 0 && ((hasTa && !origNative.has(tok) && /[\u0900-\u0DFF]{3,}/.test(tok) && !original.includes(tok)) ||
+      (!hasTa && /^[a-z]{3,}$/i.test(tok.replace(/[.,!?]/g, "")) && !origLatin.has(tok) && original.split(/\s+/).some((o) => [...o].some(isNative)) && level === 4));
     let h = "";
     const leetTok = level > 0 && /[a-z]/i.test(tok) && /[@$!0-9]/.test(tok) && !/[\/:]|@[a-z]+$|^(rs|inr|₹)/i.test(tok) && !/^\W*\d[\d,.\-\/]*\W*$/.test(tok);
     for (const ch of tok) {
       if (ZW.test(ch)) h += '<span class="zw" title="invisible character"></span>';
       else if (isHomo(ch)) h += `<span class="homo" title="look-alike letter U+${ch.codePointAt(0).toString(16).toUpperCase()}">${esc(ch)}</span>`;
-      else if (/[௦-௲]/.test(ch)) h += `<span class="homo" title="Tamil digit used as a letter">${esc(ch)}</span>`;
+      else if (/[௦-௲\u0A80-\u0AFF२]/.test(ch)) h += `<span class="homo" title="look-alike character U+${ch.codePointAt(0).toString(16).toUpperCase()}">${esc(ch)}</span>`;
       else if (leetTok && /[@$!0-9]/.test(ch)) h += `<span class="leet">${esc(ch)}</span>`;
       else h += esc(ch);
     }
@@ -225,7 +231,7 @@ const FIGS = {
   fig2_fnr_vs_obfuscation: ["Scams that get through", "Left: share of scams missed as scam messages are disguised. Right: genuine messages wrongly flagged when every message is disguised."],
   fig3_ece_vs_obfuscation: ["Confidence vs accuracy", "Expected calibration error: how far a model's confidence drifts from how often it is right."],
   fig4_adversarial_training_gain: ["Training on disguised messages", "Gain in macro-F1 from adversarial training. L4 is cross-script, a family never seen in training."],
-  fig5_crosslingual_transfer: ["English ↔ Tamil–English transfer", "Train on one language setting (rows), test on each (columns)."],
+  fig5_crosslingual_transfer: ["Transfer between languages", "Train on one language setting (rows), test on each (columns)."],
   fig6_latency_vs_robustness: ["Robustness vs speed", "Average macro-F1 across disguise levels against CPU time per message."],
   fig7_error_detection: ["Which frame checks catch burst errors", "Share of corrupted SSP frames that each check fails to detect."],
   fig8_arq_loss: ["Reliable delivery over a lossy link", "Stop-and-Wait vs Go-Back-N vs Selective Repeat as packet loss grows."],
@@ -240,7 +246,7 @@ const TABLES = [
   ["table5_hypothesis_tests", "Do character models hold up better? (paired bootstrap)"],
   ["table6_adversarial_training", "Adversarial training"],
   ["table7_normalisation_defence", "Clean-up (canonicalisation) defence"],
-  ["table8_per_language", "English vs Tamil–English"],
+  ["table8_per_language", "Per language"],
   ["table13_external", "Real public SMS datasets"],
   ["table14_link_fusion", "Adding link intelligence"],
   ["net1_error_detection", "Error detection codes"],
@@ -260,9 +266,9 @@ async function loadResults() {
   let html = "";
   if (ds) {
     const cm = ds.code_mixing || {};
-    html += `<div class="res-section"><h2>Dataset: UPI-BiSMS</h2><p class="hint">Bilingual UPI SMS corpus. Test messages use phrasings never seen in training.</p>
+    html += `<div class="res-section"><h2>Dataset: UPI-MixSMS</h2><p class="hint">Multilingual code-mixed UPI SMS corpus. Test messages use phrasings never seen in training.</p>
       <div class="stat-line"><span><b>${ds.n_total.toLocaleString()}</b>messages</span><span><b>${ds.by_label.scam.toLocaleString()}</b>scams</span><span><b>${ds.by_label.legit.toLocaleString()}</b>genuine</span><span><b>${ds.by_label.promo.toLocaleString()}</b>promotions</span>
-      ${cm.ta ? `<span><b>${Math.round(cm.ta.tamil_token_share * 100)}%</b>Tamil words in Tamil–English messages</span><span><b>${cm.ta.mean_cmi.toFixed(0)}</b>code-mixing index</span>` : ""}</div></div>`;
+      ${Object.keys(cm).filter((k) => k !== "en").length ? `<span><b>${Object.keys(cm).length}</b>language settings</span><span><b>${Math.round(Object.entries(cm).filter(([k]) => k !== "en").reduce((a, [, v]) => a + v.mean_cmi, 0) / Object.keys(cm).filter((k) => k !== "en").length)}</b>mean code-mixing index</span>` : ""}</div></div>`;
   }
   const order = Object.keys(FIGS).map((k) => k + ".png").filter((f) => r.figures.includes(f));
   for (const f of order.concat(r.figures.filter((f) => !order.includes(f)))) {

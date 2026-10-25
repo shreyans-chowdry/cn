@@ -32,7 +32,8 @@ MARK = {"word_nb": "v", "word_rf": "P", "word_lr": "o", "word_svm": "s", "word_b
         "distil_mbert": "o", "xlmr": "s", "muril": "D"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 PAIRS = [("char_lr", "word_lr"), ("char_svm", "word_svm"), ("char_cnn", "word_bigru"), ("canine", "muril"),
-         ("canine", "distil_mbert"), ("canine", "xlmr"), ("char_lr", "xlmr")]
+         ("canine", "distil_mbert"), ("canine", "xlmr"), ("char_lr", "xlmr"), ("char_lr", "muril"),
+         ("char_lr", "distil_mbert")]
 
 
 def _ensure_runs():
@@ -109,7 +110,7 @@ def analyze():
                          "axes.titlesize": 10, "axes.titlecolor": INK})
     FIG.mkdir(parents=True, exist_ok=True)
     TAB.mkdir(parents=True, exist_ok=True)
-    df = pd.read_csv(ROOT / "data" / "upi_bisms.csv")
+    df = pd.read_csv(ROOT / "data" / "upi_mixsms.csv")
     te = df[df.split == "test"].reset_index(drop=True)
     y = te.label.map(LAB).values
     lang = te.lang.values
@@ -288,7 +289,7 @@ def analyze():
     if rows:
         tn = pd.DataFrame(rows)
         tn.to_csv(TAB / "table7_normalisation_defence.csv", index=False)
-        md += ["## Script-aware canonicalisation defence (NFKC, homoglyph and Tamil-digit folding, zero-width stripping, de-leet, Tamil-script loanwords to English) vs adversarial training — macro-F1, targeted\n",
+        md += ["## Script-aware canonicalisation defence (NFKC, homoglyph and native look-alike folding, zero-width stripping, de-leet, native-script loanwords to English) vs adversarial training — macro-F1, targeted\n",
                _md(tn), ""]
 
     # ---------------- Per-language robustness (clean training, targeted, seed-0 run)
@@ -353,7 +354,7 @@ def analyze():
         plt.close(fig)
         tx = pd.DataFrame(rows)
         tx.to_csv(TAB / "table9_crosslingual.csv", index=False)
-        md += ["## Bilingual transfer (train on English or Tamil–English only, test on both; clean and L2 targeted)\n",
+        md += ["## Cross-language transfer (train on one language only, test on every language; clean and L2 targeted)\n",
                _md(tx), ""]
 
     # ---------------- Cue ablation

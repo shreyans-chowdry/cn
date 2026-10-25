@@ -1,7 +1,7 @@
 # ScamShield for Android
 
 Reads every incoming SMS, checks it on the phone, and posts a notification when it looks like a UPI scam.
-Works on English, Tamil and Tamil–English messages. The language is detected automatically.
+Works on English and code-mixed messages in any supported script (currently Hindi–English and Tamil–English). The language is detected automatically.
 
 ## Install (no build needed)
 
@@ -13,7 +13,7 @@ Minimum Android 8.0 (API 26).
 
 ## Demo without waiting for a real scam SMS
 
-* **Check** tab → tap a sample (for example *Tamil–English scam*) → **Simulate as incoming SMS**. This runs exactly
+* **Check** tab → tap a sample (for example *Code-mixed scam*) → **Simulate as incoming SMS**. This runs exactly
   the same path as a real SMS: the message is classified, saved to Messages, and a notification appears.
 * Send an SMS from another phone, for example
   `உங்கள் SBI account இன்று block செய்யப்படும். உடனே KYC update செய்ய link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9`

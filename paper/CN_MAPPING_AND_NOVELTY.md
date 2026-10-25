@@ -35,19 +35,25 @@ experiments.
 
 ## Novelty
 
-1. **A bilingual, script-true benchmark.** UPI-BiSMS covers English and Tamil–English SMS, where Tamil is written in
-   Tamil script and banking terms stay in English (மணிக்கு block செய்யப்படும், link-ஐ click செய்யவும்). That is how Tamil
-   speakers actually type payment messages. Earlier code-mixed scam work uses romanised text only. The test split
-   is template-disjoint, so scores measure generalisation to new phrasings and not memorisation of templates.
-2. **A graded attack scheme that is aware of the script.** Levels L1–L4 go from typos to Tamil-specific attacks
-   (ல/ள/ழ and ண/ந/ன confusions, a dropped pulli, Tamil digits that look like letters, ZWJ/ZWNJ) and, at L4,
-   **transliteration in both directions** (English words written in Tamil script, Tamil words written in Latin
-   letters). This turns the "transliteration" problem from the abstract into a measurable attack.
-3. **Script-aware canonicalisation** as a defence that needs no retraining. It folds homoglyphs, Tamil-digit
-   look-alikes, separators, leetspeak and Tamil-script loanwords back to a canonical form before classification.
+1. **A multilingual, script-true benchmark.** UPI-MixSMS covers English and code-mixed SMS in which the second
+   language is written in its own script and banking terms stay in English. The current release has two
+   code-mixed settings in two scripts: Hindi–English in Devanagari (आपका SBI account आज block कर दिया जाएगा) and
+   Tamil–English in Tamil script (உங்கள் SBI account இன்று block செய்யப்படும், link-ஐ click செய்யவும்). That is how
+   people actually type payment messages. Earlier code-mixed scam work uses romanised text only. Every
+   language-specific piece (templates, script tables, cue words) sits behind one registry, so adding a language
+   is a data change, not a code change. The test split is template-disjoint, so scores measure generalisation to
+   new phrasings and not memorisation of templates.
+2. **A graded attack scheme that is aware of the script.** Levels L1–L4 go from typos to script-specific attacks
+   (confusable letters such as ல/ள/ழ and श/ष/स, vowel-length swaps, a dropped virama, look-alike characters from
+   other blocks such as Tamil digits and Gujarati letters, ZWJ/ZWNJ) and, at L4, **transliteration in both
+   directions** (English words written in the native script, native words written in Latin letters). This turns
+   the "transliteration" problem from the abstract into a measurable attack.
+3. **Script-aware canonicalisation** as a defence that needs no retraining. It folds homoglyphs, native look-alike
+   characters, separators, leetspeak and native-script loanwords back to a canonical form before classification,
+   for every registered script.
 4. **Fusing text and network evidence.** The text verdict is combined with link intelligence gathered at the
    network level: DNS resolution, TTL, CNAME chains, and CIDR classification of the resolved addresses. This
    catches a link that resolves into a private or reserved block, which no text model can see.
 5. **One model on phone and server, verified to match.** The same model runs on the phone (exact parity with
-   Python on 300 test messages: 0 label differences, maximum probability difference < 1e-6) and behind a custom
-   CRC-protected protocol. The protocol is measured under loss, congestion and corruption.
+   Python on 300 test messages) and behind a custom CRC-protected protocol. The protocol is measured under loss,
+   congestion and corruption.

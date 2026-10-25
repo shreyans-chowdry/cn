@@ -1,15 +1,17 @@
-# ScamShield — Robust Detection of UPI Payment Scams in Bilingual (Tamil–English) SMS, as a Networked System
+# ScamShield — Robust Detection of UPI Payment Scams in Multilingual Code-Mixed SMS, as a Networked System
 
 Computer Networks project (BCSE308L / BCSE308P), VIT Vellore.
-Shreyans Chowdry (24BDS0114) · Ayushmaan Nayak (public-dataset integration)
+Shreyans Chowdry (24BDS0114) · Swapnil Jain (24BAI0248) · Ayushmaan Nayak (24BCE2612)
 
-Payment scams arrive as SMS written in English or in Tamil mixed with English
-(`உங்கள் SBI account இன்று block செய்யப்படும். உடனே KYC update செய்ய link-ஐ click செய்யவும்`), and scammers disguise
-the words that filters look for: `P1N`, `K.Y.C`, a Cyrillic `е` in `rеfund`, Tamil digits that look like letters,
-invisible characters, or whole words switched into the other script. ScamShield has three parts:
+Payment scams arrive as SMS written in English or in another language mixed with English, each in its own script
+(`आपका SBI account आज block कर दिया जाएगा। तुरंत KYC update करें`, `உங்கள் SBI account இன்று block செய்யப்படும்`), and
+scammers disguise the words that filters look for: `P1N`, `K.Y.C`, a Cyrillic `е` in `rеfund`, look-alike characters
+from another script, invisible characters, or whole words switched into the other script. ScamShield is
+language-agnostic: every language-specific piece sits behind one registry (`src/scamshield/scripts.py`), and the
+current release supports English, Hindi–English and Tamil–English. It has three parts:
 
-1. **A detector and a benchmark.** UPI-BiSMS is a bilingual SMS corpus (English and Tamil–English in Tamil script)
-   with a graded disguise scheme (L0–L4, including transliteration). Twelve classifiers are evaluated on it,
+1. **A detector and a benchmark.** UPI-MixSMS is a multilingual code-mixed SMS corpus (English, Hindi–English in
+   Devanagari, Tamil–English in Tamil script) with a graded disguise scheme (L0–L4, including transliteration). Eleven classifiers are evaluated on it,
    along with three defences. Real public SMS corpora are used to check how well the results carry over.
 2. **A networked service.** The detector is served over our own CRC-protected protocol (SSP) on TCP and UDP. The UDP
    path has Go-Back-N / Selective Repeat reliability and AIMD congestion control. A DNS client and server written
@@ -52,7 +54,7 @@ The web app has four tabs:
 ```bash
 source .venv/bin/activate; export PYTHONPATH=src
 python -m scamshield.net.service --tcp 9099 --udp 9098 --dns 5353          # the server on its own
-python -m scamshield.net.client tcp  "உங்கள் KYC update செய்ய link-ஐ click செய்யவும் bit.ly/x"
+python -m scamshield.net.client tcp  "आपका KYC update करने के लिए link पर click करें bit.ly/x"
 python -m scamshield.net.client udp  "Your refund is pending, enter UPI PIN"
 python -m scamshield.net.client batch messages.txt --arq sr --window 8       # reliable batch over UDP
 python -m scamshield.net.client ping --count 10                              # RTT over TCP
@@ -73,22 +75,25 @@ Every run is cached in `results/runs/` (shipped zipped as `results/runs.zip`), s
 
 | Path | Contents |
 |---|---|
-| `data/upi_bisms.csv` | the bilingual dataset (`text, label, subtype, lang, template_id, split`) |
+| `data/upi_mixsms.csv` | the multilingual dataset (`text, label, subtype, lang, template_id, split`) |
 | `data/public/` | public SMS corpora: Mishra & Soni, UCI, ExAIS, translated multilingual UCI |
 | `results/RESULTS.md` | every table in one file |
 | `results/tables/`, `results/figures/` | tables (CSV) and figures (PNG + PDF) for the paper |
 | `artifacts/production.joblib` | the detector used by the web app and the server |
 | `paper/METHODS.md`, `paper/FINDINGS.md` | the method and the results, written to be lifted into the paper |
+| `paper/ScamShield_IEEE_Paper.docx` | the IEEE-format paper |
+| `paper/ScamShield_Project_Guide.pdf` | the team guide: how everything works, numbers to remember, demo script, roles, viva questions |
 | `android/` | the Android app (Kotlin / Jetpack Compose) |
 
 ## Code map
 
 ```
 src/scamshield/
-  data/templates.py      parallel English / Tamil–English message templates (23 intents)
-  data/generator.py      builds UPI-BiSMS with a template-disjoint split
+  scripts.py             registry of supported scripts (add a language here)
+  hindi.py, tamil.py     per-script tables: loanwords, transliteration, confusable letters, look-alikes
+  data/templates*.py     parallel English / Hindi–English / Tamil–English templates (23 intents)
+  data/generator.py      builds UPI-MixSMS with a template-disjoint split
   data/public.py         public SMS corpora loaders (one schema, de-duplicated, grouped splits)
-  tamil.py               Tamil script tools: loanwords, transliteration, confusable letters
   langid.py              automatic word-by-word language identification, code-mixing index
   obfuscation.py         L0–L4 disguise operators + script-aware canonicalisation
   models/                word / char TF-IDF models, BiGRU, char CNN, transformers
@@ -111,26 +116,29 @@ scripts/                 run_all.sh, train_production.py
 
 Full write-up: `paper/FINDINGS.md`. Every table: `results/RESULTS.md`.
 
-**Detector** (template-disjoint test set, macro-F1, L0 = clean, L4 = cross-script transliteration; uniform = every message disguised):
+**Detector** (template-disjoint test set, 3,939 messages in three language settings; macro-F1; L0 = clean,
+L4 = cross-script transliteration; uniform = every message disguised; targeted = only scams disguised):
 
 | Model | Clean | L4 (uniform) | Scams missed, clean → L4 (targeted) | CPU ms / message |
 |---|---|---|---|---|
-| Word LR | 0.785 | 0.666 | 12.9% → 23.4% | 0.6 |
-| Char LR | 0.777 | 0.713 | 13.2% → 12.9% | 0.8 |
-| XLM-R | **0.851** | 0.677 | 7.4% → 30.7% | 150 |
-| MuRIL | 0.749 | 0.746 | 7.7% → 27.6% | 115 |
-| CANINE-S | 0.778 | 0.615 | 12.3% → 17.7% | 155 |
-| **ScamShield production** (char + canonicalisation + public data) | 0.792 | 0.789 (targeted) | 15.3% → 17.7% | ~1 |
+| Word LR | 0.835 | 0.692 | 11.8% → 27.9% | 1.4 |
+| Char LR | 0.784 | 0.687 | 10.1% → 18.9% | 1.5 |
+| XLM-R | 0.870 | 0.614 | 5.6% → 51.5% | 97 |
+| MuRIL | **0.872** | 0.694 | 3.4% → 24.7% | 108 |
+| **ScamShield production** (char + canonicalisation + public data) | 0.810 | 0.787 (targeted) | 9.5% → 16.8% | ~1 |
 
-* **Character models degrade less than word and subword models.** This held in 10 of 12 paired tests for the classical and neural models, and in all 4 tests of Char LR vs XLM-R (paired bootstrap, p < 0.01).
-* **Cross-script transliteration (L4) is the strongest attack.** Some pretrained models (DistilmBERT, CANINE-S) learn to treat any disguise as a scam and start flagging disguised genuine messages.
-* **Synthetic-only and public-only training both fail on the other side's data.** Joint training works on both: UPI-BiSMS 0.78 / 0.74 (English / Tamil–English), real smishing 0.87.
-* **Network:**
-  * CRC-32 caught 100% of corrupted frames; a parity bit missed about 50% of bursts.
-  * At 10% packet loss, Selective Repeat's efficiency is 0.82 against Go-Back-N's 0.53.
-  * AIMD avoids the collapse that a fixed 48-frame window causes at a bottleneck (129 vs 74 messages/s).
-  * A cached DNS lookup takes 0.14 ms against 20.7 ms over the network.
-* **Phone app:** gives the same answers as the Python model (0 differences on 300 messages, max probability difference 7×10⁻⁷).
+* **Character models degrade less than word and subword models**: 20 of 24 paired tests at p < 0.01, including all 4
+  against XLM-R and all 4 against MuRIL.
+* **Cross-script transliteration (L4) is the strongest attack** for every model. XLM-R, the strongest clean model with
+  MuRIL, misses half of all scams once they are transliterated.
+* **Character models transfer best between languages**: trained on one setting, Char SVM loses 0.03 on the other two,
+  word models 0.11.
+* **Canonicalisation is the strongest defence for word models**, with no retraining (Word NB at L3: 0.856 vs 0.803).
+* **Synthetic-only and public-only training both fail on the other side's data.** Joint training works on both.
+* **Network:** CRC-32 caught 100% of corrupted frames; Selective Repeat is far more efficient than Go-Back-N under
+  loss; AIMD avoids the collapse a large fixed window causes at a bottleneck; cached DNS answers are ~100× faster.
+* **Phone app:** gives the same answers as the Python model (0 differences on 300 messages, max probability
+  difference 7×10⁻⁷).
 
 | Web app | Android app |
 |---|---|
@@ -139,6 +147,6 @@ Full write-up: `paper/FINDINGS.md`. Every table: `results/RESULTS.md`.
 
 ## Note on the data
 
-UPI-BiSMS is synthetic. Its templates were written from publicly reported UPI scam patterns and real bank/UPI
+UPI-MixSMS is synthetic. Its templates were written from publicly reported UPI scam patterns and real bank/UPI
 message formats. That makes controlled experiments possible, but it does not replace real SMS. The test split is
 template-disjoint, and the public-corpus experiments measure how far results carry over to real messages.

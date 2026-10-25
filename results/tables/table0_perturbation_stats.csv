@@ -1,5 +1,5 @@
 Level,Word perturb prob.,Words changed,Char edit rate,Char edit rate after canonicalisation,Top ops
-L1 (light),0.15,0.133,0.028,0.019,"phonetic, repeat, case, vowel_drop"
-L2 (moderate),0.3,0.372,0.079,0.032,"separator, leet, swap, case"
-L3 (heavy),0.45,0.466,0.116,0.053,"zero_width, insert, homoglyph, delete"
-L4 (cross-script),0.6,0.583,0.256,0.134,"to_tamil, translit, zero_width, separator"
+L1 (light),0.15,0.128,0.028,0.021,"phonetic, case, vowel_drop, repeat"
+L2 (moderate),0.3,0.393,0.078,0.034,"separator, leet, phonetic, case"
+L3 (heavy),0.45,0.463,0.117,0.054,"zero_width, delete, insert, homoglyph"
+L4 (cross-script),0.6,0.587,0.274,0.154,"to_native, translit, separator, zero_width"

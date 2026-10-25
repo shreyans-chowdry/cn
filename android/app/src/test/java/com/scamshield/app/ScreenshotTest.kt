@@ -47,7 +47,7 @@ class ScreenshotTest {
 
     @Test
     fun genuineAnalysis() {
-        val a = detector.analyse(SAMPLES[4].second)
+        val a = detector.analyse(SAMPLES[5].second)
         paparazzi.snapshot {
             ScamShieldTheme {
                 Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background).padding(16.dp)) { AnalysisView(a) }
@@ -60,7 +60,7 @@ class ScreenshotTest {
         val now = 1_792_700_000_000L
         val items = SAMPLES.mapIndexed { i, (_, text) ->
             val a = detector.analyse(text)
-            HistoryItem(i.toLong() + 1, listOf("VM-SBIINB", "+91 98400 12345", "AX-HDFCBK", "+91 90031 55555", "VM-SBIUPI", "JD-SWIGGY")[i],
+            HistoryItem(i.toLong() + 1, listOf("VM-SBIINB", "VM-SBIALR", "+91 98400 12345", "AX-HDFCBK", "+91 90031 55555", "VM-SBIUPI", "JD-SWIGGY")[i],
                 text, a.verdict, a.probs[2], a.language.name, now - i * 3_600_000L, "on-device", emptyList())
         }
         paparazzi.snapshot {

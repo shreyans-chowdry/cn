@@ -2,30 +2,45 @@ package com.scamshield.app.detector
 
 import java.text.Normalizer as JNormalizer
 
+/** A native script registered in the Python scamshield.scripts module (exported in model.json). */
+data class Script(val code: String, val name: String, val lo: Int, val hi: Int,
+                  val roman: Set<String>, val romanRe: Regex)
+
 /**
  * Kotlin port of scamshield.obfuscation.normalize (the script-aware canonicaliser).
+ * Language-agnostic: every script comes from model.json, so a new language needs no code change here.
  * Must stay byte-for-byte compatible with the Python version: ParityTest checks it on 300 messages.
  */
 class Normalizer(
     private val homoglyphs: Map<String, String>,
     private val deleet: Map<String, String>,
-    private val taDigits: Map<String, String>,
-    private val ta2en: Map<String, String>,
+    private val lookalikes: Map<String, String>,
+    private val native2en: Map<String, String>,
 ) {
     companion object {
         private val ZW = Regex("[​‌‍⁠﻿]")
         private const val SEP = "[\\.\\-_\\* ]"
         private val SPACED_LAT = Regex("\\b(?:[A-Za-z]$SEP){2,}[A-Za-z]\\b")
-        private val SPACED_TA = Regex("(?:[஀-௿]+[\\._\\*]){2,}[஀-௿]+")
         private val INTRA_SEP = Regex("(?<=[A-Za-z])[\\.\\-_\\*](?=[A-Za-z])")
-        private val TA_INTRA_SEP = Regex("(?<=[஀-௿])[\\._\\*](?=[஀-௿])")
+
+        /** Registered native scripts; set once by Detector from model.json. */
+        var scripts: List<Script> = emptyList()
+            set(value) {
+                field = value
+                val ranges = value.joinToString("") { "\\x{%X}-\\x{%X}".format(it.lo, it.hi) }
+                spacedNat = Regex("(?:[$ranges]+[\\._\\*]){2,}[$ranges]+")
+                natIntraSep = Regex("(?<=[$ranges])[\\._\\*](?=[$ranges])")
+            }
+        private var spacedNat = Regex("(?!)")
+        private var natIntraSep = Regex("(?!)")
         private val SKIP = Regex(
             "(@|://|www\\.|\\.(com|in|xyz|top|ly|gd|me|it|co|info|live|site|net|click|support|online|sbi)\\b|/)",
             RegexOption.IGNORE_CASE
         )
         private val RUNS = Regex("([A-Za-z])\\1{2,}")
 
-        fun isTamil(cp: Int) = cp in 0x0B80..0x0BFF
+        fun scriptCode(cp: Int): String? = scripts.firstOrNull { cp in it.lo..it.hi }?.code
+        fun isNative(cp: Int) = scriptCode(cp) != null
 
         /** Python str.isalpha */
         fun isAlpha(cp: Int) = Character.isLetter(cp)
@@ -63,19 +78,35 @@ class Normalizer(
             return Triple(String(c, 0, i), String(c, i, j - i), String(c, j, c.size - j))
         }
 
-        fun tamilShare(token: String): Double {
-            var letters = 0
-            var ta = 0
-            token.codePoints().forEach { cp ->
-                if (isAlpha(cp) || isTamil(cp)) {
-                    letters++
-                    if (isTamil(cp)) ta++
-                }
-            }
-            return if (letters == 0) 0.0 else ta.toDouble() / letters
+        /** Python scripts.dominant: most frequent registered script (ties -> first registered). */
+        fun dominant(text: String): String? {
+            val counts = LinkedHashMap<String, Int>()
+            text.codePoints().forEach { cp -> scriptCode(cp)?.let { counts[it] = (counts[it] ?: 0) + 1 } }
+            var best: String? = null
+            var bestN = 0
+            for ((k, v) in counts) if (v > bestN) { best = k; bestN = v }
+            return best
         }
 
-        fun scriptOf(word: String) = if (tamilShare(word) >= 0.5) "ta" else "lat"
+        private fun share(token: String, s: Script): Double {
+            var letters = 0
+            var n = 0
+            token.codePoints().forEach { cp ->
+                val inS = cp in s.lo..s.hi
+                if (isAlpha(cp) || inS) {
+                    letters++
+                    if (inS) n++
+                }
+            }
+            return if (letters == 0) 0.0 else n.toDouble() / letters
+        }
+
+        /** Python scripts.script_of */
+        fun scriptOf(word: String): String {
+            val c = dominant(word) ?: return "lat"
+            val s = scripts.first { it.code == c }
+            return if (share(word, s) >= 0.5) c else "lat"
+        }
 
         fun skip(tok: String): Boolean {
             if (SKIP.containsMatchIn(tok)) return true
@@ -118,17 +149,19 @@ class Normalizer(
                 return pre + foldToken(stem) + sep + foldToken(suffix) + post
             }
         }
-        if (tok.codePoints().anyMatch { isTamil(it) }) {
+        val nat = tok.codePoints().filter { isNative(it) || lookalikes.containsKey(String(Character.toChars(it))) }.count()
+        val letters = tok.codePoints().filter { isAlpha(it) }.count()
+        if (nat > 0 && nat * 2 >= letters) {
             val sb = StringBuilder()
             tok.codePoints().forEach { cp ->
                 val ch = String(Character.toChars(cp))
-                sb.append(taDigits[ch] ?: ch)
+                sb.append(lookalikes[ch] ?: ch)
             }
-            tok = TA_INTRA_SEP.replace(sb.toString(), "")
+            tok = natIntraSep.replace(sb.toString(), "")
             val (pre, core, post) = splitAffixes(tok)
             val (stem, sep, suffix) = partition(core)
-            ta2en[stem]?.let { return pre + it + sep + suffix + post }
-            ta2en[core]?.let { return pre + it + post }
+            native2en[stem]?.let { return pre + it + sep + suffix + post }
+            native2en[core]?.let { return pre + it + post }
             return tok
         }
         tok = INTRA_SEP.replace(tok, "")
@@ -145,7 +178,7 @@ class Normalizer(
         }
         t = sb.toString()
         t = SPACED_LAT.replace(t) { m -> m.value.replace(Regex(SEP), "") }
-        t = SPACED_TA.replace(t) { m -> m.value.replace(Regex("[\\._\\*]"), "") }
+        t = spacedNat.replace(t) { m -> m.value.replace(Regex("[\\._\\*]"), "") }
         t = t.split(" ").joinToString(" ") { foldToken(it) }
         t = RUNS.replace(t) { m -> m.groupValues[1].repeat(2) }
         return t.lowercase(java.util.Locale.ROOT)

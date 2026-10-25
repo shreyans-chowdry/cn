@@ -51,7 +51,7 @@ SAVE_FOR_APP ={"word_lr", "char_lr", "char_svm", "word_bigru", "char_cnn", "dist
 
 # ------------------------------------------------------------------ helpers
 def load_df():
-    p = DATA / "upi_bisms.csv"
+    p = DATA / "upi_mixsms.csv"
     if not p.exists():
         df = generate()
         df.to_csv(p, index=False)
@@ -91,8 +91,9 @@ def _code_mixing_stats(df):
     for lang, g in df.groupby("lang"):
         ids = [identify(t) for t in g.text]
         out[lang] = {"mean_cmi": float(np.mean([i["cmi"] for i in ids])),
-                     "tamil_token_share": float(np.mean([i["shares"]["ta"] + i["shares"]["ta-rom"] for i in ids])),
-                     "english_token_share": float(np.mean([i["shares"]["en"] for i in ids])),
+                     "native_token_share": float(np.mean([i["shares"].get(lang, 0) + i["shares"].get(f"{lang}-rom", 0)
+                                                          for i in ids])) if lang != "en" else 0.0,
+                     "english_token_share": float(np.mean([i["shares"].get("en", 0) for i in ids])),
                      "detected_as": pd.Series([i["name"] for i in ids]).value_counts().to_dict()}
     return out
 
@@ -273,10 +274,10 @@ def stage_external():
     """External validity with real public corpora (Ayushmaan's datasets) and the link-intelligence ablation.
 
     Three training recipes, all with the production model family (char 2-5-gram LR on canonicalised text):
-      bisms_only   UPI-BiSMS train+val
+      mix_only     UPI-MixSMS train+val
       public_only  Mishra & Soni (3-class) + UCI/ExAIS genuine messages, train portions
       joint        both
-    Tested on the UPI-BiSMS test set (3-class, per language) and on held-out public messages
+    Tested on the UPI-MixSMS test set (3-class, per language) and on held-out public messages
     (binary: genuine vs unwanted), plus the machine-translated multilingual UCI as a stress test."""
     import sys as _s
     _s.path.insert(0, str(ROOT / "scripts"))
@@ -294,7 +295,7 @@ def stage_external():
     hf = hf[hf.group.isin(set(pte.group))]          # only translations of held-out messages (no leakage)
     hf = pd.concat([g.sample(min(len(g), 600), random_state=0) for _, g in hf.groupby("lang")], ignore_index=True)
     hf["binary"] = hf.label3.ne("legit").astype(int)
-    recipes = {"bisms_only": (list(btr.text), list(btr.label)),
+    recipes = {"mix_only": (list(btr.text), list(btr.label)),
                "public_only": (list(ptr3.text), list(ptr3.label3)),
                "joint": (list(btr.text) + list(ptr3.text), list(btr.label) + list(ptr3.label3))}
     rows, fusion_rows = [], []
@@ -305,7 +306,7 @@ def stage_external():
         for lang in LANGS:
             g = bte[bte.lang == lang]
             m = all_metrics(pipe.predict_proba(g.text.tolist())[:, order], g.label.map(LAB).values)
-            rows.append({"train": name, "test": f"UPI-BiSMS ({lang})", "n": len(g), "macro_f1": m["macro_f1"],
+            rows.append({"train": name, "test": f"UPI-MixSMS ({lang})", "n": len(g), "macro_f1": m["macro_f1"],
                          "scam_fnr": m["fnr_scam"], "scam_fpr": m["fpr_scam"], "ece": m["ece"]})
         tests = [(f"{s} (held out)", g) for s, g in pte.groupby("source")] + \
                 [(f"hf_multi:{lg}", g) for lg, g in hf.groupby("lang")]
@@ -323,7 +324,7 @@ def stage_external():
             rows.append(row)
         if name == "joint":
             # link-intelligence ablation (lexical URL features only: synthetic and 2010s domains do not resolve today)
-            for tname, g, ycol in [("UPI-BiSMS test", bte, "label"), ("mishra_soni (held out)", pte[pte.source == "mishra_soni"], "label3")]:
+            for tname, g, ycol in [("UPI-MixSMS test", bte, "label"), ("mishra_soni (held out)", pte[pte.source == "mishra_soni"], "label3")]:
                 p = pipe.predict_proba(g.text.tolist())[:, order]
                 risk = np.array([urlintel.analyse(t)["risk"] for t in g.text])
                 y3 = g[ycol].map(LAB).values

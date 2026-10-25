@@ -1,22 +1,25 @@
 """
-Graded obfuscation scheme (L0-L4) for bilingual English / Tamil-English SMS, plus a
-script-aware canonicaliser used as a pre-processing defence.
+Graded obfuscation scheme (L0-L4) for multilingual code-mixed SMS, plus a script-aware
+canonicaliser used as a pre-processing defence.
 
 Every eligible token gets perturbed with probability p (2p for salient fraud words).
-The operators depend on the token's script.
+The operators depend on the token's script: one family for Latin script and one generic
+family for every registered native script (scripts.py), parameterised by that script's
+tables (confusable letters, vowel signs, virama, look-alike characters, romanisation).
 
-Level  Name          p     ops  Latin-script tokens                     Tamil-script tokens
+Level  Name          p     ops  Latin-script tokens                     Native-script tokens
 -----  ------------  ----  ---  --------------------------------------  ------------------------------------
 L0     clean         0     0    -                                       -
-L1     light         0.15  1    vowel drop, letter repeat, case flip,   confusable letters (ல/ள/ழ, ண/ந/ன,
-                                adjacent swap, phonetic respelling      ர/ற), vowel-length swaps (ி/ீ, ெ/ே),
-                                                                        pulli (்) dropped or added
+L1     light         0.15  1    vowel drop, letter repeat, case flip,   confusable letters (Tamil ல/ள/ழ,
+                                adjacent swap, phonetic respelling      Hindi श/ष/स, ब/व), vowel-length
+                                                                        swaps, virama dropped or added
 L2     moderate      0.30  1    + leetspeak (a->@, o->0),               + separators between graphemes
-                                separators (K.Y.C, P-I-N)               (உ.ட.னே)
-L3     heavy         0.45  1-2  + Latin->Cyrillic/Greek homoglyphs,     + Tamil-digit homoglyphs (க->௧, அ->௮),
-                                zero-width chars, insert/delete         zero-width joiners, grapheme deletion
-L4     cross-script  0.60  1-3  + English words written in Tamil        + Tamil words transliterated into
-                                script (account -> அக்கவுண்ட்)          Latin script (உடனே -> udane)
+                                separators (K.Y.C, P-I-N)
+L3     heavy         0.45  1-2  + Latin->Cyrillic/Greek homoglyphs,     + look-alike characters (Tamil digits,
+                                zero-width chars, insert/delete         Gujarati letters for Devanagari),
+                                                                        zero-width joiners, grapheme deletion
+L4     cross-script  0.60  1-3  + English words written in the          + native words transliterated into
+                                message's native script                 Latin script (तुरंत -> turant)
 
 L4 is the transliteration attack: the message keeps its meaning for a bilingual reader but
 every token can switch script. Attacks are keyword-targeted (salient words perturbed with 2p).
@@ -26,7 +29,7 @@ import random
 import re
 import unicodedata
 
-from . import tamil as T
+from . import scripts as S
 
 VOWELS = set("aeiouAEIOU")
 
@@ -57,11 +60,7 @@ SALIENT = {
     "suspend", "suspended", "cash", "free", "offer", "win", "won", "money", "pay", "call", "contest",
     "draw", "registration", "processing", "sanction", "electricity", "connection", "contact",
     "immediately", "now", "scan", "qr", "enter",
-    # Tamil-script salient words
-    "உடனே", "உடனடியாக", "இப்போதே", "பணம்", "பணத்தைப்", "பரிசு", "வென்றுள்ளீர்கள்", "அனுப்பவும்",
-    "அனுப்புங்கள்", "காலாவதியாகிறது", "காலாவதியாகிவிட்டது", "கடைசி", "துண்டிக்கப்படும்", "பறிமுதல்",
-    "வாழ்த்துக்கள்", "உள்ளிடவும்", "பெற", "தவறுதலாக", "திருப்பி", "சம்பாதிக்கலாம்", "சந்தேகத்திற்குரிய",
-}
+} | S.SALIENT                     # plus each registered script's salient words
 
 
 # ------------------------------------------------------------------ helpers
@@ -77,7 +76,8 @@ def graphemes(word):
 
 
 def script_of(word):
-    return "ta" if T.tamil_share(word) >= 0.5 else "lat"
+    """'lat' or a registered script code."""
+    return S.script_of(word)
 
 
 # ------------------------------------------------------------------ Latin operators
@@ -160,53 +160,56 @@ def op_delete(w, rng):
     return w[:i] + w[i + 1:]
 
 
-def op_to_tamil(w, rng):
-    """English loanword written phonetically in Tamil script (L4)."""
-    key = w.lower()
-    return T.EN2TA.get(key, op_homoglyph(w, rng))
+def op_to_native(w, rng, sc=None):
+    """English loanword written phonetically in a native script (L4)."""
+    m = S.SCRIPTS.get(sc) or rng.choice(list(S.SCRIPTS.values()))
+    return m.EN2X.get(w.lower(), op_homoglyph(w, rng))
 
 
-# ------------------------------------------------------------------ Tamil operators
-def op_ta_confusable(w, rng):
-    pairs = [(a, b) for a, b in T.CONFUSABLE if a in w] + [(b, a) for a, b in T.CONFUSABLE if b in w]
+# ------------------------------------------------------------------ native-script operators
+def op_nx_confusable(w, rng, sc):
+    m = S.SCRIPTS[sc]
+    pairs = [(a, b) for a, b in m.CONFUSABLE if a in w] + [(b, a) for a, b in m.CONFUSABLE if b in w]
     if not pairs:
-        return op_ta_vowel_length(w, rng)
+        return op_nx_vowel_length(w, rng, sc)
     a, b = rng.choice(pairs)
-    idx = [i for i, ch in enumerate(w) if ch == a]
-    i = rng.choice(idx)
+    i = rng.choice([i for i, ch in enumerate(w) if ch == a])
     return w[:i] + b + w[i + 1:]
 
 
-def op_ta_vowel_length(w, rng):
-    pairs = [(a, b) for a, b in T.VOWEL_LENGTH if a in w] + [(b, a) for a, b in T.VOWEL_LENGTH if b in w]
+def op_nx_vowel_length(w, rng, sc):
+    m = S.SCRIPTS[sc]
+    pairs = [(a, b) for a, b in m.VOWEL_LENGTH if a in w] + [(b, a) for a, b in m.VOWEL_LENGTH if b in w]
     if not pairs:
-        return op_ta_pulli(w, rng)
+        return op_nx_virama(w, rng, sc)
     a, b = rng.choice(pairs)
     return w.replace(a, b, 1)
 
 
-def op_ta_pulli(w, rng):
-    idx = [i for i, ch in enumerate(w) if ch == T.PULLI]
+def op_nx_virama(w, rng, sc):
+    m = S.SCRIPTS[sc]
+    idx = [i for i, ch in enumerate(w) if ch == m.VIRAMA]
     if idx and rng.random() < 0.7:
         i = rng.choice(idx)
         return w[:i] + w[i + 1:]
-    cons = [i for i, ch in enumerate(w[:-1]) if ch in T._CONS and not unicodedata.category(w[i + 1]).startswith("M")]
+    cons = [i for i, ch in enumerate(w[:-1]) if ch in m.CONS and not unicodedata.category(w[i + 1]).startswith("M")]
     if not cons:
         return w
     i = rng.choice(cons)
-    return w[:i + 1] + T.PULLI + w[i + 1:]
+    return w[:i + 1] + m.VIRAMA + w[i + 1:]
 
 
-def op_ta_digit(w, rng):
-    idx = [i for i, ch in enumerate(w) if ch in T.DIGIT_HOMOGLYPHS]
+def op_nx_lookalike(w, rng, sc):
+    m = S.SCRIPTS[sc]
+    idx = [i for i, ch in enumerate(w) if ch in m.LOOKALIKES]
     if not idx:
         return op_zero_width(w, rng)
     for i in rng.sample(idx, max(1, len(idx) // 2)):
-        w = w[:i] + T.DIGIT_HOMOGLYPHS[w[i]] + w[i + 1:]
+        w = w[:i] + m.LOOKALIKES[w[i]] + w[i + 1:]
     return w
 
 
-def op_ta_grapheme_delete(w, rng):
+def op_nx_grapheme_delete(w, rng, sc=None):
     g = graphemes(w)
     if len(g) < 3:
         return w
@@ -214,23 +217,24 @@ def op_ta_grapheme_delete(w, rng):
     return "".join(g)
 
 
-def op_translit(w, rng):
-    """Tamil word written in Latin script, Tanglish style (L4)."""
-    return T.to_latin(w)
+def op_translit(w, rng, sc):
+    """Native-script word written in Latin script (Hinglish / Tanglish style, L4)."""
+    return S.SCRIPTS[sc].to_latin(w)
 
 
 OPS = {
     "vowel_drop": op_vowel_drop, "repeat": op_repeat, "case": op_case, "swap": op_swap,
     "phonetic": op_phonetic, "leet": op_leet, "separator": op_separator, "homoglyph": op_homoglyph,
-    "zero_width": op_zero_width, "insert": op_insert, "delete": op_delete, "to_tamil": op_to_tamil,
-    "ta_confusable": op_ta_confusable, "ta_vowel_length": op_ta_vowel_length, "ta_pulli": op_ta_pulli,
-    "ta_digit": op_ta_digit, "ta_grapheme_delete": op_ta_grapheme_delete, "translit": op_translit,
+    "zero_width": op_zero_width, "insert": op_insert, "delete": op_delete, "to_native": op_to_native,
+    "confusable": op_nx_confusable, "vowel_length": op_nx_vowel_length, "virama": op_nx_virama,
+    "lookalike": op_nx_lookalike, "grapheme_delete": op_nx_grapheme_delete, "translit": op_translit,
 }
+NATIVE_OPS = {"to_native", "confusable", "vowel_length", "virama", "lookalike", "grapheme_delete", "translit"}
 
 _LAT = {1: ["vowel_drop", "repeat", "case", "swap", "phonetic"], 2: ["leet", "separator"],
-        3: ["homoglyph", "zero_width", "insert", "delete"], 4: ["to_tamil"]}
-_TA = {1: ["ta_confusable", "ta_vowel_length", "ta_pulli"], 2: ["separator"],
-       3: ["ta_digit", "zero_width", "ta_grapheme_delete"], 4: ["translit"]}
+        3: ["homoglyph", "zero_width", "insert", "delete"], 4: ["to_native"]}
+_NAT = {1: ["confusable", "vowel_length", "virama"], 2: ["separator"],
+        3: ["lookalike", "zero_width", "grapheme_delete"], 4: ["translit"]}
 
 
 def _level_ops(table, level):
@@ -245,8 +249,8 @@ LEVELS = {
     4: {"name": "cross-script", "p": 0.60, "max_ops": 3},
 }
 for _lv, _cfg in LEVELS.items():
-    _cfg["ops"] = {"lat": _level_ops(_LAT, _lv) if _lv else [], "ta": _level_ops(_TA, _lv) if _lv else []}
-    _cfg["new"] = set(_LAT.get(_lv, []) + _TA.get(_lv, []))
+    _cfg["ops"] = {"lat": _level_ops(_LAT, _lv) if _lv else [], "nat": _level_ops(_NAT, _lv) if _lv else []}
+    _cfg["new"] = set(_LAT.get(_lv, []) + _NAT.get(_lv, []))
 
 _TOKEN_RE = re.compile(r"(\s+)")
 _SKIP_RE = re.compile(r"(@|://|www\.|\.(com|in|xyz|top|ly|gd|me|it|co|info|live|site|net|click|support|online|sbi)\b|/)", re.I)
@@ -257,7 +261,7 @@ def _is_wordchar(ch):
 
 
 def split_affixes(tok):
-    """'(KYC-ஐ,' -> ('(', 'KYC-ஐ', ',')  -- keeps Tamil vowel signs inside the core."""
+    """'(KYC-ஐ,' -> ('(', 'KYC-ஐ', ',')  -- keeps native vowel signs inside the core."""
     i, j = 0, len(tok)
     while i < j and not _is_wordchar(tok[i]):
         i += 1
@@ -273,27 +277,32 @@ def _skip(tok):
     return digits >= max(1, len(tok) // 2)
 
 
-def _perturb_core(core, ops, weights, n_ops, rng, applied):
-    """A core like 'PIN-ஐ' has a Latin stem and a Tamil case suffix; perturb the stem only."""
+def _perturb_core(core, ops, weights, n_ops, rng, applied, msg_script):
+    """A core like 'PIN-ஐ' has a Latin stem and a native case suffix; perturb the stem only."""
     stem, sep, suffix = core.partition("-")
     target = stem if sep and stem else core
     script = script_of(target)
+    fam = "lat" if script == "lat" else "nat"
     new = target
     for _ in range(n_ops):
-        cand = ops[script]
+        cand = ops[fam]
         if not cand:
             break
-        op = rng.choices(cand, weights=weights[script])[0]
-        new = OPS[op](new, rng) or new
+        op = rng.choices(cand, weights=weights[fam])[0]
+        if op in NATIVE_OPS:
+            new = OPS[op](new, rng, script if fam == "nat" else msg_script) or new
+        else:
+            new = OPS[op](new, rng) or new
         applied.append(op)
-        if op in ("translit", "to_tamil"):
+        if op in ("translit", "to_native"):
             break                       # script has changed; stop stacking operators
     return new + sep + suffix if sep and stem else new
 
 
 def obfuscate(text, level, lang=None, rng=None, seed=None, return_ops=False):
     """Obfuscate `text` at intensity `level` (0-4). Deterministic given `seed`.
-    `lang` is accepted for backwards compatibility; operators are chosen per token script."""
+    Operators are chosen per token script. At L4, English words are written in the message's
+    own native script; an all-English message gets one registered script chosen per message."""
     if rng is None:
         rng = random.Random(seed)
     cfg = LEVELS[int(level)]
@@ -303,8 +312,9 @@ def obfuscate(text, level, lang=None, rng=None, seed=None, return_ops=False):
     for script, ops in cfg["ops"].items():
         w = [3.0 if o in cfg["new"] else 1.0 for o in ops]
         if level == 4:
-            w = [6.0 if o in ("translit", "to_tamil") else x for o, x in zip(ops, w)]
+            w = [6.0 if o in ("translit", "to_native") else x for o, x in zip(ops, w)]
         weights[script] = w
+    msg_script = S.dominant(text) or rng.choice(sorted(S.SCRIPTS))
     parts = _TOKEN_RE.split(text)
     applied = []
     for k, tok in enumerate(parts):
@@ -317,7 +327,7 @@ def obfuscate(text, level, lang=None, rng=None, seed=None, return_ops=False):
         p = cfg["p"] * (2.0 if (key in SALIENT or core in SALIENT) else 1.0)
         if rng.random() >= min(p, 0.95):
             continue
-        parts[k] = pre + _perturb_core(core, cfg["ops"], weights, rng.randint(1, cfg["max_ops"]), rng, applied) + post
+        parts[k] = pre + _perturb_core(core, cfg["ops"], weights, rng.randint(1, cfg["max_ops"]), rng, applied, msg_script) + post
     out = "".join(parts)
     return (out, applied) if return_ops else out
 
@@ -327,9 +337,9 @@ _ZW_RE = re.compile("[​‌‍⁠﻿]")
 _SEP_CLASS = r"[\.\-_\* ]"
 _SPACED_LAT_RE = re.compile(r"\b(?:[A-Za-z]" + _SEP_CLASS + r"){2,}[A-Za-z]\b")
 _INTRA_SEP_RE = re.compile(r"(?<=[A-Za-z])[\.\-_\*](?=[A-Za-z])")
-_TA_CLUSTER = "[஀-௿]+"
-_SPACED_TA_RE = re.compile(r"(?:" + _TA_CLUSTER + r"[\._\*]){2,}" + _TA_CLUSTER)
-_TA_INTRA_SEP_RE = re.compile(r"(?<=[஀-௿])[\._\*](?=[஀-௿])")
+_NAT_CLUSTER = "[" + S.ALL_RANGES + "]+"
+_SPACED_NAT_RE = re.compile(r"(?:" + _NAT_CLUSTER + r"[\._\*]){2,}" + _NAT_CLUSTER)
+_NAT_INTRA_SEP_RE = re.compile(r"(?<=[" + S.ALL_RANGES + r"])[\._\*](?=[" + S.ALL_RANGES + r"])")
 
 
 def _deleet_token(tok):
@@ -348,16 +358,17 @@ def _fold_token(tok):
     if sep and stem and suffix and script_of(stem) != script_of(suffix):
         # mixed token such as 'requ35t-ஐ': fold the stem and the case suffix separately
         return pre + _fold_token(stem) + sep + _fold_token(suffix) + post
-    # Tamil-digit homoglyphs inside Tamil words -> letters
-    if any(T.is_tamil_char(c) for c in tok):
-        tok = "".join(T.DIGIT_TO_LETTER.get(c, c) for c in tok)
-        tok = _TA_INTRA_SEP_RE.sub("", tok)
+    # look-alike characters inside native words -> letters
+    if any(S.is_native(c) or c in S.LOOKALIKE_TO_LETTER for c in tok) and \
+            sum(S.is_native(c) or c in S.LOOKALIKE_TO_LETTER for c in tok) * 2 >= sum(c.isalpha() for c in tok):
+        tok = "".join(S.LOOKALIKE_TO_LETTER.get(c, c) for c in tok)
+        tok = _NAT_INTRA_SEP_RE.sub("", tok)
         pre, core, post = split_affixes(tok)
         stem, sep, suffix = core.partition("-")
-        if stem in T.TA2EN:                       # அக்கவுண்ட் -> account
-            return pre + T.TA2EN[stem] + sep + suffix + post
-        if core in T.TA2EN:
-            return pre + T.TA2EN[core] + post
+        if stem in S.X2EN:                        # அக்கவுண்ட் / अकाउंट -> account
+            return pre + S.X2EN[stem] + sep + suffix + post
+        if core in S.X2EN:
+            return pre + S.X2EN[core] + post
         return tok
     tok = _INTRA_SEP_RE.sub("", tok)
     return _deleet_token(tok)
@@ -366,14 +377,14 @@ def _fold_token(tok):
 def normalize(text):
     """Script-aware canonicalisation defence (no access to the attack's random choices):
     NFKC, strip zero-width characters, fold Latin look-alikes (Cyrillic/Greek) back to Latin,
-    fold Tamil-digit look-alikes back to Tamil letters, collapse separators inside words in both
-    scripts, undo leetspeak in alphabetic Latin tokens, map Tamil-script spellings of English
-    loanwords back to English, squeeze letter runs, lower-case."""
+    fold native look-alikes (Tamil digits, Gujarati letters) back to the native letters, collapse
+    separators inside words in every script, undo leetspeak in alphabetic Latin tokens, map
+    native-script spellings of English loanwords back to English, squeeze letter runs, lower-case."""
     t = unicodedata.normalize("NFKC", text)
     t = _ZW_RE.sub("", t)
     t = "".join(REVERSE_HOMOGLYPHS.get(ch, ch) for ch in t)
     t = _SPACED_LAT_RE.sub(lambda m: re.sub(_SEP_CLASS, "", m.group(0)), t)
-    t = _SPACED_TA_RE.sub(lambda m: re.sub(r"[\._\*]", "", m.group(0)), t)
+    t = _SPACED_NAT_RE.sub(lambda m: re.sub(r"[\._\*]", "", m.group(0)), t)
     t = " ".join(_fold_token(tok) for tok in t.split(" "))
     t = re.sub(r"([A-Za-z])\1{2,}", r"\1\1", t)
     return t.lower()
@@ -397,7 +408,8 @@ def edit_rate(a, b):
 
 if __name__ == "__main__":
     demo = ["Dear customer your SBI account will be blocked today. Update your KYC immediately by clicking sbi-kyc.xyz/aB3d",
-            "உங்கள் refund ₹4,999 நிலுவையில் உள்ளது. பெற collect request-ஐ approve செய்து PIN enter செய்யவும்"]
+            "उपयोगकर्ता: आपका refund pending है। पाने के लिए collect request approve करें और PIN डालें",
+            "உங்கள் refund நிலுவையில் உள்ளது. பெற collect request-ஐ approve செய்து PIN enter செய்யவும்"]
     for txt in demo:
         for lv in range(5):
             print(f"L{lv}:", obfuscate(txt, lv, seed=7))

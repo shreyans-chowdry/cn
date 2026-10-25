@@ -1,15 +1,16 @@
 """
-Build UPI-BiSMS, the bilingual (English / Tamil-English) UPI SMS corpus.
+Build UPI-MixSMS, the multilingual code-mixed UPI SMS corpus (English plus one code-mixed
+setting per registered native script; currently Hindi-English and Tamil-English).
 
 Split protocol (template-disjoint): for every (label, subtype) one template index is held
-out for TEST in both languages, so test messages are new phrasings of intents the model saw
+out for TEST in every language, so test messages are new phrasings of intents the model saw
 only in other wordings. This prevents template memorisation from inflating accuracy.
 
 Natural variation applied to clean messages (how people really type, not an attack):
   English : informal spellings (ur, pls, u), random casing, punctuation drift
-  Tamil   : formal <-> colloquial register (செய்யவும் / செய்யுங்க / பண்ணுங்க), English loanwords
-            occasionally typed in Tamil script (account -> அக்கவுண்ட்), English words in
-            random case
+  native  : formal <-> colloquial register (Tamil செய்யவும் / பண்ணுங்க, Hindi करें / करो), English
+            loanwords occasionally typed in the native script (account -> அக்கவுண்ட் / अकाउंट),
+            English words in random case
   both    : shared prefixes/suffixes and spoofable DLT sender headers (VM-ABCDEF:)
 """
 import argparse
@@ -21,11 +22,11 @@ import pandas as pd
 
 from .templates import TEMPLATES, LANGS
 from . import lexicon as L
-from .. import tamil as T
+from .. import scripts as S
 
 CLASS_SHARE = {"scam": 0.36, "legit": 0.44, "promo": 0.20}
-TA_LOANWORD_RATE = 0.08      # natural rate of English loanwords typed in Tamil script
-TA_REGISTER_RATE = 0.5
+LOANWORD_RATE = 0.08      # natural rate of English loanwords typed in the native script
+REGISTER_RATE = 0.5
 
 
 def _natural_en(rng, text):
@@ -42,24 +43,24 @@ def _natural_en(rng, text):
     return " ".join(out)
 
 
-def _natural_ta(rng, text):
+def _natural_native(rng, text, m):
     out = []
     for tok in text.split(" "):
-        core = tok.strip(".,!?:;")
+        core = tok.strip(".,!?:;।")
         low = core.lower()
-        if core in T.REGISTER_VARIANTS and rng.random() < TA_REGISTER_RATE:
-            tok = tok.replace(core, rng.choice(T.REGISTER_VARIANTS[core]), 1)
-        elif low in T.EN2TA and rng.random() < TA_LOANWORD_RATE:
-            tok = tok.replace(core, T.EN2TA[low], 1)
+        if core in m.REGISTER_VARIANTS and rng.random() < REGISTER_RATE:
+            tok = tok.replace(core, rng.choice(m.REGISTER_VARIANTS[core]), 1)
+        elif low in m.EN2X and rng.random() < LOANWORD_RATE:
+            tok = tok.replace(core, m.EN2X[low], 1)
         out.append(tok)
     return " ".join(out)
 
 
 def _surface(rng, text, lang):
-    text = _natural_en(rng, text) if lang == "en" else _natural_ta(rng, text)
+    text = _natural_en(rng, text) if lang == "en" else _natural_native(rng, text, S.SCRIPTS[lang])
     r = rng.random()
     if r < 0.12:
-        text = text.lower()          # no effect on Tamil letters, lower-cases the English words
+        text = text.lower()          # no effect on native letters, lower-cases the English words
     elif r < 0.16:
         text = text.upper()
     if rng.random() < 0.2:
@@ -69,7 +70,7 @@ def _surface(rng, text, lang):
     return text
 
 
-def generate(n_per_lang=5000, seed=13):
+def generate(n_per_lang=4000, seed=13):
     rng = random.Random(seed)
     rows = []
     for label, subtypes in TEMPLATES.items():
@@ -99,9 +100,9 @@ def generate(n_per_lang=5000, seed=13):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--n-per-lang", type=int, default=5000)
+    ap.add_argument("--n-per-lang", type=int, default=4000)
     ap.add_argument("--seed", type=int, default=13)
-    ap.add_argument("--out", default="data/upi_bisms.csv")
+    ap.add_argument("--out", default="data/upi_mixsms.csv")
     a = ap.parse_args()
     df = generate(a.n_per_lang, a.seed)
     Path(a.out).parent.mkdir(parents=True, exist_ok=True)

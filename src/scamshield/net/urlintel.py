@@ -42,7 +42,7 @@ _URL_RE = re.compile(
 def extract_urls(text):
     out = []
     for m in _URL_RE.finditer(text):
-        u = re.sub(r"-[\u0B80-\u0BFF]+$", "", m.group(0)).rstrip(".,;:!?)'\"")   # drop Tamil case suffix (link-ல்)
+        u = re.sub(r"-[\u0900-\u0DFF]+$", "", m.group(0)).rstrip(".,;:!?)'\"।")   # drop a native case suffix (link-ல்)
         if "@" in text[max(0, m.start() - 1): m.start()]:
             continue                                     # part of a UPI ID / e-mail
         host = re.sub(r"^https?://", "", u, flags=re.I).split("/")[0].split(":")[0].strip("[]").lower()

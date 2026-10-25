@@ -9,7 +9,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.svm import LinearSVC
 
-WORD_TOKEN = r"(?u)[\w\u0B80-\u0BFF]+"  # \\w alone splits Tamil words at vowel signs
+WORD_TOKEN = r"(?u)[\w\u0900-\u0DFF]+"  # \\w alone splits Indic words at vowel signs
 
 
 def _word_vec(binary=False, counts=False):

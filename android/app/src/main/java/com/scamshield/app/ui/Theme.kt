@@ -19,7 +19,7 @@ object Signal {
     val scamDark = Color(0xFFFF6B63)
     val promoDark = Color(0xFFE3A92A)
     val legitDark = Color(0xFF5CC27A)
-    val tamil = Color(0xFF1C6FB0)
+    val native = Color(0xFF1C6FB0)
     val english = Color(0xFF6B4FBB)
 }
 

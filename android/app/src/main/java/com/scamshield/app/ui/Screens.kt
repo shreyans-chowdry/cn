@@ -67,10 +67,11 @@ import java.util.Date
 import java.util.Locale
 
 val SAMPLES = listOf(
-    "Tamil–English scam" to "உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9",
+    "Code-mixed scam" to "प्रिय ग्राहक, आपका SBI account आज रात 12 बजे block कर दिया जाएगा। तुरंत KYC update करने के लिए इस link पर click करें http://sbi-kyc-update.xyz/a9",
+    "Another script" to "உங்கள் SBI account இன்று இரவு 12 மணிக்கு block செய்யப்படும். உடனே KYC update செய்ய இந்த link-ஐ click செய்யவும் http://sbi-kyc-update.xyz/a9",
     "UPI PIN trick" to "Congratulations! You have received ₹4,999 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN",
     "Disguised spelling" to "Y0ur HDFC acc0unt will be bl0cked t0day. Upd@te K.Y.C n0w: hdfc-verify.top/k",
-    "Tamil, romanised" to "Ungal refund ₹2,000 pending. Udane collect request approve panni PIN podunga",
+    "Romanised" to "Aapka refund ₹2,000 pending hai. Turant collect request approve karo aur PIN daalo",
     "Genuine bank alert" to "உங்கள் A/c XX4821-லிருந்து 12-10-26 அன்று ₹1,250 VPA swiggy@ybl-க்கு debit செய்யப்பட்டது. UPI Ref 412398765432. நீங்கள் செய்யவில்லையா? 1800-123-4567 அழைக்கவும் -SBI",
     "Promotion" to "Swiggy Diwali sale is live! Up to 60% off on all orders. Shop now https://swiggy.onelink.me/x7",
 )
@@ -180,7 +181,7 @@ fun CheckScreen(repo: Repository, initial: String? = null) {
 
     ScreenColumn {
         Text("Check a message", style = MaterialTheme.typography.headlineSmall)
-        Text("Paste any SMS in English, Tamil or a mix of both. The language is detected for you.",
+        Text("Paste any SMS in English or a mix of English and another language. The language is detected for you.",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.padding(top = 4.dp, bottom = 12.dp))
         OutlinedTextField(value = text, onValueChange = { text = it }, modifier = Modifier.fillMaxWidth().height(150.dp),
@@ -342,8 +343,8 @@ fun AboutScreen(repo: Repository) {
         SectionLabel("How it works")
         Card {
             Text("Each SMS is cleaned up first, undoing tricks scammers use to slip past filters: look-alike letters, invisible characters, " +
-                "digits in place of letters (P1N), dotted words (K.Y.C) and English words written in Tamil script. A character-level model " +
-                "trained on English and Tamil–English UPI messages then scores it, and every link is checked: raw IP addresses, " +
+                "digits in place of letters (P1N), dotted words (K.Y.C) and English words written in another script. A character-level " +
+                "model trained on English and code-mixed UPI messages then scores it, and every link is checked: raw IP addresses, " +
                 "look-alike bank domains, shorteners and, if enabled, where the domain really resolves in DNS.",
                 style = MaterialTheme.typography.bodyMedium)
         }

@@ -1,2702 +1,2702 @@
 [
 {
-"text": "Dear user, உங்கள் ICICI Bank credit card-ல் Rs 38400 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call +918627116740 .",
-"normalized": "dear user, உங்கள் icici bank credit card-ல் rs 38400 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. cancel செய்ய otp-ஐ சொல்லுங்கள், call +918627116740 .",
+"text": "எச்சரிக்கை! பணம் பெற upi pin தேவையில்லை. தெரியாத link-களை click செய்ய வேண்டாம் -axis bank",
+"normalized": "எச்சரிக்கை! பணம் பெற upi pin தேவையில்லை. தெரியாத link-களை click செய்ய வேண்டாம் -axis bank",
 "probs": [
-0.365611,
-0.026286,
-0.608103
+0.407584,
+0.005139,
+0.587277
 ]
 },
 {
-"text": "வாழ்த்துக்கள்! உங்களுக்கு Rs 90743 cashback கிடைத்துள்ளது. பணத்தைப் பெற PhonePe-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும்",
-"normalized": "வாழ்த்துக்கள்! உங்களுக்கு rs 90743 cashback கிடைத்துள்ளது. பணத்தைப் பெற phonepe-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும்",
+"text": "Alert: Ur KYC has expired. To avoid MobiKwik wallet closure call +91 73506 20518 immediately",
+"normalized": "alert: ur kyc has expired. to avoid mobikwik wallet closure call +91 73506 20518 immediately",
 "probs": [
-0.023444,
-0.040821,
-0.935735
+0.22209,
+0.018784,
+0.759126
 ]
 },
 {
-"text": "இன்று மட்டும்! MobiKwik-ல் பில் செலுத்தி ₹61,700 வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் myntr.it/ZvIQh Regards",
-"normalized": "இன்று மட்டும்! mobikwik-ல் bill செலுத்தி ₹61,700 வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் myntr.it/zviqh regards",
+"text": "tm-gxwbus: hello, आपके icici बैंक reward points जिनकी कीमत ₹1,045 है, आज expire हो रहे हैं, अभी redeem करो https://t.ly/ukv36t thanks.",
+"normalized": "tmgxwbus: hello, आपके icici bank reward points जिनकी कीमत ₹1,045 है, आज expire हो रहे हैं, अभी redeem करो https://t.ly/ukv36t thanks.",
 "probs": [
-0.028524,
-0.859285,
-0.112191
+0.001532,
+0.006934,
+0.991533
 ]
 },
 {
-"text": "வாழ்த்துக்கள்! உங்களுக்கு Rs.46,400 cashback கிடைத்துள்ளது.. பணத்தைப் பெற Paytm-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும் :)",
-"normalized": "வாழ்த்துக்கள்! உங்களுக்கு rs.46,400 cashback கிடைத்துள்ளது.. பணத்தைப் பெற paytm-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும் :)",
+"text": "Alert: நினைவூட்டல்: Pothys-க்கு Rs.33,996 UPI AutoPay 19Oct26 அன்று திட்டமிடப்பட்டுள்ளது -Federal Bank",
+"normalized": "alert: நினைவூட்டல்: pothys-க்கு rs.33,996 upi autopay 19oct26 அன்று திட்டமிடப்பட்டுள்ளது -federal bank",
 "probs": [
-0.016894,
-0.021565,
-0.961542
+0.975616,
+0.017132,
+0.007252
 ]
 },
 {
-"text": "hello, sandeep has requested ₹77,067 on phonepe. remember, you never need to enter pin to receive money regards",
-"normalized": "hello, sandeep has requested ₹77,067 on phonepe. remember, you never need to enter pin to receive money regards",
+"text": "Hello, நினைவூட்டல்: Swiggy-க்கு Rs.18,400 UPI AutoPay 25 May அன்று திட்டமிடப்பட்டுள்ளது -Canara Bank .",
+"normalized": "hello, நினைவூட்டல்: swiggy-க்கு rs.18,400 upi autopay 25 may அன்று திட்டமிடப்பட்டுள்ளது -canara bank .",
 "probs": [
-0.233682,
-0.026337,
-0.739981
+0.981048,
+0.011407,
+0.007545
 ]
 },
 {
-"text": "AD-EGEGOE: Dear user, வாழ்த்துக்கள்! உங்களுக்கு Rs.37700/- cashback கிடைத்துள்ளது. பணத்தைப் பெற Amazon Pay-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும் -Team",
-"normalized": "adegegoe: dear user, வாழ்த்துக்கள்! உங்களுக்கு rs.37700/- cashback கிடைத்துள்ளது. பணத்தைப் பெற amazon pay-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும் -team",
+"text": "Hello, Payment of Rs.17609/- for your Tanishq order is successful. Order will be delivered by 24/01/2026",
+"normalized": "hello, payment of rs.17609/- for your tanishq order is successful. order will be delivered by 24/01/2026",
 "probs": [
-0.015497,
-0.029438,
-0.955065
+0.890745,
+0.025416,
+0.08384
 ]
 },
 {
-"text": "டேய், நேற்று dinner-க்கான Rs.3500/--ஐ நேரம் கிடைக்கும்போது arun@axl-க்கு அனுப்பிவிடு",
-"normalized": "டேய், நேற்று dinner-க்கான rs.3500/--ஐ நேரம் கிடைக்கும்போது arun@axl-க்கு அனுப்பிவிடு",
+"text": "hi, mobikwik login otp: 539261. valid for 10 mins. do not share, mobikwik never calls asking for otp :)",
+"normalized": "hi, mobikwik login otp: 539261. valid for 10 mins. do not share, mobikwik never calls asking for otp :)",
 "probs": [
-0.540588,
-0.022035,
-0.437377
+0.831887,
+0.164655,
+0.003459
 ]
 },
 {
-"text": "Hello, Congratulations! You have received Rs 23324 cashback. To receive the money accept the request on BHIM and enter your UPI PIN",
-"normalized": "hello, congratulationsi you have received rs 23324 cashback. to receive the money accept the request on bhim and enter your upi pin",
+"text": "JD-CBPPWP: Hi, आपके Google Pay wallet में ₹65,664 जोड़े गए। Transaction ID 390223961328 Regards",
+"normalized": "jdcbppwp: hi, आपके google pay wallet में ₹65,664 जोड़े गए। transaction id 390223961328 regards",
 "probs": [
-0.021626,
-0.06552,
-0.912854
+0.664296,
+0.259722,
+0.075982
 ]
 },
 {
-"text": "Hi, MSEDCL: Your bill is pending and connection will be disconnected. Pay Rs.91,100 nw rb.gy/DLm8l1 T&C",
-"normalized": "hi, msedcl: your bill is pending and connection will be disconnected. pay rs.91,100 nw rb.gy/dlm8l1 t&c",
+"text": "உங்கள் KYC காலாவதியாகிவிட்டது. Paytm wallet மூடப்படாமல் இருக்க உடனே +91 78963 14204 எண்ணுக்கு call செய்யுங்கள்",
+"normalized": "உங்கள் kyc காலாவதியாகிவிட்டது. paytm wallet மூடப்படாமல் இருக்க உடனே +91 78963 14204 எண்ணுக்கு call செய்யுங்கள்",
 "probs": [
-0.06291,
-0.0992,
-0.83789
+0.005104,
+0.004921,
+0.989975
 ]
 },
 {
-"text": "Info: IDFC First: A/c x2070-லிருந்து Ajio-க்கு INR 70879.00 debit செய்யப்பட்டது. இருப்பு Rs.4,982. Ref 828776146172 .",
-"normalized": "info: idfc first: a/c x2070-லிருந்து ajio-க்கு inr 70879.00 debit செய்யப்பட்டது. இருப்பு rs.4,982. ref 828776146172 .",
+"text": "AD-GOGFLU: Info: आपका KYC expire हो गया है। Paytm wallet बंद होने से बचाने के लिए जल्दी 8217765205 पर call करें",
+"normalized": "adgogflu: info: आपका kyc expire हो गया है। paytm wallet बंद होने से बचाने के लिए जल्दी 8217765205 पर call करें",
 "probs": [
-0.956148,
-0.001462,
-0.04239
+0.015768,
+0.010291,
+0.973941
 ]
 },
 {
-"text": "Info: TSSPDCL: Your bill is pending and connection will be disconnected. Pay ₹50,400 nw axis.verify.support",
-"normalized": "info: tsspdcl: your bill is pending and connection will be disconnected. pay ₹50,400 nw axis.verify.support",
+"text": "Hi, Congratulations! You have received Rs 48700 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN .",
+"normalized": "hi, congratulationsi you have received rs 48700 cashback. to receive the money accept the request on phonepe and enter your upi pin .",
 "probs": [
-0.06562,
-0.043837,
-0.890543
+0.138051,
+0.137327,
+0.724622
 ]
 },
 {
-"text": "TM-EOBHZK: Imp: ICICI Bank: Pre-approved personal loan up to Rs 37333 at attractive rates. Apply on ICICI Bank app. T&C apply",
-"normalized": "tmeobhzk: imp: icici bank: preapproved personal loan up to rs 37333 at attractive rates. apply on icici bank app. t&c apply",
+"text": "TM-LSJDID: Imp: आपके Indian Bank reward points जिनकी कीमत Rs.95500/- है, आज expire हो रहे हैं, अभी redeem करो https://indianbankkyc.top",
+"normalized": "tmlsjdid: imp: आपके indian bank reward points जिनकी कीमत rs.95500/- है, आज expire हो रहे हैं, अभी redeem करो https://indianbankkyc.top",
 "probs": [
-0.172891,
-0.701682,
-0.125427
+0.001994,
+0.010735,
+0.987272
 ]
 },
 {
-"text": "Alert: Delhivery: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release fee Rs.91,200 செலுத்துங்கள் bit.ly/ripmAd",
-"normalized": "alert: delhivery: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. release fee rs.91,200 செலுத்துங்கள் bit.ly/ripmad",
+"text": "Imp: अरे, कल के dinner के Rs.21,500 जब time मिले nandini@axl पर भेज देना T&C",
+"normalized": "imp: अरे, कल के dinner के rs.21,500 जब time मिले nandini@axl पर भेज देना t&c",
 "probs": [
-0.303657,
-0.037505,
-0.658838
+0.25852,
+0.043002,
+0.698479
 ]
 },
 {
-"text": "Info: PNB: உங்களுக்கு ₹86,100 வரை pre-approved personal loan, குறைந்த வட்டியில். PNB app-ல் apply செய்யுங்கள். T&C apply Thanks.",
-"normalized": "info: pnb: உங்களுக்கு ₹86,100 வரை preapproved personal loan, குறைந்த வட்டியில். pnb app-ல் apply செய்யுங்கள். t&c apply thanks.",
+"text": "Dear user, INR 95318.00 debited from A/c x3975 on 04/01/2026 to VPA deepa@paytm. UPI Ref No 783873703829. Not you? Call 1800-565-4877 -Federal Bank .",
+"normalized": "dear user, inr 95318.00 debited from a/c x3975 on 04/01/2026 to vpa deepa@paytm. upi ref no 783873703829. not you? call 1800-565-4877 -federal bank .",
 "probs": [
-0.011385,
-0.907485,
-0.08113
+0.99144,
+0.002047,
+0.006513
 ]
 },
 {
-"text": "Imp: Congratulations! You have received Rs.32,800 cashback. To receive the amt accept the request on BHIM and enter your UPI PIN :)",
-"normalized": "imp: congratulationsi you have received rs.32,800 cashback. to receive the amt accept the request on bhim and enter your upi pin :)",
+"text": "Hi, BESCOM: Your bill is pending and connection will be disconnected. Pay Rs 2152 nw http://care.bob69.click/YzTH",
+"normalized": "hi, bescom: your bill is pending and connection will be disconnected. pay rs 2152 nw http://care.bob69.click/yzth",
 "probs": [
-0.020541,
-0.030629,
-0.94883
+0.013837,
+0.089382,
+0.896781
 ]
 },
 {
-"text": "ur tata power bill of rs.57,913 is paid successfully. transaction id 123387549301. thank you",
-"normalized": "ur tata power bill of rs.57,913 is paid successfully. transaction id 123387549301. thank you",
+"text": "CP-HMIQDS: Imp: नमस्ते, मैं HR से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके ₹1,964 कमाएँ, Telegram पर join करें iobrefund.top/3abR",
+"normalized": "cphmiqds: imp: नमस्ते, मैं hr से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके ₹1,964 कमाएँ, telegram पर join करें iobrefund.top/3abr",
 "probs": [
-0.980836,
-0.002415,
-0.016748
+0.111742,
+0.028667,
+0.859591
 ]
 },
 {
-"text": "Info: ICICI Bank: உங்களுக்கு ₹47,297 வரை pre-approved personal loan, குறைந்த வட்டியில்.. ICICI Bank app-ல் apply செய்யுங்கள்.. T&C apply Thanks.",
-"normalized": "info: icici bank: உங்களுக்கு ₹47,297 வரை preapproved personal loan, குறைந்த வட்டியில்.. icici bank app-ல் apply செய்யுங்கள்.. t&c apply thanks.",
+"text": "JD-VLEHON: IRCTC ने MobiKwik पर आपको Rs 94600 की payment request भेजी है। Order आपने किया है तो app में approve कर दें, वरना decline करें Regards",
+"normalized": "jdvlehon: irctc ने mobikwik पर आपको rs 94600 की payment request भेजी है। order आपने किया है तो app में approve कर दें, वरना decline करें regards",
 "probs": [
-0.024684,
-0.919008,
-0.056307
+0.087644,
+0.138238,
+0.774118
 ]
 },
 {
-"text": "Info: Airtel lucky winner: உங்கள் எண் iPhone 16 வென்றுள்ளது. உடனே WhatsApp செய்யுங்கள் +91 97409 62051 .",
-"normalized": "info: airtel lucky winner: உங்கள் எண் iphone 16 வென்றுள்ளது. உடனே whatsapp செய்யுங்கள் +91 97409 62051 .",
+"text": "Dear user, DTDC: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release fee Rs.48,774 செலுத்துங்கள் http://points.icici.info -Team",
+"normalized": "dear user, dtdc: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. release fee rs.48,774 செலுத்துங்கள் http://points.icici.info -team",
 "probs": [
-0.030214,
-0.01038,
-0.959406
+0.035173,
+0.020668,
+0.944159
 ]
 },
 {
-"text": "AX-DIKSOT: Hi, TANGEDCO: Your bill is pending and connection will be disconnected. Pay Rs.29,100 nw https://is.gd/tz27FC",
-"normalized": "axdiksot: hi, tangedco: your bill is pending and connection will be disconnected. pay rs.29,100 nw https://is.gd/tz27fc",
+"text": "Dear user, Hello I am from HR, your resume has been shortlisted. Complete simple tasks and earn Rs.8,584, join Telegram idfcfirst.kyc91.top/Sw4B .",
+"normalized": "dear user, hello i am from hr, your resume has been shortlisted. complete simple tasks and earn rs.8,584, join telegram idfcfirst.kyc91.top/sw4b .",
 "probs": [
-0.028086,
-0.083497,
-0.888418
+0.148321,
+0.155751,
+0.695929
 ]
 },
 {
-"text": "Imp: I am an army officer, I will pay advance Rs 97600 for the room. Scan my QR and enter PIN, money will come to you 8680976192 Regards",
-"normalized": "imp: i am an army officer, i will pay advance rs 97600 for the room. scan my qr and enter pin, money will come to you 8680976192 regards",
+"text": "Hello, Airtel lucky winner: your number has won Tata Nexon car. WhatsApp +91 99918 21419 now",
+"normalized": "hello, airtel lucky winner: your number has won tata nexon car. whatsapp +91 99918 21419 now",
 "probs": [
-0.235076,
-0.031294,
-0.733629
+0.017689,
+0.01802,
+0.964291
 ]
 },
 {
-"text": "Dear user, Suspicious transaction of Rs.57800/- on your PNB credit card. To cancel share the OTP, call 7993390213 :)",
-"normalized": "dear user, suspicious transaction of rs.57800/- on your pnb credit card. to cancel share the otp, call 7993390213 :)",
+"text": "Hi, உங்கள் Airtel plan 2 நாட்களில் முடிவடைகிறது. இப்போதே recharge செய்து unlimited data அனுபவியுங்கள் https://phon.pe/j7zp6",
+"normalized": "hi, உங்கள் airtel plan 2 நாட்களில் முடிவடைகிறது. இப்போதே recharge செய்து unlimited data அனுபவியுங்கள் https://phon.pe/j7zp6",
 "probs": [
-0.392476,
-0.01191,
-0.595614
+0.044498,
+0.769062,
+0.18644
 ]
 },
 {
-"text": "VM-RQXIQL: Imp: Vi recharge Rs.88,976-க்கான உங்கள் CRED AutoPay 14 Aug அன்று நடைபெறும். ரத்து செய்ய CRED-ல் AutoPay பகுதிக்குச் செல்லவும் -Team",
-"normalized": "vmrqxiql: imp: vi recharge rs.88,976-க்கான உங்கள் cred autopay 14 aug அன்று நடைபெறும். ரத்து செய்ய cred-ல் autopay பகுதிக்குச் செல்லவும் -team",
+"text": "hello, டேய், நேற்று dinner-க்கான rs.59,418-ஐ நேரம் கிடைக்கும்போது vikram1990@axl-க்கு அனுப்பிவிடு t&c",
+"normalized": "hello, டேய், நேற்று dinner-க்கான rs.59,418-ஐ நேரம் கிடைக்கும்போது vikram1990@axl-க்கு அனுப்பிவிடு t&c",
 "probs": [
-0.952674,
-0.031157,
-0.016169
+0.38353,
+0.04381,
+0.57266
 ]
 },
 {
-"text": "Imp: நான் ஒரு army officer, அறைக்கு advance Rs 88300 தருகிறேன். என் QR-ஐ scan செய்து PIN போடுங்கள், பணம் உங்களுக்கு வரும் +91 76307 48196",
-"normalized": "imp: நான் ஒரு army officer, அறைக்கு advance rs 88300 தருகிறேன். என் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்களுக்கு வரும் +91 76307 48196",
+"text": "எச்சரிக்கை! பணம் பெற யூபிஐ பின் தேவையில்லை.. தெரியாத link-களை click செய்ய வேண்டாம் -Kotak Bank .",
+"normalized": "எச்சரிக்கை! பணம் பெற upi pin தேவையில்லை.. தெரியாத link-களை click செய்ய வேண்டாம் -kotak bank .",
 "probs": [
-0.024478,
-0.008398,
-0.967125
+0.523202,
+0.00505,
+0.471748
 ]
 },
 {
-"text": "Alert: HDFC Bank: Pre-approved personal loan up to ₹77,216 at attractive rates. Apply on HDFC Bank app. T&C apply .",
-"normalized": "alert: hdfc bank: preapproved personal loan up to ₹77,216 at attractive rates. apply on hdfc bank app. t&c apply .",
+"text": "AX-EZTWEI: Info: புதிய collection-க்கு flat 10% தள்ளுபடி, DMart store-க்கு வாங்க அல்லது https://airtel.in/p/PdGu7-ல் order செய்யுங்கள் .",
+"normalized": "axeztwei: info: புதிய collection-க்கு flat 10% தள்ளுபடி, dmart store-க்கு வாங்க அல்லது https://airtel.in/p/pdgu7-ல் order செய்யுங்கள் .",
 "probs": [
-0.193012,
-0.704371,
-0.102617
+0.003114,
+0.963286,
+0.0336
 ]
 },
 {
-"text": "Imp: டேய், நேற்று dinner-க்கான Rs 66621-ஐ நேரம் கிடைக்கும்போது divya.meena@ibl-க்கு அனுப்பிவிடு",
-"normalized": "imp: டேய், நேற்று dinner-க்கான rs 66621-ஐ நேரம் கிடைக்கும்போது divya.meena@ibl-க்கு அனுப்பிவிடு",
+"text": "Alert: Your SBI reward points worth Rs.47,000 expire today, redeem now https://rb.gy/Y6xRse",
+"normalized": "alert: your sbi reward points worth rs.47,000 expire today, redeem now https://rb.gy/y6xrse",
 "probs": [
-0.521902,
-0.020595,
-0.457504
+0.001415,
+0.026647,
+0.971938
 ]
 },
 {
-"text": "Imp: ₹97,326 has been added to ur GPay wallet. Transaction ID 479957659210",
-"normalized": "imp: ₹97,326 has been added to ur gpay wallet. transaction id 479957659210",
+"text": "vm-tqiugc: hi, நினைவூட்டல்: zomato-க்கு rs 13541 upi autopay 6 jan அன்று திட்டமிடப்பட்டுள்ளது -hdfc bank",
+"normalized": "vmtqiugc: hi, நினைவூட்டல்: zomato-க்கு rs 13541 upi autopay 6 jan அன்று திட்டமிடப்பட்டுள்ளது -hdfc bank",
 "probs": [
-0.71523,
-0.057922,
-0.226847
-]
-},
-{
-"text": "Hello my INR 91911.00 went to you by mistake, return it or I will file a police complaint +919430536460",
-"normalized": "hello my inr 91911.00 went to you by mistake, return it or i will file a police complaint +919430536460",
-"probs": [
-0.021716,
-0.003842,
-0.974442
-]
-},
-{
-"text": "TM-KBJYXK: Alert: உங்கள் TNEB bill Rs.58131/- வெற்றிகரமாக செலுத்தப்பட்டது. Transaction ID 373137124427. நன்றி! Regards",
-"normalized": "tmkbjyxk: alert: உங்கள் tneb bill rs.58131/- வெற்றிகரமாக செலுத்தப்பட்டது. transaction id 373137124427. நன்றி! regards",
-"probs": [
-0.95356,
-0.006277,
-0.040163
-]
-},
-{
-"text": "Dear user, Rs.45177/- has been added to your Paytm wallet. Transaction ID 302656662773 -Team",
-"normalized": "dear user, rs.45177/- has been added to your paytm wallet. transaction id 302656662773 -team",
-"probs": [
-0.16595,
-0.047387,
-0.786663
-]
-},
-{
-"text": "Hello, Airtel lucky winner: உங்கள் எண் iPhone 16 வென்றுள்ளது. உடனே WhatsApp செய்யவும் 7857059444",
-"normalized": "hello, airtel lucky winner: உங்கள் எண் iphone 16 வென்றுள்ளது. உடனே whatsapp செய்யவும் 7857059444",
-"probs": [
-0.081853,
-0.008967,
-0.909179
-]
-},
-{
-"text": "Your CRED AutoPay for BSNL recharge of Rs 52668 will be executed on 09Jun26. To cancel, open CRED and go to AutoPay .",
-"normalized": "your cred autopay for bsnl recharge of rs 52668 will be executed on 09jun26. to cancel, open cred and go to autopay .",
-"probs": [
-0.949892,
-0.046858,
-0.003249
-]
-},
-{
-"text": "Ekart: Ur parcel is held at customs. Pay Rs.2,500 release fee at iobpoints52.xyz Regards",
-"normalized": "ekart: ur parcel is held at customs. pay rs.2,500 release fee at iobpoints52.xyz regards",
-"probs": [
-0.069799,
-0.020731,
-0.909471
-]
-},
-{
-"text": "hello, idfc first: உங்களுக்கு ₹13,000 வரை pre-approved personal loan, குறைந்த வட்டியில். idfc first app-ல் apply செய்யவும். t&c apply",
-"normalized": "hello, idfc first: உங்களுக்கு ₹13,000 வரை preapproved personal loan, குறைந்த வட்டியில். idfc first app-ல் apply செய்யவும். t&c apply",
-"probs": [
-0.059198,
-0.78235,
-0.158452
-]
-},
-{
-"text": "DEAR USER, SPECIAL OFFER: EXTRA 10GB DATA FREE ON RS.68,917 RECHARGE. HURRY! .",
-"normalized": "dear user, special offer: extra 10gb data free on rs.68,917 recharge. hurryi .",
-"probs": [
-0.204808,
-0.784327,
-0.010866
-]
-},
-{
-"text": "TM-NCJRTB: Info: நான் ஒரு army officer, அறைக்கு advance ₹5,315 தருகிறேன். என் QR-ஐ scan செய்து PIN போடுங்கள், பணம் உங்களுக்கு வரும் +91 66123 10643 :)",
-"normalized": "tmncjrtb: info: நான் ஒரு army officer, அறைக்கு advance ₹5,315 தருகிறேன். என் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்களுக்கு வரும் +91 66123 10643 :)",
-"probs": [
-0.046984,
-0.012972,
-0.940044
-]
-},
-{
-"text": "Myntra Festive sale is live! Up to 40% off on all products. Shop now fkrt.it/nKvdg :)",
-"normalized": "myntra festive sale is livei up to 40% off on all products. shop now fkrt.it/nkvdg :)",
-"probs": [
-0.286143,
-0.706055,
-0.007803
-]
-},
-{
-"text": "Info: CIBIL இல்லாமல் instant loan Rs 14700! Aadhaar, PAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing fee Rs.3,590-ஐ ishita2181@ibl-க்கு அனுப்புங்க .",
-"normalized": "info: cibil இல்லாமல் instant loan rs 14700! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee rs.3,590-ஐ ishita2181@ibl-க்கு அனுப்புங்க .",
-"probs": [
-0.060971,
-0.07958,
-0.859448
-]
-},
-{
-"text": "CP-XDGDEC: Zepto Festive sale is live! Up to 25% off on all products. Shop now icicibank.com/n8MZv",
-"normalized": "cpxdgdec: zepto festive sale is livei up to 25% off on all products. shop now icicibank.com/n8mzv",
-"probs": [
-0.25847,
-0.723702,
-0.017828
-]
-},
-{
-"text": "Airtel lucky winner: உங்கள் எண் Rs 10 lakh வென்றுள்ளது. உடனே WhatsApp செய்யுங்கள் +917385446494 :)",
-"normalized": "airtel lucky winner: உங்கள் எண் rs 10 lakh வென்றுள்ளது. உடனே whatsapp செய்யுங்கள் +917385446494 :)",
-"probs": [
-0.05657,
-0.008696,
-0.934734
-]
-},
-{
-"text": "Tata Power: Your bill is pending and connection will be disconnected. Pay Rs.81514/- now http://rb.gy/YRgOAq",
-"normalized": "tata power: your bill is pending and connection will be disconnected. pay rs.81514/- now http://rb.gy/yrgoaq",
-"probs": [
-0.009072,
-0.052506,
-0.938423
-]
-},
-{
-"text": "Hi, Hello, என் Rs.72,500 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 6288029173",
-"normalized": "hi, hello, என் rs.72,500 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 6288029173",
-"probs": [
-0.070703,
-0.008612,
-0.920685
-]
-},
-{
-"text": "tata power: your bill is pending and connection will be disconnected. pay rs.33187/- now http://rb.gy/zctasn :)",
-"normalized": "tata power: your bill is pending and connection will be disconnected. pay rs.33187/- now http://rb.gy/zctasn :)",
-"probs": [
-0.007627,
-0.034701,
-0.957672
-]
-},
-{
-"text": "Dear user, Special offer: ₹9,964 recharge-க்கு கூடுதல் 10GB data இலவசம். சீக்கிரம்",
-"normalized": "dear user, special offer: ₹9,964 recharge-க்கு கூடுதல் 10gb data இலவசம். சீக்கிரம்",
-"probs": [
-0.251259,
-0.73019,
-0.01855
-]
-},
-{
-"text": "VK-SJCUVV: Dear user, உங்கள் Bank of Baroda reward points மதிப்பு Rs 49538, இன்று காலாவதியாகிறது, இப்பவே redeem பண்ணுங்க http://bobsecure.online/nCxy",
-"normalized": "vksjcuvv: dear user, உங்கள் bank of baroda reward points மதிப்பு rs 49538, இன்று காலாவதியாகிறது, இப்பவே redeem பண்ணுங்க http://bobsecure.online/ncxy",
-"probs": [
-0.001501,
-0.526663,
-0.471836
-]
-},
-{
-"text": "நீங்கள் CRED scratch card வென்றுள்ளீர்கள்! உங்கள் CRED app-ல் rewards பகுதியைப் பாருங்கள் Thanks.",
-"normalized": "நீங்கள் cred scratch card வென்றுள்ளீர்கள்! உங்கள் cred app-ல் rewards பகுதியைப் பாருங்கள் thanks.",
-"probs": [
-0.353114,
-0.248522,
-0.398364
-]
-},
-{
-"text": "TM-SIFVZB: உங்கள் Kotak பேங்க் credit card-ல் Rs 59090 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call +91 75317 89060",
-"normalized": "tmsifvzb: உங்கள் kotak bank credit card-ல் rs 59090 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. cancel செய்ய otp-ஐ சொல்லுங்கள், call +91 75317 89060",
-"probs": [
-0.219063,
-0.05986,
-0.721077
-]
-},
-{
-"text": "Hey send the Rs.4400/- for yesterday's dinner to sneha9933@axl whenever free T&C",
-"normalized": "hey send the rs.4400/- for yesterday's dinner to sneha9933@axl whenever free t&c",
-"probs": [
-0.841201,
-0.0194,
-0.139399
-]
-},
-{
-"text": "VM-FNDWSV: Imp: Your Amazon Pay AutoPay for BSNL recharge of Rs 75400 will be executed on 08/10/2026. To cancel, open Amazon Pay and go to AutoPay",
-"normalized": "vmfndwsv: imp: your amazon pay autopay for bsnl recharge of rs 75400 will be executed on 08/10/2026. to cancel, open amazon pay and go to autopay",
-"probs": [
-0.917224,
-0.062701,
-0.020076
-]
-},
-{
-"text": "Imp: Divya has requested ₹38,150 on Google Pay. Remember, u never need to enter PIN to RECEIVE money T&C",
-"normalized": "imp: divya has requested ₹38,150 on google pay. remember, u never need to enter pin to receive money t&c",
-"probs": [
-0.377039,
-0.024794,
-0.598168
-]
-},
-{
-"text": "Imp: KSEB: Your bill is pending and connection will be disconnected. Pay Rs.10,200 nw iobupdate68.click/GAhy Thanks.",
-"normalized": "imp: kseb: your bill is pending and connection will be disconnected. pay rs.10,200 nw iobupdate68.click/gahy thanks.",
-"probs": [
-0.044307,
-0.025504,
-0.930189
-]
-},
-{
-"text": "Hi, Your TNEB bill of Rs.31,600 is paid successfully. Transaction ID 612474316880. Thank you",
-"normalized": "hi, your tneb bill of rs.31,600 is paid successfully. transaction id 612474316880. thank you",
-"probs": [
-0.981315,
-0.002097,
-0.016588
-]
-},
-{
-"text": "Info: நீங்கள் Paytm scratch card வென்றுள்ளீர்கள்! உங்கள் Paytm app-ல் rewards பகுதியைப் பாருங்கள் Regards",
-"normalized": "info: நீங்கள் paytm scratch card வென்றுள்ளீர்கள்! உங்கள் paytm app-ல் rewards பகுதியைப் பாருங்கள் regards",
-"probs": [
-0.092432,
-0.122661,
-0.784907
-]
-},
-{
-"text": "BZ-MWVBHE: Blinkit தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 10% வரை தள்ளுபடி.. Shop now airtel.in/p/hRoDl",
-"normalized": "bzmwvbhe: blinkit தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 10% வரை தள்ளுபடி.. shop now airtel.in/p/hrodl",
-"probs": [
-0.332415,
-0.528964,
-0.138621
-]
-},
-{
-"text": "imp: canara bank: a/c xx6874-லிருந்து irctc-க்கு rs 55307 debit செய்யப்பட்டது. இருப்பு inr 3800.00. ref 791265234857",
-"normalized": "imp: canara bank: a/c xx6874-லிருந்து irctc-க்கு rs 55307 debit செய்யப்பட்டது. இருப்பு inr 3800.00. ref 791265234857",
-"probs": [
-0.974439,
-0.002149,
-0.023413
-]
-},
-{
-"text": "Imp: உங்கள் UPI PIN reset OTP 412977. நீங்கள் request செய்யவில்லை என்றால் உடனே 1800-549-3726 தொடர்பு கொள்ளவும் .",
-"normalized": "imp: உங்கள் upi pin reset otp 412977. நீங்கள் request செய்யவில்லை என்றால் உடனே 1800-549-3726 தொடர்பு கொள்ளவும் .",
-"probs": [
-0.787312,
-0.004041,
-0.208647
-]
-},
-{
-"text": "Hello, Joseph GPay-ல் Rs.76987/- request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற PIN போட வேண்டியதில்லை .",
-"normalized": "hello, joseph gpay-ல் rs.76987/- request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற pin போட வேண்டியதில்லை .",
-"probs": [
-0.509524,
-0.012077,
-0.478399
-]
-},
-{
-"text": "AD-VDITNI: Info: Suspicious transaction of ₹17,549 on your Indian Bank credit card. To cancel share the OTP, call 8654753509 :)",
-"normalized": "advditni: info: suspicious transaction of ₹17,549 on your indian bank credit card. to cancel share the otp, call 8654753509 :)",
-"probs": [
-0.630588,
-0.028253,
-0.341159
-]
-},
-{
-"text": "CP-SYOTVV: Dear user, Today only! Pay bills on MobiKwik and win cashback up to Rs.68,700. Open now paytm.me/DVwWO T&C",
-"normalized": "cpsyotvv: dear user, today onlyi pay bills on mobikwik and win cashback up to rs.68,700. open now paytm.me/dvwwo t&c",
-"probs": [
-0.079103,
-0.868212,
-0.052685
-]
-},
-{
-"text": "Alert: Ur IDFC First reward points worth Rs 90227 expire today, redeem now http://idfcfirst-points.xyz T&C",
-"normalized": "alert: ur idfc first reward points worth rs 90227 expire today, redeem now http://idfcfirst-points.xyz t&c",
-"probs": [
-0.00114,
-0.732232,
-0.266628
-]
-},
-{
-"text": "Hello, நான் ஒரு army officer, அறைக்கு advance Rs 47066 தருகிறேன். என் QR-ஐ scan செய்து PIN போடுங்கள், பணம் உங்களுக்கு வரும் +916981742427 :)",
-"normalized": "hello, நான் ஒரு army officer, அறைக்கு advance rs 47066 தருகிறேன். என் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்களுக்கு வரும் +916981742427 :)",
-"probs": [
-0.031406,
-0.008546,
-0.960048
-]
-},
-{
-"text": "RBI says: report fraud calls at 1930. Update ur KYC only at Kotak Bank branch .",
-"normalized": "rbi says: report fraud calls at 1930. update ur kyc only at kotak bank branch .",
-"probs": [
-0.941055,
-0.022083,
-0.036862
-]
-},
-{
-"text": "imp: suspicious transaction of rs.20,800 on your hdfc bank credit card.. to cancel share the otp, call +91 90754 23698",
-"normalized": "imp: suspicious transaction of rs.20,800 on your hdfc bank credit card.. to cancel share the otp, call +91 90754 23698",
-"probs": [
-0.357147,
-0.008627,
-0.634226
-]
-},
-{
-"text": "உங்கள் PhonePe wallet-ல் Rs 89200 சேர்க்கப்பட்டது. Transaction ID 421712679819",
-"normalized": "உங்கள் phonepe wallet-ல் rs 89200 சேர்க்கப்பட்டது. transaction id 421712679819",
-"probs": [
-0.479034,
-0.152541,
-0.368426
-]
-},
-{
-"text": "Your KYC has expired. To avoid Google Pay wallet closure call +916704639069 immediately",
-"normalized": "your kyc has expired. to avoid google pay wallet closure call +916704639069 immediately",
-"probs": [
-0.10601,
-0.010378,
-0.883612
-]
-},
-{
-"text": "Info: உங்கள் BSES bill Rs 67387 வெற்றிகரமாக செலுத்தப்பட்டது. Transaction ID 342856071491. நன்றி",
-"normalized": "info: உங்கள் bses bill rs 67387 வெற்றிகரமாக செலுத்தப்பட்டது. transaction id 342856071491. நன்றி",
-"probs": [
-0.980175,
-0.002303,
-0.017522
-]
-},
-{
-"text": "VM-QIKVEV: Dear user, உங்கள் Paytm wallet-ல் INR 82327.00 சேர்க்கப்பட்டது.. Transaction ID 478702323057 T&C",
-"normalized": "vmqikvev: dear user, உங்கள் paytm wallet-ல் inr 82327.00 சேர்க்கப்பட்டது.. transaction id 478702323057 t&c",
-"probs": [
-0.226779,
-0.112077,
-0.661144
-]
-},
-{
-"text": "Imp: Congratulations! U have received Rs.18500/- cashback. To receive the money accept the request on MobiKwik and enter your UPI PIN",
-"normalized": "imp: congratulationsi u have received rs.18500/- cashback. to receive the money accept the request on mobikwik and enter your upi pin",
-"probs": [
-0.014197,
-0.050663,
-0.935139
-]
-},
-{
-"text": "JD-IZHLXH: Imp: உங்கள் KYC காலாவதியாகிவிட்டது. GPay wallet மூடப்படாமல் இருக்க உடனே +916650789061 எண்ணுக்கு call செய்யவும் Thanks.",
-"normalized": "jdizhlxh: imp: உங்கள் kyc காலாவதியாகிவிட்டது. gpay wallet மூடப்படாமல் இருக்க உடனே +916650789061 எண்ணுக்கு call செய்யவும் thanks.",
-"probs": [
-0.004837,
-0.00524,
-0.989923
-]
-},
-{
-"text": "TM-TEGUXF: Your UPI PIN reset OTP is 883752. If not requested by you contact 1860-960-2175 immediately Regards",
-"normalized": "tmteguxf: your upi pin reset otp is 883752. if not requested by you contact 1860-960-2175 immediately regards",
-"probs": [
-0.681029,
-0.005576,
-0.313395
-]
-},
-{
-"text": "Imp: Airtel lucky winner: your number has won Rs.5,00,000 cash. WhatsApp 6575938737 now :)",
-"normalized": "imp: airtel lucky winner: your number has won rs.5,00,000 cash. whatsapp 6575938737 now :)",
-"probs": [
-0.013096,
-0.003866,
-0.983038
-]
-},
-{
-"text": "ax-cozmyx: info: rbi says: report fraud calls at 1930. update your kyc only at union bank branch",
-"normalized": "axcozmyx: info: rbi says: report fraud calls at 1930. update your kyc only at union bank branch",
-"probs": [
-0.849873,
-0.060547,
-0.089579
-]
-},
-{
-"text": "VK-TBKNPP: Dear user, Congratulations! U have received Rs 82100 cashback. To receive the money accept the request on Paytm and enter your UPI PIN Regards",
-"normalized": "vktbknpp: dear user, congratulationsi u have received rs 82100 cashback. to receive the money accept the request on paytm and enter your upi pin regards",
-"probs": [
-0.008387,
-0.040801,
-0.950812
-]
-},
-{
-"text": "Dear user, Your Google Pay AutoPay for Jio recharge of ₹18,071 will be executed on 08-01-26. To cancel, open Google Pay and go to AutoPay T&C",
-"normalized": "dear user, your google pay autopay for jio recharge of ₹18,071 will be executed on 08-01-26. to cancel, open google pay and go to autopay t&c",
-"probs": [
-0.948629,
-0.04799,
-0.003381
-]
-},
-{
-"text": "TM-EIAXAO: Imp: உங்கள் WBSEDCL bill Rs.60270/- வெற்றிகரமாக செலுத்தப்பட்டது. Transaction ID 834805840980. நன்றி",
-"normalized": "tmeiaxao: imp: உங்கள் wbsedcl bill rs.60270/- வெற்றிகரமாக செலுத்தப்பட்டது. transaction id 834805840980. நன்றி",
-"probs": [
-0.958743,
-0.003793,
-0.037464
-]
-},
-{
-"text": "Dear user, Today only! Pay bills on GPay and win cashback up to Rs.34,642. Open nw https://t.ly/L0kCte .",
-"normalized": "dear user, today onlyi pay bills on gpay and win cashback up to rs.34,642. open nw https://t.ly/l0kcte .",
-"probs": [
-0.066347,
-0.676051,
-0.257602
-]
-},
-{
-"text": "Hello, Your UPI PIN reset OTP is 100242. If not requested by you contact 1860-987-8951 immediately :)",
-"normalized": "hello, your upi pin reset otp is 100242. if not requested by you contact 1860-987-8951 immediately :)",
-"probs": [
-0.604566,
-0.003577,
-0.391857
-]
-},
-{
-"text": "Vi recharge Rs 4780-க்கான உங்கள் GPay AutoPay 2 Oct அன்று நடைபெறும். ரத்து செய்ய GPay-ல் AutoPay பகுதிக்குச் செல்லவும்",
-"normalized": "vi recharge rs 4780-க்கான உங்கள் gpay autopay 2 oct அன்று நடைபெறும். ரத்து செய்ய gpay-ல் autopay பகுதிக்குச் செல்லவும்",
-"probs": [
-0.977729,
-0.017244,
-0.005027
-]
-},
-{
-"text": "Dear user, CIBIL இல்லாமல் instant loan INR 58400.00! Aadhaar, PAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing fee Rs.4,363-ஐ 9922553058@upi-க்கு அனுப்புங்கள்",
-"normalized": "dear user, cibil இல்லாமல் instant loan inr 58400.00! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee rs.4,363-ஐ 9922553058@upi-க்கு அனுப்புங்கள்",
-"probs": [
-0.039807,
-0.06093,
-0.899263
-]
-},
-{
-"text": "Imp: BESCOM: Your bill is pending and connection will be disconnected. Pay ₹5,663 now www.canara-kyc.xyz/r7Ra -Team",
-"normalized": "imp: bescom: your bill is pending and connection will be disconnected. pay ₹5,663 now ww.canara-kyc.xyz/r7ra -team",
-"probs": [
-0.041638,
-0.058808,
-0.899554
-]
-},
-{
-"text": "info: உங்கள் bank of baroda reward points மதிப்பு rs 45957, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் bobrefund.info t&c",
-"normalized": "info: உங்கள் bank of baroda reward points மதிப்பு rs 45957, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் bobrefund.info t&c",
-"probs": [
-0.000332,
-0.804893,
-0.194775
-]
-},
-{
-"text": "Imp: Rs 75900 has been added to your Google Pay wallet.. Transaction ID 699985456173 :)",
-"normalized": "imp: rs 75900 has been added to your google pay wallet.. transaction id 699985456173 :)",
-"probs": [
-0.521884,
-0.043273,
-0.434842
-]
-},
-{
-"text": "Imp: Instant loan Rs 32483 without CIBIL! Approval in 5 minutes with just Aadhaar and PAN. Send processing fee Rs.3100/- to 7090263541@paytm .",
-"normalized": "imp: instant loan rs 32483 without cibili approval in 5 minutes with just aadhaar and pan. send processing fee rs.3100/- to 7090263541@paytm .",
-"probs": [
-0.193665,
-0.452159,
-0.354176
-]
-},
-{
-"text": "Alert: Today only! Pay bills on Amazon Pay and win cashback up to Rs 39980. Open now https://jio.com/r/bxMRO Regards",
-"normalized": "alert: today onlyi pay bills on amazon pay and win cashback up to rs 39980. open now https://jio.com/r/bxmro regards",
-"probs": [
-0.006429,
-0.903361,
-0.090209
-]
-},
-{
-"text": "Canara பேங்க்: உங்களுக்கு INR 60309.00 வரை pre-approved personal loan, குறைந்த வட்டியில். Canara Bank app-ல் apply செய்யவும். T&C apply Thanks.",
-"normalized": "canara bank: உங்களுக்கு inr 60309.00 வரை preapproved personal loan, குறைந்த வட்டியில். canara bank app-ல் apply செய்யவும். t&c apply thanks.",
-"probs": [
-0.039709,
-0.835001,
-0.12529
-]
-},
-{
-"text": "AX-DBBLBY: Imp: உங்கள் SBI reward points மதிப்பு INR 7499.00, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் sbilogin81.co -Team",
-"normalized": "axdbblby: imp: உங்கள் sbi reward points மதிப்பு inr 7499.00, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் sbilogin81.co -team",
-"probs": [
-0.001181,
-0.714026,
-0.284793
-]
-},
-{
-"text": "ax-bcspmz: hi, rbi: மோசடி அழைப்புகளை 1930-ல் புகார் செய்யுங்கள்.. உங்கள் kyc-ஐ indian bank branch-ல் மட்டுமே update செய்யுங்கள் -team",
-"normalized": "axbcspmz: hi, rbi: மோசடி அழைப்புகளை 1930-ல் புகார் செய்யுங்கள்.. உங்கள் kyc-ஐ indian bank branch-ல் மட்டுமே update செய்யுங்கள் -team",
-"probs": [
-0.082996,
-0.21884,
-0.698164
-]
-},
-{
-"text": "Info: RBI: மோசடி அழைப்புகளை 1930-ல் புகார் செய்யுங்கள். உங்கள் KYC-ஐ Indian Bank branch-ல் மட்டுமே update செய்யுங்கள்",
-"normalized": "info: rbi: மோசடி அழைப்புகளை 1930-ல் புகார் செய்யுங்கள். உங்கள் kyc-ஐ indian bank branch-ல் மட்டுமே update செய்யுங்கள்",
-"probs": [
-0.052326,
-0.171128,
-0.776546
-]
-},
-{
-"text": "Union Bank: A/c x4427-லிருந்து DMart-க்கு Rs.5800/- debit செய்யப்பட்டது. இருப்பு ₹1,160. Ref 866661677122",
-"normalized": "union bank: a/c x4427-லிருந்து dmart-க்கு rs.5800/- debit செய்யப்பட்டது. இருப்பு ₹1,160. ref 866661677122",
-"probs": [
-0.95261,
-0.005688,
-0.041703
-]
-},
-{
-"text": "Hi, RBI says: report fraud calls at 1930. Update your KYC only at Bank of Baroda branch -Team",
-"normalized": "hi, rbi says: report fraud calls at 1930. update your kyc only at bank of baroda branch -team",
-"probs": [
-0.863598,
-0.077071,
-0.059331
-]
-},
-{
-"text": "VK-HWSDXG: I am an army officer, I will pay advance Rs.26294/- for the room. Scan my QR and enter PIN, amt will come to u +917829949418",
-"normalized": "vkhwsdxg: i am an army officer, i will pay advance rs.26294/- for the room. scan my qr and enter pin, amt will come to u +917829949418",
-"probs": [
-0.483076,
-0.011974,
-0.50495
-]
-},
-{
-"text": "VK-FBZPFX: Alert: DTDC: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release fee Rs.17,972 செலுத்துங்கள் reward-axis81.online -Team",
-"normalized": "vkfbzpfx: alert: dtdc: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. release fee rs.17,972 செலுத்துங்கள் reward-axis81.online -team",
-"probs": [
-0.285256,
-0.127162,
-0.587582
-]
-},
-{
-"text": "Tanmay BHIM-ல் Rs.79,600 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற PIN போட வேண்டியதில்லை -Team",
-"normalized": "tanmay bhim-ல் rs.79,600 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற pin போட வேண்டியதில்லை -team",
-"probs": [
-0.542581,
-0.014433,
-0.442986
-]
-},
-{
-"text": "Alert: நீங்கள் Paytm scratch கார்டு வென்றுள்ளீர்கள்! உங்கள் Paytm app-ல் rewards பகுதியைப் பாருங்கள்",
-"normalized": "alert: நீங்கள் paytm scratch card வென்றுள்ளீர்கள்! உங்கள் paytm app-ல் rewards பகுதியைப் பாருங்கள்",
-"probs": [
-0.117842,
-0.13301,
-0.749149
-]
-},
-{
-"text": "TM-IHANLL: ALERT: WBSEDCL: YOUR BILL IS PENDING AND CONNECTION WILL BE DISCONNECTED.. PAY RS.10,096 NW IS.GD/W4W8BJ",
-"normalized": "tmihanll: alert: wbsedcl: your bill is pending and connection will be disconnected.. pay rs.10,096 nw is.gd/w4w8bj",
-"probs": [
-0.16459,
-0.103546,
-0.731864
-]
-},
-{
-"text": "Blinkit தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 25% வரை தள்ளுபடி. Shop now jio.com/r/Ro9Pd",
-"normalized": "blinkit தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 25% வரை தள்ளுபடி. shop now jio.com/r/ro9pd",
-"probs": [
-0.141691,
-0.578882,
-0.279427
-]
-},
-{
-"text": "உங்கள் Canara Bank reward points மதிப்பு Rs 62778, இன்று காலாவதியாகிறது, இப்பவே redeem செய்யுங்கள் https://canararefund.site",
-"normalized": "உங்கள் canara bank reward points மதிப்பு rs 62778, இன்று காலாவதியாகிறது, இப்பவே redeem செய்யுங்கள் https://canararefund.site",
-"probs": [
-0.000543,
-0.626856,
-0.372601
-]
-},
-{
-"text": "Dear user, வணக்கம், நான் HR-லிருந்து பேசுகிறேன், உங்கள் resume shortlist ஆகியுள்ளது. சின்ன task-களை முடித்து Rs.4300/- பெறுங்கள், Telegram-ல் join பண்ணுங்க http://points-indianbank.online/aHWx",
-"normalized": "dear user, வணக்கம், நான் hr-லிருந்து பேசுகிறேன், உங்கள் resume shortlist ஆகியுள்ளது. சின்ன task-களை முடித்து rs.4300/- பெறுங்கள், telegram-ல் join பண்ணுங்க http://points-indianbank.online/ahwx",
-"probs": [
-0.06288,
-0.033451,
-0.903669
-]
-},
-{
-"text": "VK-RKFIIO: Imp: உங்கள் UPI PIN reset OTP 822516. நீங்கள் request செய்யவில்லை என்றால் உடனே 1860-989-4645 தொடர்பு கொள்ளவும் Thanks.",
-"normalized": "vkrkfiio: imp: உங்கள் upi pin reset otp 822516. நீங்கள் request செய்யவில்லை என்றால் உடனே 1860-989-4645 தொடர்பு கொள்ளவும் thanks.",
-"probs": [
-0.589463,
-0.010501,
-0.400036
-]
-},
-{
-"text": "Rs.99,500 has been added to ur BHIM wallet. Transaction ID 251614966082 .",
-"normalized": "rs.99,500 has been added to ur bhim wallet. transaction id 251614966082 .",
-"probs": [
-0.641851,
-0.051202,
-0.306947
-]
-},
-{
-"text": "Hi, Suspicious transaction of Rs.92,691 on your IDFC First credit card. To cancel share the OTP, call +91 98317 21058 :)",
-"normalized": "hi, suspicious transaction of rs.92,691 on your idfc first credit card. to cancel share the otp, call +91 98317 21058 :)",
-"probs": [
-0.497011,
-0.019337,
-0.483652
-]
-},
-{
-"text": "Dear user, Your TANGEDCO bill of Rs 85147 is paid successfully.. Transaction ID 121704860864.. Thank you",
-"normalized": "dear user, your tangedco bill of rs 85147 is paid successfully.. transaction id 121704860864.. thank you",
-"probs": [
-0.985048,
-0.001487,
-0.013465
-]
-},
-{
-"text": "bz-saoftp: hello i am from hr, your resume has been shortlisted. complete simple tasks and earn inr 5117.00, join telegram www.reward-iob.site",
-"normalized": "bzsaoftp: hello i am from hr, your resume has been shortlisted. complete simple tasks and earn inr 5117.00, join telegram ww.reward-iob.site",
-"probs": [
-0.076242,
-0.121816,
-0.801943
-]
-},
-{
-"text": "Alert: Your UPI PIN reset OTP is 929555. If not requested by you contact 1800-228-4727 immediately -Team",
-"normalized": "alert: your upi pin reset otp is 929555. if not requested by you contact 1800-228-4727 immediately -team",
-"probs": [
-0.455646,
-0.006196,
-0.538158
-]
-},
-{
-"text": "Imp: உங்கள் MobiKwik wallet-ல் Rs.74,655 சேர்க்கப்பட்டது. Transaction ID 956974421941",
-"normalized": "imp: உங்கள் mobikwik wallet-ல் rs.74,655 சேர்க்கப்பட்டது. transaction id 956974421941",
-"probs": [
-0.606815,
-0.100664,
-0.292522
-]
-},
-{
-"text": "VK-GVDQZV: Special ஆஃபர்: ₹57,000 recharge-க்கு கூடுதல் 10GB data இலவசம். சீக்கிரம்!",
-"normalized": "vkgvdqzv: special offer: ₹57,000 recharge-க்கு கூடுதல் 10gb data இலவசம். சீக்கிரம்!",
-"probs": [
-0.303649,
-0.660448,
-0.035903
-]
-},
-{
-"text": "AD-PPCPOR: Dear user, உங்கள் MobiKwik wallet-ல் Rs 5987 சேர்க்கப்பட்டது. டிரான்சாக்ஷன் ID 952627143994 Regards",
-"normalized": "adppcpor: dear user, உங்கள் mobikwik wallet-ல் rs 5987 சேர்க்கப்பட்டது. transaction id 952627143994 regards",
-"probs": [
-0.303636,
-0.171281,
-0.525083
-]
-},
-{
-"text": "Info: Ur BSES bill of ₹47,551 is paid successfully. Transaction ID 324406428194. Thank you",
-"normalized": "info: ur bses bill of ₹47,551 is paid successfully. transaction id 324406428194. thank you",
-"probs": [
-0.991992,
-0.001579,
-0.006429
-]
-},
-{
-"text": "Hey send the INR 13000.00 for yesterday's dinner to manoj@okhdfcbank whenever free Regards",
-"normalized": "hey send the inr 13000.00 for yesterday's dinner to manoj@okhdfcbank whenever free regards",
-"probs": [
-0.789697,
-0.010955,
-0.199348
-]
-},
-{
-"text": "hello, special offer: extra 10gb data free on rs 60500 recharge. hurry! -team",
-"normalized": "hello, special offer: extra 10gb data free on rs 60500 recharge. hurryi -team",
-"probs": [
-0.067095,
-0.922623,
-0.010282
-]
-},
-{
-"text": "TM-OLQTAV: Jio recharge Rs 46500-க்கான உங்கள் BHIM AutoPay 26/08/2026 அன்று நடைபெறும். ரத்து செய்ய BHIM-ல் AutoPay பகுதிக்குச் செல்லவும்",
-"normalized": "tmolqtav: jio recharge rs 46500-க்கான உங்கள் bhim autopay 26/08/2026 அன்று நடைபெறும். ரத்து செய்ய bhim-ல் autopay பகுதிக்குச் செல்லவும்",
-"probs": [
-0.960106,
-0.034497,
-0.005397
-]
-},
-{
-"text": "Dear user, Today only! Pay bills on BHIM and win cashback up to Rs.55,800. Open now jio.com/r/NZvn3 :)",
-"normalized": "dear user, today onlyi pay bills on bhim and win cashback up to rs.55,800. open now jio.com/r/nzvn3 :)",
-"probs": [
-0.095006,
-0.85939,
-0.045605
-]
-},
-{
-"text": "VK-UPWLZJ: Alert: நீங்கள் GPay scratch card வென்றுள்ளீர்கள்! உங்கள் GPay app-ல் rewards பகுதியைப் பாருங்கள் Thanks.",
-"normalized": "vkupwlzj: alert: நீங்கள் gpay scratch card வென்றுள்ளீர்கள்! உங்கள் gpay app-ல் rewards பகுதியைப் பாருங்கள் thanks.",
-"probs": [
-0.471903,
-0.1966,
-0.331497
-]
-},
-{
-"text": "VK-CGNHUS: நீங்கள் CRED scratch card வென்றுள்ளீர்கள்! உங்கள் CRED app-ல் rewards பகுதியைப் பாருங்கள் .",
-"normalized": "vkcgnhus: நீங்கள் cred scratch card வென்றுள்ளீர்கள்! உங்கள் cred app-ல் rewards பகுதியைப் பாருங்கள் .",
-"probs": [
-0.419216,
-0.215478,
-0.365306
-]
-},
-{
-"text": "Hello I am from HR, your resume has been shortlisted. Complete simple tasks and earn Rs 8452, join Telegram https://bit.ly/mzUTPG",
-"normalized": "hello i am from hr, your resume has been shortlisted. complete simple tasks and earn rs 8452, join telegram https://bit.ly/mzutpg",
-"probs": [
-0.027747,
-0.145286,
-0.826966
-]
-},
-{
-"text": "Info: நீங்கள் CRED scratch card வென்றுள்ளீர்கள்! உங்கள் CRED app-ல் rewards பகுதியைப் பாருங்கள்",
-"normalized": "info: நீங்கள் cred scratch card வென்றுள்ளீர்கள்! உங்கள் cred app-ல் rewards பகுதியைப் பாருங்கள்",
-"probs": [
-0.291011,
-0.259841,
-0.449148
-]
-},
-{
-"text": "AX-FFSLBX: Hi, Today only! Pay bills on BHIM and win cashback up to ₹8,671. Open now https://myntr.it/fXBcy Regards",
-"normalized": "axffslbx: hi, today onlyi pay bills on bhim and win cashback up to ₹8,671. open now https://myntr.it/fxbcy regards",
-"probs": [
-0.01208,
-0.966465,
-0.021455
-]
-},
-{
-"text": "Info: Airtel lucky winner: your no. has won iPhone 16. WhatsApp 8933679642 now T&C",
-"normalized": "info: airtel lucky winner: your no. has won iphone 16. whatsapp 8933679642 now t&c",
-"probs": [
-0.137445,
-0.074518,
-0.788037
-]
-},
-{
-"text": "VM-GSOLUQ: Hi, Hey send the Rs 5445 for yesterday's dinner to sourav@upi whenever free Thanks.",
-"normalized": "vmgsoluq: hi, hey send the rs 5445 for yesterday's dinner to sourav@upi whenever free thanks.",
-"probs": [
-0.953122,
-0.005962,
-0.040916
-]
-},
-{
-"text": "Alert: Your WBSEDCL bill of ₹74,993 is paid successfully. Transaction ID 145767024983. Thank you",
-"normalized": "alert: your wbsedcl bill of ₹74,993 is paid successfully. transaction id 145767024983. thank you",
-"probs": [
-0.983814,
-0.001995,
-0.014191
-]
-},
-{
-"text": "Suspicious transaction of Rs.67,131 on your Union Bank credit card. To cancel share the OTP, call +917744659441 :)",
-"normalized": "suspicious transaction of rs.67,131 on your union bank credit card. to cancel share the otp, call +917744659441 :)",
-"probs": [
-0.585606,
-0.011064,
-0.40333
-]
-},
-{
-"text": "Dear user, இன்று மட்டும்! PhonePe-ல் பில் செலுத்தி Rs 98100 வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் https://myntr.it/OLBOP -Team",
-"normalized": "dear user, இன்று மட்டும்! phonepe-ல் bill செலுத்தி rs 98100 வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் https://myntr.it/olbop -team",
-"probs": [
-0.003455,
-0.895492,
-0.101053
-]
-},
-{
-"text": "Zepto தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 20% வரை தள்ளுபடி. Shop now amzn.in/d/SdX9s -Team",
-"normalized": "zepto தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 20% வரை தள்ளுபடி. shop now amzn.in/d/sdx9s -team",
-"probs": [
-0.134056,
-0.714714,
-0.15123
-]
-},
-{
-"text": "உங்கள் HDFC Bank கிரெடிட் card-ல் Rs.76,500 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call +919043373270",
-"normalized": "உங்கள் hdfc bank credit card-ல் rs.76,500 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. cancel செய்ய otp-ஐ சொல்லுங்கள், call +919043373270",
-"probs": [
-0.406935,
-0.024683,
-0.568381
-]
-},
-{
-"text": "Today only! Pay bills on Amazon Pay and win cashback up to ₹53,955. Open nw kotak.com/offers/FsODg Thanks.",
-"normalized": "today onlyi pay bills on amazon pay and win cashback up to ₹53,955. open nw kotak.com/offers/fsodg thanks.",
-"probs": [
-0.060165,
-0.913542,
-0.026293
-]
-},
-{
-"text": "VM-MPGXPA: Vi recharge ₹43,955-க்கான உங்கள் Paytm AutoPay 10/02/2026 அன்று நடைபெறும். ரத்து செய்ய Paytm-ல் AutoPay பகுதிக்குச் செல்லவும் :)",
-"normalized": "vmmpgxpa: vi recharge ₹43,955-க்கான உங்கள் paytm autopay 10/02/2026 அன்று நடைபெறும். ரத்து செய்ய paytm-ல் autopay பகுதிக்குச் செல்லவும் :)",
-"probs": [
-0.957472,
-0.029246,
-0.013282
-]
-},
-{
-"text": "Hey send the Rs 42873 for yesterday's dinner to ravi4077@okhdfcbank whenever free :)",
-"normalized": "hey send the rs 42873 for yesterday's dinner to ravi4077@okhdfcbank whenever free :)",
-"probs": [
-0.795428,
-0.011855,
-0.192717
-]
-},
-{
-"text": "dear user, hey send the rs.95,315 for yesterday's dinner to fatima.arun@okaxis whenever free -team",
-"normalized": "dear user, hey send the rs.95,315 for yesterday's dinner to fatima.arun@okaxis whenever free -team",
-"probs": [
-0.82585,
-0.013344,
-0.160806
-]
-},
-{
-"text": "Dear user, நீங்கள் Google Pay scratch card வென்றுள்ளீர்கள்! உங்கள் Google Pay app-ல் rewards பகுதியைப் பாருங்கள்",
-"normalized": "dear user, நீங்கள் google pay scratch card வென்றுள்ளீர்கள்! உங்கள் google pay app-ல் rewards பகுதியைப் பாருங்கள்",
-"probs": [
-0.654512,
-0.131918,
-0.21357
-]
-},
-{
-"text": "TM-EAQIVK: Alert: Congratulations! You have received Rs 38800 cashback. To receive the money accept the request on CRED and enter your UPI PIN T&C",
-"normalized": "tmeaqivk: alert: congratulationsi you have received rs 38800 cashback. to receive the money accept the request on cred and enter your upi pin t&c",
-"probs": [
+0.988118,
 0.007834,
-0.091267,
-0.9009
+0.004048
 ]
 },
 {
-"text": "BZ-IMVRRZ: Canara Bank: A/c **9811 debited by ₹82,866 for Blinkit. Avl Bal Rs.164/-. Ref 248189529482",
-"normalized": "bzimvrrz: canara bank: a/c **9811 debited by ₹82,866 for blinkit. avl bal rs.164/-. ref 248189529482",
+"text": "VM-LNPVPN: GPay login OTP: 904649। 10 मिनट तक valid। किसी को न बताएँ, GPay कभी call करके OTP नहीं माँगता",
+"normalized": "vmlnpvpn: gpay login otp: 904649। 10 मिनट तक valid। किसी को न बताएँ, gpay कभी call करके otp नहीं माँगता",
 "probs": [
-0.990658,
-0.005194,
-0.004147
+0.973462,
+0.016341,
+0.010197
 ]
 },
 {
-"text": "Hi, உங்கள் UPI PIN reset OTP 200497. நீங்கள் ரிக்வெஸ்ட் செய்யவில்லை என்றால் உடனே 1860-168-9012 தொடர்பு கொள்ளவும் Regards",
-"normalized": "hi, உங்கள் upi pin reset otp 200497. நீங்கள் request செய்யவில்லை என்றால் உடனே 1860-168-9012 தொடர்பு கொள்ளவும் regards",
+"text": "Dear user, IRCTC-ல் Paytm மூலம் பணம் செலுத்தி 30% cashback பெறுங்கள், அதிகபட்சம் Rs.13,219. Offer 26Aug26 வரை. T&C apply T&C",
+"normalized": "dear user, irctc-ல் paytm மூலம் பணம் செலுத்தி 30% cashback பெறுங்கள், அதிகபட்சம் rs.13,219. offer 26aug26 வரை. t&c apply t&c",
 "probs": [
-0.662545,
-0.012303,
-0.325153
+0.120134,
+0.82794,
+0.051927
 ]
 },
 {
-"text": "Hi, Hey send the ₹26,683 for yesterday's dinner to manoj3897@oksbi whenever free Regards",
-"normalized": "hi, hey send the ₹26,683 for yesterday's dinner to manoj3897@oksbi whenever free regards",
+"text": "Alert: Hello, என் Rs 75302 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் போலீஸ் complaint கொடுப்பேன் +916682454581",
+"normalized": "alert: hello, என் rs 75302 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் +916682454581",
 "probs": [
-0.884736,
-0.014467,
-0.100798
+0.034308,
+0.014135,
+0.951557
 ]
 },
 {
-"text": "Imp: உங்கள் Indian Bank reward points மதிப்பு INR 51600.00, இன்று காலாவதியாகிறது, இப்போதே redeem பண்ணுங்க www.indianbank-points.live",
-"normalized": "imp: உங்கள் indian bank reward points மதிப்பு inr 51600.00, இன்று காலாவதியாகிறது, இப்போதே redeem பண்ணுங்க ww.indianbank-points.live",
+"text": "Info: अरे, कल के dinner के Rs 1998 जब time मिले ananya8461@ibl पर भेज देना -Team",
+"normalized": "info: अरे, कल के dinner के rs 1998 जब time मिले ananya8461@ibl पर भेज देना -team",
 "probs": [
-0.002057,
-0.511525,
-0.486418
+0.354918,
+0.054061,
+0.591021
 ]
 },
 {
-"text": "imp: pnb: pre-approved personal loan up to rs 11000 at attractive rates. apply on pnb app. t&c apply thanks.",
-"normalized": "imp: pnb: preapproved personal loan up to rs 11000 at attractive rates. apply on pnb app. t&c apply thanks.",
+"text": "बधाई हो! आपको Rs 84000 cashback मिला है। पैसे पाने के लिए Google Pay पर आई request accept करें और UPI PIN डालें",
+"normalized": "बधाई हो! आपको rs 84000 cashback मिला है। पैसे पाने के लिए google pay पर आई request accept करें और upi pin डालें",
 "probs": [
-0.104648,
-0.661601,
-0.233751
+0.097341,
+0.094445,
+0.808214
 ]
 },
 {
-"text": "India Post: Your parcel is held at customs. Pay INR 13621.00 release fee at www.login-pnb.live",
-"normalized": "india post: your parcel is held at customs. pay inr 13621.00 release fee at ww.login-pnb.live",
+"text": "AX-MISOLE: Hi, Beware! UPI PIN is not required to receive money. Do not click unknown links -Bank of Baroda",
+"normalized": "axmisole: hi, bewarei upi pin is not required to receive money. do not click unknown links -bank of baroda",
 "probs": [
-0.136181,
-0.018331,
-0.845489
+0.844443,
+0.069775,
+0.085783
 ]
 },
 {
-"text": "RBI: மோசடி அழைப்புகளை 1930-ல் புகார் பண்ணுங்க. உங்கள் KYC-ஐ ICICI Bank branch-ல் மட்டுமே update செய்யுங்க -Team",
-"normalized": "rbi: மோசடி அழைப்புகளை 1930-ல் புகார் பண்ணுங்க. உங்கள் kyc-ஐ icici bank branch-ல் மட்டுமே update செய்யுங்க -team",
+"text": "AX-KNQNFV: Dear user, Swiggy पर Google Pay से payment कर दें और 30% cashback पाएँ, अधिकतम Rs 97684। Offer 24-01-26 तक। T&C apply",
+"normalized": "axknqnfv: dear user, swiggy पर google pay से payment कर दें और 30% cashback पाएँ, अधिकतम rs 97684। offer 24-01-26 तक। t&c apply",
 "probs": [
-0.093672,
-0.109913,
-0.796415
+0.025211,
+0.944222,
+0.030567
 ]
 },
 {
-"text": "Hi, டேய், நேற்று dinner-க்கான Rs 52456-ஐ நேரம் கிடைக்கும்போது suresh@oksbi-க்கு அனுப்பிவிடு :)",
-"normalized": "hi, டேய், நேற்று dinner-க்கான rs 52456-ஐ நேரம் கிடைக்கும்போது suresh@oksbi-க்கு அனுப்பிவிடு :)",
+"text": "Imp: உங்கள் GPay wallet-ல் Rs.91,916 சேர்க்கப்பட்டது. Transaction ID 477701577506",
+"normalized": "imp: உங்கள் gpay wallet-ல் rs.91,916 சேர்க்கப்பட்டது. transaction id 477701577506",
 "probs": [
-0.698974,
-0.012382,
-0.288645
+0.885442,
+0.058775,
+0.055783
+]
+},
+{
+"text": "imp: i am an army officer, i will pay advance rs.12373/- for the room. scan my qr and enter pin, amt will come to you 9578461503 thanks.",
+"normalized": "imp: i am an army officer, i will pay advance rs.12373/- for the room. scan my qr and enter pin, amt will come to you 9578461503 thanks.",
+"probs": [
+0.545099,
+0.023033,
+0.431868
+]
+},
+{
+"text": "Airtel lucky winner: आपके नंबर ने Tata Nexon car जीते हैं। अभी WhatsApp करें +91 64805 01232",
+"normalized": "airtel lucky winner: आपके नंबर ने tata nexon car जीते हैं। अभी whatsapp करें +91 64805 01232",
+"probs": [
+0.004766,
+0.008259,
+0.986975
+]
+},
+{
+"text": "Dear user, நினைவூட்டல்: Zomato-க்கு Rs.16,740 UPI AutoPay 27/05/2026 அன்று திட்டமிடப்பட்டுள்ளது -Union பேங்க் Regards",
+"normalized": "dear user, நினைவூட்டல்: zomato-க்கு rs.16,740 upi autopay 27/05/2026 அன்று திட்டமிடப்பட்டுள்ளது -union bank regards",
+"probs": [
+0.98817,
+0.006607,
+0.005223
+]
+},
+{
+"text": "Flat 60% off on new collection, visit BookMyShow store or order at https://airtel.in/p/UB46D T&C",
+"normalized": "flat 60% off on new collection, visit bookmyshow store or order at https://airtel.in/p/ub46d t&c",
+"probs": [
+0.002561,
+0.987053,
+0.010386
+]
+},
+{
+"text": "Hello, I am an army officer, I will pay advance INR 74958.00 for the room. Scan my QR and enter PIN, money will come to you +91 75740 44941 .",
+"normalized": "hello, i am an army officer, i will pay advance inr 74958.00 for the room. scan my qr and enter pin, money will come to you +91 75740 44941 .",
+"probs": [
+0.459594,
+0.011523,
+0.528883
+]
+},
+{
+"text": "CP-LXWXWE: டேய், நேற்று dinner-க்கான Rs 38265-ஐ நேரம் கிடைக்கும்போது bhavana@paytm-க்கு அனுப்பிவிடு -Team",
+"normalized": "cplxwxwe: டேய், நேற்று dinner-க்கான rs 38265-ஐ நேரம் கிடைக்கும்போது bhavana@paytm-க்கு அனுப்பிவிடு -team",
+"probs": [
+0.364884,
+0.034573,
+0.600544
+]
+},
+{
+"text": "VM-HXXNJZ: BookMyShow पर CRED से payment करें और 70% cashback पाएँ, अधिकतम Rs.65,914। ऑफर 17/03/2026 तक। T&C apply -Team",
+"normalized": "vmhxxnjz: bookmyshow पर cred से payment करें और 70% cashback पाएँ, अधिकतम rs.65,914। offer 17/03/2026 तक। t&c apply -team",
+"probs": [
+0.036552,
+0.909249,
+0.054199
+]
+},
+{
+"text": "Alert: PNB: आपके लिए Rs 88400 तक का pre-approved personal loan, आकर्षक ब्याज दर पर। PNB app पर apply करें। T&C apply Regards",
+"normalized": "alert: pnb: आपके लिए rs 88400 तक का preapproved personal loan, आकर्षक ब्याज दर पर। pnb app पर apply करें। t&c apply regards",
+"probs": [
+0.013795,
+0.43284,
+0.553365
+]
+},
+{
+"text": "Hello, என் Rs.59800/- தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 9532692090 .",
+"normalized": "hello, என் rs.59800/- தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 9532692090 .",
+"probs": [
+0.056411,
+0.021432,
+0.922157
+]
+},
+{
+"text": "Imp: புதிய collection-க்கு flat 40% தள்ளுபடி, DMart store-க்கு வாருங்கள் அல்லது https://is.gd/9UD6ET-ல் order பண்ணுங்க :)",
+"normalized": "imp: புதிய collection-க்கு flat 40% தள்ளுபடி, dmart store-க்கு வாருங்கள் அல்லது https://is.gd/9ud6et-ல் order பண்ணுங்க :)",
+"probs": [
+0.002065,
+0.925491,
+0.072444
+]
+},
+{
+"text": "Imp: உங்கள் IOB credit கார்டு reward points 2 Jan அன்று காலாவதியாகும். IOB app-ல் redeem செய்யுங்கள் .",
+"normalized": "imp: உங்கள் iob credit card reward points 2 jan அன்று காலாவதியாகும். iob app-ல் redeem செய்யுங்கள் .",
+"probs": [
+0.010592,
+0.034576,
+0.954832
+]
+},
+{
+"text": "VK-FGFPGJ: Hello, BESCOM: Your bill is pending and connection will be disconnected. Pay Rs 78261 nw www.indianbankrefund41.co/MRMC",
+"normalized": "vkfgfpgj: hello, bescom: your bill is pending and connection will be disconnected. pay rs 78261 nw ww.indianbankrefund41.co/mrmc",
+"probs": [
+0.012111,
+0.032396,
+0.955493
+]
+},
+{
+"text": "Hi, Apollo Pharmacy has sent u a payment request of ₹2,731 on BHIM. Approve in app if you placed the order, else decline -Team",
+"normalized": "hi, apollo pharmacy has sent u a payment request of ₹2,731 on bhim. approve in app if you placed the order, else decline -team",
+"probs": [
+0.792726,
+0.069245,
+0.13803
+]
+},
+{
+"text": "JD-MFFESG: Info: DMart-ல் BHIM மூலம் பணம் செலுத்தி 5% cashback பெறுங்கள், அதிகபட்சம் Rs.16,345. Offer 20Jun26 வரை. T&C apply .",
+"normalized": "jdmffesg: info: dmart-ல் bhim மூலம் பணம் செலுத்தி 5% cashback பெறுங்கள், அதிகபட்சம் rs.16,345. offer 20jun26 வரை. t&c apply .",
+"probs": [
+0.091626,
+0.856776,
+0.051598
+]
+},
+{
+"text": "vk-ynbliu: info: नई collection पर flat 70% छूट, apollo pharmacy store आएँ या jio.com/r/lipwl पर order करो :)",
+"normalized": "vkynbliu: info: नई collection पर flat 70% छूट, apollo pharmacy store आएँ या jio.com/r/lipwl पर order करो :)",
+"probs": [
+0.004123,
+0.959955,
+0.035922
+]
+},
+{
+"text": "IRCTC पर BHIM से payment करें और 30% cashback पाएँ, अधिकतम Rs.86,605। Offer 19-01-26 तक। T&C apply :)",
+"normalized": "irctc पर bhim से payment करें और 30% cashback पाएँ, अधिकतम rs.86,605। offer 19-01-26 तक। t&c apply :)",
+"probs": [
+0.030016,
+0.933922,
+0.036062
+]
+},
+{
+"text": "Your Federal Bank credit card reward points will expire on 12 Jun. Redeem them on Federal Bank app",
+"normalized": "your federal bank credit card reward points will expire on 12 jun. redeem them on federal bank app",
+"probs": [
+0.081261,
+0.025014,
+0.893724
+]
+},
+{
+"text": "CP-AOVEZV: CIBIL இல்லாமல் instant loan ₹98,444! Aadhaar, PAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing fee Rs 3300-ஐ 8108343478@apl-க்கு அனுப்பவும்",
+"normalized": "cpaovezv: cibil இல்லாமல் instant loan ₹98,444! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee rs 3300-ஐ 8108343478@apl-க்கு அனுப்பவும்",
+"probs": [
+0.032685,
+0.148219,
+0.819096
+]
+},
+{
+"text": "Hi, Airtel lucky winner: உங்கள் எண் Samsung Galaxy S25 வென்றுள்ளது. உடனே வாட்ஸ்அப் செய்யவும் 8290131681 .",
+"normalized": "hi, airtel lucky winner: உங்கள் எண் samsung galaxy s25 வென்றுள்ளது. உடனே whatsapp செய்யவும் 8290131681 .",
+"probs": [
+0.04112,
+0.009158,
+0.949722
+]
+},
+{
+"text": "Hello, என் Rs.12,467 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 7393963172",
+"normalized": "hello, என் rs.12,467 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 7393963172",
+"probs": [
+0.101592,
+0.023783,
+0.874625
+]
+},
+{
+"text": "TM-RKDISS: உங்கள் BSNL plan 7 நாட்களில் முடிவடைகிறது. உடனே recharge செய்து unlimited data அனுபவியுங்கள் https://cutt.ly/LQCPbM",
+"normalized": "tmrkdiss: உங்கள் bsnl plan 7 நாட்களில் முடிவடைகிறது. உடனே recharge செய்து unlimited data அனுபவியுங்கள் https://cutt.ly/lqcpbm",
+"probs": [
+0.053885,
+0.292428,
+0.653686
+]
+},
+{
+"text": "Imp: Payment of Rs.59,691 for your Tanishq order is successful. Order will be delivered by 18/06/2026 T&C",
+"normalized": "imp: payment of rs.59,691 for your tanishq order is successful. order will be delivered by 18/06/2026 t&c",
+"probs": [
+0.837477,
+0.039501,
+0.123022
+]
+},
+{
+"text": "nykaa-ல் cred மூலம் பணம் செலுத்தி 10% cashback பெறுங்கள், அதிகபட்சம் ₹20,600. offer 10 apr வரை. t&c apply regards",
+"normalized": "nykaa-ல் cred மூலம் பணம் செலுத்தி 10% cashback பெறுங்கள், அதிகபட்சம் ₹20,600. offer 10 apr வரை. t&c apply regards",
+"probs": [
+0.055125,
+0.912288,
+0.032587
+]
+},
+{
+"text": "vm-kfliyd: imp: rs 89600 has been added to your cred wallet. transaction id 459872571272 t&c",
+"normalized": "vmkfliyd: imp: rs 89600 has been added to your cred wallet. transaction id 459872571272 t&c",
+"probs": [
+0.379105,
+0.170343,
+0.450551
+]
+},
+{
+"text": "आपका KYC एक्सपायर हो गया है। CRED wallet बंद होने से बचाने के लिए तुरंत 9827121301 पर call करें",
+"normalized": "आपका kyc expire हो गया है। cred wallet बंद होने से बचाने के लिए तुरंत 9827121301 पर call करें",
+"probs": [
+0.033307,
+0.003095,
+0.963597
+]
+},
+{
+"text": "Alert: Your ICICI Bank credit card reward points will expire on 07/05/2026. Redeem them on ICICI Bank app Regards",
+"normalized": "alert: your icici bank credit card reward points will expire on 07/05/2026. redeem them on icici bank app regards",
+"probs": [
+0.182732,
+0.049166,
+0.768102
+]
+},
+{
+"text": "Info: मैं army ऑफिसर हूँ, कमरे के लिए advance Rs.16,807 दूँगा। मेरा QR स्कैन करके PIN डालिए, पैसे आपको आ जाएँगे +916167875388",
+"normalized": "info: मैं army officer हूँ, कमरे के लिए advance rs.16,807 दूँगा। मेरा qr scan करके pin डालिए, पैसे आपको आ जाएँगे +916167875388",
+"probs": [
+0.059218,
+0.003726,
+0.937055
+]
+},
+{
+"text": "ax-dfwdki: pothys உங்களுக்கு amazon pay-ல் rs.97,818 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+"normalized": "axdfwdki: pothys உங்களுக்கு amazon pay-ல் rs.97,818 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+"probs": [
+0.02902,
+0.026061,
+0.944919
+]
+},
+{
+"text": "Info: Hello, என் Rs.15,800 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் +916597949363",
+"normalized": "info: hello, என் rs.15,800 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் +916597949363",
+"probs": [
+0.032456,
+0.009166,
+0.958379
+]
+},
+{
+"text": "VM-LRYUAF: Hello, Your BSNL plan expires in 30 days.. Recharge now and enjoy unlimited data rb.gy/GUCqF8",
+"normalized": "vmlryuaf: hello, your bsnl plan expires in 30 days.. recharge now and enjoy unlimited data rb.gy/gucqf8",
+"probs": [
+0.367786,
+0.611827,
+0.020387
+]
+},
+{
+"text": "नमस्ते, मैं hr से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके rs.4,459 कमाएँ, telegram पर join कीजिए https://federal-care.click/nulh t&c",
+"normalized": "नमस्ते, मैं hr से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके rs.4,459 कमाएँ, telegram पर join कीजिए https://federal-care.click/nulh t&c",
+"probs": [
+0.025421,
+0.026749,
+0.94783
+]
+},
+{
+"text": "Imp: बिना CIBIL के instant loan Rs.96,700! सिर्फ Aadhaar और PAN से 5 मिनट में approval। Processing fee ₹1,700 ishita8426@apl पर भेजें",
+"normalized": "imp: बिना cibil के instant loan rs.96,700! सिर्फ aadhaar और pan से 5 मिनट में approval। processing fee ₹1,700 ishita8426@apl पर भेजें",
+"probs": [
+0.042545,
+0.304761,
+0.652694
+]
+},
+{
+"text": "Alert: Airtel lucky winner: your number has won Tata Nexon car. WhatsApp +917327739824 now",
+"normalized": "alert: airtel lucky winner: your number has won tata nexon car. whatsapp +917327739824 now",
+"probs": [
+0.019224,
+0.014956,
+0.965819
+]
+},
+{
+"text": "JD-ZVHSTC: Hi, अरे, कल के dinner के ₹71,969 जब time मिले sandeep5192@okhdfcbank पर भेज देना Regards",
+"normalized": "jdzvhstc: hi, अरे, कल के dinner के ₹71,969 जब time मिले sandeep5192@okhdfcbank पर भेज देना regards",
+"probs": [
+0.273118,
+0.087284,
+0.639599
+]
+},
+{
+"text": "Amazon Pay login OTP: 321499. 10 நிமிடங்கள் செல்லுபடியாகும். யாரிடமும் சொல்ல வேணாம், Amazon Pay call செய்து OTP கேட்காது .",
+"normalized": "amazon pay login otp: 321499. 10 நிமிடங்கள் செல்லுபடியாகும். யாரிடமும் சொல்ல வேணாம், amazon pay call செய்து otp கேட்காது .",
+"probs": [
+0.773376,
+0.105316,
+0.121308
+]
+},
+{
+"text": "hi, bookmyshow ने phonepe पर आपको ₹59,572 की payment request भेजी है। order आपने किया है तो app में अप्रूव कर दें, वरना decline करो",
+"normalized": "hi, bookmyshow ने phonepe पर आपको ₹59,572 की payment request भेजी है। order आपने किया है तो app में approve कर दें, वरना decline करो",
+"probs": [
+0.256251,
+0.115197,
+0.628552
+]
+},
+{
+"text": "तुम्हारे Bank of Baroda reward points जिनकी कीमत Rs 76885 है, आज expire हो रहे हैं, अभी redeem करें bit.ly/nWOE4Y Regards",
+"normalized": "तुम्हारे bank of baroda reward points जिनकी कीमत rs 76885 है, आज expire हो रहे हैं, अभी redeem करें bit.ly/nwoe4y regards",
+"probs": [
+0.008452,
+0.013389,
+0.978158
+]
+},
+{
+"text": "Imp: आपके Paytm वॉलेट में ₹58,582 जोड़े गए। Transaction ID 761523790346",
+"normalized": "imp: आपके paytm wallet में ₹58,582 जोड़े गए। transaction id 761523790346",
+"probs": [
+0.542167,
+0.20652,
+0.251313
+]
+},
+{
+"text": "Alert: Reminder: UPI AutoPay of ₹67,284 to BookMyShow is scheduled for 27-08-26 -Federal Bank T&C",
+"normalized": "alert: reminder: upi autopay of ₹67,284 to bookmyshow is scheduled for 27-08-26 -federal bank t&c",
+"probs": [
+0.979972,
+0.015609,
+0.004419
+]
+},
+{
+"text": "DMart has sent u a payment request of Rs.24,400 on PhonePe. Approve in app if you placed the order, else decline Regards",
+"normalized": "dmart has sent u a payment request of rs.24,400 on phonepe. approve in app if you placed the order, else decline regards",
+"probs": [
+0.811535,
+0.054991,
+0.133474
+]
+},
+{
+"text": "hi, cibil இல்லாமல் instant loan rs.41658/-! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee ₹3,609-ஐ 9403704812@axl-க்கு அனுப்பவும் regards",
+"normalized": "hi, cibil இல்லாமல் instant loan rs.41658/-! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee ₹3,609-ஐ 9403704812@axl-க்கு அனுப்பவும் regards",
+"probs": [
+0.027708,
+0.166362,
+0.80593
+]
+},
+{
+"text": "Hi, Reminder: UPI AutoPay of Rs.64,300 to Zomato is scheduled for 20-11-26 -Axis Bank .",
+"normalized": "hi, reminder: upi autopay of rs.64,300 to zomato is scheduled for 20-11-26 -axis bank .",
+"probs": [
+0.992434,
+0.004928,
+0.002638
+]
+},
+{
+"text": "CP-YTYGPI: Imp: KSEB: உங்கள் bill நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். இப்போதே ₹28,900 செலுத்துங்கள் https://federal.care.online -Team",
+"normalized": "cpytygpi: imp: kseb: உங்கள் bill நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். இப்போதே ₹28,900 செலுத்துங்கள் https://federal.care.online -team",
+"probs": [
+0.003704,
+0.037939,
+0.958357
+]
+},
+{
+"text": "Hello, உங்கள் PhonePe wallet-ல் ₹52,113 சேர்க்கப்பட்டது. Transaction ID 973587171217",
+"normalized": "hello, உங்கள் phonepe wallet-ல் ₹52,113 சேர்க்கப்பட்டது. transaction id 973587171217",
+"probs": [
+0.653721,
+0.233147,
+0.113132
+]
+},
+{
+"text": "Hello, IOB: உங்களுக்கு ₹59,862 வரை pre-approved personal loan, குறைந்த வட்டியில். IOB app-ல் apply செய்யுங்கள். T&C apply .",
+"normalized": "hello, iob: உங்களுக்கு ₹59,862 வரை preapproved personal loan, குறைந்த வட்டியில். iob app-ல் apply செய்யுங்கள். t&c apply .",
+"probs": [
+0.022838,
+0.790516,
+0.186645
+]
+},
+{
+"text": "Alert: आपका Vi plan 7 दिन में खत्म हो रहा है। अभी recharge करो और unlimited data का मज़ा लें https://myntr.it/nzDfW Regards",
+"normalized": "alert: आपका vi plan 7 दिन में खत्म हो रहा है। अभी recharge करो और unlimited data का मज़ा लें https://myntr.it/nzdfw regards",
+"probs": [
+0.010738,
+0.875427,
+0.113835
+]
+},
+{
+"text": "Info: Croma-ல் Paytm மூலம் பணம் செலுத்தி 50% cashback பெறுங்கள், அதிகபட்சம் Rs.23800/-. Offer 11-05-26 வரை. T&C apply :)",
+"normalized": "info: croma-ல் paytm மூலம் பணம் செலுத்தி 50% cashback பெறுங்கள், அதிகபட்சம் rs.23800/-. offer 11-05-26 வரை. t&c apply :)",
+"probs": [
+0.088241,
+0.852127,
+0.059631
+]
+},
+{
+"text": "INFO: புதிய COLLECTION-க்கு FLAT 60% தள்ளுபடி, RELIANCE DIGITAL STORE-க்கு வாங்க அல்லது HTTPS://KOTAK.COM/OFFERS/C95XC-ல் ORDER செய்யுங்கள்",
+"normalized": "info: புதிய collection-க்கு flat 60% தள்ளுபடி, reliance digital store-க்கு வாங்க அல்லது https://kotak.com/offers/c95xc-ல் order செய்யுங்கள்",
+"probs": [
+0.000892,
+0.956559,
+0.042549
+]
+},
+{
+"text": "Ur Yes Bank credit card reward points will expire on 07-01-26. Redeem them on Yes Bank app",
+"normalized": "ur yes bank credit card reward points will expire on 07-01-26. redeem them on yes bank app",
+"probs": [
+0.344554,
+0.028536,
+0.62691
+]
+},
+{
+"text": "TM-TRYHFD: Dear user, आपके A/c **4730 से 11-06-26 को Rs 91500 VPA bhavana6529@paytm को debit किए गए। UPI Ref 339982839933। आपने नहीं किया? 1800-785-5654 पर call कीजिए -Bank of Baroda :)",
+"normalized": "tmtryhfd: dear user, आपके a/c **4730 से 11-06-26 को rs 91500 vpa bhavana6529@paytm को debit किए गए। upi ref 339982839933। आपने नहीं किया? 1800-785-5654 पर call कीजिए -bank of baroda :)",
+"probs": [
+0.957872,
+0.002183,
+0.039945
 ]
 },
 {
 "text": "Congratulations! You have received ₹17,412 cashback. To receive the money accept the request on GPay and enter your UPI PIN :)",
 "normalized": "congratulationsi you have received ₹17,412 cashback. to receive the money accept the request on gpay and enter your upi pin :)",
 "probs": [
-0.047858,
-0.056544,
-0.895598
+0.307641,
+0.097449,
+0.59491
 ]
 },
 {
-"text": "Info: Your UPI PIN reset OTP is 966394. If not requested by u contact 1860-149-3083 immediately Regards",
-"normalized": "info: your upi pin reset otp is 966394. if not requested by u contact 1860-149-3083 immediately regards",
+"text": "ICICI Bank: Pre-approved personal loan up to ₹10,504 at attractive rates. Apply on ICICI Bank app. T&C apply -Team",
+"normalized": "icici bank: preapproved personal loan up to ₹10,504 at attractive rates. apply on icici bank app. t&c apply -team",
 "probs": [
-0.504431,
-0.003022,
-0.492547
+0.416158,
+0.461979,
+0.121863
 ]
 },
 {
-"text": "Imp: I am an army officer, I will pay advance Rs.22528/- for the room. Scan my QR and enter PIN, money will come to you 9015696942",
-"normalized": "imp: i am an army officer, i will pay advance rs.22528/- for the room. scan my qr and enter pin, money will come to you 9015696942",
+"text": "நான் ஒரு army officer, அறைக்கு advance Rs 99617 தருகிறேன். என் QR-ஐ scan செய்து PIN போடுங்கள், பணம் உங்களுக்கு வரும் 8383282757",
+"normalized": "நான் ஒரு army officer, அறைக்கு advance rs 99617 தருகிறேன். என் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்களுக்கு வரும் 8383282757",
 "probs": [
-0.363788,
-0.016617,
-0.619596
+0.046113,
+0.01429,
+0.939597
 ]
 },
 {
-"text": "ad-oypebp: info: swiggy தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 50% வரை தள்ளுபடி. shop now rb.gy/cii2z8 .",
-"normalized": "adoypebp: info: swiggy தீபாவளி sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 50% வரை தள்ளுபடி. shop now rb.gy/cii2z8 .",
+"text": "Hello, வாழ்த்துக்கள்! உங்களுக்கு Rs 25670 cashback கிடைத்துள்ளது. பணத்தைப் பெற CRED-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும்",
+"normalized": "hello, வாழ்த்துக்கள்! உங்களுக்கு rs 25670 cashback கிடைத்துள்ளது. பணத்தைப் பெற cred-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும்",
 "probs": [
-0.136851,
-0.345693,
-0.517456
+0.038479,
+0.172414,
+0.789107
 ]
 },
 {
-"text": "Hello, Hello I am from HR, ur resume has been shortlisted. Complete simple tasks and earn Rs.7,913, join Telegram https://pointsfederal.co/34zq -Team",
-"normalized": "hello, hello i am from hr, ur resume has been shortlisted. complete simple tasks and earn rs.7,913, join telegram https://pointsfederal.co/34zq -team",
+"text": "உங்கள் BSNL plan 5 நாட்களில் முடிவடைகிறது. இப்பவே recharge செய்து unlimited டேட்டா அனுபவியுங்கள் https://paytm.me/7MK3f Thanks.",
+"normalized": "உங்கள் bsnl plan 5 நாட்களில் முடிவடைகிறது. இப்பவே recharge செய்து unlimited data அனுபவியுங்கள் https://paytm.me/7mk3f thanks.",
 "probs": [
-0.016852,
-0.249736,
-0.733413
+0.055795,
+0.681066,
+0.263138
 ]
 },
 {
-"text": "AD-SWMOWE: Info: Airtel lucky winner: உங்கள் எண் Rs.25,00,000 வென்றுள்ளது. உடனே WhatsApp செய்யவும் 7052838611",
-"normalized": "adswmowe: info: airtel lucky winner: உங்கள் எண் rs.25,00,000 வென்றுள்ளது. உடனே whatsapp செய்யவும் 7052838611",
+"text": "Alert: நினைவூட்டல்: Meesho-க்கு Rs 41288 UPI AutoPay 24 May அன்று திட்டமிடப்பட்டுள்ளது -Axis Bank",
+"normalized": "alert: நினைவூட்டல்: meesho-க்கு rs 41288 upi autopay 24 may அன்று திட்டமிடப்பட்டுள்ளது -axis bank",
 "probs": [
-0.029872,
-0.002653,
-0.967475
+0.9815,
+0.012655,
+0.005845
 ]
 },
 {
-"text": "Alert: Your WBSEDCL bill of ₹95,117 is paid successfully.. Transaction ID 254535256211.. Thank you",
-"normalized": "alert: your wbsedcl bill of ₹95,117 is paid successfully.. transaction id 254535256211.. thank you",
+"text": "Alert: आपके A/c x3820 से 22/07/2026 को Rs.62,083 VPA joseph.sneha@ibl को debit किए गए। UPI Ref 261000349926। आपने नहीं किया? 1860-314-8103 पर call करें -Yes Bank",
+"normalized": "alert: आपके a/c x3820 से 22/07/2026 को rs.62,083 vpa joseph.sneha@ibl को debit किए गए। upi ref 261000349926। आपने नहीं किया? 1860-314-8103 पर call करें -yes bank",
 "probs": [
-0.987147,
-0.001002,
-0.011851
+0.985652,
+0.001042,
+0.013306
 ]
 },
 {
-"text": "BZ-KLRDKS: SPECIAL OFFER: RS.70,146 RECHARGE-க்கு கூடுதல் 10GB DATA இலவசம். சீக்கிரம்! REGARDS",
-"normalized": "bzklrdks: special offer: rs.70,146 recharge-க்கு கூடுதல் 10gb data இலவசம். சீக்கிரம்! regards",
+"text": "congratulations! you have received rs 53386 cashback. to receive the money accept the request on amazon pay and enter your upi pin thanks",
+"normalized": "congratulationsi you have received rs 53386 cashback. to receive the money accept the request on amazon pay and enter your upi pin thanks",
 "probs": [
-0.191648,
-0.783755,
-0.024597
+0.200772,
+0.110022,
+0.689207
 ]
 },
 {
-"text": "Hello, Meena GPay-ல் Rs.77,889 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற பின் போட வேண்டியதில்லை :)",
-"normalized": "hello, meena gpay-ல் rs.77,889 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற pin போட வேண்டியதில்லை :)",
+"text": "Info: வாழ்த்துக்கள்! உங்களுக்கு ₹78,100 cashback கிடைத்துள்ளது. பணத்தைப் பெற Amazon Pay-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும் :)",
+"normalized": "info: வாழ்த்துக்கள்! உங்களுக்கு ₹78,100 cashback கிடைத்துள்ளது. பணத்தைப் பெற amazon pay-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும் :)",
 "probs": [
-0.593336,
-0.017004,
-0.38966
+0.038552,
+0.176486,
+0.784961
 ]
 },
 {
-"text": "Hi, Joseph CRED-ல் Rs 82900 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற PIN போட வேண்டியதில்லை T&C",
-"normalized": "hi, joseph cred-ல் rs 82900 request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற pin போட வேண்டியதில்லை t&c",
+"text": "VM-UADTHJ: Hello, अरे, कल के dinner के INR 82297.00 जब time मिले ishita@upi पर भेज देना",
+"normalized": "vmuadthj: hello, अरे, कल के dinner के inr 82297.00 जब time मिले ishita@upi पर भेज देना",
 "probs": [
-0.333602,
-0.030931,
-0.635467
+0.614259,
+0.03997,
+0.345771
 ]
 },
 {
-"text": "Hi, உங்கள் Amazon Pay wallet-ல் ₹12,267 சேர்க்கப்பட்டது.. Transaction ID 911659766187 T&C",
-"normalized": "hi, உங்கள் amazon pay wallet-ல் ₹12,267 சேர்க்கப்பட்டது.. transaction id 911659766187 t&c",
+"text": "வாழ்த்துக்கள்! உங்களுக்கு Rs 71900 cashback கிடைத்துள்ளது.. பணத்தைப் பெற BHIM-ல் வந்த request-ஐ accept செய்து UPI PIN உள்ளிடவும் T&C",
+"normalized": "வாழ்த்துக்கள்! உங்களுக்கு rs 71900 cashback கிடைத்துள்ளது.. பணத்தைப் பெற bhim-ல் வந்த request-ஐ accept செய்து upi pin உள்ளிடவும் t&c",
 "probs": [
-0.474386,
-0.163951,
-0.361664
+0.043394,
+0.218962,
+0.737644
 ]
 },
 {
-"text": "Hi, INR 86800.00 has been added to your Paytm wallet. Transaction ID 500320186707",
-"normalized": "hi, inr 86800.00 has been added to your paytm wallet. transaction id 500320186707",
+"text": "BZ-LWPEQM: Hi, मैं army officer हूँ, कमरे के लिए advance Rs.64,500 दूँगा। मेरा QR scan करके PIN डालिए, पैसे आपको आ जाएँगे +919780132417 T&C",
+"normalized": "bzlwpeqm: hi, मैं army officer हूँ, कमरे के लिए advance rs.64,500 दूँगा। मेरा qr scan करके pin डालिए, पैसे आपको आ जाएँगे +919780132417 t&c",
 "probs": [
-0.179278,
-0.074032,
-0.74669
+0.076872,
+0.003144,
+0.919984
 ]
 },
 {
-"text": "dear user, special offer: rs.1,900 recharge-க்கு கூடுதல் 10gb data இலவசம். சீக்கிரம்! t&c",
-"normalized": "dear user, special offer: rs.1,900 recharge-க்கு கூடுதல் 10gb data இலவசம். சீக்கிரம்! t&c",
+"text": "Dear user, உங்கள் Airtel plan 7 நாட்களில் முடிவடைகிறது. உடனே recharge செய்து unlimited data அனுபவியுங்கள் phon.pe/fdv0A Regards",
+"normalized": "dear user, உங்கள் airtel plan 7 நாட்களில் முடிவடைகிறது. உடனே recharge செய்து unlimited data அனுபவியுங்கள் phon.pe/fdv0a regards",
 "probs": [
-0.123324,
-0.832418,
-0.044257
+0.256199,
+0.540555,
+0.203246
 ]
 },
 {
-"text": "Dear user, உங்கள் eeCICI Bank credit card-ல் Rs 38400 சந்தேகத்திற்குரிய transaction நடந்தூள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call +918627116740 .",
-"normalized": "dear user, உங்கள் eecici bank credit card-ல் rs 38400 சந்தேகத்திற்குரிய transaction நடந்தூள்ளது. cancel செய்ய otp-ஐ சொல்லுங்கள், call +918627116740 .",
+"text": "Imp: Google Pay login OTP: 892561. Valid for 10 mins. Do not share, Google Pay never calls asking for OTP",
+"normalized": "imp: google pay login otp: 892561. valid for 10 mins. do not share, google pay never calls asking for otp",
 "probs": [
-0.355494,
-0.029187,
-0.615319
+0.900578,
+0.097302,
+0.00212
 ]
 },
 {
-"text": "வா_ழ்_த்_து_க்_க_ள்! உங்களுக்கு Rѕ 90743 сѕһbасk கிடைத்துள்ளது. panaththaip pera PhonePe-ல் வந்த ரிக்வெஸ்ட்-ஐ accept செய்து UPI பின் ullidavum",
-"normalized": "வாழ்த்துக்கள்! உங்களுக்கு rs 90743 cshback கிடைத்துள்ளது. panaththaip pera phonepe-ல் வந்த request-ஐ accept செய்து upi pin ullidavum",
+"text": "याद दिलाना: BigBasket को ₹95,400 का UPI AutoPay 07-02-26 को scheduled है -SBI",
+"normalized": "याद दिलाना: bigbasket को ₹95,400 का upi autopay 07-02-26 को scheduled है -sbi",
 "probs": [
-0.11648,
-0.077054,
-0.806466
+0.995323,
+0.002161,
+0.002516
 ]
 },
 {
-"text": "இன்று மட்டும்! MoibKwik-ல் பில் செலுத்தி ₹61,700 வரை cashback வெல்லுங்கள். இ_ப்_போ_தே திறக்கவும் myntr.it/ZvIQh Regards",
-"normalized": "இன்று மட்டும்! moibkwik-ல் bill செலுத்தி ₹61,700 வரை cashback வெல்லுங்கள். இப்போதே திறக்கவும் myntr.it/zviqh regards",
+"text": "Dear user, Hey send the Rs.92,232 for yesterday's dinner to 8313039654@okhdfcbank whenever free",
+"normalized": "dear user, hey send the rs.92,232 for yesterday's dinner to 8313039654@okhdfcbank whenever free",
 "probs": [
-0.035694,
-0.843396,
-0.120911
+0.774993,
+0.023633,
+0.201374
 ]
 },
 {
-"text": "வாழ்த்துக்௧ள்! உங்களுக்கு Rs.46,400 cashack கிடைத்துள்ள்து.. ப-ண-த்-தை-ப் பெ.​.ற Paytm-ல் வ⁠த reqest-ஐ acсnерt செ‌ய்‌து UP! PIN ௨ள்ளிடவும் :)",
-"normalized": "வாழ்த்துக்கள்! உங்களுக்கு rs.46,400 cashack கிடைத்துள்ள்து.. ப-ண-த்-தை-ப் பெ..ற paytm-ல் வத reqest-ஐ accnept செய்து upi pin உள்ளிடவும் :)",
+"text": "Hi, Your Jio plan expires in 7 days. Recharge now and enjoy unlimited data https://hdfcbank.com/offers/z4WcN .",
+"normalized": "hi, your jio plan expires in 7 days. recharge now and enjoy unlimited data https://hdfcbank.com/offers/z4wcn .",
 "probs": [
-0.056361,
-0.01859,
-0.925049
+0.005229,
+0.98654,
+0.008231
 ]
 },
 {
-"text": "h3ll0, s.a.n.d.e.e.p has rEqUESTed ₹77,067 on phonepe. remember, you never n3ed t0 entr p.i.n t0 receive mney regards",
-"normalized": "hello, sandeep has requested ₹77,067 on phonepe. remember, you never need t0 entr pin t0 receive mney regards",
+"text": "உங்கள் Union Bank credit card-ல் Rs 44701 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. Cancel செய்ய OTP-ஐ சொல்லுங்கள், call +919027699768 Regards",
+"normalized": "உங்கள் union bank credit card-ல் rs 44701 சந்தேகத்திற்குரிய transaction நடந்துள்ளது. cancel செய்ய otp-ஐ சொல்லுங்கள், call +919027699768 regards",
 "probs": [
-0.530979,
-0.035399,
-0.433623
+0.324567,
+0.021543,
+0.65389
 ]
 },
 {
-"text": "AD-EGEGOE: Dear user, வாழ்த்துக்கள்! உங்களுக்கு Rs.37700/- cashback கி‍டைதுள்ளது. பணத்தைப்‌ பெற‌ Amazon PY-ல் வந்த re‌quest-ஐ accept செய்து UPPІ PIIІΝ உ.ள்.ளி.ட.வு.ம் -Team",
-"normalized": "adegegoe: dear user, வாழ்த்துக்கள்! உங்களுக்கு rs.37700/- cashback கிடைதுள்ளது. பணத்தைப் பெற amazon py-ல் வந்த request-ஐ accept செய்து uppi piin உள்ளிடவும் -team",
+"text": "TM-CLFTYJ: உங்கள் Croma order-க்கான Rs.82,844 payment வெற்றிகரமாக முடிந்தது. Order 24/12/2026-க்குள் deliver செய்யப்படும்",
+"normalized": "tmclftyj: உங்கள் croma order-க்கான rs.82,844 payment வெற்றிகரமாக முடிந்தது. order 24/12/2026-க்குள் deliver செய்யப்படும்",
 "probs": [
-0.016625,
-0.03336,
-0.950015
+0.791263,
+0.012594,
+0.196142
 ]
 },
 {
-"text": "டேய், நேற்று dinner-க்கான Rs.3500/--ஐ நெரம் கிடைக்கும்போது arun@axl-க்கு அனுப்பிவிடு",
-"normalized": "டேய், நேற்று dinner-க்கான rs.3500/--ஐ நெரம் கிடைக்கும்போது arun@axl-க்கு அனுப்பிவிடு",
+"text": "AX-HOZCDK: Imp: உங்கள் Amazon order-க்கான Rs 14245 payment வெற்றிகரமாக முடிந்தது. Order 13/10/2026-க்குள் deliver செய்யப்படும் .",
+"normalized": "axhozcdk: imp: உங்கள் amazon order-க்கான rs 14245 payment வெற்றிகரமாக முடிந்தது. order 13/10/2026-க்குள் deliver செய்யப்படும் .",
 "probs": [
-0.562878,
-0.022658,
-0.414464
+0.745904,
+0.0067,
+0.247396
 ]
 },
 {
-"text": "Hellо, Congatulations! Yоuu have received Rs 23324 cshbck. T​o receive the mone⁠y accept the request ocn BHIM and 3npt3r youkr U​I PINNN",
-"normalized": "hello, congatulationsi youu have received rs 23324 cshbck. to receive the money accept the request ocn bhim and enpter youkr ui pinn",
+"text": "PhonePe login OTP: 627283. Valid for 10 mins. Do not share, PhonePe never calls asking for OTP -Team",
+"normalized": "phonepe login otp: 627283. valid for 10 mins. do not share, phonepe never calls asking for otp -team",
 "probs": [
-0.191304,
-0.074226,
-0.73447
+0.83756,
+0.15889,
+0.00355
 ]
 },
 {
-"text": "hee, MSЕDСL: Yооur bbb_e_e_l_l i​s pe⁠nding and coNNeCtEIOn will be disconnected. Py Rs.91,100 nw rb.gy/DLm8l1 T&С",
-"normalized": "hee, msedcl: yoour bbeell is pending and connecteion will be disconnected. py rs.91,100 nw rb.gy/dlm8l1 t&c",
+"text": "Alert: Hello I am from HR, ur resume has been shortlisted. Complete simple tasks and earn INR 6826.00, join Telegram icici.care76.click Thanks.",
+"normalized": "alert: hello i am from hr, ur resume has been shortlisted. complete simple tasks and earn inr 6826.00, join telegram icici.care76.click thanks.",
 "probs": [
-0.135109,
-0.113078,
-0.751812
+0.095218,
+0.138389,
+0.766393
 ]
 },
 {
-"text": "Info: IFDC F*r*s*t: A/c x2070-லிருந்து Ajio-க்கு ІNR 70879.00 debizt செய்யப்பட்டது. இருபு Rs.4,982. Ref 828776146172 .",
-"normalized": "info: ifdc frst: a/c x2070-லிருந்து ajio-க்கு inr 70879.00 debizt செய்யப்பட்டது. இருபு rs.4,982. ref 828776146172 .",
+"text": "आपके ICICI बैंक credit card reward points 15 Sep को expire होंगे। ICICI Bank app पर redeem कर दें",
+"normalized": "आपके icici bank credit card reward points 15 sep को expire होंगे। icici bank app पर redeem कर दें",
 "probs": [
-0.945397,
-0.002252,
-0.052351
+0.037545,
+0.026843,
+0.935612
 ]
 },
 {
-"text": "Info: TSSPDCL: Your b-i-l-l is pnding and conne_ction w11l be DiscOnNEcTed. Pay ₹50,400 nw axis.verify.support",
-"normalized": "info: tsspdcl: your bill is pnding and connection w11l be disconnected. pay ₹50,400 nw axis.verify.support",
+"text": "JD-HKGWUH: Alert: DTDC: तुम्हारा parcel customs में रोका गया है। Release fee ₹98,700 भरें http://kyc.idfcfirst.xyz",
+"normalized": "jdhkgwuh: alert: dtdc: तुम्हारा parcel customs में रोका गया है। release fee ₹98,700 भरें http://kyc.idfcfirst.xyz",
 "probs": [
-0.098851,
-0.059526,
-0.841623
+0.014021,
+0.003796,
+0.982182
 ]
 },
 {
-"text": "TM-EOBHZK: Imp: ICICI banK: Pre-approved pers0n@1 l*o*a*n up to R$ 37333 at attractive r@t3s. Apply on ICICI Bank app. T.&.C apply",
-"normalized": "tmeobhzk: imp: icici bank: preapproved pers0n@1 loan up to r$ 37333 at attractive r@t3s. apply on icici bank app. t.&.c apply",
+"text": "BESCOM: உங்கள் bill நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். உடனே Rs.65,595 செலுத்துங்கள் https://points-bob.in.net -Team",
+"normalized": "bescom: உங்கள் bill நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். உடனே rs.65,595 செலுத்துங்கள் https://points-bob.in.net -team",
 "probs": [
-0.230209,
-0.523561,
-0.24623
+0.004134,
+0.040406,
+0.95546
 ]
 },
 {
-"text": "Alert: Delhivery: உங்கள் parcl custohms‍-ல் னிறுத்தி வைக்கப்பட்டுள்ளது. Release fe Rs.91,200 செலுத்துங்கள் bit.ly/ripmAd",
-"normalized": "alert: delhivery: உங்கள் parcl custohms-ல் னிறுத்தி வைக்கப்பட்டுள்ளது. release fe rs.91,200 செலுத்துங்கள் bit.ly/ripmad",
+"text": "Dear user, உங்கள் Google Pay wallet-ல் ₹40,521 சேர்க்கப்பட்டது. Transaction ID 670929498137",
+"normalized": "dear user, உங்கள் google pay wallet-ல் ₹40,521 சேர்க்கப்பட்டது. transaction id 670929498137",
 "probs": [
-0.466256,
-0.060794,
-0.472951
+0.887544,
+0.074231,
+0.038225
 ]
 },
 {
-"text": "1nfo: PNB: உ-ங்-க-ளு-க்-கு ₹86,100 வரை p*r*e-approved personal loan, குறைந்த வ_ட்_டி_யி_ல். PNB app-ல் app1y செய்யுங்கள். T&C apply Thanks.",
-"normalized": "info: pnb: உ-ங்-க-ளு-க்-கு ₹86,100 வரை preapproved personal loan, குறைந்த வட்டியில். pnb app-ல் appiy செய்யுங்கள். t&c apply thanks.",
+"text": "ax-chttho: myntra உங்களுக்கு cred-ல் rs.61600/- பேமெண்ட் request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் அப்ரூவ் செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+"normalized": "axchttho: myntra உங்களுக்கு cred-ல் rs.61600/- payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
 "probs": [
-0.031199,
-0.870798,
-0.098002
+0.021636,
+0.019116,
+0.959248
 ]
 },
 {
-"text": "!mp: Congratulations! You һ а ν e recieved Rs.32,800 CAShBaCk. To receive thhe аmt @ccep7 tһe rekw3s7 ooona BHIM anpd emnter⁠ y0ur upI PIN :)",
-"normalized": "imp: congratulationsi you have recieved rs.32,800 cashback. to receive thhe amt @ccep7 the rekwest oona bhim anpd emnter your upi pin :)",
+"text": "AD-SUHCPF: Alert: Union Bank: உங்களுக்கு Rs 97400 வரை pre-approved personal loan, குறைந்த வட்டியில். Union Bank app-ல் apply செய்யவும். T&C apply",
+"normalized": "adsuhcpf: alert: union bank: உங்களுக்கு rs 97400 வரை preapproved personal loan, குறைந்த வட்டியில். union bank app-ல் apply செய்யவும். t&c apply",
 "probs": [
-0.10912,
-0.110459,
-0.780421
+0.029714,
+0.679271,
+0.291016
 ]
 },
 {
-"text": "ur ttaa poer 8іl1 opch rs.57,913 is paid ѕuссеѕsfllу. transaction id 123387549301. thank yoUUU",
-"normalized": "ur ttaa poer 8il1 opch rs.57,913 is paid successflly. transaction id 123387549301. thank youu",
+"text": "Alert: உங்கள் Vi plan 2 நாட்களில் முடிவடைகிறது. உடனே ரீசார்ஜ் செய்து unlimited data அனுபவியுங்கள் tinyurl.com/vdPK0O",
+"normalized": "alert: உங்கள் vi plan 2 நாட்களில் முடிவடைகிறது. உடனே recharge செய்து unlimited data அனுபவியுங்கள் tinyurl.com/vdpk0o",
 "probs": [
-0.937387,
-0.008238,
-0.054375
+0.049305,
+0.499102,
+0.451593
 ]
 },
 {
-"text": "Іnpһo: ICICI பேங்க்: ungalukku ₹47,297 varai pre-approved per5on1 10an, kuraintha வட்டியில்.. ICI‍CI BaNk ஆப்-ல் A P P l y seyyungal.. T&C apply Thanks.",
-"normalized": "inpho: icici bank: ungalukku ₹47,297 varai preapproved personi 10an, kuraintha வட்டியில்.. icici bank app-ல் apply seyyungal.. t&c apply thanks.",
+"text": "உங்கள் SBI credit கார்டு reward points 23/09/2026 அன்று காலாவதியாகும். SBI app-ல் redeem பண்ணுங்க",
+"normalized": "உங்கள் sbi credit card reward points 23/09/2026 அன்று காலாவதியாகும். sbi app-ல் redeem பண்ணுங்க",
 "probs": [
-0.135001,
-0.78293,
-0.082069
+0.114024,
+0.066446,
+0.81953
 ]
 },
 {
-"text": "Info: Airtel lucky wwinner: உங்கள் எண் iPh0n3 16 வென்ருள்ளது. உ.ட.னே What5@pp செய்யுங்கள் +91 97409 62051 .",
-"normalized": "info: airtel lucky wwinner: உங்கள் எண் iphone 16 வென்ருள்ளது. உடனே what5@pp செய்யுங்கள் +91 97409 62051 .",
+"text": "உங்கள் Union Bank reward points மதிப்பு Rs 9907, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் https://rb.gy/NC8WHr -Team",
+"normalized": "உங்கள் union bank reward points மதிப்பு rs 9907, இன்று காலாவதியாகிறது, இப்போதே redeem செய்யுங்கள் https://rb.gy/nc8whr -team",
 "probs": [
-0.070163,
-0.020777,
-0.90906
+0.000517,
+0.025692,
+0.973791
 ]
 },
 {
-"text": "AХ-DIKSOT: Нi, TANGEDCO: Your blil iѕ pendееng andp‍e கனெக்ஷன் wizll be disconnected. PppAy Rs.29,100 nw https://is.gd/tz27FC",
-"normalized": "axdiksot: hi, tangedco: your blil is pendeeng andpe connection wizll be disconnected. pppay rs.29,100 nw https://is.gd/tz27fc",
+"text": "BZ-ARXIRF: Info: Instant loan ₹70,300 without CIBIL! Approval in 5 minutes with just Aadhaar and PAN. Send processing fee INR 2740.00 to 7035081210@okaxis T&C",
+"normalized": "bzarxirf: info: instant loan ₹70,300 without cibili approval in 5 minutes with just aadhaar and pan. send processing fee inr 2740.00 to 7035081210@okaxis t&c",
 "probs": [
-0.022209,
-0.055601,
-0.922189
+0.122861,
+0.498583,
+0.378557
 ]
 },
 {
-"text": "Imp: I am an army o‍fficer, I w‌ll раy advance Rѕh 97600 for the roоm. Scn my QR and enteeer РІN, m0eny wіll соomе to you 8680976192 Regrds",
-"normalized": "imp: i am an army officer, i wll pay advance rsh 97600 for the room. scn my qr and enteer pin, moeny will coome to you 8680976192 regrds",
+"text": "Hi, Meesho உங்களுக்கு CRED-ல் ₹25,481 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யவும், இல்லையெனில் decline பண்ணுங்க",
+"normalized": "hi, meesho உங்களுக்கு cred-ல் ₹25,481 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யவும், இல்லையெனில் decline பண்ணுங்க",
 "probs": [
-0.720344,
-0.039855,
-0.2398
+0.031132,
+0.012857,
+0.956011
 ]
 },
 {
-"text": "Dear user, Suspicious transaction of Rs.57800/- on у*o*u*r PNB credit саrd. Tooo cnael share the OTPPP, ca‌‍ll 7993390213 :)",
-"normalized": "dear user, suspicious transaction of rs.57800/- on your pnb credit card. too cnael share the otpp, call 7993390213 :)",
+"text": "Info: Your KYC has expired. To avoid PhonePe wallet closure call +916561057175 immediately",
+"normalized": "info: your kyc has expired. to avoid phonepe wallet closure call +916561057175 immediately",
 "probs": [
-0.409717,
-0.014215,
-0.576067
+0.169573,
+0.010379,
+0.820048
 ]
 },
 {
-"text": "VМ-RQXIQL: І‍mp: Vi ரீசார்ஜ் Rs.88,976-க்கான oongazh CREmD АutоPаy 14 Аug andru nadaiperum. ரத்து seyya СRED-ல் AutoPay pakuthikkus sellavum -Team",
-"normalized": "vmrqxiql: imp: vi recharge rs.88,976-க்கான oongazh cremd autopay 14 aug andru nadaiperum. ரத்து seyya cred-ல் autopay pakuthikkus sellavum -team",
+"text": "Hello, नमस्ते, मैं HR से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके INR 8475.00 कमाएँ, Telegram पर join करो http://t.ly/W6W8S7 -Team",
+"normalized": "hello, नमस्ते, मैं hr से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके inr 8475.00 कमाएँ, telegram पर join करो http://t.ly/w6w8s7 -team",
 "probs": [
-0.961475,
-0.018953,
-0.019572
+0.033187,
+0.019504,
+0.947309
 ]
 },
 {
-"text": "Imp: நா_ன் ஒ ரு army o f f i c e r, அறைக்கு 4dvanc3 Rs 88300 த*ரு*கி*றே*ன். எ ன் QR-ஐ scan செய்து PIN போ-டு-ங்-க-ள், ப.ண.ம் உங்களுக்கு வ_ரு_ம் +91 76307 48196",
-"normalized": "imp: நான் ஒ ரு army officer, அறைக்கு advance rs 88300 தருகிறேன். எ ன் qr-ஐ scan செய்து pin போ-டு-ங்-க-ள், பணம் உங்களுக்கு வரும் +91 76307 48196",
+"text": "hi, வணக்கம், நான் hr-லிருந்து பேசுகிறேன், உங்கள் resume shortlist ஆகியுள்ளது. சின்ன task-களை முடித்து rs.5,583 பெறுங்கள், telegram-ல் join செய்யுங்கள் www.axis-secure.support",
+"normalized": "hi, வணக்கம், நான் hr-லிருந்து பேசுகிறேன், உங்கள் resume shortlist ஆகியுள்ளது. சின்ன task-களை முடித்து rs.5,583 பெறுங்கள், telegram-ல் join செய்யுங்கள் ww.axis-secure.support",
 "probs": [
-0.046056,
-0.013345,
-0.940599
+0.053736,
+0.010501,
+0.935763
 ]
 },
 {
-"text": "Alert: HDFC Bnk: P-r-e-approved personal loannn uр to ₹77,216 at attractive rates. Apрlу o‌n HDFC பேங்க் app. 7r&C арplу .",
-"normalized": "alert: hdfc bnk: preapproved personal loann up to ₹77,216 at attractive rates. apply on hdfc bank app. tr&c apply .",
+"text": "CP-GGOCQQ: Imp: Payment of Rs 6734 for your Meesho order is successful. Order will be delivered by 22-01-26 Regards",
+"normalized": "cpggocqq: imp: payment of rs 6734 for your meesho order is successful. order will be delivered by 22-01-26 regards",
 "probs": [
-0.255775,
-0.647535,
-0.096689
+0.820472,
+0.04105,
+0.138478
 ]
 },
 {
-"text": "Imp: டேய், நேற்றூ dinner-க்கான Rs 66621-ஐ நேரம் கிடைக்கும்போது divya.meena@ibl-க்கு அனுப்பிவிடு",
-"normalized": "imp: டேய், நேற்றூ dinner-க்கான rs 66621-ஐ நேரம் கிடைக்கும்போது divya.meena@ibl-க்கு அனுப்பிவிடு",
+"text": "Dear user, नई collection पर flat 60% छूट, Blinkit store आएँ या https://kotak.com/offers/y4fPa पर order कर दें",
+"normalized": "dear user, नई collection पर flat 60% छूट, blinkit store आएँ या https://kotak.com/offers/y4fpa पर order कर दें",
 "probs": [
-0.552142,
-0.019691,
-0.428167
+0.000366,
+0.970187,
+0.029447
 ]
 },
 {
-"text": "eemp: ₹97,326 has bben added to ur GPay wа‌ll‍et. Transaction I‌DD 479957659210",
-"normalized": "eemp: ₹97,326 has bben added to ur gpay wallet. transaction idd 479957659210",
+"text": "VM-TZOKCK: Dear user, आपका KYC expire हो गया है। MobiKwik wallet बंद होने से बचाने के लिए फ़ौरन +91 91104 65668 पर कॉल करें",
+"normalized": "vmtzokck: dear user, आपका kyc expire हो गया है। mobikwik wallet बंद होने से बचाने के लिए फ़ौरन +91 91104 65668 पर call करें",
 "probs": [
-0.72933,
-0.088398,
-0.182271
+0.021458,
+0.006673,
+0.971868
 ]
 },
 {
-"text": "Hello my INR 91911.00 wnt to you by mistake, return it or I wiiill file a police complaint +919430536460",
-"normalized": "hello my inr 91911.00 wnt to you by mistake, return it or i wiill file a police complaint +919430536460",
+"text": "Imp: बिना CIBIL के instant loan Rs.93200/-! सिर्फ Aadhaar और PAN से 5 मिनट में approval। Processing fee Rs.2700/- 7855731917@ybl पर भेजिए :)",
+"normalized": "imp: बिना cibil के instant loan rs.93200/-! सिर्फ aadhaar और pan से 5 मिनट में approval। processing fee rs.2700/- 7855731917@ybl पर भेजिए :)",
 "probs": [
-0.025529,
-0.005472,
-0.968999
+0.029544,
+0.267285,
+0.703171
 ]
 },
 {
-"text": "TM-KBJYXK: Alert: உங்கள் tNeB 8i1l Rs.58131/- வெற்றிகரமாக செலுத்தப்பட்டது. Transaction ID 373137124427. நன்றீ! Regards",
-"normalized": "tmkbjyxk: alert: உங்கள் tneb 8i1l rs.58131/- வெற்றிகரமாக செலுத்தப்பட்டது. transaction id 373137124427. நன்றீ! regards",
+"text": "Hello, Amazon ने BHIM पर आपको Rs.89750/- की पेमेंट request भेजी है। Order आपने किया है तो app में approve करें, वरना decline करें",
+"normalized": "hello, amazon ने bhim पर आपको rs.89750/- की payment request भेजी है। order आपने किया है तो app में approve करें, वरना decline करें",
 "probs": [
-0.938143,
-0.007844,
-0.054013
+0.096357,
+0.039411,
+0.864231
 ]
 },
 {
-"text": "D3ar u-s-e-r, Rs.45177/- hhas BeEn add3d t0 your Paytm wa1l37. Transaction ID 302656662773 -Team",
-"normalized": "dear user, rs.45177/- hhas been added t0 your paytm wa1l37. transaction id 302656662773 -team",
+"text": "Hi, Kotak Bank: உங்களுக்கு Rs 35300 வரை pre-approved personal loan, குறைந்த வட்டியில். Kotak Bank app-ல் apply செய்யுங்கள். T&C apply",
+"normalized": "hi, kotak bank: உங்களுக்கு rs 35300 வரை preapproved personal loan, குறைந்த வட்டியில். kotak bank app-ல் apply செய்யுங்கள். t&c apply",
 "probs": [
-0.298062,
-0.020655,
-0.681283
+0.033116,
+0.747709,
+0.219176
 ]
 },
 {
-"text": "Hlo, Aіrtel luсkkky winner: உங்கள் எண் iРhonе 16 வென்றுள்ளது. உடனே வாட்ஸ்அப் செய்யவும் 7857059444",
-"normalized": "hlo, airtel luckky winner: உங்கள் எண் iphone 16 வென்றுள்ளது. உடனே whatsapp செய்யவும் 7857059444",
+"text": "DEAR USER, YOUR IDFC FIRST CREDIT CARD REWARD POINTS WILL EXPIRE ON 17 AUG. REDEEM THEM ON IDFC FIRST APP",
+"normalized": "dear user, your idfc first credit card reward points will expire on 17 aug. redeem them on idfc first app",
 "probs": [
-0.138508,
-0.012167,
-0.849325
+0.129381,
+0.030171,
+0.840447
 ]
 },
 {
-"text": "Υur CRED AutoPay fоr BSNL recharge of Rѕ 52668 wіll b‍te executed oN 09Jun26. T⁠o‍ cаncеl, open СRED and go tо AutоРау .",
-"normalized": "yur cred autopay for bsnl recharge of rs 52668 will bte executed on 09jun26. to cancel, open cred and go to autopay .",
+"text": "alert: apollo pharmacy உங்களுக்கு amazon pay-ல் rs.17,728 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+"normalized": "alert: apollo pharmacy உங்களுக்கு amazon pay-ல் rs.17,728 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
 "probs": [
-0.957895,
-0.039877,
-0.002228
+0.01693,
+0.022876,
+0.960194
 ]
 },
 {
-"text": "E-k-a-r-t: Ur p@rce1 is h3ld at kustoms. Py Rs.2,500 release fee at iobpoints52.xyz Regrds",
-"normalized": "ekart: ur p@rce1 is held at kustoms. py rs.2,500 release fee at iobpoints52.xyz regrds",
+"text": "Dear user, आपके Swiggy order के लिए Rs 62803 का payment सफल रहा। ऑर्डर 2 Dec तक deliver होगा",
+"normalized": "dear user, आपके swiggy order के लिए rs 62803 का payment सफल रहा। order 2 dec तक deliver होगा",
 "probs": [
-0.234781,
-0.061674,
-0.703545
+0.594291,
+0.077018,
+0.32869
 ]
 },
 {
-"text": "hELLO, idfс first​: உங்களுக்கு ₹13,000 வரை pre-approved personl lоan, குறைந்த வ்ட்டி௰ில். idfc first app-ல் apply சேய்யம். tf&c aply",
-"normalized": "hello, idfc first: உங்களுக்கு ₹13,000 வரை preapproved personl loan, குறைந்த வ்ட்டியில். idfc first app-ல் apply சேய்யம். tf&c aply",
+"text": "Hi, Tata Power: Your bill is pending and connection will be disconnected. Pay Rs 30100 now rb.gy/rv7SzM",
+"normalized": "hi, tata power: your bill is pending and connection will be disconnected. pay rs 30100 now rb.gy/rv7szm",
 "probs": [
-0.156526,
-0.644482,
-0.198993
+0.029965,
+0.287835,
+0.682201
 ]
 },
 {
-"text": "DАE⁠R UЅER‍, 5P3C!AL O p h Ff E R: EXTRA 10GB DATA ஃப்ரீ ON RS.68,917 ரீசார்ஜ். HURRY! .",
-"normalized": "daer user, special oph ff e r: extra 10gb data free on rs.68,917 recharge. hurryi .",
+"text": "अरे, कल के dinner के Rs.51,200 जब time मिले 7847346279@apl पर भेज देना .",
+"normalized": "अरे, कल के dinner के rs.51,200 जब time मिले 7847346279@apl पर भेज देना .",
 "probs": [
-0.537022,
-0.443595,
-0.019383
+0.349377,
+0.02571,
+0.624912
 ]
 },
 {
-"text": "TM-NCJRTB: Info: நான் ஒரு army officer, அறைக்கு advance ₹5,315 தருகிறேன். எந் QR-ஐ scan செய்து PIN போ*டு*ங்*க*ள், பணம் உங்களுக்கு வரும் +91 66123 10643 :)",
-"normalized": "tmncjrtb: info: நான் ஒரு army officer, அறைக்கு advance ₹5,315 தருகிறேன். எந் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்களுக்கு வரும் +91 66123 10643 :)",
+"text": "Saravana Stores உங்களுக்கு Google Pay-ல் INR 14369.00 பேமெண்ட் request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
+"normalized": "saravana stores உங்களுக்கு google pay-ல் inr 14369.00 payment request அனுப்பியுள்ளது. நீங்கள் order செய்திருந்தால் app-ல் approve செய்யுங்கள், இல்லையெனில் decline செய்யுங்கள்",
 "probs": [
-0.047445,
-0.01225,
-0.940305
+0.063255,
+0.043809,
+0.892936
 ]
 },
 {
-"text": "Myntra Festive sale is l*i*v*​*e! Uр to​o 40% off⁠ on all рrоdсts. Shop nоw‌ fkrt.it/nKvdg :)",
-"normalized": "myntra festive sale is liv**ei up too 40% off on all prodcts. shop now fkrt.it/nkvdg :)",
+"text": "Imp: Kotak Bank: Pre-approved personal loan up to ₹90,120 at attractive rates. Apply on Kotak Bank app. T&C apply T&C",
+"normalized": "imp: kotak bank: preapproved personal loan up to ₹90,120 at attractive rates. apply on kotak bank app. t&c apply t&c",
 "probs": [
-0.254149,
-0.739038,
-0.006812
+0.411641,
+0.368242,
+0.220117
 ]
 },
 {
-"text": "Infо: CIBIL illaamala​ instant loan Rѕ 14700! Aаdһаar, PAΝ மட்டும் போதும், 5 நிமி⁠டத்தி‍ல் approval. Рrоcе$ѕіn9 f33 R-ѕ-.-3-,-5-9-0-ஐ ishita2181@ibl-க்கு அனுப்ங்க .",
-"normalized": "info: cibil illaamala instant loan rs 14700! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing f33 r-s-.-3-,-5-9-0-ஐ ishita2181@ibl-க்கு அனுப்ங்க .",
+"text": "AD-DUTALR: CIBIL இல்லாமல் instant loan ₹56,979! Aadhaar, PAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing fee Rs.3,700-ஐ lakshmi4902@ibl-க்கு அனுப்பவும் .",
+"normalized": "addutalr: cibil இல்லாமல் instant loan ₹56,979! aadhaar, pan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee rs.3,700-ஐ lakshmi4902@ibl-க்கு அனுப்பவும் .",
 "probs": [
-0.211448,
-0.173767,
-0.614785
+0.032336,
+0.165468,
+0.802196
 ]
 },
 {
-"text": "CP-XDGDEC: Zep70 Festive s_a_l_e is live! Up to 25% 0ff on all products. Shop n0w icicibank.com/n8MZv",
-"normalized": "cpxdgdec: zep70 festive sale is livei up to 25% 0ff on all products. shop n0w icicibank.com/n8mzv",
+"text": "आपके GPay वॉलेट में Rs.64,357 जोड़े गए। Transaction ID 982771410312 .",
+"normalized": "आपके gpay wallet में rs.64,357 जोड़े गए। transaction id 982771410312 .",
 "probs": [
-0.443569,
-0.52331,
-0.033121
+0.888995,
+0.07552,
+0.035486
 ]
 },
 {
-"text": "Airtel l*u*c*с*с*k*у wI​nn⁠eR: oongal ௭-ண் Rz 10 lakh vendrullathu. udane வாட்ஸ்அப் செய்யுங்கள் +917385446494 :)",
-"normalized": "airtel luccky winner: oongal எ-ண் rz 10 lakh vendrullathu. udane whatsapp செய்யுங்கள் +917385446494 :)",
+"text": "BSES: Ur bill is pending and connection will be disconnected. Pay INR 41836.00 now help-axis.top",
+"normalized": "bses: ur bill is pending and connection will be disconnected. pay inr 41836.00 now help-axis.top",
 "probs": [
-0.362205,
-0.034981,
-0.602814
+0.151608,
+0.215104,
+0.633287
 ]
 },
 {
-"text": "Tta Power: Your bill !s pending and connecteeon will b3 disconnected. P@y Rs.81514/- now http://rb.gy/YRgOAq",
-"normalized": "tta power: your bill !s pending and connecteeon will b3 disconnected. p@y rs.81514/- now http://rb.gy/yrgoaq",
+"text": "Hello, என் ₹63,200 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 6552814977 -Team",
+"normalized": "hello, என் ₹63,200 தவறுதலாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 6552814977 -team",
 "probs": [
-0.018015,
-0.05707,
-0.924915
+0.07875,
+0.020004,
+0.901245
 ]
 },
 {
-"text": "Hi, Hello, எ_‍_ன் Rs.72,500 தவறுதளாக உங்களுக்கு வந்துவிட்டது, திருப்‍பி ௮னுப்பாவிட்டால் роlісе complaint கொடுப்பேன் 6288029173",
-"normalized": "hi, hello, எ__ன் rs.72,500 தவறுதளாக உங்களுக்கு வந்துவிட்டது, திருப்பி அனுப்பாவிட்டால் police complaint கொடுப்பேன் 6288029173",
+"text": "Dear user, பேங்க் of Baroda: உங்களுக்கு Rs.74,200 வரை pre-approved personal loan, குறைந்த வட்டியில். Bank of Baroda app-ல் apply செய்யுங்கள். T&C apply Thanks.",
+"normalized": "dear user, bank of baroda: உங்களுக்கு rs.74,200 வரை preapproved personal loan, குறைந்த வட்டியில். bank of baroda app-ல் apply செய்யுங்கள். t&c apply thanks.",
 "probs": [
-0.077646,
-0.00968,
-0.912674
+0.047749,
+0.734204,
+0.218047
 ]
 },
 {
-"text": "taa power: your blla is pending а​nd co‌nrnection will be disko⁠nn​ected. pау rs.33187/- NoW http://rb.gy/zctasn :)",
-"normalized": "taa power: your blla is pending and conrnection will be diskonnected. pay rs.33187/- now http://rb.gy/zctasn :)",
+"text": "CP-URZHSF: Congratulations! You have received Rs 14063 cashback.. To receive the money accept the request on GPay and enter your UPI PIN .",
+"normalized": "cpurzhsf: congratulationsi you have received rs 14063 cashback.. to receive the money accept the request on gpay and enter your upi pin .",
 "probs": [
-0.012086,
-0.031459,
-0.956455
+0.340203,
+0.095733,
+0.564064
 ]
 },
 {
-"text": "Dear uzеr, Spcial оffr: ₹9,964 rekhargе-க்கு கூடுத்ல் 10GB d a t a இலவசம். சீக்கிரம்",
-"normalized": "dear uzer, spcial offr: ₹9,964 rekharge-க்கு கூடுத்ல் 10gb data இலவசம். சீக்கிரம்",
+"text": "ICICI Bank: Pre-approved personal loan up to Rs.39,500 at attractive rates. Apply on ICICI Bank app. T&C apply :)",
+"normalized": "icici bank: preapproved personal loan up to rs.39,500 at attractive rates. apply on icici bank app. t&c apply :)",
 "probs": [
-0.843918,
-0.131408,
-0.024674
+0.460317,
+0.369942,
+0.16974
 ]
 },
 {
-"text": "V K-SJCUVV: Dear user, உங்கள் B4nk of B_a_r_o_d_a rew@rd points மதிப்பு Rs 49538, இன்று கா-லா-வ-தி-யா-கி-ற-து, இப்பவே redeem ப.ண்.ணு.ங்.க http://bobsecure.online/nCxy",
-"normalized": "v ksjcuvv: dear user, உங்கள் bank of baroda rew@rd points மதிப்பு rs 49538, இன்று கா-லா-வ-தி-யா-கி-ற-து, இப்பவே redeem பண்ணுங்க http://bobsecure.online/ncxy",
+"text": "AX-TTKAJU: Info: India Post: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release fee ₹55,424 செலுத்துங்கள் https://pnb-reward75.click Regards",
+"normalized": "axttkaju: info: india post: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. release fee ₹55,424 செலுத்துங்கள் https://pnb-reward75.click regards",
 "probs": [
-0.010143,
-0.46665,
-0.523207
+0.02125,
+0.133894,
+0.844855
 ]
 },
 {
-"text": "நீஙகள் CREEED scratch c a rf d வென்றுள்ளீ​ர்​கள்! ௨ங்கள் C‍bRED a⁠рр-ல் rewards பகுதியைப் பாருங்கள் Thankz.",
-"normalized": "நீஙகள் creed scratch c a rf d வென்றுள்ளீர்கள்! உங்கள் cbred app-ல் rewards பகுதியைப் பாருங்கள் thankz.",
+"text": "आपके phonepe wallet में rs.20,200 जोड़े गए। transaction id 872621802534 -team",
+"normalized": "आपके phonepe wallet में rs.20,200 जोड़े गए। transaction id 872621802534 -team",
 "probs": [
-0.653737,
-0.162415,
-0.183848
+0.61072,
+0.270298,
+0.118981
 ]
 },
 {
-"text": "TM-SIFVZB: உங்கள் K.o.t.a.k பேங்க் c-r-e-d-i-t crd-ல் R-s 59090 சந்தேகத்தி.ற்குரிய transaction நடந்தூள்ளது. Cancel செய்ய 0TP-ஐ சொல்லுங்கள், call +91 75317 89060",
-"normalized": "tmsifvzb: உங்கள் kotak bank credit crd-ல் rs 59090 சந்தேகத்திற்குரிய transaction நடந்தூள்ளது. cancel செய்ய 0tp-ஐ சொல்லுங்கள், call +91 75317 89060",
+"text": "YOUR BANK OF BARODA REWARD POINTS WORTH RS.73,600 EXPIRE TODAY, REDEEM NOW T.LY/9NIFZK",
+"normalized": "your bank of baroda reward points worth rs.73,600 expire today, redeem now t.ly/9nifzk",
 "probs": [
-0.205609,
-0.073351,
-0.721039
+0.051893,
+0.06686,
+0.881247
 ]
 },
 {
-"text": "Hey ѕ​eund the Rs.4400/- f_o_⁠_r уеstеrdаy'ѕ dennr to sneha9933@axl w-һ-e-n-е-v-е-r f-r-e-e T&Сf",
-"normalized": "hey seund the rs.4400/- fo__r yesterday's dennr to sneha9933@axl wheneverfreet&cf",
+"text": "बधाई हो! आपको Rs.95409/- cashback मिला है। पैसे पाने के लिए PhonePe पर आई request accept करें और UPI PIN डालें Regards",
+"normalized": "बधाई हो! आपको rs.95409/- cashback मिला है। पैसे पाने के लिए phonepe पर आई request accept करें और upi pin डालें regards",
 "probs": [
-0.878331,
-0.00886,
-0.112809
+0.057554,
+0.108841,
+0.833605
 ]
 },
 {
-"text": "VM-FNDWSV: Imp: Your Amazon P@y AutoPay f0r BSNL rekharge 0f Rs 75400 will bbbe executed on 08/10/2026. To c a n c e l, o*p*e*n Amazon Pay and go to AutoPay",
-"normalized": "vmfndwsv: imp: your amazon p@y autopay f0r bsnl rekharge 0f rs 75400 will bbe executed on 08/10/2026. to cancel, open amazon pay and go to autopay",
+"text": "Dear user, नई collection पर flat 60% छूट, Ajio store आएँ या https://icicibank.com/ODwvS पर order करें .",
+"normalized": "dear user, नई collection पर flat 60% छूट, ajio store आएँ या https://icicibank.com/odwvs पर order करें .",
 "probs": [
-0.890502,
-0.066958,
-0.04254
+0.00081,
+0.962541,
+0.036649
 ]
 },
 {
-"text": "Imp: Divyfag haѕ requested ₹38,150 on Google Pay. Remember, u nh3ver need tо en73r РІnN to⁠ RECEIVE mnoeyf 7&C",
-"normalized": "imp: divyfag has requested ₹38,150 on google pay. remember, u nhever need to en73r pinn to receive mnoeyf 7&c",
+"text": "Rs 98876 has been added to your Amazon Pay wallet. Transaction ID 330604091701 Regards",
+"normalized": "rs 98876 has been added to your amazon pay wallet. transaction id 330604091701 regards",
 "probs": [
-0.779631,
-0.01668,
-0.20369
+0.463407,
+0.129939,
+0.406654
 ]
 },
 {
-"text": "I*m*p: KSEB: Youer bil‍l ins pending @nd​ cnnctIon wil bne disconnected. P@y Rs.10,200 nwww iobupdate68.click/GAhy Thanks.",
-"normalized": "imp: kseb: youer bill ins pending @nd cnnction wil bne disconnected. p@y rs.10,200 nww iobupdate68.click/gahy thanks.",
+"text": "India Post: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Release ஃபீஸ் Rs.78,200 செலுத்துங்கள் https://sbi-secure82.site Regards",
+"normalized": "india post: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. release fee rs.78,200 செலுத்துங்கள் https://sbi-secure82.site regards",
 "probs": [
-0.093816,
-0.033625,
-0.872558
+0.050624,
+0.081116,
+0.86826
 ]
 },
 {
-"text": "Hi, Y0ur TNEB b i l l of Rs.31,600 is paid successful_ly. Transaction ID 612474316880. Thank you",
-"normalized": "hi, your tneb bill of rs.31,600 is paid successfully. transaction id 612474316880. thank you",
+"text": "Info: तुम्हारे Bank of Baroda reward points जिनकी कीमत Rs.89,500 है, आज expire हो रहे हैं, अभी redeem करें bob.care13.top Regards",
+"normalized": "info: तुम्हारे bank of baroda reward points जिनकी कीमत rs.89,500 है, आज expire हो रहे हैं, अभी redeem करें bob.care13.top regards",
 "probs": [
-0.981315,
-0.002097,
-0.016588
+0.006714,
+0.017307,
+0.975979
 ]
 },
 {
-"text": "Inpho: நீங்கள் Payt​‍m‍ scratch c r d வென்றுள்ளீர்கள்‌! உங்கள் Paytm app-ல் rewards பகுதியைப் பாருங்கள் Regards",
-"normalized": "inpho: நீங்கள் paytm scratch crd வென்றுள்ளீர்கள்! உங்கள் paytm app-ல் rewards பகுதியைப் பாருங்கள் regards",
+"text": "HI, बिना CIBIL के INSTANT LOAN RS.89,945! सिर्फ AADHAAR और PAN से 5 मिनट में APPROVAL। PROCESSING FEE RS.4375/- HARSHA@YBL पर भेजें",
+"normalized": "hi, बिना cibil के instant loan rs.89,945! सिर्फ aadhaar और pan से 5 मिनट में approval। processing fee rs.4375/- harsha@ybl पर भेजें",
 "probs": [
-0.276917,
-0.149904,
-0.573179
+0.041792,
+0.407896,
+0.550312
 ]
 },
 {
-"text": "BZ-MWVBHE: Вlі‌n​kit தீபாவலி SaLE thodangivittathu! அனைத்து பொருட்களுக்கும் 10% varai தள்ளுபடீ.. Ѕoһр nоw airtel.in/p/hRoDl",
-"normalized": "bzmwvbhe: blinkit தீபாவலி sale thodangivittathui அனைத்து பொருட்களுக்கும் 10% varai தள்ளுபடீ.. sohp now airtel.in/p/hrodl",
+"text": "Hi, IRCTC ने Amazon Pay पर आपको ₹46,900 की payment request भेजी है। Order आपने किया है तो app में approve करें, वरना decline करें",
+"normalized": "hi, irctc ने amazon pay पर आपको ₹46,900 की payment request भेजी है। order आपने किया है तो app में approve करें, वरना decline करें",
 "probs": [
-0.540328,
-0.414656,
-0.045017
+0.106382,
+0.04505,
+0.848569
 ]
 },
 {
-"text": "imp: canara bаnk​: a/c xx6874-லிருந்து irktc-க்கு rs 55307 debіt⁠ seyyappattathu. iruppu іnr 3800.00. ref 791265234857",
-"normalized": "imp: canara bank: a/c xx6874-லிருந்து irktc-க்கு rs 55307 debit seyyappattathu. iruppu inr 3800.00. ref 791265234857",
+"text": "எச்சரிக்கை! பணம் பெ_ற u p i p1n தேவையில்லை. தெரியாத lnik-களை click செய்ய வேண்டாம் -aixs bank",
+"normalized": "எச்சரிக்கை! பணம் பெற upi p1n தேவையில்லை. தெரியாத lnik-களை click செய்ய வேண்டாம் -aixs bank",
 "probs": [
-0.977541,
-0.003633,
-0.018826
+0.672837,
+0.009986,
+0.317177
 ]
 },
 {
-"text": "Imp: உங்க்ள் UP1 PIN res37 OTPPP 412977. நீங்கள் request செய்யவில்லை எனறால் உட்னே 1800-549-3726 தொடர்பு கொள்ளவும் .",
-"normalized": "imp: உங்க்ள் up1 pin res37 otpp 412977. நீங்கள் request செய்யவில்லை எனறால் உட்னே 1800-549-3726 தொடர்பு கொள்ளவும் .",
+"text": "Alrt: Ur केवाईसी has exріred. To аvoid MobiKwik वॉलेट сloѕure कॉल +91 73506 20518 immedіatelу",
+"normalized": "alrt: ur kyc has expired. to avoid mobikwik wallet closure call +91 73506 20518 immediately",
 "probs": [
-0.746114,
-0.007392,
-0.246494
+0.298749,
+0.015433,
+0.685818
 ]
 },
 {
-"text": "Helllo, Joseph GPay-ல் Rs.76987/- reque57 அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற P!N போட வேந்டியதில்லை .",
-"normalized": "hello, joseph gpay-ல் rs.76987/- request அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம் பெற pin போட வேந்டியதில்லை .",
+"text": "tm-gxwbus: hello, आप्के icici बैंक r3ward points जिनकी कीमत ₹1,045 है, आज expire हो रहे हैं, अ_भी redeem करो https://t.ly/ukv36t thanks.",
+"normalized": "tmgxwbus: hello, आप्के icici bank reward points जिनकी कीमत ₹1,045 है, आज expire हो रहे हैं, अभी redeem करो https://t.ly/ukv36t thanks.",
 "probs": [
-0.420752,
-0.013605,
-0.565642
+0.002317,
+0.008093,
+0.98959
 ]
 },
 {
-"text": "AD-VDITNI: Infо: Suspicious trаnѕactіonnn of ₹17,549 оn your Іdnіаn Banak credit crd⁠. T⁠ob cancel ѕharе tе ஓடிபி, kal 8654753509 :)",
-"normalized": "advditni: info: suspicious transactionn of ₹17,549 on your idnian banak credit crd. tob cancel share te otp, kal 8654753509 :)",
+"text": "Аlert: நினைவூட்டல்: Pothys-க்கு Rs.33,996 UPI AutoPay 19Oct26 அன்று திட்டமிடப்பட்டுள்ளது -phederal Bfankb",
+"normalized": "alert: நினைவூட்டல்: pothys-க்கு rs.33,996 upi autopay 19oct26 அன்று திட்டமிடப்பட்டுள்ளது -phederal bfankb",
 "probs": [
-0.806702,
-0.032695,
-0.160602
+0.971703,
+0.020539,
+0.007758
 ]
 },
 {
-"text": "CP-SYOTVV: Dr u_s_е_r, Tody‍ o-l-n-у! Pу b11l5 oN MobiKwik аnd win саhsbаck uр to Rs.68,700. Орtеn now paytm.me/DVwWO Т&C",
-"normalized": "cpsyotvv: dr user, tody olnyi py b11l5 on mobikwik and win cahsback up to rs.68,700. opten now paytm.me/dvwwo t&c",
+"text": "H3ll0, நி.னை.வூ.ட்.ட.ல்: Siwggy-க்கு Rs.18,400 UPI A u t o P a y 25 May ஆன்று திட்டமிடப்பட்டு-ள்ளது -Canraa Bank .",
+"normalized": "hello, நினைவூட்டல்: siwggy-க்கு rs.18,400 upi autopay 25 may ஆன்று திட்டமிடப்பட்டு-ள்ளது -canraa bank .",
 "probs": [
-0.2566,
-0.625834,
-0.117567
+0.983366,
+0.008906,
+0.007728
 ]
 },
 {
-"text": "Alert: Ur IDC First rward рoіntѕ worth Rs 90227 expre tfoday, rEDEeM NOW⁠ http://idfcfirst-points.xyz T&C",
-"normalized": "alert: ur idc first rward points worth rs 90227 expre tfoday, redeem now http://idfcfirst-points.xyz t&c",
+"text": "Hello, Payment of Rs.17609/- for your Tunishq o‌rer is successful. oRDeR wil b‌e delivered by 24/01/2026",
+"normalized": "hello, payment of rs.17609/- for your tunishq orer is successful. order wil be delivered by 24/01/2026",
 "probs": [
-0.003707,
-0.672307,
-0.323985
+0.93997,
+0.009655,
+0.050375
 ]
 },
 {
-"text": "Hllo, நான் ஒரு army officer, அறைக்கு advance Rs 47066 தருகிறேன். என் QR-ஐ scan செய்து P I N போ*டு*ங்*க*ள், பணம் உங்கழுக்கு வரும் +916981742427 :)",
-"normalized": "hllo, நான் ஒரு army officer, அறைக்கு advance rs 47066 தருகிறேன். என் qr-ஐ scan செய்து pin போடுங்கள், பணம் உங்கழுக்கு வரும் +916981742427 :)",
+"text": "hi, mobIKWIk login otp: 539261. valid for 10 mis. do nooowt sha⁠re, mobikwik never calls asking for otp⁠ :)",
+"normalized": "hi, mobikwik login otp: 539261. valid for 10 mis. do noowt share, mobikwik never calls asking for otp :)",
 "probs": [
-0.056216,
-0.013893,
-0.92989
+0.911913,
+0.083352,
+0.004735
 ]
 },
 {
-"text": "RВi says: rрort frаud calls аT 1930. அப்டேட் ur கேஒய்சி onlyyy аt Kоtаk பேங்க் bqranch .",
-"normalized": "rbi says: rport fraud calls at 1930. update ur kyc onlyy at kotak bank bqranch .",
+"text": "ЈD-CBPPWP: Hi, आપके Google Pay wallet मैं ₹65,664 जो​ड़े गए। Transaction ID⁠ 390223961328 Regards",
+"normalized": "jdcbppwp: hi, आपके google pay wallet मैं ₹65,664 जोड़े गए। transaction id 390223961328 regards",
 "probs": [
-0.892934,
-0.021877,
-0.085188
+0.748646,
+0.187833,
+0.063522
 ]
 },
 {
-"text": "imp: suspicious transaction o.p.f rs.20,800 o.n your hdfc Bnk credit сar⁠d.. to cancel share thе o⁠tp, clаl +91 90754 23698",
-"normalized": "imp: suspicious transaction opf rs.20,800 on your hdfc bnk credit card.. to cancel share the otp, clal +91 90754 23698",
+"text": "உங்கள் КΥC kaalaavatheeyaakivittathu. Paytm வாலட் மூடப்படாமல் இ​ருக்க oodane +91 78963 14204 ennukku clаl செய்யூகள்",
+"normalized": "உங்கள் kyc kaalaavatheeyaakivittathu. paytm wallet மூடப்படாமல் இருக்க oodane +91 78963 14204 ennukku clal செய்யூகள்",
 "probs": [
-0.356187,
-0.009382,
-0.63443
+0.103985,
+0.031643,
+0.864372
 ]
 },
 {
-"text": "உங்கள் PһоnePе wallt-ல் Rs 89200 சேற்க்கப்பட்டது. Transaction ІD 421712679819",
-"normalized": "உங்கள் phonepe wallt-ல் rs 89200 சேற்க்கப்பட்டது. transaction id 421712679819",
+"text": "AD-GOGFLU: Ifno: आકा KYxC ekspire हो गया है‍। Paytm wawlet बँद होने से बने के लिए​ ज​ल्दी 8217765205 प⁠र call करें​",
+"normalized": "adgogflu: ifno: आका kyxc ekspire हो गया है। paytm wawlet बँद होने से बने के लिए जल्दी 8217765205 पर call करें",
 "probs": [
-0.562203,
-0.068359,
-0.369438
+0.121017,
+0.02481,
+0.854173
 ]
 },
 {
-"text": "Υour KKKYC һ@s ерirеd. T​o аvоіd Google Рay wlаlet сlоsure கால் +916704639069 IMMEDiattely",
-"normalized": "your kkyc h@s epired. to avoid google pay wlalet closure call +916704639069 immediattely",
+"text": "Hi, Congratulations! Y-o-u hvae received Rs 48700 c*a*s*h*b*a*c*k. To receive the mon3y accept the r3que$t 0n PhonePe and e-n-t-e-r your UPI P1N .",
+"normalized": "hi, congratulationsi you hvae received rs 48700 cashback. to receive the money accept the request 0n phonepe and enter your upi p1n .",
 "probs": [
-0.308811,
-0.008401,
-0.682789
+0.145561,
+0.204722,
+0.649717
 ]
 },
 {
-"text": "Ipho: உங்கள் BSES bill R.ѕ 67387 வெற்றிகரமாக sezhuththappattathu. டிரான்சாக்ஷன் ІD 342856071491. நறி",
-"normalized": "ipho: உங்கள் bses bill rs 67387 வெற்றிகரமாக sezhuththappattathu. transaction id 342856071491. நறி",
+"text": "TM-LSJDID: Imp: आपके Indian banK r3ward points जिनकी कीमत Rs.95500/- है, आ*ज exprie हो रहे हैं, अभी r3d3em क्रो https://indianbankkyc.top",
+"normalized": "tmlsjdid: imp: आपके indian bank reward points जिनकी कीमत rs.95500/- है, आज exprie हो रहे हैं, अभी redeem क्रो https://indianbankkyc.top",
 "probs": [
-0.968748,
-0.00348,
-0.027772
+0.003482,
+0.024164,
+0.972354
 ]
 },
 {
-"text": "VМ‌-QIKVEV: D@r user, உங்கள் Paytm wallet-ல் I N ⁠R 82327.00 சேர்க்கப்பட்டது.. Transaction ID 478702323057 T&C",
-"normalized": "vmqikvev: d@r user, உங்கள் paytm wallet-ல் inr 82327.00 சேர்க்கப்பட்டது.. transaction id 478702323057 t&c",
+"text": "Imp: अरे, कल के dinner के Rs.21,500 जब time मिले‍ nandini@axl प्र भेज दैना T&C",
+"normalized": "imp: अरे, कल के dinner के rs.21,500 जब time मिले nandini@axl प्र भेज दैना t&c",
 "probs": [
-0.20969,
-0.134036,
-0.656274
+0.263654,
+0.03808,
+0.698267
 ]
 },
 {
-"text": "Imр: cONGrAtultAionnNS! U have received Rs.18500/- caaashbak. То rесeіνе the m0ney⁠ 4cc3pt thew request on МоооbіKwіk a*n*ddd*d*d е-n-t-e-r your யூபிஐ PsIN",
-"normalized": "imp: congratultaionnnsi u have received rs.18500/- caashbak. to receive the money accept thew request on moobikwik anddenter your upi psin",
+"text": "D3ar user, !NR 95318.00 d*e*b*i*t*e*d from A/c x3975 on 04/01/2026 to V_P_A deepa@paytm. UPI Ref N0 783873703829. Not you? Call 1800-565-4877 -Federal 8ank .",
+"normalized": "dear user, inr 95318.00 debited from a/c x3975 on 04/01/2026 to vpa deepa@paytm. upi ref n0 783873703829. not you? call 1800-565-4877 -federal bank .",
 "probs": [
-0.090635,
-0.052036,
-0.857329
+0.990702,
+0.002131,
+0.007168
 ]
 },
 {
-"text": "ЈD-IZHLXH: Іmp: உங்கள் КYC கா⁠லா‍வதியாகிவிட்டது‌. GРаy wallet மூடப்படாமல் irukka ௨டனெ +916650789061 எண்ணுக்கு கால் sevum Thanks.",
-"normalized": "jdizhlxh: imp: உங்கள் kyc காலாவதியாகிவிட்டது. gpay wallet மூடப்படாமல் irukka உடனெ +916650789061 எண்ணுக்கு call sevum thanks.",
+"text": "Hi, BESCOM: Your 8і1l is pening a*N*D connec7!0n will be disconneqcted. Раy Rs 2152 nw http://care.bob69.click/YzTH",
+"normalized": "hi, bescom: your 8i1l is pening and connection will be disconneqcted. pay rs 2152 nw http://care.bob69.click/yzth",
 "probs": [
-0.016782,
-0.017083,
-0.966134
+0.025508,
+0.070072,
+0.904421
 ]
 },
 {
-"text": "TM-TEGUXF: Your UPI PIN rezet OTP is 883752. If not rquestd by YoU c0nt4ct 1860-960-2175 immedatly Regards",
-"normalized": "tmteguxf: your upi pin rezet otp is 883752. if not rquestd by you contact 1860-960-2175 immedatly regards",
+"text": "CP-HMIQDS: Imp: नमस्ते, मैं HR સे बोल रही हूँ, आपका resume shortlist हु⁠आ है। छोटे tas⁠k पूरे करકे ₹1,964 क्माएँ, Te13gpr4m પर join करें iobrefund.top/3abR",
+"normalized": "cphmiqds: imp: नमस्ते, मैं hr से बोल रही हूँ, आपका resume shortlist हुआ है। छोटे task पूरे करके ₹1,964 क्माएँ, teiegpram पर join करें iobrefund.top/3abr",
 "probs": [
-0.643476,
-0.01263,
-0.343894
+0.138593,
+0.032624,
+0.828783
 ]
 },
 {
-"text": "Imp: Airrrtel lucky winrnеr: your nmbеr has woon Rs.5,00,000 ccsh. What5@pp 6575938737 nwm :)",
-"normalized": "imp: airrtel lucky winrner: your nmber has woon rs.5,00,000 ccsh. what5@pp 6575938737 nwm :)",
+"text": "JD-VLEHON: ІRСTC ne MobiKwik पर aapko Rѕ 94600 kee पेमेंट requec‍st भेजी है। Ord‍er आप्ने किया he tau app में approvue kar दें, वरना decline karain Rgardѕ",
+"normalized": "jdvlehon: irctc ne mobikwik पर aapko rs 94600 kee payment requecst भेजी है। order आप्ने किया he tau app में approvue kar दें, वरना decline karain rgards",
 "probs": [
-0.172491,
-0.014338,
-0.813171
+0.140649,
+0.328936,
+0.530414
 ]
 },
 {
-"text": "ax-cozmyx: іnfO: rb⁠id s--y-s: report fraud calls at 1930. uPdate your kyc onlyd axxxt union bankk brankh",
-"normalized": "axcozmyx: info: rbid s--ys: report fraud calls at 1930. update your kyc onlyd axxt union bankk brankh",
+"text": "Dear user, DTDC: உங்கழ் pArcEl customms-ல் நிறுத்தி வைக்கப்பட்டூள்ளது. Release fee Rs.48,774 செலுத்துங்கள் http://points.icici.info -Team",
+"normalized": "dear user, dtdc: உங்கழ் parcel customms-ல் நிறுத்தி வைக்கப்பட்டூள்ளது. release fee rs.48,774 செலுத்துங்கள் http://points.icici.info -team",
 "probs": [
-0.677282,
-0.137161,
-0.185558
+0.054756,
+0.021311,
+0.923934
 ]
 },
 {
-"text": "VК-TBKNPP: Dear user, Cong​‍​ratul​at⁠ions! U һvа3 reCeIVED Rѕ 82100 cashbcak. Tоо r3сe!vе teеe monу accрt 7he ரிக்வெஸ்ட் onј Paytm and en73rp yoru⁠ யூபிஐ РІN r_E_ggg_A_r_d_S",
-"normalized": "vktbknpp: dear user, congratulationsi u hvae received rs 82100 cashbcak. too receive tee mony accpt 7he request onj paytm and enterp yoru upi pin reggards",
+"text": "Dar uѕer, Нello I аm from HR, your r3$umе h4z beЕN ѕһorrrztlіѕtеd. Cooompltee simple tasks and earn Rs.8,584, јоin teLErgaM idfcfirst.kyc91.top/Sw4B .",
+"normalized": "dar user, hello i am from hr, your resume h4z been shorrztlisted. coompltee simple tasks and earn rs.8,584, join telergam idfcfirst.kyc91.top/sw4b .",
 "probs": [
-0.059717,
-0.031427,
-0.908856
+0.113264,
+0.251109,
+0.635627
 ]
 },
 {
-"text": "D*e*a*r user, Yor Goog​le Pay Aooto⁠Pay‌ for Jio rechrge ooofff ₹18,071 wi​lrl be e_x_eee_c_u_t_e_d on 08-01-26. Toe cancel, openn Google P‍ay and goe to⁠ AutoPay T&C",
-"normalized": "dear user, yor google pay aootopay for jio rechrge ooff ₹18,071 wilrl be exeecuted on 08-01-26. toe cancel, openn google pay and goe to autopay t&c",
+"text": "Hello, Airtel 1*u*c*k*y w i n jn e r: yur numbеr ha⁠os wogn Taaa Nexon car. WһаtѕАрр +91 99918 21419 now",
+"normalized": "hello, airtel i*uckywin jn e r: yur number haos wogn taa nexon car. whatsapp +91 99918 21419 now",
 "probs": [
-0.936585,
-0.056935,
-0.00648
+0.15875,
+0.069569,
+0.771681
 ]
 },
 {
-"text": "TMm‍​-EIAXAO: Imр: ungal WBЅЕDCL பில் Rs.60270/- வெற்றிகரமாக seluththappattathu. Transaction ID 834805840980. நன்றி",
-"normalized": "tmmeiaxao: imp: ungal wbsedcl bill rs.60270/- வெற்றிகரமாக seluththappattathu. transaction id 834805840980. நன்றி",
+"text": "Hi, உங்கள் Airtel plan 2 நாட்ளில் மூவடைகிறது. இப்போதே recahrge செய்​து unlmited dattja அ-னு-ப-வி-யு-ங்-க-ள் https://phon.pe/j7zp6",
+"normalized": "hi, உங்கள் airtel plan 2 நாட்ளில் மூவடைகிறது. இப்போதே recahrge செய்து unlmited dattja அ-னு-ப-வி-யு-ங்-க-ள் https://phon.pe/j7zp6",
 "probs": [
-0.92585,
-0.0068,
-0.06735
+0.177455,
+0.446923,
+0.375622
 ]
 },
 {
-"text": "Dear user, Togday onoly! Peay bills on GPy and win‍ camshback up to Rs.34,642. Open⁠ nv https://t.ly/L0kCte .",
-"normalized": "dear user, togday onolyi peay bills on gpy and win camshback up to rs.34,642. open nv https://t.ly/l0kcte .",
+"text": "һеllo, dey, ne‌tru dinnеr-க்கான rs.59,418-ஐ neram கிடைக்கும்போது vikram1990@axl-க்கு அனுப்பிவிடு t&c",
+"normalized": "hello, dey, netru dinner-க்கான rs.59,418-ஐ neram கிடைக்கும்போது vikram1990@axl-க்கு அனுப்பிவிடு t&c",
 "probs": [
-0.105895,
-0.678233,
-0.215872
+0.518002,
+0.096648,
+0.38535
 ]
 },
 {
-"text": "Неllо, Y0or U*P*I பின் reset 0OO7p is 100242. Ipһff not requested by you c‍onta‌ct 1860-987-8951 іm⁠mе‍dіatelу :)",
-"normalized": "hello, yoor upi pin reset 0oo7p is 100242. iphff not requested by you contact 1860-987-8951 immediately :)",
+"text": "எச்சரிக்கை! ப_ண_ம் பெ ற யூபிஐ பி ன் தேவையில்லை.. தெ.ரி.யா.த l!nk-களை c1ick செய்ய வெண்டாம் -K07ak Bnk .",
+"normalized": "எச்சரிக்கை! பணம் பெ ற upi பி ன் தேவையில்லை.. தெரியாத link-களை ciick செய்ய வெண்டாம் -kotak bnk .",
 "probs": [
-0.528281,
-0.0119,
-0.459819
+0.735342,
+0.013825,
+0.250833
 ]
 },
 {
-"text": "Vi recharge Rs 4780-க்கான உங்கள GPy AutoPay 2 Oct அன்று நடைபெறும். ரத்து செய்ய GPPay-ல் AutoPay ப*கு*தி*க்*கு*ச் சேல்லவும்",
-"normalized": "vi recharge rs 4780-க்கான உங்கள gpy autopay 2 oct அன்று நடைபெறும். ரத்து செய்ய gppay-ல் autopay பகுதிக்குச் சேல்லவும்",
+"text": "AX-EZTWEI: Info: புதிய co11c37іоn-க்கு flаt 10% thallupadi, DMart store-க்கு வாங்க allathu https://airtel.in/p/PdGu7-ல் ordеfr செய்யுங்கள் .",
+"normalized": "axeztwei: info: புதிய coiicetion-க்கு flat 10% thallupadi, dmart store-க்கு வாங்க allathu https://airtel.in/p/pdgu7-ல் ordefr செய்யுங்கள் .",
 "probs": [
-0.97277,
-0.01894,
-0.00829
+0.006816,
+0.964908,
+0.028276
 ]
 },
 {
-"text": "Dear uesr, cibIl இல்‍லாமல் inst‌a⁠nt lon INR 58400.00! Aadhaar, PdAN மட்டும் போதும், 5 நிமிடத்தில் approval. Processing f*e*e R​s.⁠4h,363-ஐ 9922553058@upi-க்கு அ‍னுப்புங்கள்​",
-"normalized": "dear uesr, cibil இல்லாமல் instant lon inr 58400.00! aadhaar, pdan மட்டும் போதும், 5 நிமிடத்தில் approval. processing fee rs.4h,363-ஐ 9922553058@upi-க்கு அனுப்புங்கள்",
+"text": "Alert: yOuR SBI reward points worth Rs.47,000 expire today, r_e_d_e_e_m now https://rb.gy/Y6xRse",
+"normalized": "alert: your sbi reward points worth rs.47,000 expire today, redeem now https://rb.gy/y6xrse",
 "probs": [
-0.10847,
-0.06055,
-0.83098
+0.001415,
+0.026647,
+0.971938
 ]
 },
 {
-"text": "Imp: B.E.S.C.O.M: Your bill is pending and conn-ection will be disconnected. Pay ₹5,663 nov www.canara-kyc.xyz/r7Ra -Team",
-"normalized": "imp: bescom: your bill is pending and connection will be disconnected. pay ₹5,663 nov ww.canara-kyc.xyz/r7ra -team",
+"text": "wm-tqiugc: hi, நீநைவூட்டல்: zomato-க்கு rs 13541 u_r_p_i autopay 6 jan அன்று திட்டமிடப்பட்டுள்ளது -hdfc b⁠nak",
+"normalized": "wmtqiugc: hi, நீநைவூட்டல்: zomato-க்கு rs 13541 urpi autopay 6 jan அன்று திட்டமிடப்பட்டுள்ளது -hdfc bnak",
 "probs": [
-0.062705,
-0.076021,
-0.861274
+0.972413,
+0.015311,
+0.012276
 ]
 },
 {
-"text": "eefo: ungazh பேங்க் оf baroda reward роintѕ mathippu Res 45957, i..ru kaalaavathiyaakirathu, ippothe rEedEM செய்யுங்கள் bobrefund.info t&c",
-"normalized": "eefo: ungazh bank of baroda reward points mathippu res 45957, i..ru kaalaavathiyaakirathu, ippothe reedem செய்யுங்கள் bobrefund.info t&c",
+"text": "VM-LNPVPN: GPy lgin OTP: 904649। 10 मिनट तक valid। किसी को न बताएँ, GPPPay कभी call करके OTP न*हीं माँ_ग_ता",
+"normalized": "vmlnpvpn: gpy lgin otp: 904649। 10 मिनट तक valid। किसी को न बताएँ, gppay कभी call करके otp नहीं माँगता",
 "probs": [
-0.034975,
-0.493494,
-0.471531
+0.974886,
+0.015089,
+0.010025
 ]
 },
 {
-"text": "Imр: Rs 75900 has ben addd t-‍-o your Google P.a.y wallet.. 7ran5‍a​c‌71on ID 699985456173 :)",
-"normalized": "imp: rs 75900 has ben add t--o your google pay wallet.. transaction id 699985456173 :)",
+"text": "Dear user, IRCTC-ல் pAyTM மூ*ல*ம் பணம் செலுத்தி 30% c_a_s_h_b_a_c_k பெறுங்கள், ஆதிகபட்சம் Rs.13,219. Offer 26Aug26 வறை. T&C apply T&CC",
+"normalized": "dear user, irctc-ல் paytm மூலம் பணம் செலுத்தி 30% cashback பெறுங்கள், ஆதிகபட்சம் rs.13,219. offer 26aug26 வறை. t&c apply t&cc",
 "probs": [
-0.634868,
-0.043189,
-0.321942
+0.183023,
+0.742623,
+0.074354
 ]
 },
 {
-"text": "Imp: Instant lоаn Rs 32483 witou‍t CIBIL! Approval in 5 minutes with j s t Aadhaar afnddd PAN. Send рrоceѕsing fe Rs.3100/- to 7090263541@paytm .",
-"normalized": "imp: instant loan rs 32483 witout cibili approval in 5 minutes with jst aadhaar afndd pan. send processing fe rs.3100/- to 7090263541@paytm .",
+"text": "41ert: Hello, என் RS 75302 த-வ-று-த-லா-க உ_ங்_க_ளு_க்_கு வ ந் து வி ட் ட து, திருப்பி அ*னு*ப்*பா*வி*ட்*டா*ல் போலீஸ் complint கொடுப்பேன் +916682454581",
+"normalized": "aiert: hello, என் rs 75302 த-வ-று-த-லா-க உங்களுக்கு வ ந் து வி ட் ட து, திருப்பி அனுப்பாவிட்டால் police complint கொடுப்பேன் +916682454581",
 "probs": [
-0.214177,
-0.46522,
-0.320603
+0.05786,
+0.023511,
+0.918629
 ]
 },
 {
-"text": "Аlert: Today only! Рaу BILLS on Amazon Paуо 4nd W!n саѕһbаck uppp tо Rs 39980. O-p-n nw https://jio.com/r/bxMRO Regards",
-"normalized": "alert: today onlyi pay bills on amazon payo 4nd win cashback upp to rs 39980. opn nw https://jio.com/r/bxmro regards",
+"text": "Innno: अरै, कल के dіnn3r के Rs 1998 जब tіme मिले ananya8461@ibl पर bhej देना -Тe‌m",
+"normalized": "inno: अरै, कल के dinner के rs 1998 जब time मिले ananya8461@ibl पर bhej देना -tem",
 "probs": [
-0.006708,
-0.848571,
-0.144721
+0.460739,
+0.068544,
+0.470718
 ]
 },
 {
-"text": "Canara பேங்க்: உங்கழுக்கு I.N.R 60309.00 வரை pre-approved personal l-o-a-n, குறைண்த வட்டியில். Canara B4nk @pp-ல் a_p_p_l_y செய்யவும். T&C apply Thanks.",
-"normalized": "canara bank: உங்கழுக்கு inr 60309.00 வரை preapproved personal loan, குறைண்த வட்டியில். canara bank @pp-ல் apply செய்யவும். t&c apply thanks.",
+"text": "badhai हो! आपको Rs 84000 сѕһbаck मिला है। paise paane ke लिए Google Pу पर आइ r*e*q*u*e*s*t aссt karen औ _ र यूपीआई पिन डा_લें",
+"normalized": "badhai हो! आपको rs 84000 cshback मिला है। paise paane ke लिए google py पर आइ request acct karen औ _ र upi pin डालें",
 "probs": [
-0.055554,
-0.781547,
-0.162899
+0.467461,
+0.062293,
+0.470247
 ]
 },
 {
-"text": "AX-DBBLBY: Imp: உங்௧ள் SBI rewa‍r⁠d​ PoiNTS ம.தி.ப்.பு INR 7499.00, இன்று காலாவதியாரது, இபபோதே redem செயுங்கள் sbilogin81.co -Te⁠am",
-"normalized": "axdbblby: imp: உங்கள் sbi reward points மதிப்பு inr 7499.00, இன்று காலாவதியாரது, இபபோதே redem செயுங்கள் sbilogin81.co -team",
+"text": "AX-MISOLE: Hi, BBeware! UPI P1N is not required to r_e_c_e_i_v_e moeny. Do nt click unknown links -Bnk of B-a-r-o-d-a",
+"normalized": "axmisole: hi, bbewarei upi p1n is not required to receive moeny. do nt click unknown links -bnk of baroda",
 "probs": [
-0.005572,
-0.634989,
-0.35944
+0.812673,
+0.078826,
+0.108501
 ]
 },
 {
-"text": "аx-bcspmz: hіr, rbi: mosadi azhaippukalai 1930-ல் புகார் seyyungal.. ungal kyc-ஐ іndiаn பேங்க் branсһ-ல் mattume அப்டேட் செய்யுங்க்ள் -teаm",
-"normalized": "axbcspmz: hir, rbi: mosadi azhaippukalai 1930-ல் புகார் seyyungal.. ungal kyc-ஐ indian bank branch-ல் mattume update செய்யுங்க்ள் -team",
+"text": "aX-KNQNFV: Deaar user, Swiggy पर Googl​e Poay शे py⁠ment क्‍र देँ और 30% саѕhbaсk पाऐँ, अधिकतમ Rs 97684। Offer 24-01-26 तक। T&C apply",
+"normalized": "axknqnfv: deaar user, swiggy पर google poay शे pyment क्र देँ और 30% cashback पाऐँ, अधिकतम rs 97684। offer 24-01-26 तक। t&c apply",
 "probs": [
-0.287172,
-0.1761,
-0.536727
+0.025947,
+0.939509,
+0.034544
 ]
 },
 {
-"text": "Info: RBІ: மோசடி அழைப்புகளை 1930-ல் பூ‍காற் செயுங்கள். ஊங்௧ள் கேஒய்சி-ஐ Indiаn Вak branch-ல் மட்டுமே uрdаtе செய்யுங்கள்",
-"normalized": "info: rbi: மோசடி அழைப்புகளை 1930-ல் பூகாற் செயுங்கள். ஊங்கள் kyc-ஐ indian bak branch-ல் மட்டுமே update செய்யுங்கள்",
+"text": "Іmp: உங்கள் GPay wallet-ல் Rs.91,916 சே.ர்.க்*.க.ப்.ப.ட்.ட. டிரான்சாக்ஷன் 1D 477701577506",
+"normalized": "imp: உங்கள் gpay wallet-ல் rs.91,916 சேர்க்*.கப்பட்ட. transaction 1d 477701577506",
 "probs": [
-0.098974,
-0.16852,
-0.732506
+0.736282,
+0.142627,
+0.121091
 ]
 },
 {
-"text": "Unіon Bаk: A/c х4427-லிருந்து DMart-க்கு Rs.5800/- டெபிட் seyyap‍pad⁠dathu. இருப்பு ₹1,160. Ref 866661677122",
-"normalized": "union bak: a/c x4427-லிருந்து dmart-க்கு rs.5800/- debit seyyappaddathu. இருப்பு ₹1,160. ref 866661677122",
+"text": "imp: i am an army officer, i will pay advance rs.12373/- for 7he room. s-c-a-n my qr AND enter pin, amt w!l1 come to you 9578461503 thanks.",
+"normalized": "imp: i am an army officer, i will pay advance rs.12373/- for 7he room. scan my qr and enter pin, amt wili come to you 9578461503 thanks.",
 "probs": [
-0.915886,
-0.011173,
-0.072941
+0.528704,
+0.028421,
+0.442875
 ]
 },
 {
-"text": "H1, RB1 says: report fraud сalls аaat 1930. Update your கேஒய்சி only a⁠t பேங்க் оfff Вarodа brn‍‌сһ -Team",
-"normalized": "h1, rb1 says: report fraud calls aat 1930. update your kyc only at bank off baroda brnch -team",
+"text": "Airtel lukу wn​ner: आપકे नंर ने​ Tata⁠ Νеxn car જीતे हैं। अभी WhtsApp करें +91 64805 01232",
+"normalized": "airtel luky wnner: आपके नंर ने tata nexn car जीते हैं। अभी whtsapp करें +91 64805 01232",
 "probs": [
-0.805707,
-0.096945,
-0.097349
+0.026759,
+0.055433,
+0.917808
 ]
 },
 {
-"text": "vК-HWSDXG: I am аn army officer, I wlll pay advance Rs.26294/- for thte room. S*c*a*n*⁠ my QR and enter PI‍N, аmt​ will come tо u +917829949418",
-"normalized": "vkhwsdxg: i am an army officer, i wll pay advance rs.26294/- for thte room. scan* my qr and enter pin, amt will come to u +917829949418",
+"text": "Deаr user, ninaivootta⁠​la: Zomato-க்கு Rs.16,740 யூபிஐ AutоРаy 27/05/2026 andru thittamidappattullathu -Union பே⁠ங்க் Regards",
+"normalized": "dear user, ninaivoottala: zomato-க்கு rs.16,740 upi autopay 27/05/2026 andru thittamidappattullathu -union bank regards",
 "probs": [
-0.55778,
-0.014037,
-0.428183
+0.983641,
+0.010041,
+0.006318
 ]
 },
 {
-"text": "VK-FBZPFX: Alert: DTDC: உங்கள் parcel CUsToms-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. Rlease f-e-e Rs.17,972 செளுத்துங்கள் reward-axis81.online -T.e.a.m",
-"normalized": "vkfbzpfx: alert: dtdc: உங்கள் parcel customs-ல் நிறுத்தி வைக்கப்பட்டுள்ளது. rlease fee rs.17,972 செளுத்துங்கள் reward-axis81.online -team",
+"text": "Flat 60% off on new kollection, visit BookMyShow store or order at https://airtel.in/p/UB46D TTT&C",
+"normalized": "flat 60% off on new kollection, visit bookmyshow store or order at https://airtel.in/p/ub46d tt&c",
 "probs": [
-0.269992,
-0.106669,
-0.623338
+0.004505,
+0.98749,
+0.008005
 ]
 },
 {
-"text": "Tamay ВHМ-ல் Rs.79,600 rezquezt அனுப்பியுள்ளார். நினை‍வில்‍ ௧ொள்ளு​ங்கள், பணம‍ பெற​‌ PINw போட வே​ண்டியதி‌ல்லை -Tm",
-"normalized": "tamay bhm-ல் rs.79,600 rezquezt அனுப்பியுள்ளார். நினைவில் கொள்ளுங்கள், பணம பெற pinw போட வேண்டியதில்லை -tm",
+"text": "H*е*l*l*l*l*о, I am an a*r**m*у ஆபீசர், I wіll p_y adwankе INR 74958.00 fоr the roоm. ஸ்கேன் my qr and என்டர் பின், monеy wll come to⁠ уоo +91 75740 44941 .",
+"normalized": "hello, i am an ar**my officer, i will py adwanke inr 74958.00 for the room. scan my qr and enter pin, money wll come to yoo +91 75740 44941 .",
 "probs": [
-0.563458,
-0.017468,
-0.419074
+0.353873,
+0.008844,
+0.637283
 ]
 },
 {
-"text": "Аlertі: neengl Paytm scatch கார்டு vendrulaleerkal! உங்கள் Paytm app-ல் r е w a r d ѕ பகுதியைப் பாருங்கள்",
-"normalized": "alerti: neengl paytm scatch card vendrulaleerkali உங்கள் paytm app-ல் rewards பகுதியைப் பாருங்கள்",
+"text": "CP-LXWXWE: டே ய், நேற்று dinner-க்கான Rs 38265-ஐ நேரம கிடைக்கும்போது bhavana@paytm-க்கு அனுப்பிவிடு -Team",
+"normalized": "cplxwxwe: டே ய், நேற்று dinner-க்கான rs 38265-ஐ நேரம கிடைக்கும்போது bhavana@paytm-க்கு அனுப்பிவிடு -team",
 "probs": [
-0.11538,
-0.561631,
-0.322989
+0.389565,
+0.032282,
+0.578153
 ]
 },
 {
-"text": "TM-IHANLL: АLЕRT: WВѕEdСl: YOR BIILL IS PЕNDІNG АND கனெக்ஷன் WnILL⁠ В‌ DISCONN‍NEC‍Tj‌ED.. P‍Y RS.10,096 N​W IS.GD/W4W8BJ",
-"normalized": "tmihanll: alert: wbsedcl: yor biill is pending and connection wnill b disconnectjed.. py rs.10,096 nw is.gd/w4w8bj",
+"text": "VM-HXXNJZ: BookMyShow प_‍_र CRED से payment क‌रें और 70% cahbacqk पाएँ, अधिकम Rs.65,914। ऑफर 17/03/2026 तક। T&C aply -Team",
+"normalized": "vmhxxnjz: bookmyshow प__र cred से payment करें और 70% cahbacqk पाएँ, अधिकम rs.65,914। offer 17/03/2026 तक। t&c aply -team",
 "probs": [
-0.353777,
-0.135186,
-0.511037
+0.325684,
+0.531607,
+0.142708
 ]
 },
 {
-"text": "Blinkit தீபாவளீ sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 25% வ்ரை தள்ளுபடி. Shop n0w jio.com/r/Ro9Pd",
-"normalized": "blinkit தீபாவளீ sale தொடங்கிவிட்டது! அனைத்து பொருட்களுக்கும் 25% வ்ரை தள்ளுபடி. shop n0w jio.com/r/ro9pd",
+"text": "Alrt: PNB: आपके लिए Ros 88400 तक का pre-approved ре​rsonal lan, आकर्ष​क बयाज दर पर। PPPNB app प्र‍ apply करें। T&C apply Regards",
+"normalized": "alrt: pnb: आपके लिए ros 88400 तक का preapproved personal lan, आकर्षक बयाज दर पर। ppnb app प्र apply करें। t&c apply regards",
 "probs": [
-0.247172,
-0.485959,
-0.266868
+0.064959,
+0.264314,
+0.670727
 ]
 },
 {
-"text": "உங்கள் Canara Bank r.e.w.a.r.d p0in7s மதிப்பு R_s 62778, இன்று கா*லா*வ*தி*யா*கி*ற*து, இ*ப்*ப*வே redeem செ_ய்_யு_ங்_க_ள் https://canararefund.site",
-"normalized": "உங்கள் canara bank reward points மதிப்பு rs 62778, இன்று காலாவதியாகிறது, இப்பவே redeem செய்யுங்கள் https://canararefund.site",
+"text": "Hello, e-n Rs.59800/- த*வ*றூ*த*ளா*க ungalukku வந்துவிட்டது, thiruppi அனுப்பாவிட்டால் போலீஸ் сomрlаааint koduppen 9532692090 .",
+"normalized": "hello, en rs.59800/- தவறூதளாக ungalukku வந்துவிட்டது, thiruppi அனுப்பாவிட்டால் police complaaint koduppen 9532692090 .",
 "probs": [
-0.000543,
-0.626856,
-0.372601
+0.112635,
+0.038188,
+0.849177
 ]
 },
 {
-"text": "D-eе-a-r user, வ௧்கம், நான் H‍Rk-லிருந்து பே‍சுறேன், உங்கள் rеzume shorrrtl*st ஆகியுள்ளது. சின்ன tasek-களை மு.டி.த்.து Rs.4300/- perungal, Тlegrаm-ல் јon pa.n.nu.ng.ka http://points-indianbank.online/aHWx",
-"normalized": "deear user, வக்கம், நான் hrk-லிருந்து பேசுறேன், உங்கள் rezume shorrtlst ஆகியுள்ளது. சின்ன tasek-களை முடித்து rs.4300/- perungal, tlegram-ல் jon pannungka http://points-indianbank.online/ahwx",
+"text": "I m p: புதிய collection-க்கு flat 40% தள்ளுபடி, DMar7 s_t_o_r_e-க்கு வா_ரு_ங்_க_ள் அ*ல்*ல*து https://is.gd/9UD6ET-ல் ordr பண்ணுங்க :)",
+"normalized": "imp: புதிய collection-க்கு flat 40% தள்ளுபடி, dmart store-க்கு வாருங்கள் அல்லது https://is.gd/9ud6et-ல் ordr பண்ணுங்க :)",
 "probs": [
-0.184886,
-0.035369,
-0.779745
+0.003766,
+0.912604,
+0.08363
 ]
 },
 {
-"text": "VsK-RKFIIO: Imp: உங்கள் UPPPI PeeN reset OTP 822516. நீங்கள் RequeSt செய்வில்லை என்றால் உ‌டனே 1860-989-4645 தொடர்பு ௧ொள்ளவும் T​hanks⁠.",
-"normalized": "vskrkfiio: imp: உங்கள் uppi peen reset otp 822516. நீங்கள் request செய்வில்லை என்றால் உடனே 1860-989-4645 தொடர்பு கொள்ளவும் thanks.",
+"text": "Imp: உஙகள் ІОѕB cre​d​i​t ௧ார்டு rbewar‍​d рo⁠іntѕ 2 Jn அன்று காலாவதியாகும். IOB a-‍-p-p-ல் rdeem செய்யுங்கள் .",
+"normalized": "imp: உஙகள் iosb credit card rbeward points 2 jn அன்று காலாவதியாகும். iob a--p-p-ல் rdeem செய்யுங்கள் .",
 "probs": [
-0.62642,
-0.016174,
-0.357407
+0.033887,
+0.038859,
+0.927254
 ]
 },
 {
-"text": "Rs.99,500 h.a.s been admded tyo u_r BHIM wal‌let. Transacrtion IkD 251614966082 .",
-"normalized": "rs.99,500 has been admded tyo ur bhim wallet. transacrtion ikd 251614966082 .",
+"text": "VK-FGFPGJ: Hlelo, BESCOM: Y.o.u.r bill i-s pendng a-n-d connec.tion will be disconnected. Pay Rs 78261 nw www.indianbankrefund41.co/MRMC",
+"normalized": "vkfgfpgj: hlelo, bescom: your bill is pendng and connection will be disconnected. pay rs 78261 nw ww.indianbankrefund41.co/mrmc",
 "probs": [
-0.740999,
-0.052518,
-0.206483
+0.01731,
+0.032792,
+0.949898
 ]
 },
 {
-"text": "H‌i, Suspicious tran⁠sactig​⁠on of Rs.92,691 on your IDFC F​irѕt credit сrd. To cacel share the OtP, call +91 98317 21058 :)",
-"normalized": "hi, suspicious transactigon of rs.92,691 on your idfc first credit crd. to cacel share the otp, call +91 98317 21058 :)",
+"text": "Н​ui, Apollo Phar_mac⁠y has ѕnnet u a paymnt r e q u e s t of ₹2,731 onc BHIM. Арpqroνе іn app if you рlaced t.h.e ऑर्डर, еlsе decline -Team",
+"normalized": "hui, apollo pharmacy has snnet u a paymnt request of ₹2,731 onc bhim. appqrove in app if you placed the order, else decline -team",
 "probs": [
-0.685057,
-0.017217,
-0.297726
+0.907766,
+0.033188,
+0.059046
+]
+},
+{
+"text": "JD-MFFESG: Info: DMart-ல் BHIM மூலம் ப.ண.ம் செலுத்தி 5% c4$hback பெறுங்கள, அதிகபட்சம் Rs.16,345. 0ffer 20Jun26 வரை. T&C apply .",
+"normalized": "jdmffesg: info: dmart-ல் bhim மூலம் பணம் செலுத்தி 5% cashback பெறுங்கள, அதிகபட்சம் rs.16,345. offer 20jun26 வரை. t&c apply .",
+"probs": [
+0.079052,
+0.883913,
+0.037034
+]
+},
+{
+"text": "vk-ynbliu: inewfo: नई collection प्र flat 70% छु‍ट, apollo pharmacy 5t0re आ‍एँ या‌ jio.com/r/lipwl प्र order क२ौ :)",
+"normalized": "vkynbliu: inewfo: नई collection प्र flat 70% छुट, apollo pharmacy 5t0re आएँ या jio.com/r/lipwl प्र order क२ौ :)",
+"probs": [
+0.016089,
+0.908865,
+0.075046
+]
+},
+{
+"text": "IvRTC प्र‍ BnHIM से p@ym3‍nt करें और 30% c*a*s*h*b*a*c*k पा‍, अधिकतम Rs.86,605। Ofer 19-01-26 तक। 7&k apply :)",
+"normalized": "ivrtc प्र bnhim से p@ym3nt करें और 30% cashback पा, अधिकतम rs.86,605। ofer 19-01-26 तक। 7&k apply :)",
+"probs": [
+0.185615,
+0.707594,
+0.106791
+]
+},
+{
+"text": "Your Federal Bank credit card reWARD p*o*i*n*t*s will exp1r3 on 12 Jun. RedEem t*h*e*m on Federal Bank app",
+"normalized": "your federal bank credit card reward points will expire on 12 jun. redeem them on federal bank app",
+"probs": [
+0.081261,
+0.025014,
+0.893724
+]
+},
+{
+"text": "kP-AOVEZV: CIBIL இல்லாம​‍ல்‍ instant l a n ₹98,444! Aoadhaar, PAN மடும் போதும், 5 நிமிடத்தில் approval. P⁠roces‌sing fee Rs⁠ 3300-ஐ 8108343478@apl-க்கு ௮னுப்ப​வு​ம்",
+"normalized": "kpaovezv: cibil இல்லாமல் instant lan ₹98,444! aoadhaar, pan மடும் போதும், 5 நிமிடத்தில் approval. processing fee rs 3300-ஐ 8108343478@apl-க்கு அனுப்பவும்",
+"probs": [
+0.074345,
+0.112901,
+0.812754
+]
+},
+{
+"text": "Hi, Аі‌rt​el lcky wiiinner: உங்ள்⁠ எண் Ѕamsung Gаlахy S25 வென்‌​றுள்ள்​து. udane vaadsap seyyavum 8290131681 .",
+"normalized": "hi, airtel lcky wiinner: உங்ள் எண் samsung galaxy s25 வென்றுள்ள்து. udane vaadsap seyyavum 8290131681 .",
+"probs": [
+0.373946,
+0.068782,
+0.557272
+]
+},
+{
+"text": "Hello, என் Rs.12,467 tha​varuthalaa உங்களுக்கு வ.ந்.து.வி.ட்.ட.து, திரூபபி anuppaavittaal poLcE copmlait kodooppen 7393963172",
+"normalized": "hello, என் rs.12,467 thavaruthalaa உங்களுக்கு வந்துவிட்டது, திரூபபி anuppaavittaal polce copmlait kodooppen 7393963172",
+"probs": [
+0.208353,
+0.073556,
+0.718091
+]
+},
+{
+"text": "TM-RKDISS: உங்க்ள் 8$NL plan 7 நாட்களில் முடிவடைகிறது. உ_ட_னே rechaaarge செய்து unlimited dtaa ஆனுபவியுங்கள் https://cutt.ly/LQCPbM",
+"normalized": "tmrkdiss: உங்க்ள் bsnl plan 7 நாட்களில் முடிவடைகிறது. உடனே rechaarge செய்து unlimited dtaa ஆனுபவியுங்கள் https://cutt.ly/lqcpbm",
+"probs": [
+0.045683,
+0.254392,
+0.699925
+]
+},
+{
+"text": "Imp: P-a-y-m-e-n-t of Rs.59,691 for your Tanishq order is successful. Order will be delivered by 18/06/2026 T&C",
+"normalized": "imp: payment of rs.59,691 for your tanishq order is successful. order will be delivered by 18/06/2026 t&c",
+"probs": [
+0.837477,
+0.039501,
+0.123022
+]
+},
+{
+"text": "nykaa-ல் crеd மூலம் panam seluththi 10% கேஷ்பேக் peru‌ngala, athikapadsam ₹20,600. ஆஃபர் 10 apr வரை​. t&c аpplу regаrdz",
+"normalized": "nykaa-ல் cred மூலம் panam seluththi 10% cashback perungala, athikapadsam ₹20,600. offer 10 apr வரை. t&c apply regardz",
+"probs": [
+0.06291,
+0.886525,
+0.050565
+]
+},
+{
+"text": "vm⁠-kfliyd: imp: r.Ѕ 89600 hmsas been aded tо your crd wаllt. tran5ac7!0n іd 459872571272 t&с",
+"normalized": "vmkfliyd: imp: rs 89600 hmsas been aded to your crd wallt. transaction id 459872571272 t&c",
+"probs": [
+0.317597,
+0.164566,
+0.517837
+]
+},
+{
+"text": "आपका KYC एक्सय हौ गया है-‌। CRED wfallet बँद होने‍⁠ से बचाने के लिए तु२ंत 9827121301 प्२ cll करैं",
+"normalized": "आपका kyc एक्सय हौ गया है-। cred wfallet बँद होने से बचाने के लिए तुरंत 9827121301 प्२ cll करैं",
+"probs": [
+0.404264,
+0.007762,
+0.587975
+]
+},
+{
+"text": "Alrt: Your ICICI Bnk credit card r*e*w*a*r*d points w i l l e*x*p*i*r*e on 07/05/2026. Redem them on ICICI Bank app Regards",
+"normalized": "alrt: your icici bnk credit card reward points willexpire on 07/05/2026. redem them on icici bank app regards",
+"probs": [
+0.262898,
+0.052491,
+0.684611
+]
+},
+{
+"text": "ІNfo: मैं Atremy ऑphisr हूं, कमरे ke लिए а.d.v.а.n.c.е Rs.16,807 दूँगा। mera क्यूआर स्कैन karke पिन ढालीए⁠, paise aapko आ जाएँगे +916167875388",
+"normalized": "info: मैं atremy ऑphisr हूं, कमरे ke लिए advance rs.16,807 दूँगा। mera qr scan karke pin ढालीए, paise aapko आ जाएँगे +916167875388",
+"probs": [
+0.201309,
+0.01252,
+0.786171
+]
+},
+{
+"text": "ax-dfwdki: pothys உங்களுக்கு a.p.m.a.z.o.n p.a.y-ல் rs.97,818 payment r_e_q_u_e_s_t அனுப்பியுள்ளது. நீ ங் ‍க‌ ள் order செய்திருந்தால் APP-ல் aprpve செ௰்யுங்கள், இல்லையெனில் decline செ_ய்_யு_ங_க_ள்",
+"normalized": "axdfwdki: pothys உங்களுக்கு apmazonpay-ல் rs.97,818 payment request அனுப்பியுள்ளது. நீ ங் க ள் order செய்திருந்தால் app-ல் aprpve செய்யுங்கள், இல்லையெனில் decline செய்யுஙகள்",
+"probs": [
+0.099249,
+0.027173,
+0.873578
+]
+},
+{
+"text": "Info: Hellо, ena Rs.15,800 தவறுதழாக உங்களுக்கு vanthuvittathu, thirooppi அனுப்பாவிட்டால் போலீஸ் complaint ko-du-p-pe-n +916597949363",
+"normalized": "info: hello, ena rs.15,800 தவறுதழாக உங்களுக்கு vanthuvittathu, thirooppi அனுப்பாவிட்டால் police complaint koduppen +916597949363",
+"probs": [
+0.035496,
+0.026294,
+0.938209
+]
+},
+{
+"text": "VVVM​-LRYUAF: Нl3l0, YY-o-u-r-u BSNL plan expires in 30 das.. Recharge n o w аnd enjovy unlіmіted டேட்டா rb.gy/GUCqF8",
+"normalized": "vvmlryuaf: hlelo, yyouru bsnl plan expires in 30 das.. recharge now and enjovy unlimited data rb.gy/gucqf8",
+"probs": [
+0.509218,
+0.467693,
+0.023088
+]
+},
+{
+"text": "namaste, men hr से bol ra⁠hi हूँ, aa*p*ka r35ume shortlist हुआ हे। छौटे taѕk पूरे क*र*के rs.4,459 ka-maa-en, t31gr4m pr join keejie https://federal-care.click/nulh t‍&с",
+"normalized": "namaste, men hr से bol rahi हूँ, aapka resume shortlist हुआ हे। छौटे task पूरे करके rs.4,459 kamaaen, t31gr4m pr join keejie https://federal-care.click/nulh t&c",
+"probs": [
+0.074104,
+0.085669,
+0.840227
+]
+},
+{
+"text": "Imр⁠: बिना cib!1 કे⁠ instant loan Rs.96,700! शिफ Aadhaar और PNk से 5 मि.न.ट में approval। Processsingl fee ₹1,700 ishita8426@apl पर भेजें",
+"normalized": "imp: बिना cibii के instant loan rs.96,700! शिफ aadhaar और pnk से 5 मिनट में approval। processingl fee ₹1,700 ishita8426@apl पर भेजें",
+"probs": [
+0.081428,
+0.285779,
+0.632793
+]
+},
+{
+"text": "Аlert: Airtel lcukу विनर: уour number has won Taa Νеxоn cr. व्हाट्सऐप +917327739824 nоw",
+"normalized": "alert: airtel lcuky winner: your number has won taa nexon cr. whatsapp +917327739824 now",
+"probs": [
+0.029148,
+0.026724,
+0.944128
+]
+},
+{
+"text": "ЈD-ZVHSTC: Нi, अरे, क⁠ल ke dіnner के ₹71,969 जब tіme मिले sandeep5192@okhdfcbank पर bhej dena R3gad$",
+"normalized": "jdzvhstc: hi, अरे, कल ke dinner के ₹71,969 जब time मिले sandeep5192@okhdfcbank पर bhej dena regads",
+"probs": [
+0.337363,
+0.093798,
+0.568839
+]
+},
+{
+"text": "Amazon Pay login OTP: 321499. 10 நிமிடங்கள செல்லுபடியாகும். யாரிடமும் சொழ்ல வேணாம், AmAzon Pay call செய்து OTP கேட்காது .",
+"normalized": "amazon pay login otp: 321499. 10 நிமிடங்கள செல்லுபடியாகும். யாரிடமும் சொழ்ல வேணாம், amazon pay call செய்து otp கேட்காது .",
+"probs": [
+0.806988,
+0.08984,
+0.103172
+]
+},
+{
+"text": "hi, bookmyyyshow ने phonepe पर आपको ₹59,572 की pay⁠rme​nt reqeust भेजि है। order आनै कि_या है तौ‍ 4pP મें अ​प्रू કर दें, वरना de​cl​ine करो",
+"normalized": "hi, bookmyyshow ने phonepe पर आपको ₹59,572 की payrment reqeust भेजि है। order आनै किया है तौ 4pp में अप्रू कर दें, वरना decline करो",
+"probs": [
+0.362186,
+0.107282,
+0.530532
+]
+},
+{
+"text": "तुम्हारे вanK ofd⁠ B-a-r--d-a rеward p⁠oints जिनकी कीमत Rs 76885 है, आ‌ज exirte हो रहे हैं, अ⁠भी redeem क.रें bit.ly/nWOE4Y Regads",
+"normalized": "तुम्हारे вank ofd bar--da reward points जिनकी कीमत rs 76885 है, आज exirte हो रहे हैं, अभी redeem करें bit.ly/nwoe4y regads",
+"probs": [
+0.01448,
+0.019484,
+0.966036
+]
+},
+{
+"text": "Іmp: आपके Paytm वॉट men ₹58,582 જोड़े gai। Тrаsactіon ІD 761523790346",
+"normalized": "imp: आपके paytm वॉट men ₹58,582 जोड़े gai। trasaction id 761523790346",
+"probs": [
+0.732314,
+0.052032,
+0.215653
+]
+},
+{
+"text": "Alert: Reminder: ooP! AutoPay of ₹67,284 tо BookMyShow is scheduled for 27-08-26 -phede⁠ral‌ Bank T&C",
+"normalized": "alert: reminder: oopi autopay of ₹67,284 to bookmyshow is scheduled for 27-08-26 -phederal bank t&c",
+"probs": [
+0.975521,
+0.019603,
+0.004875
+]
+},
+{
+"text": "DMarmjt hаs sent u a раymrent ரிக்வெஸ்ட் of Rs.24,400 оn PhonePe. அப்ரூவ் іiоn a_p_p іf уou placed the ஆர்டர், elsе decline Rеgаrds",
+"normalized": "dmarmjt has sent u a paymrent request of rs.24,400 on phonepe. approve iion app if you placed the order, else decline regards",
+"probs": [
+0.830107,
+0.043662,
+0.126231
+]
+},
+{
+"text": "hi, cibil இல்மல் instant loan rs.41658/-! аadhaіаr, pan மட்‍டும் போம், 5 நிமிடத்தில் approval. prmcessing fewe ₹3,609-ஐ 9403704812@axl-க்கு ௮னு​ப்பவும் R e g A r D s",
+"normalized": "hi, cibil இல்மல் instant loan rs.41658/-! aadhaiar, pan மட்டும் போம், 5 நிமிடத்தில் approval. prmcessing fewe ₹3,609-ஐ 9403704812@axl-க்கு அனுப்பவும் regards",
+"probs": [
+0.046858,
+0.187756,
+0.765386
+]
+},
+{
+"text": "Hі, Reminder: யூபிஐ AutoPay of Rs.64,300 tо Z*o*m*a*t*o іs scheduled FFF0r 20-11-26 -Axis B.а.n.k .",
+"normalized": "hi, reminder: upi autopay of rs.64,300 to zomato is scheduled ffor 20-11-26 -axis bank .",
+"probs": [
+0.992133,
+0.00495,
+0.002917
+]
+},
+{
+"text": "CP-YTYGPI: Imp: KSB: உங்கள bll நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். இப்பொதே ₹28,900 செலுத்துங்கள் https://federal.care.online -Team",
+"normalized": "cpytygpi: imp: ksb: உங்கள bll நிலுவையில் இருக்கிறது, connection துண்டிக்கப்படும். இப்பொதே ₹28,900 செலுத்துங்கள் https://federal.care.online -team",
+"probs": [
+0.003844,
+0.023139,
+0.973017
+]
+},
+{
+"text": "Hello, உங்க்ள் PhonePe wallet-ல் ₹52,113 சேர்க்கப்பட்டது. Tansaction ID 973587171217",
+"normalized": "hello, உங்க்ள் phonepe wallet-ல் ₹52,113 சேர்க்கப்பட்டது. tansaction id 973587171217",
+"probs": [
+0.621696,
+0.25407,
+0.124235
+]
+},
+{
+"text": "Hello, I.O.B: உங்களுக்கு ₹59,862 வரை pre-approved personal loan, குறைந்த வட்டியில். I08 app-ல் apply சேய்யுங்கள். 7&C apply .",
+"normalized": "hello, iob: உங்களுக்கு ₹59,862 வரை preapproved personal loan, குறைந்த வட்டியில். i08 app-ல் apply சேய்யுங்கள். 7&c apply .",
+"probs": [
+0.029816,
+0.82816,
+0.142024
+]
+},
+{
+"text": "Art: aapka Vi pln 7 diન में खમ ho र्हा है। abhi recharge karo और unlimtеd d_A_t_a કा मज़ा len https://myntr.it/nzDfW Regards",
+"normalized": "art: aapka vi pln 7 diન में खम ho र्हा है। abhi recharge karo और unlimted data का मज़ा len https://myntr.it/nzdfw regards",
+"probs": [
+0.04445,
+0.838558,
+0.116993
+]
+},
+{
+"text": "Infо: Croma-ல் Paytm மூம் பம் செத்தி 50% cashb‍ack பெறுங்கள், அதிகபட்‍சம் Rs.23800/-. Ofuf⁠er 11-05-26 வரை. T&С apply :)",
+"normalized": "info: croma-ல் paytm மூம் பம் செத்தி 50% cashback பெறுங்கள், அதிகபட்சம் rs.23800/-. ofufer 11-05-26 வரை. t&c apply :)",
+"probs": [
+0.050099,
+0.862534,
+0.087367
+]
+},
+{
+"text": "INFO: புதிய COLLECTION-க்கு FALT 60% தள்ளுபடி, RELIANCE DI91TА1 STORE-க்கு வாங் அ ல் ழ து HTTPS://KOTAK.COM/OFFERS/C95XC-ல் ORDER செய்யுங்கள்",
+"normalized": "info: புதிய collection-க்கு falt 60% தள்ளுபடி, reliance di91ta1 store-க்கு வாங் அ ல் ழ து https://kotak.com/offers/c95xc-ல் order செய்யுங்கள்",
+"probs": [
+0.000542,
+0.956218,
+0.043241
+]
+},
+{
+"text": "Ur Yes बैंक credit c9ard riw4rd poіntѕo wiill еxpіrееe оn 07-01-26. R e d e е m thеm on Yеѕ बैंक аpp",
+"normalized": "ur yes bank credit cgard riward pointso wiill expiree on 07-01-26. redeem them on yes bank app",
+"probs": [
+0.736378,
+0.013741,
+0.249881
+]
+},
+{
+"text": "TM-TRYHFD: Dear usr, आपकै A/c **4730 से 11-06-26 को Rs 91500 V-P-A bhavana6529@paytm कौ debit किए ग्ए। U_P_I Ref 339982839933। आपने नहीं किया? 1800-785-5654 प.र caaall कीजिए -Bankk oF B4r0da :)",
+"normalized": "tmtryhfd: dear usr, आपकै a/c **4730 से 11-06-26 को rs 91500 vpa bhavana6529@paytm कौ debit किए ग्ए। upi ref 339982839933। आपने नहीं किया? 1800-785-5654 पर caall कीजिए -bankk of baroda :)",
+"probs": [
+0.964325,
+0.002841,
+0.032833
+]
+},
+{
+"text": "Congratulations! Υou have received ₹17,412 cAsHBa‌CK⁠. 7o receive the‌ m o n e y accept tһe rekwet on GaPау and en⁠tr your UР​I PpINt :)",
+"normalized": "congratulationsi you have received ₹17,412 cashback. 7o receive the money accept the rekwet on gapay and entr your upi ppint :)",
+"probs": [
+0.370103,
+0.165506,
+0.464391
+]
+},
+{
+"text": "ICICI बैंक: Pre-approved personal लोन up tо ₹10,504 аt attractive rаtes. @pPlY o*n ICICI Bank ऐप. t&c apply -Team",
+"normalized": "icici bank: preapproved personal loan up to ₹10,504 at attractive rates. @pply on icici bank app. t&c apply -team",
+"probs": [
+0.410283,
+0.475036,
+0.114681
+]
+},
+{
+"text": "நான் oru army officer, அறைக்கு аdvancе Rs 99617 tharukiren. என் கியூஆர்-ஐ ska⁠n se௰thu பின் podungal, pan‍m உங்களுக்கு வரும் 8383282757",
+"normalized": "நான் oru army officer, அறைக்கு advance rs 99617 tharukiren. என் qr-ஐ skan se௰thu pin podungal, panm உங்களுக்கு வரும் 8383282757",
+"probs": [
+0.195351,
+0.105118,
+0.699532
+]
+},
+{
+"text": "Неllo, vaazhththukkal! ungalukku Rs 25670 கேஷ்பேக் kidaiththullathu. பணத்தைப் pe*ra CRED-ல் vantha reqеuѕt-ஐ accept seythu யூபிஐ PINN உ_ள்_ளி_ட_வு_ம்",
+"normalized": "hello, vaazhththukkali ungalukku rs 25670 cashback kidaiththullathu. பணத்தைப் pera cred-ல் vantha reqeust-ஐ accept seythu upi pinn உள்ளிடவும்",
+"probs": [
+0.123664,
+0.415729,
+0.460608
+]
+},
+{
+"text": "௨ங்கள் BSNL рln 5 நாட்களில் முடிவடைகிறது. ippave rEChARGE sey unlіmіted டெட்டா​ அனுபவியுங்கள் https://paytm.me/7MK3f Тһаaаnkѕ.",
+"normalized": "உங்கள் bsnl pln 5 நாட்களில் முடிவடைகிறது. ippave recharge sey unlimited டெட்டா அனுபவியுங்கள் https://paytm.me/7mk3f thaanks.",
+"probs": [
+0.076095,
+0.678997,
+0.244908
+]
+},
+{
+"text": "aLErT‌: நினைவூட்டல்: Meesh‍o-க்கு Rs 41288 UaPІ АutоРaу 24 May ௮ன்⁠று திட்டமிடப்பட்டுள்ளது -Ai‍s B⁠aNk",
+"normalized": "alert: நினைவூட்டல்: meesho-க்கு rs 41288 uapi autopay 24 may அன்று திட்டமிடப்பட்டுள்ளது -ais bank",
+"probs": [
+0.981197,
+0.013006,
+0.005797
+]
+},
+{
+"text": "Al3r7: आपके A/c x3820 से 22/07/2026 को Rs.62,083 VPA joseph.sneha@ibl को debit किए गए। UPI R3f 261000349926। आपणे न.हीं किया? 1860-314-8103 पर call करें -Yes 8ank",
+"normalized": "alert: आपके a/c x3820 से 22/07/2026 को rs.62,083 vpa joseph.sneha@ibl को debit किए गए। upi r3f 261000349926। आपणे नहीं किया? 1860-314-8103 पर call करें -yes bank",
+"probs": [
+0.975226,
+0.001889,
+0.022885
+]
+},
+{
+"text": "congratulations! you have rесеivd rs 53386 сasһbak. to receive thе mneyg accept the reuqeeest оn⁠ amazon pa​y and e​ntr your upi pn tanksy",
+"normalized": "congratulationsi you have receivd rs 53386 cashbak. to receive the mneyg accept the reuqeest on amazon pay and entr your upi pn tanksy",
+"probs": [
+0.304716,
+0.142386,
+0.552898
+]
+},
+{
+"text": "Іnfzo: vaazhththukkl! உங்களுக்கு ₹78,100 cashbak கிடைத்துள்ளது. panaththaip pera Аmаzon Рy-ல் வந்த requ‍est-ஐ ассeрt seythu UPIII பின் ullidavum :)",
+"normalized": "infzo: vaazhththukkli உங்களுக்கு ₹78,100 cashbak கிடைத்துள்ளது. panaththaip pera amazon py-ல் வந்த request-ஐ accept seythu upii pin ullidavum :)",
+"probs": [
+0.169943,
+0.240883,
+0.589173
+]
+},
+{
+"text": "VM-UADTHJ: Неllo, arai, कल के dinner के ІNR 82297.00 जब time मिले ishita@upi par bhej dena",
+"normalized": "vmuadthj: hello, arai, कल के dinner के inr 82297.00 जब time मिले ishita@upi par bhej dena",
+"probs": [
+0.57396,
+0.043089,
+0.382951
+]
+},
+{
+"text": "வா ழ் த் து க் க ள்! உங்களுக்கு Rz 71900 c.a.s.h.b.a.c.k கிடைத்துள்ளது.. பணத்தைப் பெற BHeeM-ல் வ ந் த r e q u e s t-ஐ accept செய்து UPI PIN உளளிடவும் T&C",
+"normalized": "வா ழ் த் து க் க ள்! உங்களுக்கு rz 71900 cashback கிடைத்துள்ளது.. பணத்தைப் பெற bheem-ல் வ ந் த request-ஐ accept செய்து upi pin உளளிடவும் t&c",
+"probs": [
+0.060545,
+0.27463,
+0.664825
+]
+},
+{
+"text": "BZ-LWPEQM: Hi, मैं army officer हुँ, कमरे के लिए 4dv4nce Rs.64,500 दूँगा। मे*रा QR ssscan करके PN डालिऐ, पै.से आपको आ जा-एँ-गे +919780132417 T&C",
+"normalized": "bzlwpeqm: hi, मैं army officer हुँ, कमरे के लिए advance rs.64,500 दूँगा। मेरा qr sscan करके pn डालिऐ, पैसे आपको आ जा-एँ-गे +919780132417 t&c",
+"probs": [
+0.112801,
+0.006284,
+0.880915
+]
+},
+{
+"text": "D-eе-a-r user, ௨கள் Airtel pl‍nk 7 naadkalil mudivadaikirathu. udane recharge செய்து unlееmited data anupaviyungal phon.pe/fdv0A Rеgаrrds",
+"normalized": "deear user, உகள் airtel plnk 7 naadkalil mudivadaikirathu. udane recharge செய்து unleemited data anupaviyungal phon.pe/fdv0a regarrds",
+"probs": [
+0.599458,
+0.255978,
+0.144564
+]
+},
+{
+"text": "Ismp: Gogle Pay​ login OTPg: 892561. walid For 10 mins. Do not share, Gogle P*a*y never clls asking for OrTP",
+"normalized": "ismp: gogle pay login otpg: 892561. walid for 10 mins. do not share, gogle pay never clls asking for ortp",
+"probs": [
+0.878258,
+0.116872,
+0.004869
+]
+},
+{
+"text": "याद‍ दिलाना: BigBasket કो ₹95,400 का​ UmPI 4u7oPay 07-02-26 को scheduled है -SBI",
+"normalized": "याद दिलाना: bigbasket को ₹95,400 का umpi autopay 07-02-26 को scheduled है -sbi",
+"probs": [
+0.993947,
+0.002613,
+0.00344
+]
+},
+{
+"text": "Dar user, Hye⁠ send the Rs.92,232 for yesterday's d​іn‍ner t⁠o 8313039654@okhdfcbank whenever fee",
+"normalized": "dar user, hye send the rs.92,232 for yesterday's dinner to 8313039654@okhdfcbank whenever fee",
+"probs": [
+0.693311,
+0.023286,
+0.283402
 ]
 },
 {
 "text": "Babe, I'm back ... Come back to me ...",
 "normalized": "babe, i'm back ... come back to me ...",
 "probs": [
-0.991645,
-0.007556,
-0.000799
+0.991343,
+0.008078,
+0.00058
 ]
 },
 {
 "text": "A health tip a day keeps the doctor away! To find out how, Text Medplus to 5021. N50/weekly. Text STOP to unsubscribe,spam",
 "normalized": "a health tip a day keeps the doctor awayi to find out how, text medplus to 5021. n50/weekly. text stop to unsubscribe,spam",
 "probs": [
-0.546745,
-0.428523,
-0.024732
+0.440124,
+0.534902,
+0.024974
 ]
 },
 {
 "text": "Great News! Enjoy N60 AIRTIME this WEEKEND! Call 14127 to get yours Now!",
 "normalized": "great newsi enjoy n60 airtime this weekendi call 14127 to get yours nowi",
 "probs": [
-0.94543,
-0.051686,
-0.002884
+0.954418,
+0.042685,
+0.002897
 ]
 },
 {
 "text": "Your Acct 3041207489 Has Been Credited with NGN2,000.00 On 13-FEB-2014 10:53:47 By FEMI ILORI. Bal: NGN3,159.30CR",
 "normalized": "your acct 3041207489 has been credited with ngn2,000.00 on 13-feb-2014 10:53:47 by femi ilori. bal: ngn3,159.30cr",
 "probs": [
-0.995006,
-0.00118,
-0.003813
+0.995136,
+0.001044,
+0.00382
 ]
 },
 {
 "text": "Your balance of Recharged Data Account is lower than 100 MB.",
 "normalized": "your balance of recharged data account is lower than 100 mb.",
 "probs": [
-0.825095,
-0.1459,
-0.029004
+0.879534,
+0.087101,
+0.033364
 ]
 },
 {
 "text": "Friend,b DILIGENT!Do everytn wit excelenc.pay atention 2 detailshandl d smal brktrus,opotunities as if dey wer d big onesB faithful in litle thinsluke 16:12",
 "normalized": "friend,b diligentido everytn wit excelencpay atention 2 detailshandl d smal brktrus,opotunities as if dey wer d big onesb faithful in litle thinsluke 16:12",
 "probs": [
-0.951564,
-0.03754,
-0.010896
+0.936464,
+0.05065,
+0.012886
 ]
 },
 {
 "text": "U come n search tat vid..not finishd..",
 "normalized": "u come n search tat vid..not finishd..",
 "probs": [
-0.993176,
-0.005445,
-0.001378
+0.992761,
+0.005548,
+0.001692
 ]
 },
 {
 "text": "Ummmmmaah Many many happy returns of d day my dear sweet heart..",
 "normalized": "ummaah many many happy returns of d day my dear sweet heart..",
 "probs": [
-0.996707,
-0.000492,
-0.002802
+0.996978,
+0.000471,
+0.002551
 ]
 },
 {
 "text": "First has she gained more than &lt;#&gt; kg since she took in. Second has she done the blood sugar tests. If she has and its ok and her blood pressure is within normal limits then no worries",
 "normalized": "first has she gained more than &lt;#&gt; kg since she took in. second has she done the blood sugar tests. if she has and its ok and her blood pressure is within normal limits then no worries",
 "probs": [
-0.995047,
-0.003173,
-0.001779
+0.994767,
+0.003258,
+0.001975
 ]
 },
 {
 "text": "Think you sent the text to the home phone. That cant display texts. If you still want to send it his number is",
 "normalized": "think you sent the text to the home phone. that cant display texts. if you still want to send it his number is",
 "probs": [
-0.944583,
-0.045308,
-0.010109
+0.9472,
+0.043394,
+0.009406
 ]
 },
 {
 "text": "We have new local dates in your area - Lots of new people registered in YOUR AREA. Reply DATE to start now! 18 only www.flirtparty.us REPLYS150",
 "normalized": "we have new local dates in your area - lots of new people registered in your area. reply date to start nowi 18 only ww.flirtparty.us replysiso",
 "probs": [
-0.084567,
-0.536315,
-0.379119
+0.119441,
+0.505806,
+0.374754
 ]
 },
 {
 "text": "Ok that would b lovely, if u r sure. Think about wot u want to do, drinkin, dancin, eatin, cinema, in, out, about... Up to u! Wot about ?",
 "normalized": "ok that would b lovely, if u r sure. think about wot u want to do, drinkin, dancin, eatin, cinema, in, out, about... up to u! wot about ?",
 "probs": [
-0.997315,
-0.001999,
-0.000686
+0.997322,
+0.002193,
+0.000485
 ]
 },
 {
 "text": "Anything...",
 "normalized": "anything...",
 "probs": [
-0.999083,
-0.000385,
-0.000532
+0.999198,
+0.000401,
+0.000401
 ]
 },
 {
 "text": "U 447801259231 have a secret admirer who is looking 2 make contact with U-find out who they R*reveal who thinks UR so special-call on 0905809458",
 "normalized": "u 447801259231 have a secret admirer who is looking 2 make contact with ufind out who they rreveal who thinks ur so specialcall on 0905809458",
 "probs": [
-0.013921,
-0.019639,
-0.966441
+0.0236,
+0.015961,
+0.960439
 ]
 },
 {
 "text": "I dont have that much image in class.",
 "normalized": "i dont have that much image in class.",
 "probs": [
-0.997709,
-0.001226,
-0.001064
+0.997393,
+0.001362,
+0.001244
 ]
 },
 {
 "text": "Ref: 438037087 23/07 20:57:49 Bonus: Dial*559*1# Amt: N200.00 Prev bal: N87.54 Bal: N287.54 Visit: http://vtm.mtnonline.com/ From: MTN VTU TopUp",
 "normalized": "ref: 438037087 23/07 20:57:49 bonus: dial*ssg*i# amt: n200.00 prev bal: n87.54 bal: n287.54 visit: http://vtm.mtnonline.com/ from: mtn vtu topup",
 "probs": [
-0.979283,
-0.007136,
-0.01358
+0.976673,
+0.009063,
+0.014264
 ]
 },
 {
 "text": "Visithttp://ibharaluft.site88.net/aoc/cst711/to download CST711 Exam Kit & AOCPlease spread the good news to all class members urgently!",
 "normalized": "visithttp://ibharaluft.site88.net/aoc/cst711/to download cst711 exam kit & aocplease spread the good news to all class members urgentlyi",
 "probs": [
-0.079874,
-0.067631,
-0.852495
+0.10672,
+0.057698,
+0.835582
 ]
 },
 {
 "text": "Can you please ask macho what his price range is, does he want something new or used plus it he only interfued in the blackberry bold &lt;#&gt; or any bb",
 "normalized": "can you please ask macho what his price range is, does he want something new or used plus it he only interfued in the blackberry bold &lt;#&gt; or any bb",
 "probs": [
-0.996958,
-0.001871,
-0.00117
+0.995979,
+0.002458,
+0.001563
 ]
 },
 {
 "text": "Yup, leaving right now, be back soon",
 "normalized": "yup, leaving right now, be back soon",
 "probs": [
-0.992118,
-0.005036,
-0.002846
+0.991387,
+0.005933,
+0.00268
 ]
 },
 {
 "text": "BBM Is Now On NOKIA! Grab D Nokia X smartphone with easy access To ANDROID Apps On MTN 3G Network. Visit any MTN Store to get yours today.",
 "normalized": "bbm is now on nokiai grab d nokia x smartphone with easy access to android apps on mtn 3g network. visit any mtn store to get yours today.",
 "probs": [
-0.671171,
-0.318991,
-0.009839
+0.747517,
+0.24238,
+0.010102
 ]
 },
 {
 "text": "Your Acct 3041207489 Has Been Credited with NGN102,000.00 On 13-FEB-2014 11:06:49 By CHRISTIANA AJAYI. Bal: NGN105,159.30CR",
 "normalized": "your acct 3041207489 has been credited with ngn102,000.00 on 13-feb-2014 11:06:49 by christiana ajayi. bal: ngn105,159.30cr",
 "probs": [
-0.994724,
-0.001621,
-0.003656
+0.995149,
+0.001164,
+0.003687
 ]
 },
 {
 "text": "I miss you so much I'm so desparate I have recorded the message you left for me the other day and listen to it just to hear the sound of your voice. I love you",
 "normalized": "i miss you so much i'm so desparate i have recorded the message you left for me the other day and listen to it just to hear the sound of your voice. i love you",
 "probs": [
-0.938405,
-0.007871,
-0.053723
+0.941874,
+0.00842,
+0.049706
 ]
 },
 {
 "text": "Just checking in on you. Really do miss seeing Jeremiah. Do have a great month",
 "normalized": "just checking in on you. really do miss seeing jeremiah. do have a great month",
 "probs": [
-0.994793,
-0.00422,
-0.000987
+0.993481,
+0.005531,
+0.000989
 ]
 },
 {
 "text": "Ya they are well and fine., BBD(pooja) full pimples..even she become quite black..and ur rite here its too cold, wearing sweatter..",
 "normalized": "ya they are well and fine., bbd(pooja) full pimples..even she become quite black..and ur rite here its too cold, wearing sweatter..",
 "probs": [
-0.973269,
-0.019745,
-0.006985
+0.983468,
+0.011598,
+0.004934
 ]
 },
 {
 "text": "You know, wot people wear. T shirts, jumpers, hat, belt, is all we know. We r at Cribbs",
 "normalized": "you know, wot people wear. t shirts, jumpers, hat, belt, is all we know. we r at cribbs",
 "probs": [
-0.930578,
-0.066482,
-0.00294
+0.930925,
+0.065972,
+0.003103
 ]
 },
 {
 "text": "Free gift! 09092071782. Never lose yr important SMS again. Backup and restore them with SMSBackup at N100/m. Text SUB to 38111 at no cost for 7 day FREE trial.",
 "normalized": "free gifti 09092071782. never lose yr important sms again. backup and restore them with smsbackup at n100/m. text sub to 38111 at no cost for 7 day free trial.",
 "probs": [
-0.053405,
-0.9449,
-0.001695
+0.142831,
+0.853706,
+0.003462
 ]
 },
 {
 "text": "Gokila is talking with you aha:)",
 "normalized": "gokila is talking with you aha:)",
 "probs": [
-0.997572,
-0.00107,
-0.001358
+0.996341,
+0.001835,
+0.001824
 ]
 },
 {
 "text": "Dear PAYTM customer your Paytm KYC has expired. Contact customer care No-8536074310 immediately. your account will Block within 24 hr. Thank you PAYTM TEAM.",
 "normalized": "dear paytm customer your paytm kyc has expired. contact customer care no-8536074310 immediately. your account will block within 24 hr. thank you paytm team.",
 "probs": [
-0.002204,
-0.000168,
-0.997627
+0.007097,
+0.000237,
+0.992666
 ]
 },
 {
 "text": "Hi, this is Mandy Sullivan calling from HOTMIX FM...you are chosen to receive £5000.00 in our Easter Prize draw.....Please telephone 09041940223 to claim before 29/03/05 or your prize will be transferred to someone else....",
 "normalized": "hi, this is mandy sullivan calling from hotmix fm...you are chosen to receive £5000.00 in our easter prize draw.....please telephone 09041940223 to claim before 29/03/05 or your prize will be transferred to someone else....",
 "probs": [
-0.050578,
-0.008278,
-0.941144
+0.043779,
+0.0057,
+0.950522
 ]
 },
 {
 "text": "Your Acct 304XXXX489 Has Been Debited with NGN40.00 On 26-JUL-2014 06:06:31 By 27-Jun-2014 to 26-JUL-2014 SMS Alert Cha. Bal: NGN978.30CR",
 "normalized": "your acct 304xx489 has been debited with ngn40.00 on 26-jul-2014 06:06:31 by 27-jun-2014 to 26-jul-2014 sms alert cha. bal: ngn978.30cr",
 "probs": [
-0.995735,
-0.001965,
-0.0023
+0.995642,
+0.002022,
+0.002335
 ]
 },
 {
 "text": "Under the sea, there lays a rock. In the rock, there is an envelope. In the envelope, there is a paper. On the paper, there are 3 words... 'GUESS!!",
 "normalized": "under the sea, there lays a rock. in the rock, there is an envelope. in the envelope, there is a paper. on the paper, there are 3 words... 'guessii",
 "probs": [
-0.962577,
-0.030624,
-0.0068
+0.961441,
+0.030951,
+0.007607
 ]
 },
 {
 "text": "Hi if ur lookin 4 saucy daytime fun wiv busty married woman Am free all next week Chat now 2 sort time 09099726429 JANINExx Calls£1/minMobsmoreLKPOBOX177HP51FL",
 "normalized": "hi if ur lookin 4 saucy daytime fun wiv busty married woman am free all next week chat now 2 sort time 09099726429 janinexx calls£1/minmobsmorelkpobox177hp51fl",
 "probs": [
-0.016774,
-0.97115,
-0.012076
+0.024304,
+0.956464,
+0.019232
 ]
 },
 {
 "text": "Mmm so yummy babe ... Nice jolt to the suzy",
 "normalized": "mmm so yummy babe ... nice jolt to the suzy",
 "probs": [
-0.993124,
-0.005449,
-0.001427
+0.993383,
+0.005194,
+0.001424
 ]
 },
 {
 "text": "Make Free Calls to ALL Networks Today! You get N750 when you pay N250. Valid for 3 days. dial *142# NOW!",
 "normalized": "make free calls to all networks todayi you get n750 when you pay n250. valid for 3 days. dial *142# nowi",
 "probs": [
-0.955995,
-0.030238,
-0.013767
+0.87745,
+0.113562,
+0.008988
 ]
 },
 {
 "text": "I hate when she does this. She turns what should be a fun day into an annoying day of quarrels.",
 "normalized": "i hate when she does this. she turns what should be a fun day into an annoying day of quarrels.",
 "probs": [
-0.9957,
-0.002935,
-0.001365
+0.994674,
+0.003817,
+0.001509
 ]
 },
 {
 "text": "Sure! I am driving but will reach my destination soon.",
 "normalized": "surei i am driving but will reach my destination soon.",
 "probs": [
-0.997143,
-0.00212,
-0.000738
+0.995214,
+0.003628,
+0.001158
 ]
 },
 {
 "text": "Ugh it I'm resubbing to eve",
 "normalized": "ugh it i'm resubbing to eve",
 "probs": [
-0.989127,
-0.008426,
-0.002447
+0.9922,
+0.005946,
+0.001854
 ]
 },
 {
 "text": "Dear we got &lt;#&gt; dollars hi hi",
 "normalized": "dear we got &lt;#&gt; dollars hi hi",
 "probs": [
-0.999884,
-7.7e-05,
-3.9e-05
+0.999806,
+0.00013,
+6.4e-05
 ]
 },
 {
 "text": "Pure water is always colourless and crystal clear. Great human beings are always simple and transparent. Embrace the ones that bless your life!",
 "normalized": "pure water is always colourless and crystal clear. great human beings are always simple and transparent. embrace the ones that bless your lifei",
 "probs": [
-0.88957,
-0.106706,
-0.003725
+0.918762,
+0.078333,
+0.002905
 ]
 },
 {
 "text": "It's cool, we can last a little while. Getting more any time soon?",
 "normalized": "it's cool, we can last a little while. getting more any time soon?",
 "probs": [
-0.953445,
-0.03756,
-0.008995
+0.964776,
+0.027603,
+0.00762
 ]
 },
 {
 "text": "N100.00 was transferred to you from 2348067525083 via share n sell service.",
 "normalized": "n100.00 was transferred to you from 2348067525083 via share n sell service.",
 "probs": [
-0.967276,
-0.017415,
-0.015309
+0.970152,
+0.015274,
+0.014574
 ]
 },
 {
 "text": "Congratulations! Thanks to a good friend U have WON the £2,000 Xmas prize. 2 claim is easy, just call 08718726971 NOW! Only 10p per minute. BT-national-rate.",
 "normalized": "congratulationsi thanks to a good friend u have won the £2,000 xmas prize. 2 claim is easy, just call 08718726971 nowi only 10p per minute. btnationalrate.",
 "probs": [
-0.026922,
-0.012302,
-0.960776
+0.020463,
+0.011633,
+0.967904
 ]
 },
 {
 "text": "Ugh its been a long day. I'm exhausted. Just want to cuddle up and take a nap",
 "normalized": "ugh its been a long day. i'm exhausted. just want to cuddle up and take a nap",
 "probs": [
-0.983595,
-0.005048,
-0.011357
+0.986543,
+0.004502,
+0.008954
 ]
 },
 {
 "text": "The book is not opening",
 "normalized": "the book is not opening",
 "probs": [
-0.992044,
-0.006413,
-0.001542
+0.975932,
+0.022021,
+0.002048
 ]
 },
 {
 "text": "Dear 0776xxxxxxx U've been invited to XCHAT. This is our final attempt to contact u! Txt CHAT to 86688 150p/MsgrcvdHG/Suite342/2Lands/Row/W1J6HL LDN 18yrs",
 "normalized": "dear ott6xx u've been invited to xchat. this is our final attempt to contact u! txt chat to 86688 150p/msgrcvdhg/suite342/2lands/row/w1j6hl ldn 18yrs",
 "probs": [
-0.004209,
-0.966365,
-0.029426
+0.005461,
+0.961776,
+0.032763
 ]
 },
 {
 "text": "Captain is in our room:)",
 "normalized": "captain is in our room:)",
 "probs": [
-0.980741,
-0.006982,
-0.012277
+0.973833,
+0.009223,
+0.016944
 ]
 },
 {
 "text": "Yes:)here tv is always available�",
 "normalized": "yes:)here tv is always available�",
 "probs": [
-0.998359,
-0.001124,
-0.000518
+0.998195,
+0.001234,
+0.000572
 ]
 },
 {
 "text": "Carlos says he'll be at mu in &lt;#&gt; minutes",
 "normalized": "carlos says he'll be at mu in &lt;#&gt; minutes",
 "probs": [
-0.999352,
-0.000488,
-0.000159
+0.999298,
+0.000497,
+0.000205
 ]
 },
 {
 "text": "Keeping up to date with breaking news on Politics, current affairs, business and sports is so simple now. To Enjoy 5 days FREE trial, send NEWS to 38500",
 "normalized": "keeping up to date with breaking news on politics, current affairs, business and sports is so simple now. to enjoy 5 days free trial, send news to 38500",
 "probs": [
-0.496341,
-0.493202,
-0.010457
+0.58118,
+0.408661,
+0.010159
 ]
 },
 {
 "text": "His frens go then he in lor. Not alone wif my mum n sis lor.",
 "normalized": "his frens go then he in lor. not alone wif my mum n sis lor.",
 "probs": [
-0.998942,
-0.000912,
-0.000146
+0.997269,
+0.002453,
+0.000278
 ]
 }
 ]
