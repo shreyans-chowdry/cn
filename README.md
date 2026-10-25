@@ -11,7 +11,7 @@ language-agnostic: every language-specific piece sits behind one registry (`src/
 current release supports English, Hindi–English and Tamil–English. It has three parts:
 
 1. **A detector and a benchmark.** UPI-MixSMS is a multilingual code-mixed SMS corpus (English, Hindi–English in
-   Devanagari, Tamil–English in Tamil script) with a graded disguise scheme (L0–L4, including transliteration). Twelve classifiers are evaluated on it,
+   Devanagari, Tamil–English in Tamil script) with a graded disguise scheme (L0–L4, including transliteration). Eleven classifiers are evaluated on it,
    along with three defences. Real public SMS corpora are used to check how well the results carry over.
 2. **A networked service.** The detector is served over our own CRC-protected protocol (SSP) on TCP and UDP. The UDP
    path has Go-Back-N / Selective Repeat reliability and AIMD congestion control. A DNS client and server written
@@ -81,6 +81,8 @@ Every run is cached in `results/runs/` (shipped zipped as `results/runs.zip`), s
 | `results/tables/`, `results/figures/` | tables (CSV) and figures (PNG + PDF) for the paper |
 | `artifacts/production.joblib` | the detector used by the web app and the server |
 | `paper/METHODS.md`, `paper/FINDINGS.md` | the method and the results, written to be lifted into the paper |
+| `paper/ScamShield_IEEE_Paper.docx` | the IEEE-format paper |
+| `paper/ScamShield_Project_Guide.pdf` | the team guide: how everything works, numbers to remember, demo script, roles, viva questions |
 | `android/` | the Android app (Kotlin / Jetpack Compose) |
 
 ## Code map

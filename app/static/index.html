@@ -63,12 +63,12 @@
     <div class="pane">
       <h2>Disguise a scam</h2>
       <p class="hint">Scammers misspell the words filters look for. Drag the slider to apply the same tricks, from light typos up to rewriting words in the other script.</p>
-      <textarea id="lab-msg" rows="4" spellcheck="false" aria-label="Message to disguise">Congratulations! You have received ₹4,999 cashback. To receive the money accept the request on PhonePe and enter your UPI PIN</textarea>
+      <textarea id="lab-msg" rows="4" spellcheck="false" aria-label="Message to disguise">आपका ₹2,499 का refund pending है। पाने के लिए collect request approve करें और UPI PIN डालें</textarea>
       <div class="level-head"><span>Disguise level</span><b id="level-name">L0 · clean</b></div>
       <input id="level" type="range" min="0" max="4" step="1" value="0" aria-label="Disguise level">
       <div class="ticks"><span>clean</span><span>light</span><span>moderate</span><span>heavy</span><span>cross-script</span></div>
       <ol class="levels">
-        <li><b>Light</b> typos: dropped vowels, repeated letters, ல/ள/ழ mix-ups, missing ்</li>
+        <li><b>Light</b> typos: dropped vowels, repeated letters, confusable letters (श/ष/स, ல/ள/ழ), wrong vowel length</li>
         <li><b>Moderate</b> digits for letters (P1N, @ccount) and dotted words (K.Y.C)</li>
         <li><b>Heavy</b> look-alike letters from other alphabets (Cyrillic а for a, Gujarati ત for त, the Tamil digit ௧ for க), invisible characters</li>
         <li><b>Cross-script</b> English words written in the other script (अकाउंट, அக்கவுண்ட்), native words written in English letters (turant, udane)</li>
@@ -112,7 +112,7 @@
     <div class="pane">
       <h2>Build a protocol frame</h2>
       <p class="hint">Every request travels as one SSP frame: a 16-byte header, the message as JSON, and a CRC-32 trailer.</p>
-      <input id="frame-text" class="field" value="உங்கள் KYC update செய்யவும்" aria-label="Message for the frame">
+      <input id="frame-text" class="field" value="आपका KYC update करें" aria-label="Message for the frame">
       <div class="row-actions"><button id="frame-flip" class="ghost">Flip a random bit</button><button id="frame-build" class="primary">Build frame</button></div>
       <div id="frame-out"></div>
     </div>
