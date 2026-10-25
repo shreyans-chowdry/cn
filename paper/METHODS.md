@@ -43,7 +43,7 @@ Each eligible token (not a URL, UPI ID or number) is perturbed with probability 
 | L3 | heavy | 0.45 | 1–2 | + Latin→Cyrillic/Greek homoglyphs, zero-width characters, random insert/delete | + look-alike characters from other blocks (Gujarati त→ત, न→ન; digit र→२; Tamil digits க→௧, உ→௨), ZWJ/ZWNJ, grapheme deletion |
 | L4 | cross-script | 0.60 | 1–3 | + English word written in the message's native script (account → अकाउंट / அக்கவுண்ட்) | + native word transliterated to Latin (तुरंत → turant, உடனே → udane) |
 
-Measured character edit rate (normalised Levenshtein) on test messages: L1 2.8%, L2 7.9%, L3 11.6%, L4 25.6%. Words changed: 13%, 37%, 47%, 58%.
+Measured character edit rate (normalised Levenshtein) on test messages: L1 2.8%, L2 7.8%, L3 11.7%, L4 27.4%. Words changed: 13%, 39%, 46%, 59%.
 
 **Threat models.** *Targeted*: only scam messages are obfuscated, because the attacker controls only scam text. *Uniform*: every message is obfuscated, a noisy-channel stress test. For a given seed, a scam message receives the same perturbation in both settings. The scam FNR is therefore identical across the two threat models, and the scam FPR changes only under the uniform threat. Three obfuscation seeds are used per (level, threat).
 
@@ -60,9 +60,9 @@ Measured character edit rate (normalised Levenshtein) on test messages: L1 2.8%,
 | DistilmBERT | subword | distilbert-base-multilingual-cased |
 | XLM-R | subword | xlm-roberta-base (input embeddings frozen to fit CPU memory) |
 | MuRIL | subword | google/muril-base-cased, pretrained on 17 Indian languages incl. Hindi and Tamil, plus transliterated text (input embeddings frozen) |
-| CANINE-S | character | google/canine-s, tokenizer-free |
+| CANINE-S | character | google/canine-s, tokenizer-free (implemented; not rerun on the current dataset) |
 
-Transformers: AdamW, linear warm-up 10%, 1 epoch, batch 16, class-weighted loss, full training set, CPU; evaluated on obfuscation seed 0. Coverage: all four with standard training; DistilmBERT also with adversarial training; DistilmBERT and MuRIL in the bilingual-transfer experiment. Regimes: *standard*; *adversarial training* (each training message replaced with probability 0.5 by an L1–L3 obfuscated copy, so L4 transliteration is never seen); *canonicalisation* (+norm, train and test text passed through the defence below).
+Transformers: AdamW, linear warm-up 10%, 1 epoch, batch 16, class-weighted loss, full training set, CPU; evaluated on obfuscation seed 0. Coverage on the current dataset (CPU budget): DistilmBERT with standard and adversarial training, XLM-R and MuRIL with standard training. CANINE-S and the transformer cross-language runs were not rerun. Regimes: *standard*; *adversarial training* (each training message replaced with probability 0.5 by an L1–L3 obfuscated copy, so L4 transliteration is never seen); *canonicalisation* (+norm, train and test text passed through the defence below).
 
 **Script-aware canonicalisation.** NFKC normalisation; zero-width removal; Latin look-alikes (Cyrillic/Greek) folded to Latin; native look-alikes (Gujarati letters, Tamil digits) folded back to the native letters; separators inside words removed in every script; leetspeak undone in alphabetic Latin tokens; native-script spellings of English loanwords mapped back to English; letter runs squeezed; lower-cased. It has no access to the attack's random choices, and it cannot undo native→Latin transliteration.
 

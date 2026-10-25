@@ -32,7 +32,8 @@ MARK = {"word_nb": "v", "word_rf": "P", "word_lr": "o", "word_svm": "s", "word_b
         "distil_mbert": "o", "xlmr": "s", "muril": "D"}
 INK, INK2, GRID = "#0b0b0b", "#52514e", "#e4e3df"
 PAIRS = [("char_lr", "word_lr"), ("char_svm", "word_svm"), ("char_cnn", "word_bigru"), ("canine", "muril"),
-         ("canine", "distil_mbert"), ("canine", "xlmr"), ("char_lr", "xlmr")]
+         ("canine", "distil_mbert"), ("canine", "xlmr"), ("char_lr", "xlmr"), ("char_lr", "muril"),
+         ("char_lr", "distil_mbert")]
 
 
 def _ensure_runs():

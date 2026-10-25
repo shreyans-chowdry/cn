@@ -114,26 +114,29 @@ scripts/                 run_all.sh, train_production.py
 
 Full write-up: `paper/FINDINGS.md`. Every table: `results/RESULTS.md`.
 
-**Detector** (template-disjoint test set, macro-F1, L0 = clean, L4 = cross-script transliteration; uniform = every message disguised):
+**Detector** (template-disjoint test set, 3,939 messages in three language settings; macro-F1; L0 = clean,
+L4 = cross-script transliteration; uniform = every message disguised; targeted = only scams disguised):
 
 | Model | Clean | L4 (uniform) | Scams missed, clean → L4 (targeted) | CPU ms / message |
 |---|---|---|---|---|
-| Word LR | 0.785 | 0.666 | 12.9% → 23.4% | 0.6 |
-| Char LR | 0.777 | 0.713 | 13.2% → 12.9% | 0.8 |
-| XLM-R | **0.851** | 0.677 | 7.4% → 30.7% | 150 |
-| MuRIL | 0.749 | 0.746 | 7.7% → 27.6% | 115 |
-| CANINE-S | 0.778 | 0.615 | 12.3% → 17.7% | 155 |
-| **ScamShield production** (char + canonicalisation + public data) | 0.792 | 0.789 (targeted) | 15.3% → 17.7% | ~1 |
+| Word LR | 0.835 | 0.692 | 11.8% → 27.9% | 1.4 |
+| Char LR | 0.784 | 0.687 | 10.1% → 18.9% | 1.5 |
+| XLM-R | 0.870 | 0.614 | 5.6% → 51.5% | 97 |
+| MuRIL | **0.872** | 0.694 | 3.4% → 24.7% | 108 |
+| **ScamShield production** (char + canonicalisation + public data) | 0.810 | 0.787 (targeted) | 9.5% → 16.8% | ~1 |
 
-* **Character models degrade less than word and subword models.** This held in 10 of 12 paired tests for the classical and neural models, and in all 4 tests of Char LR vs XLM-R (paired bootstrap, p < 0.01).
-* **Cross-script transliteration (L4) is the strongest attack.** Some pretrained models (DistilmBERT, CANINE-S) learn to treat any disguise as a scam and start flagging disguised genuine messages.
-* **Synthetic-only and public-only training both fail on the other side's data.** Joint training works on both: UPI-BiSMS 0.78 / 0.74 (English / Tamil–English), real smishing 0.87.
-* **Network:**
-  * CRC-32 caught 100% of corrupted frames; a parity bit missed about 50% of bursts.
-  * At 10% packet loss, Selective Repeat's efficiency is 0.82 against Go-Back-N's 0.53.
-  * AIMD avoids the collapse that a fixed 48-frame window causes at a bottleneck (129 vs 74 messages/s).
-  * A cached DNS lookup takes 0.14 ms against 20.7 ms over the network.
-* **Phone app:** gives the same answers as the Python model (0 differences on 300 messages, max probability difference 7×10⁻⁷).
+* **Character models degrade less than word and subword models**: 20 of 24 paired tests at p < 0.01, including all 4
+  against XLM-R and all 4 against MuRIL.
+* **Cross-script transliteration (L4) is the strongest attack** for every model. XLM-R, the strongest clean model with
+  MuRIL, misses half of all scams once they are transliterated.
+* **Character models transfer best between languages**: trained on one setting, Char SVM loses 0.03 on the other two,
+  word models 0.11.
+* **Canonicalisation is the strongest defence for word models**, with no retraining (Word NB at L3: 0.856 vs 0.803).
+* **Synthetic-only and public-only training both fail on the other side's data.** Joint training works on both.
+* **Network:** CRC-32 caught 100% of corrupted frames; Selective Repeat is far more efficient than Go-Back-N under
+  loss; AIMD avoids the collapse a large fixed window causes at a bottleneck; cached DNS answers are ~100× faster.
+* **Phone app:** gives the same answers as the Python model (0 differences on 300 messages, max probability
+  difference 7×10⁻⁷).
 
 | Web app | Android app |
 |---|---|

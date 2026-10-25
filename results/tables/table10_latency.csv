@@ -4,6 +4,9 @@ Word RF,word,98.12,122.16,1878,8.9k features
 Word LR,word,1.35,1.64,16320,8.9k features
 Word SVM,word,4.39,7.39,10650,8.9k features
 Word BiGRU,word,2.71,3.84,1898,0.5M params
+DistilmBERT,subword,65.33,386.04,28,135.3M params
+XLM-R,subword,97.09,132.83,19,278.0M params
+MuRIL,subword,107.71,134.52,16,237.6M params
 Char LR,char,1.46,2.20,3117,45.9k features
 Char SVM,char,4.99,7.59,3074,45.9k features
 Char CNN,char,2.33,4.89,699,0.4M params

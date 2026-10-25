@@ -1,9 +1,9 @@
 server,transport,rtt_p50_ms,rtt_p95_ms,batch_msgs_s,model_ms_p50
-stub (transport only),"TCP (persistent, pipelined batch)",0.3235515005144407,0.43294990014146606,3750.6485996630518,
-stub (transport only),UDP request/response,0.19167649998053093,0.26050844990095356,,
-stub (transport only),UDP + Selective Repeat (W=16),,,3731.856998775297,
-stub (transport only),UDP + Go-Back-N (W=16),,,3960.164420974279,
-production detector,"TCP (persistent, pipelined batch)",2.055700999790133,3.0590509002195176,478.7600905714615,1.069
-production detector,UDP request/response,1.9535955002538685,2.912399350452688,,
-production detector,UDP + Selective Repeat (W=16),,,507.01454264857983,
-production detector,UDP + Go-Back-N (W=16),,,543.8317816750748,
+stub (transport only),"TCP (persistent, pipelined batch)",0.6091095001465874,0.7919853493149276,2153.471143740454,
+stub (transport only),UDP request/response,0.282007000350859,0.5781590492006213,,
+stub (transport only),UDP + Selective Repeat (W=16),,,2085.3031715273023,
+stub (transport only),UDP + Go-Back-N (W=16),,,3065.8409768125466,
+production detector,"TCP (persistent, pipelined batch)",3.4047395001834957,4.667887698815318,293.80127993938714,1.7295
+production detector,UDP request/response,2.744817499660712,3.655757349770282,,
+production detector,UDP + Selective Repeat (W=16),,,361.38146550411824,
+production detector,UDP + Go-Back-N (W=16),,,343.2355357536881,
