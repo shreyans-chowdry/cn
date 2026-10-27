@@ -82,6 +82,7 @@ Every run is cached in `results/runs/` (shipped zipped as `results/runs.zip`), s
 | `artifacts/production.joblib` | the detector used by the web app and the server |
 | `paper/METHODS.md`, `paper/FINDINGS.md` | the method and the results, written to be lifted into the paper |
 | `paper/ScamShield_IEEE_Paper.docx` | the IEEE-format paper |
+| `paper/ScamShield_Project_Report.docx` | the project report in the course template |
 | `paper/ScamShield_Project_Guide.pdf` | the team guide: how everything works, numbers to remember, demo script, roles, viva questions |
 | `android/` | the Android app (Kotlin / Jetpack Compose) |
 
